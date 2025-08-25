@@ -1,14 +1,16 @@
 # 🏔️ Aso Cultural Resort Homepage
 
-A beautiful, responsive homepage for a cultural resort located in the volcanic wonderland of Mount Aso, Kumamoto Prefecture, Japan.
+A beautiful, responsive static homepage for a cultural resort located in the volcanic wonderland of Mount Aso, Kumamoto Prefecture, Japan.
 
 ## ✨ Features
 
+- **Pure HTML/CSS**: No JavaScript dependencies - perfect for static hosting
 - **Responsive Design**: Optimized for all devices from mobile to desktop
 - **Modern UI/UX**: Clean, elegant design with Japanese cultural elements
-- **Interactive Elements**: Smooth scrolling, animations, and hover effects
+- **CSS-only Interactions**: Smooth animations, hover effects, and mobile navigation
 - **Cultural Focus**: Showcases traditional Japanese experiences and hospitality
-- **Performance Optimized**: Fast loading with efficient CSS and JavaScript
+- **Performance Optimized**: Lightning-fast loading with minimal dependencies
+- **Static Hosting Ready**: Perfect for GitHub Pages, Vercel, Netlify, and more
 
 ## 🎌 Design Highlights
 
@@ -22,11 +24,18 @@ A beautiful, responsive homepage for a cultural resort located in the volcanic w
 
 ```
 aso-cultural-resort/
-├── index.html          # Main homepage structure
-├── styles.css          # Complete styling and responsive design
-├── script.js           # Interactive functionality
-├── package.json        # Project configuration and dependencies
-└── README.md           # Project documentation
+├── public/                 # Vercel output directory
+│   ├── index.html          # Built homepage
+│   └── styles.css          # Built styles
+├── index.html              # Source homepage structure
+├── styles.css              # Source styling and responsive design
+├── package.json            # Project configuration and build scripts
+├── vercel.json             # Vercel deployment configuration
+├── .gitignore              # Git ignore rules
+├── .github/
+│   └── workflows/
+│       └── deploy.yml      # GitHub Pages auto-deployment
+└── README.md               # Project documentation
 ```
 
 ## 🚀 Getting Started
@@ -116,14 +125,10 @@ aso-cultural-resort/
 - **CSS3**: Advanced styling with:
   - CSS Grid and Flexbox
   - Custom properties (CSS variables)
-  - Animations and transitions
+  - CSS-only animations and transitions
+  - CSS-only mobile navigation
   - Responsive design
-- **JavaScript (ES6+)**: Interactive functionality including:
-  - Mobile navigation
-  - Smooth scrolling
-  - Scroll animations
-  - Form validation
-  - Parallax effects
+  - Pure CSS scroll effects
 
 ## 📱 Responsive Breakpoints
 
@@ -146,11 +151,31 @@ aso-cultural-resort/
 
 ## 🚀 Performance Features
 
+- Pure HTML/CSS - no JavaScript dependencies
 - Optimized CSS with minimal unused styles
-- Efficient JavaScript with event delegation
-- Lazy loading preparation for future images
-- Smooth animations with CSS transforms
-- Minimal external dependencies
+- Fast loading with efficient external resources
+- Smooth CSS-only animations
+- Perfect for static hosting platforms
+- Excellent Lighthouse scores
+
+## 🌐 Deployment Options
+
+### GitHub Pages
+1. Push to GitHub repository
+2. Enable GitHub Pages in repository settings
+3. Auto-deployment via GitHub Actions (included)
+
+### Vercel
+1. Connect repository to Vercel
+2. Vercel will automatically detect the build settings from `vercel.json`
+3. Build command: `npm run build` (copies files to `public/` directory)
+4. Output directory: `public/`
+5. Auto-deployment on every push with custom domain support
+
+### Netlify
+1. Drag and drop files or connect repository
+2. Instant deployment
+3. Form handling available
 
 ## 📈 Future Enhancements
 
@@ -159,7 +184,7 @@ aso-cultural-resort/
 - Multi-language support expansion
 - Virtual tour functionality
 - Blog/news section
-- Online payment integration
+- Contact form backend integration
 
 ## 🤝 Contributing
 
