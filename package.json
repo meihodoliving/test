@@ -1,0 +1,41 @@
+{
+  "name": "aso-cultural-resort",
+  "version": "1.0.0",
+  "description": "A beautiful homepage for Aso Cultural Resort - Experience traditional Japan in the volcanic wonderland of Mount Aso",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx live-server --port=3000 --open=/index.html",
+    "serve": "python3 -m http.server 8000",
+    "dev": "npx live-server --port=3000 --open=/index.html --watch=.",
+    "build": "echo 'Static site - no build process required'",
+    "lint": "echo 'Linting HTML, CSS, and JS files...' && npx htmlhint index.html && npx stylelint styles.css && npx eslint script.js"
+  },
+  "keywords": [
+    "cultural-resort",
+    "aso",
+    "japan",
+    "tourism",
+    "onsen",
+    "traditional",
+    "volcanic",
+    "website",
+    "homepage"
+  ],
+  "author": "Aso Cultural Resort",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "htmlhint": "^1.1.4",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard": "^34.0.0",
+    "eslint": "^8.50.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aso-cultural-resort/homepage"
+  },
+  "homepage": "https://aso-cultural-resort.github.io/homepage",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
