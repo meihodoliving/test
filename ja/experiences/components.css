@@ -1,0 +1,471 @@
+/* 体験ページ共通コンポーネントスタイル */
+
+/* Experience Hero Component */
+.experience-hero {
+    height: 60vh;
+    background: var(--gradient-overlay), 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="experience" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%238B7355;stop-opacity:1" /><stop offset="50%" style="stop-color:%232F4F4F;stop-opacity:1" /><stop offset="100%" style="stop-color:%231C1C1C;stop-opacity:1" /></linearGradient></defs><rect fill="url(%23experience)" width="1200" height="800"/><circle fill="%23D4AF37" cx="600" cy="300" r="120" opacity="0.1"/><polygon fill="%238B7355" points="200,600 400,400 600,600" opacity="0.08"/><polygon fill="%232F4F4F" points="800,700 1000,500 1200,700" opacity="0.08"/></svg>');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.experience-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-overlay);
+}
+
+.experience-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 40px;
+}
+
+.experience-title {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeInUp 1.2s ease 0.5s forwards;
+}
+
+.experience-title .japanese {
+    display: block;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+.experience-title .english {
+    display: block;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 1.8rem;
+    opacity: 0.9;
+}
+
+.experience-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    font-weight: 300;
+    line-height: 1.8;
+    animation: fadeInUp 1.2s ease 1s forwards;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Breadcrumb Component */
+.breadcrumb {
+    background: var(--light-color);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.breadcrumb-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.breadcrumb-list a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-list a:hover {
+    color: var(--accent-color);
+}
+
+.breadcrumb-separator {
+    color: var(--border-color);
+}
+
+/* Experience Detail Component */
+.experience-detail {
+    padding: 120px 0;
+    background: var(--white);
+    position: relative;
+}
+
+.experience-detail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--washi-texture);
+    opacity: 0.02;
+    pointer-events: none;
+}
+
+.detail-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+    margin-bottom: 4rem;
+}
+
+.detail-text {
+    padding: 2rem 0;
+}
+
+.detail-text h2 {
+    font-size: 2.5rem;
+    color: var(--dark-color);
+    margin-bottom: 2rem;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.detail-text p {
+    font-size: 1.1rem;
+    line-height: 2;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+.detail-image {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px var(--shadow);
+}
+
+.detail-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.detail-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Feature Grid Component */
+.features-section {
+    background: var(--light-color);
+    padding: 120px 0;
+    position: relative;
+}
+
+.features-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--washi-texture);
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.feature-card {
+    background: var(--white);
+    padding: 3rem 2.5rem;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 15px 40px var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--washi-texture);
+    opacity: 0.02;
+    pointer-events: none;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px var(--shadow-dark);
+    border-color: var(--accent-color);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+}
+
+.feature-icon i {
+    font-size: 2rem;
+    color: var(--white);
+}
+
+.feature-card h3 {
+    font-size: 1.4rem;
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.feature-card p {
+    color: var(--text-primary);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* Info Card Component */
+.info-section {
+    padding: 120px 0;
+    background: var(--white);
+}
+
+.info-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.info-card {
+    background: var(--light-color);
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 20px 50px var(--shadow);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--washi-texture);
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+.info-card table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+    z-index: 1;
+}
+
+.info-card th,
+.info-card td {
+    padding: 1.5rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-card th {
+    background: var(--accent-color);
+    color: var(--white);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-size: 1.1rem;
+}
+
+.info-card td {
+    color: var(--text-primary);
+    font-size: 1.05rem;
+}
+
+.info-card tr:hover {
+    background: rgba(212, 175, 55, 0.05);
+}
+
+/* CTA Section Component */
+.cta-section {
+    background: var(--dark-color);
+    color: var(--white);
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--washi-texture);
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-cta {
+    padding: 20px 40px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: 0.05em;
+    font-family: 'Noto Serif JP', serif;
+}
+
+.btn-cta-primary {
+    background: var(--accent-color);
+    color: var(--white);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.btn-cta-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+    background: #C19B2E;
+}
+
+.btn-cta-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+    backdrop-filter: blur(10px);
+}
+
+.btn-cta-secondary:hover {
+    background: var(--white);
+    color: var(--dark-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .experience-title {
+        font-size: 2.5rem;
+    }
+
+    .experience-title .japanese {
+        font-size: 2rem;
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-card {
+        padding: 2rem 1rem;
+    }
+
+    .info-card th,
+    .info-card td {
+        padding: 1rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+

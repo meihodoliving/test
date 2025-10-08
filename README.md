@@ -24,14 +24,10 @@ A beautiful, responsive static homepage for a cultural resort located in the vol
 
 ```
 aso-cultural-resort/
-├── public/                 # Vercel output directory
-│   ├── index.html          # Built homepage
-│   └── styles.css          # Built styles
-├── index.html              # Source homepage structure
-├── styles.css              # Source styling and responsive design
-├── package.json            # Project configuration and build scripts
+├── index.html              # Main homepage structure
+├── styles.css              # Complete styling and responsive design
+├── package.json            # Project configuration
 ├── vercel.json             # Vercel deployment configuration
-├── .gitignore              # Git ignore rules
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml      # GitHub Pages auto-deployment
@@ -167,10 +163,8 @@ aso-cultural-resort/
 
 ### Vercel
 1. Connect repository to Vercel
-2. Vercel will automatically detect the build settings from `vercel.json`
-3. Build command: `npm run build` (copies files to `public/` directory)
-4. Output directory: `public/`
-5. Auto-deployment on every push with custom domain support
+2. Auto-deployment on every push
+3. Custom domain support
 
 ### Netlify
 1. Drag and drop files or connect repository

@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aso Cultural Resort - Experience Traditional Japan</title>
+    <title>阿蘇文化リゾート - 本格的な日本を体験</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Initial Load Overlay -->
+    <div id="initial-load-overlay" class="initial-load-overlay" aria-hidden="true">
+        <div class="overlay-content">
+            <p class="overlay-text">静かに己の心を見つめるひと時を。</p>
+        </div>
+    </div>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -23,13 +29,14 @@
                 <span class="bar"></span>
             </label>
             <div class="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#experiences" class="nav-link">Experiences</a>
-                <a href="#accommodations" class="nav-link">Rooms</a>
-                <a href="#gallery" class="nav-link">Gallery</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="#contact" class="nav-link book-now">Book Now</a>
+                <a href="#home" class="nav-link">ホーム</a>
+                <a href="/ja/experiences/" class="nav-link">体験</a>
+                <a href="/ja/rooms/" class="nav-link">客室</a>
+                <a href="/ja/restaurant/" class="nav-link">食事</a>
+                <a href="/ja/location/" class="nav-link">撮影利用</a>
+                <a href="#access" class="nav-link">アクセス</a>
+                <a href="#contact" class="nav-link">お問い合わせ</a>
+                <a href="#contact" class="nav-link book-now">ご予約</a>
             </div>
         </div>
     </nav>
@@ -37,60 +44,30 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="japanese">阿蘇の心</span>
-                <span class="english">Heart of Aso</span>
-            </h1>
-            <p class="hero-subtitle">Experience authentic Japanese culture amidst the breathtaking volcanic landscapes of Mount Aso</p>
-            <div class="hero-buttons">
-                <a href="#experiences" class="btn btn-primary">Explore Experiences</a>
-                <a href="#gallery" class="btn btn-secondary">
-                    <i class="fas fa-play"></i>
-                    View Gallery
-                </a>
-            </div>
-        </div>
-        <a href="#about" class="scroll-indicator">
+        <a href="#experiences" class="scroll-indicator">
             <div class="scroll-arrow"></div>
         </a>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="philosophy">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Welcome to Aso Cultural Resort</h2>
-                <p class="section-subtitle">Where tradition meets tranquility</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>A Journey Through Time</h3>
-                    <p>Nestled in the heart of Kumamoto Prefecture, our resort offers an immersive experience into Japan's rich cultural heritage. Surrounded by the majestic Aso volcanic caldera, guests can experience traditional Japanese hospitality while enjoying modern comfort.</p>
-                    <p>Our resort features authentic architecture, traditional hot springs (onsen), and carefully curated cultural experiences that connect you with the essence of Japanese culture.</p>
-                    <div class="features">
-                        <div class="feature">
-                            <i class="fas fa-hot-tub"></i>
-                            <span>Natural Hot Springs</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-mountain"></i>
-                            <span>Volcanic Views</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-leaf"></i>
-                            <span>Traditional Gardens</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-utensils"></i>
-                            <span>Kaiseki Cuisine</span>
-                        </div>
+            <div class="philosophy-content">
+                <div class="catchphrase-section">
+                    <div class="catchphrase-container">
+                        <div class="catchphrase-line">阿蘇に息づく自然、</div>
+                        <div class="catchphrase-line">五感を満たす美食、</div>
+                        <div class="catchphrase-line">日常を忘れる体験、</div>
+                        <div class="catchphrase-line">和の心溢れる場所。</div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-mountain"></i>
-                        <p>Mount Aso View</p>
+                <div class="main-text-section">
+                    <div class="main-text-content">
+                        <p>雄大な阿蘇山麓に広がる文化リゾート、鳴鳳堂。</p>
+                        <p>56,000㎡の敷地に広がる日本建築の空間で、弓道・居合・空手などの武道から、<br>
+                        茶道・華道・盆石などの文化芸術まで、心を磨く体験が満載です。</p>
+                        <p>自然と伝統に包まれながら、日常から離れ、心身を癒やす特別な時間をお過ごしください。</p>
                     </div>
                 </div>
             </div>
@@ -101,52 +78,90 @@
     <section id="experiences" class="experiences">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Cultural Experiences</h2>
-                <p class="section-subtitle">Immerse yourself in authentic Japanese traditions</p>
+                <h2 class="section-title">本格的な侍体験と日本文化を阿蘇で体感</h2>
+                <p class="section-subtitle">阿蘇の大自然に囲まれた『鳴鳳堂』では、弓道・空手・剣道・居合道などの武道体験や、和太鼓・茶道・盆石・華道・滝行などの伝統文化体験が楽しめます。武道着を着て"侍体験コース"にも挑戦でき、家族旅行やカップルでの思い出作りにも人気のプログラムです。</p>
             </div>
             <div class="experiences-grid">
-                <div class="experience-card">
+                <a href="/ja/experiences/kyudo/" class="experience-card">
                     <div class="card-image">
-                        <i class="fas fa-spa"></i>
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop" alt="弓道体験 - 日本の伝統武道" loading="lazy">
                     </div>
-                    <h3>Onsen Ritual</h3>
-                    <p>Experience the healing waters of our natural hot springs, sourced directly from Mount Aso's volcanic activity.</p>
-                </div>
-                <div class="experience-card">
+                    <div class="card-content">
+                        <h3>弓道</h3>
+                        <p>日本の伝統武道である弓道を通じて、精神統一と集中力を養います。</p>
+                        <div class="card-button">詳細を見る</div>
+                    </div>
+                </a>
+                <a href="/ja/experiences/iaido/" class="experience-card">
                     <div class="card-image">
-                        <i class="fas fa-leaf"></i>
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=200&fit=crop" alt="居合道体験 - 日本刀の居合術" loading="lazy">
                     </div>
-                    <h3>Tea Ceremony</h3>
-                    <p>Participate in traditional Japanese tea ceremony in our authentic tea house overlooking the caldera.</p>
-                </div>
-                <div class="experience-card">
+                    <div class="card-content">
+                        <h3>居合道</h3>
+                        <p>日本刀を使った居合道で、武士の心構えと礼儀作法を学びます。</p>
+                        <div class="card-button">詳細を見る</div>
+                    </div>
+                </a>
+                <a href="/ja/experiences/kendo/" class="experience-card">
                     <div class="card-image">
-                        <i class="fas fa-paint-brush"></i>
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop" alt="剣道体験 - 竹刀を使った武道" loading="lazy">
                     </div>
-                    <h3>Calligraphy Workshop</h3>
-                    <p>Learn the ancient art of Japanese calligraphy with our master calligrapher in a serene setting.</p>
-                </div>
-                <div class="experience-card">
+                    <div class="card-content">
+                        <h3>剣道</h3>
+                        <p>竹刀を用いた剣道で、礼儀作法と精神力を鍛えます。</p>
+                        <div class="card-button">詳細を見る</div>
+                    </div>
+                </a>
+                <a href="/ja/experiences/karate/" class="experience-card">
                     <div class="card-image">
-                        <i class="fas fa-seedling"></i>
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop" alt="空手体験 - 沖縄発祥の武道" loading="lazy">
                     </div>
-                    <h3>Garden Meditation</h3>
-                    <p>Find inner peace in our meticulously maintained Japanese garden, perfect for morning meditation.</p>
-                </div>
-                <div class="experience-card">
+                    <div class="card-content">
+                        <h3>空手</h3>
+                        <p>沖縄発祥の空手で、基本動作と型を学び、心身を鍛えます。</p>
+                        <div class="card-button">詳細を見る</div>
+                    </div>
+                </a>
+                <a href="/ja/experiences/bonseki/" class="experience-card">
                     <div class="card-image">
-                        <i class="fas fa-utensils"></i>
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop" alt="盆石体験 - 白砂と小石で山水を表現" loading="lazy">
                     </div>
-                    <h3>Kaiseki Dining</h3>
-                    <p>Savor multi-course kaiseki meals featuring local Aso ingredients and seasonal specialties.</p>
-                </div>
-                <div class="experience-card">
+                    <div class="card-content">
+                        <h3>盆石</h3>
+                        <p>白砂と小石で山水の景を表す日本の伝統芸術を体験します。</p>
+                        <div class="card-button">詳細を見る</div>
+                    </div>
+                </a>
+                <a href="/ja/experiences/chado/" class="experience-card">
                     <div class="card-image">
-                        <i class="fas fa-hiking"></i>
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop" alt="茶道体験 - 伝統的な茶道" loading="lazy">
                     </div>
-                    <h3>Volcanic Hiking</h3>
-                    <p>Explore the unique volcanic landscape of Mount Aso with guided tours and nature walks.</p>
-                </div>
+                    <div class="card-content">
+                        <h3>茶道</h3>
+                        <p>伝統的な茶道を通じて、日本の美意識と精神文化を学びます。</p>
+                        <div class="card-button">詳細を見る</div>
+                    </div>
+                </a>
+                <a href="/ja/experiences/kado/" class="experience-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=200&fit=crop" alt="華道体験 - 生け花の芸術" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>華道</h3>
+                        <p>生け花を通じて、自然の美しさと日本の美意識を表現します。</p>
+                        <div class="card-button">詳細を見る</div>
+                    </div>
+                </a>
+                <a href="/ja/experiences/taiko/" class="experience-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop" alt="和太鼓体験 - 躍動感あるリズム" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>和太鼓</h3>
+                        <p>和太鼓の躍動感あるリズムを体験し、日本の伝統音楽を楽しみます。</p>
+                        <div class="card-button">詳細を見る</div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -155,68 +170,238 @@
     <section id="accommodations" class="accommodations">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Traditional Accommodations</h2>
-                <p class="section-subtitle">Rest in authentic Japanese comfort</p>
+                <h2 class="section-title">宿泊</h2>
+                <p class="section-subtitle">一棟ごとに趣の異なるお部屋をご用意。阿蘇の自然に囲まれた静寂な空間で、心安らぐひとときをお過ごしください。</p>
             </div>
             <div class="accommodations-grid">
-                <div class="room-card">
-                    <div class="room-image">
-                        <i class="fas fa-bed"></i>
-                        <span class="room-badge">Premium</span>
+                <a href="/ja/seiseikan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop" alt="清静舎 - 静寂な和室">
                     </div>
-                    <div class="room-content">
-                        <h3>Ryokan Suite</h3>
-                        <p>Traditional Japanese room with tatami floors, futon bedding, and private onsen access.</p>
-                        <div class="room-amenities">
-                            <span><i class="fas fa-hot-tub"></i> Private Onsen</span>
-                            <span><i class="fas fa-wifi"></i> Free WiFi</span>
-                            <span><i class="fas fa-mountain"></i> Volcano View</span>
+                    <div class="card-content">
+                        <h3>清静舎</h3>
+                    </div>
+                </a>
+                <a href="/ja/geihinkan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop" alt="迎賓館 - 露天風呂">
+                    </div>
+                    <div class="card-content">
+                        <h3>迎賓館</h3>
+                    </div>
+                </a>
+                <a href="/ja/korokan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop" alt="鴻臚館 - 現代和風客室">
+                    </div>
+                    <div class="card-content">
+                        <h3>鴻臚館</h3>
+                    </div>
+                </a>
+                <a href="/ja/bunshinkan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=200&fit=crop" alt="文心館 - 広々とした和室">
+                    </div>
+                    <div class="card-content">
+                        <h3>文心館</h3>
+                    </div>
+                </a>
+                <a href="/ja/edokan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop" alt="江戸館 - 囲炉裏のある客室">
+                    </div>
+                    <div class="card-content">
+                        <h3>江戸館</h3>
+                    </div>
+                </a>
+                <a href="/ja/hinokinoma/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop" alt="檜の間 - 檜材の客室">
+                    </div>
+                    <div class="card-content">
+                        <h3>檜の間</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Section -->
+    <section id="restaurant" class="restaurant">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">料亭 鳴鳳堂</h2>
+                <p class="section-subtitle">四季折々の食材を活かした本格的な会席料理をお楽しみいただけます。</p>
+            </div>
+            <div class="restaurant-content">
+                <div class="restaurant-image">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop" alt="料亭 鳴鳳堂 - 会席料理">
+                </div>
+                <div class="restaurant-description">
+                    <h3>本格的な会席料理</h3>
+                    <p>阿蘇の豊かな自然から生まれる四季折々の食材を活かし、伝統的な技法で仕上げた本格的な会席料理をご提供いたします。</p>
+                    <p>地元の新鮮な野菜、天草直送の魚介類、そして熊本の特産品をふんだんに使用した、心に残る特別な食体験をお楽しみください。</p>
+                    <div class="restaurant-features">
+                        <div class="feature-item">
+                            <i class="fas fa-leaf"></i>
+                            <span>四季の食材</span>
                         </div>
-                        <div class="room-price">¥45,000<span>/night</span></div>
+                        <div class="feature-item">
+                            <i class="fas fa-fish"></i>
+                            <span>新鮮な魚介類</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-seedling"></i>
+                            <span>地元野菜</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-wine-glass"></i>
+                            <span>厳選日本酒</span>
+                        </div>
+                    </div>
+                    <a href="/ja/restaurant/" class="btn btn-primary">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">撮影利用</h2>
+                <p class="section-subtitle">鳴鳳堂の空間を、様々な撮影ロケ地としてご活用いただけます。</p>
+            </div>
+            <div class="location-content">
+                <div class="location-image">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop" alt="撮影利用 - 鳴鳳堂の空間">
+                </div>
+                <div class="location-description">
+                    <h3>伝統的な空間での撮影</h3>
+                    <p>鳴鳳堂の美しい日本建築と庭園を背景に、特別な撮影をお楽しみいただけます。結婚式、記念写真、商品撮影など、様々な用途でご利用ください。</p>
+                    <p>阿蘇の雄大な自然に囲まれた静寂な空間で、心に残る特別な一枚を撮影していただけます。</p>
+                    <div class="location-features">
+                        <div class="feature-item">
+                            <i class="fas fa-camera"></i>
+                            <span>写真撮影</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-video"></i>
+                            <span>動画撮影</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-heart"></i>
+                            <span>結婚式</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-gem"></i>
+                            <span>商品撮影</span>
+                        </div>
+                    </div>
+                    <a href="/ja/location/" class="btn btn-primary">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access" class="access">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">アクセス</h2>
+                <p class="section-subtitle">鳴鳳堂へのアクセス情報。お車・電車・空港からのルートをご案内します。</p>
+            </div>
+            <div class="access-content">
+                <div class="access-info">
+                    <div class="access-details">
+                        <div class="access-item">
+                            <div class="access-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="access-text">
+                                <h4>住所</h4>
+                                <p>熊本県阿蘇市永草1943-28</p>
+                            </div>
+                        </div>
+                        <div class="access-item">
+                            <div class="access-icon">
+                                <i class="fas fa-train"></i>
+                            </div>
+                            <div class="access-text">
+                                <h4>最寄り駅</h4>
+                                <p>市ノ川駅／阿蘇駅</p>
+                            </div>
+                        </div>
+                        <div class="access-item">
+                            <div class="access-icon">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <div class="access-text">
+                                <h4>空港から</h4>
+                                <p>熊本空港から車で約35分</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="room-card">
-                    <div class="room-image">
-                        <i class="fas fa-bed"></i>
-                        <span class="room-badge">Deluxe</span>
+                <div class="access-map">
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.1234567890123!2d131.1234567890123!3d32.1234567890123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDA3JzI0LjQiTiAxMzHCsDA3JzI0LjQiRQ!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp&q=熊本県阿蘇市永草1943-28"
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="鳴鳳堂の場所 - 熊本県阿蘇市永草1943-28"
+                            aria-label="鳴鳳堂の場所を示すGoogleマップ">
+                        </iframe>
                     </div>
-                    <div class="room-content">
-                        <h3>Garden View Room</h3>
-                        <p>Spacious room overlooking our traditional Japanese garden with modern amenities.</p>
-                        <div class="room-amenities">
-                            <span><i class="fas fa-leaf"></i> Garden View</span>
-                            <span><i class="fas fa-wifi"></i> Free WiFi</span>
-                            <span><i class="fas fa-coffee"></i> Tea Service</span>
-                        </div>
-                        <div class="room-price">¥28,000<span>/night</span></div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=熊本県阿蘇市永草1943-28" target="_blank" class="btn btn-primary map-button">Googleマップで開く</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Services Section -->
+    <section id="partnership" class="partnership">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">提携サービス</h2>
+                <p class="section-subtitle">鳴鳳堂と提携するサービスをご紹介します。滞在をより快適にするための特別なご案内です。</p>
+            </div>
+            <div class="partnership-grid">
+                <div class="partnership-card">
+                    <div class="partnership-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop" alt="レストラン 山水家">
+                    </div>
+                    <div class="partnership-content">
+                        <h3>レストラン 山水家</h3>
+                        <p>地元食材を活かした本格的な和食を楽しめる提携レストランです。</p>
+                        <a href="#" class="btn btn-primary">詳細を見る</a>
                     </div>
                 </div>
-                <div class="room-card">
-                    <div class="room-image">
-                        <i class="fas fa-bed"></i>
-                        <span class="room-badge">Standard</span>
+                <div class="partnership-card">
+                    <div class="partnership-image">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop" alt="マッサージ ここりらく">
                     </div>
-                    <div class="room-content">
-                        <h3>Traditional Room</h3>
-                        <p>Authentic Japanese accommodations with shared onsen facilities and cultural experiences.</p>
-                        <div class="room-amenities">
-                            <span><i class="fas fa-hot-tub"></i> Shared Onsen</span>
-                            <span><i class="fas fa-wifi"></i> Free WiFi</span>
-                            <span><i class="fas fa-utensils"></i> Meals Included</span>
-                        </div>
-                        <div class="room-price">¥18,000<span>/night</span></div>
+                    <div class="partnership-content">
+                        <h3>マッサージ ここりらく</h3>
+                        <p>リラクゼーションマッサージで心と体を癒す、滞在中に利用できる提携サービスです。</p>
+                        <a href="#" class="btn btn-primary">詳細を見る</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+
     <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Gallery</h2>
-                <p class="section-subtitle">Discover the beauty of Aso</p>
+                <h2 class="section-title">ギャラリー</h2>
+                <p class="section-subtitle">阿蘇の美しさを発見</p>
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item large">
@@ -228,7 +413,7 @@
                 <div class="gallery-item">
                     <i class="fas fa-hot-tub"></i>
                     <div class="overlay">
-                        <h4>Onsen Experience</h4>
+                        <h4>温泉体験</h4>
                     </div>
                 </div>
                 <div class="gallery-item">
@@ -246,7 +431,7 @@
                 <div class="gallery-item">
                     <i class="fas fa-bed"></i>
                     <div class="overlay">
-                        <h4>Traditional Rooms</h4>
+                        <h4>伝統的な客室</h4>
                     </div>
                 </div>
                 <div class="gallery-item">
@@ -263,8 +448,8 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Contact Us</h2>
-                <p class="section-subtitle">Plan your cultural journey</p>
+                <h2 class="section-title">お問い合わせ</h2>
+                <p class="section-subtitle">あなたの文化体験を計画しましょう</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
@@ -323,40 +508,245 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>阿蘇文化リゾート</h3>
-                    <p>Experience the authentic heart of Japan in the volcanic wonderland of Mount Aso.</p>
+                    <p>阿蘇の火山地帯で、本格的な日本の心を体験してください。</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
+                    <h4>クイックリンク</h4>
                     <ul>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#experiences">Experiences</a></li>
-                        <li><a href="#accommodations">Rooms</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="/ja/experiences/">体験</a></li>
+                        <li><a href="#accommodations">客室</a></li>
+                        <li><a href="#contact">お問い合わせ</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Experiences</h4>
+                    <h4>体験メニュー</h4>
                     <ul>
-                        <li><a href="#">Onsen</a></li>
-                        <li><a href="#">Tea Ceremony</a></li>
-                        <li><a href="#">Calligraphy</a></li>
-                        <li><a href="#">Hiking</a></li>
+                        <li><a href="#">温泉</a></li>
+                        <li><a href="#">茶道</a></li>
+                        <li><a href="#">書道</a></li>
+                        <li><a href="#">ハイキング</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
+                    <h4>お問い合わせ情報</h4>
                     <ul>
-                        <li>Aso City, Kumamoto</li>
+                        <li>熊本県阿蘇市</li>
                         <li>+81 967-34-1234</li>
                         <li>info@asocultural.jp</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Aso Cultural Resort. All rights reserved.</p>
+                <p>&copy; 2024 阿蘇文化リゾート. すべての権利を保有します。</p>
             </div>
         </div>
     </footer>
+
+    <!-- Fixed Action Buttons -->
+    <div class="fixed-buttons">
+        <!-- Main Action Buttons -->
+        <div class="main-buttons">
+            <a href="https://www.hpdsp.net/meihodo/hw/hwp3100/hww3101.do?yadNo=309467" class="vertical-btn accommodation-btn">
+                <span class="btn-text">宿泊一覧</span>
+            </a>
+            <a href="/ja/experiences/" class="vertical-btn experience-btn">
+                <span class="btn-text">体験一覧</span>
+            </a>
+        </div>
+        
+        <!-- Language Buttons -->
+        <div class="language-buttons">
+            <button class="lang-btn" data-lang="jp">JP</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="traditional">繁</button>
+            <button class="lang-btn" data-lang="simplified">簡</button>
+        </div>
+    </div>
+
+    <script>
+        // Initial Load Overlay Configuration
+        const OVERLAY_CONFIG = {
+            enabled: true,
+            textDelay: 500, // テキスト表示までの遅延（ミリ秒）
+            textDuration: 2500, // テキスト表示時間（ミリ秒）
+            fadeOutDuration: 2000, // フェードアウト時間（ミリ秒）
+            sessionKey: 'initialLoadShown',
+            skipOnInteraction: true
+        };
+
+        // Initial Load Overlay Controller
+        class InitialLoadOverlay {
+            constructor() {
+                this.overlay = document.getElementById('initial-load-overlay');
+                this.textElement = this.overlay?.querySelector('.overlay-text');
+                this.isShown = sessionStorage.getItem(OVERLAY_CONFIG.sessionKey) === 'true';
+                this.isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                this.hasInteracted = false;
+                this.animationTimeouts = [];
+                
+                this.init();
+            }
+
+            init() {
+                // Skip if already shown in this session or reduced motion is preferred
+                if (this.isShown || this.isReducedMotion || !OVERLAY_CONFIG.enabled) {
+                    this.hideOverlay();
+                    return;
+                }
+
+                // Skip if not on home page
+                if (!this.isHomePage()) {
+                    this.hideOverlay();
+                    return;
+                }
+
+                this.setupEventListeners();
+                this.startAnimation();
+            }
+
+            isHomePage() {
+                const path = window.location.pathname;
+                return path === '/' || path === '/index.html' || path === '/ja/' || path === '/ja/index.html';
+            }
+
+            setupEventListeners() {
+                if (!OVERLAY_CONFIG.skipOnInteraction) return;
+
+                const events = ['click', 'scroll', 'keydown', 'touchstart'];
+                const skipOverlay = () => {
+                    if (this.hasInteracted) return;
+                    this.hasInteracted = true;
+                    this.clearTimeouts();
+                    this.hideOverlay();
+                };
+
+                events.forEach(event => {
+                    document.addEventListener(event, skipOverlay, { once: true, passive: true });
+                });
+            }
+
+            startAnimation() {
+                // Use requestAnimationFrame to ensure DOM is ready
+                requestAnimationFrame(() => {
+                    if (this.overlay && !this.hasInteracted) {
+                        this.showText();
+                    }
+                });
+            }
+
+            showText() {
+                if (!this.textElement || this.hasInteracted) return;
+
+                // テキストを初期状態に設定
+                this.textElement.style.opacity = '0';
+                this.textElement.style.transform = 'scale(0.95) translateY(0)';
+
+                // 0.5秒後にテキストを表示
+                const showTimeout = setTimeout(() => {
+                    if (this.hasInteracted) return;
+                    
+                    this.textElement.style.transition = 'opacity 1.5s ease-in-out, transform 1.5s ease-in-out';
+                    this.textElement.style.opacity = '1';
+                    this.textElement.style.transform = 'scale(1.0) translateY(0)';
+
+                    // 2.5秒後にテキストをフェードアウト
+                    const hideTimeout = setTimeout(() => {
+                        if (this.hasInteracted) return;
+                        this.fadeOutText();
+                    }, OVERLAY_CONFIG.textDuration);
+
+                    this.animationTimeouts.push(hideTimeout);
+                }, OVERLAY_CONFIG.textDelay);
+
+                this.animationTimeouts.push(showTimeout);
+            }
+
+            fadeOutText() {
+                if (!this.textElement || this.hasInteracted) return;
+
+                this.textElement.style.transition = 'opacity 1s ease-in-out, transform 1s ease-in-out';
+                this.textElement.style.opacity = '0';
+                this.textElement.style.transform = 'scale(1.0) translateY(-10px)';
+
+                // テキストフェードアウト後にオーバーレイ全体をフェードアウト
+                const overlayTimeout = setTimeout(() => {
+                    if (this.hasInteracted) return;
+                    this.fadeOutOverlay();
+                }, 1000);
+
+                this.animationTimeouts.push(overlayTimeout);
+            }
+
+            fadeOutOverlay() {
+                if (this.overlay && !this.hasInteracted) {
+                    this.overlay.style.transition = `opacity ${OVERLAY_CONFIG.fadeOutDuration}ms ease-in-out`;
+                    this.overlay.style.opacity = '0';
+                    
+                    // フェードアウト完了後に削除
+                    const removeTimeout = setTimeout(() => {
+                        this.hideOverlay();
+                    }, OVERLAY_CONFIG.fadeOutDuration);
+
+                    this.animationTimeouts.push(removeTimeout);
+                }
+            }
+
+            clearTimeouts() {
+                this.animationTimeouts.forEach(timeout => {
+                    if (timeout) clearTimeout(timeout);
+                });
+                this.animationTimeouts = [];
+            }
+
+            hideOverlay() {
+                this.clearTimeouts();
+                
+                if (this.overlay) {
+                    this.overlay.classList.add('hidden');
+                    
+                    // Remove from DOM after a short delay to ensure smooth transition
+                    setTimeout(() => {
+                        if (this.overlay && this.overlay.parentNode) {
+                            this.overlay.parentNode.removeChild(this.overlay);
+                        }
+                    }, 100);
+                }
+
+                // Mark as shown in session storage
+                sessionStorage.setItem(OVERLAY_CONFIG.sessionKey, 'true');
+            }
+        }
+
+        // Initialize overlay when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new InitialLoadOverlay();
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+    </script>
 
 </body>
 </html>
