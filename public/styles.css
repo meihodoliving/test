@@ -7,17 +7,27 @@
 
 :root {
     --primary-color: #8B4513;
-    --secondary-color: #D2691E;
+    --secondary-color: #A0522D;
     --accent-color: #CD853F;
-    --dark-color: #2F1B14;
-    --light-color: #F5F5DC;
-    --white: #FFFFFF;
-    --gold: #DAA520;
-    --red: #DC143C;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --shadow-dark: rgba(0, 0, 0, 0.3);
-    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    --gradient-overlay: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+    --dark-color: #654321;
+    --light-color: #FFF8DC;
+    --cream: #F5F5DC;
+    --orange: #FF7F50;
+    --warm-brown: #8B4513;
+    --light-brown: #D2B48C;
+    --terracotta: #CD5C5C;
+    --burnt-orange: #CC5500;
+    --red: #B22222;
+    --shadow: rgba(139, 69, 19, 0.2);
+    --shadow-dark: rgba(139, 69, 19, 0.5);
+    --shadow-light: rgba(139, 69, 19, 0.1);
+    --gradient-primary: linear-gradient(135deg, var(--warm-brown), var(--burnt-orange));
+    --gradient-warm: linear-gradient(135deg, var(--orange), var(--terracotta));
+    --gradient-overlay: linear-gradient(rgba(139, 69, 19, 0.6), rgba(139, 69, 19, 0.8));
+    --washi-texture: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.08"><defs><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/><feColorMatrix in="noise" type="saturate" values="0"/></filter></defs><rect width="200" height="200" fill="white" filter="url(%23noise)"/></svg>');
+    --bamboo-pattern: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 400"><rect width="100" height="400" fill="none"/><g stroke="%23CD853F" stroke-width="0.5" opacity="0.3"><line x1="20" y1="0" x2="20" y2="400"/><line x1="80" y1="0" x2="80" y2="400"/><circle cx="20" cy="50" r="2" fill="%238B4513"/><circle cx="20" cy="150" r="2" fill="%238B4513"/><circle cx="20" cy="250" r="2" fill="%238B4513"/><circle cx="20" cy="350" r="2" fill="%238B4513"/><circle cx="80" cy="100" r="2" fill="%238B4513"/><circle cx="80" cy="200" r="2" fill="%238B4513"/><circle cx="80" cy="300" r="2" fill="%238B4513"/></g></svg>');
+    --wave-pattern: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50"><path d="M0,25 Q50,5 100,25 T200,25" stroke="%23FF7F50" stroke-width="1" fill="none" opacity="0.2"/><path d="M0,35 Q50,15 100,35 T200,35" stroke="%23CD5C5C" stroke-width="0.5" fill="none" opacity="0.3"/></svg>');
+    --sakura-pattern: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g opacity="0.15"><path d="M50,20 L55,35 L70,35 L58,45 L63,60 L50,50 L37,60 L42,45 L30,35 L45,35 Z" fill="%23FF7F50"/><circle cx="30" cy="70" r="3" fill="%23D2B48C" opacity="0.8"/><circle cx="80" cy="30" r="2" fill="%23CD853F" opacity="0.6"/></g></svg>');
 }
 
 html {
@@ -25,10 +35,15 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
+    font-family: 'Noto Serif JP', serif;
+    line-height: 1.7;
     color: var(--dark-color);
     overflow-x: hidden;
+    background: var(--cream);
+    background-image: var(--washi-texture), var(--bamboo-pattern);
+    background-size: 200px 200px, 100px 400px;
+    background-position: top left, top right;
+    background-attachment: fixed;
 }
 
 .japanese {
@@ -46,11 +61,12 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(139, 69, 19, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
     transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+    border-bottom: 2px solid var(--orange);
+    box-shadow: 0 2px 20px var(--shadow-dark);
 }
 
 .nav-container {
@@ -65,15 +81,17 @@ body {
 
 .nav-logo h2 {
     font-family: 'Noto Serif JP', serif;
-    color: var(--primary-color);
+    color: var(--cream);
     font-size: 1.5rem;
     margin-bottom: -5px;
+    text-shadow: 0 2px 4px var(--shadow-dark);
 }
 
 .nav-logo span {
     font-size: 0.9rem;
-    color: var(--secondary-color);
+    color: var(--light-brown);
     font-weight: 300;
+    letter-spacing: 1px;
 }
 
 .nav-menu {
@@ -84,14 +102,17 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: var(--dark-color);
-    font-weight: 500;
-    transition: color 0.3s ease;
+    color: var(--cream);
+    font-weight: 400;
+    transition: all 0.3s ease;
     position: relative;
+    letter-spacing: 1px;
+    font-family: 'Noto Serif JP', serif;
 }
 
 .nav-link:hover {
-    color: var(--primary-color);
+    color: var(--orange);
+    text-shadow: 0 2px 4px var(--shadow-dark);
 }
 
 .nav-link::after {
@@ -101,8 +122,9 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--primary-color);
+    background: var(--orange);
     transition: width 0.3s ease;
+    box-shadow: 0 2px 4px var(--shadow-light);
 }
 
 .nav-link:hover::after {
@@ -110,16 +132,21 @@ body {
 }
 
 .book-now {
-    background: var(--gradient-primary);
-    color: var(--white) !important;
+    background: transparent;
+    color: var(--cream) !important;
     padding: 10px 20px;
     border-radius: 25px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-shadow: none;
+    border: 2px solid var(--orange);
 }
 
 .book-now:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px var(--shadow);
+    box-shadow: 0 10px 25px var(--shadow-light);
+    background: var(--orange);
+    color: var(--dark-color) !important;
 }
 
 .book-now::after {
@@ -141,10 +168,11 @@ body {
 .bar {
     width: 25px;
     height: 3px;
-    background: var(--primary-color);
+    background: var(--orange);
     margin: 3px 0;
     transition: all 0.3s ease;
     transform-origin: center;
+    box-shadow: 0 2px 4px var(--shadow-light);
 }
 
 /* CSS-only hamburger animation */
@@ -164,9 +192,11 @@ body {
 .hero {
     height: 100vh;
     background: var(--gradient-overlay), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%238B4513" width="1200" height="800"/><circle fill="%23CD853F" cx="600" cy="300" r="200" opacity="0.3"/><polygon fill="%23D2691E" points="200,600 400,400 600,600" opacity="0.2"/><polygon fill="%23DAA520" points="800,700 1000,500 1200,700" opacity="0.2"/></svg>');
-    background-size: cover;
-    background-position: center;
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="traditional" patternUnits="userSpaceOnUse" width="120" height="120"><rect width="120" height="120" fill="%23f8f8f8"/><g opacity="0.15"><path d="M60,20 L65,35 L80,35 L68,45 L73,60 L60,50 L47,60 L52,45 L40,35 L55,35 Z" fill="%23D4AF37"/><circle cx="30" cy="90" r="2" fill="%23B8860B"/><circle cx="90" cy="30" r="1.5" fill="%23D4AF37"/><path d="M10,60 Q30,40 50,60 Q70,40 90,60 Q110,40 130,60" stroke="%23D4AF37" stroke-width="0.5" fill="none"/></g></pattern></defs><rect width="1200" height="800" fill="url(%23traditional)"/><rect width="1200" height="800" fill="%23000000" opacity="0.75"/><g opacity="0.1"><circle fill="%23D4AF37" cx="300" cy="200" r="150"/><circle fill="%23B8860B" cx="900" cy="600" r="120"/><path d="M0,400 Q300,300 600,400 Q900,300 1200,400 L1200,800 L0,800 Z" fill="%23D4AF37"/></g></svg>'),
+                var(--washi-texture),
+                var(--sakura-pattern);
+    background-size: cover, 200px 200px, 100px 100px;
+    background-position: center, top left, bottom right;
     background-attachment: fixed;
     display: flex;
     align-items: center;
@@ -201,15 +231,24 @@ body {
 
 .hero-title .japanese {
     display: block;
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 0.5rem;
-    color: var(--gold);
+    color: var(--cream);
+    text-shadow: 0 4px 8px var(--shadow-dark), 0 2px 4px var(--shadow-dark);
+    font-weight: 700;
+    font-family: 'Noto Serif JP', serif;
+    writing-mode: horizontal-tb;
+    letter-spacing: 0.2em;
 }
 
 .hero-title .english {
     display: block;
     font-weight: 300;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    text-shadow: 0 2px 10px var(--shadow-dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8em;
+    color: var(--light-brown);
 }
 
 .hero-subtitle {
@@ -245,24 +284,30 @@ body {
 }
 
 .btn-primary {
-    background: var(--gradient-primary);
-    color: var(--white);
+    background: var(--white);
+    color: var(--dark-color);
+    font-weight: 600;
+    border: 2px solid var(--white);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px var(--shadow-dark);
+    box-shadow: 0 10px 25px var(--shadow-light);
+    background: transparent;
+    color: var(--white);
 }
 
 .btn-secondary {
     background: transparent;
     color: var(--white);
-    border: 2px solid var(--white);
+    border: 2px solid var(--gray-light);
+    font-weight: 500;
 }
 
 .btn-secondary:hover {
-    background: var(--white);
-    color: var(--primary-color);
+    background: var(--gray-light);
+    color: var(--dark-color);
+    box-shadow: 0 5px 15px var(--shadow-light);
 }
 
 .scroll-indicator {
@@ -281,6 +326,7 @@ body {
     border-bottom: 2px solid var(--white);
     transform: rotate(45deg);
     animation: bounce 2s infinite;
+    box-shadow: 0 2px 4px var(--shadow-dark);
 }
 
 /* Sections */
@@ -295,20 +341,54 @@ section {
 
 .section-title {
     font-size: 2.5rem;
-    color: var(--primary-color);
+    color: var(--dark-color);
     margin-bottom: 1rem;
     font-weight: 600;
+    text-shadow: 0 2px 4px var(--shadow);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-gray);
+    box-shadow: 0 2px 4px var(--shadow-light);
 }
 
 .section-subtitle {
     font-size: 1.1rem;
-    color: var(--secondary-color);
+    color: var(--accent-color);
     font-weight: 300;
+    letter-spacing: 1px;
 }
 
 /* About Section */
 .about {
-    background: var(--light-color);
+    background: var(--white);
+    background-image: var(--washi-texture), var(--wave-pattern);
+    background-size: 200px 200px, 200px 50px;
+    background-position: top left, bottom center;
+    background-repeat: repeat, repeat-x;
+    position: relative;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100"><g opacity="0.08"><path d="M0,50 Q100,20 200,50 Q300,20 400,50" stroke="%23888888" stroke-width="2" fill="none"/><circle cx="100" cy="50" r="8" fill="%23666666" opacity="0.3"/><circle cx="300" cy="50" r="6" fill="%23aaaaaa" opacity="0.4"/></g></svg>');
+    background-size: 400px 100px;
+    background-position: center;
+    background-repeat: repeat-x;
+    pointer-events: none;
 }
 
 .about-content {
@@ -320,9 +400,22 @@ section {
 
 .about-text h3 {
     font-size: 1.8rem;
-    color: var(--primary-color);
+    color: var(--dark-color);
     margin-bottom: 1rem;
     font-family: 'Noto Serif JP', serif;
+    position: relative;
+}
+
+.about-text h3::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 40px;
+    background: var(--gradient-gray);
+    box-shadow: 0 2px 4px var(--shadow-light);
 }
 
 .about-text p {
@@ -342,13 +435,22 @@ section {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--primary-color);
+    color: var(--dark-color);
     font-weight: 500;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.feature:hover {
+    background: var(--gray-light);
+    transform: translateX(5px);
 }
 
 .feature i {
     font-size: 1.2rem;
-    color: var(--secondary-color);
+    color: var(--gray-dark);
+    text-shadow: 0 2px 4px var(--shadow-light);
 }
 
 .about-image {
@@ -360,24 +462,44 @@ section {
 .image-placeholder {
     width: 400px;
     height: 300px;
-    background: var(--gradient-primary);
+    background: var(--gradient-gold);
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--white);
-    box-shadow: 0 20px 40px var(--shadow);
+    color: var(--dark-color);
+    box-shadow: 0 20px 40px var(--shadow-gold);
+    border: 3px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.image-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--washi-texture);
+    opacity: 0.3;
 }
 
 .image-placeholder i {
     font-size: 4rem;
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 10px var(--shadow-gold);
 }
 
 .image-placeholder p {
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 4px var(--shadow);
 }
 
 /* Experiences Section */
@@ -389,48 +511,99 @@ section {
 
 .experience-card {
     background: var(--white);
+    background-image: var(--washi-texture);
     border-radius: 20px;
     padding: 2rem;
     text-align: center;
     box-shadow: 0 10px 30px var(--shadow);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    border: 1px solid var(--gold-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.experience-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 30%, var(--gold-light) 31%, var(--gold-light) 32%, transparent 33%);
+    opacity: 0.05;
+    pointer-events: none;
 }
 
 .experience-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--shadow-gold);
+    border-color: var(--gold);
 }
 
 .card-image {
     width: 80px;
     height: 80px;
-    background: var(--gradient-primary);
+    background: var(--gradient-gold);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
+    border: 3px solid var(--gold);
+    box-shadow: 0 5px 15px var(--shadow-gold);
+    position: relative;
+    z-index: 2;
 }
 
 .card-image i {
     font-size: 2rem;
-    color: var(--white);
+    color: var(--dark-color);
+    text-shadow: 0 0 5px var(--shadow-gold);
 }
 
 .experience-card h3 {
     font-size: 1.3rem;
-    color: var(--primary-color);
+    color: var(--dark-color);
     margin-bottom: 1rem;
     font-family: 'Noto Serif JP', serif;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
 }
 
 .experience-card p {
     color: var(--dark-color);
     line-height: 1.6;
+    position: relative;
+    z-index: 2;
 }
 
 /* Accommodations Section */
 .accommodations {
-    background: var(--light-color);
+    background: var(--dark-color);
+    background-image: var(--washi-texture);
+    position: relative;
+    color: var(--white);
+}
+
+.accommodations::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 60%, var(--gold) 61%, var(--gold) 62%, transparent 63%);
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.accommodations .section-title {
+    color: var(--white);
+}
+
+.accommodations .section-subtitle {
+    color: var(--gold-light);
 }
 
 .accommodations-grid {

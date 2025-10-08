@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清静舎 - 阿蘇文化リゾート</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>阿蘇文化リゾート</h2>
+                <span>Aso Cultural Resort</span>
+            </div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <div class="nav-menu">
+                <a href="../../index.html" class="nav-link">ホーム</a>
+                <a href="../../index.html#about" class="nav-link">概要</a>
+                <a href="../../index.html#experiences" class="nav-link">体験</a>
+                <a href="../../index.html#accommodations" class="nav-link">宿泊</a>
+                <a href="../../index.html#gallery" class="nav-link">ギャラリー</a>
+                <a href="../../index.html#contact" class="nav-link">お問い合わせ</a>
+                <a href="../../index.html#contact" class="nav-link book-now">ご予約</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&h=600&fit=crop" alt="清静舎">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">清静舎</h1>
+            <p class="hero-subtitle">静寂な空間で心を清める特別な時間</p>
+        </div>
+    </section>
+
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-main">
+                    <div class="content-section">
+                        <h2>清静舎について</h2>
+                        <p>清静舎は、阿蘇の自然に囲まれた静寂な空間で、心を清め、内なる平安を見つけるための特別な宿泊施設です。伝統的な日本建築の美しさと現代的な快適さを融合させた設計で、日常の喧騒から離れて深いリラクゼーションを体験していただけます。</p>
+                        <p>大きな円窓から望む緑豊かな庭園の景色は、四季を通じて変化し、訪れる方々に自然の美しさと静寂を提供します。室内は畳の香りと木の温もりに包まれ、日本の伝統的な住空間の心地よさを感じていただけます。</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h2>客室の特徴</h2>
+                        <div class="room-types">
+                            <div class="room-type">
+                                <h3>和室</h3>
+                                <p>伝統的な畳敷きの和室で、日本の文化と美意識を感じていただけます。大きな円窓からは庭園の美しい景色を一望できます。</p>
+                                <ul>
+                                    <li>畳敷きの床</li>
+                                    <li>大きな円窓</li>
+                                    <li>低いテーブルと座布団</li>
+                                    <li>押し入れ</li>
+                                </ul>
+                            </div>
+                            <div class="room-type">
+                                <h3>設備</h3>
+                                <p>現代的な快適さを提供する設備を完備しています。</p>
+                                <ul>
+                                    <li>エアコン</li>
+                                    <li>Wi-Fi</li>
+                                    <li>テレビ</li>
+                                    <li>ミニバー</li>
+                                    <li>バスルーム</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-sidebar">
+                    <div class="booking-card">
+                        <h3>ご予約</h3>
+                        <div class="booking-form">
+                            <div class="form-group">
+                                <label for="checkin">チェックイン</label>
+                                <input type="date" id="checkin" name="checkin">
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout">チェックアウト</label>
+                                <input type="date" id="checkout" name="checkout">
+                            </div>
+                            <div class="form-group">
+                                <label for="guests">宿泊人数</label>
+                                <select id="guests" name="guests">
+                                    <option value="1">1名</option>
+                                    <option value="2">2名</option>
+                                    <option value="3">3名</option>
+                                    <option value="4">4名</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary full-width">予約する</button>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>基本情報</h3>
+                        <div class="info-item">
+                            <strong>定員</strong>
+                            <p>2-4名</p>
+                        </div>
+                        <div class="info-item">
+                            <strong>客室タイプ</strong>
+                            <p>和室</p>
+                        </div>
+                        <div class="info-item">
+                            <strong>料金</strong>
+                            <p>1泊2食付き 25,000円〜</p>
+                        </div>
+                        <div class="info-item">
+                            <strong>チェックイン</strong>
+                            <p>15:00</p>
+                        </div>
+                        <div class="info-item">
+                            <strong>チェックアウト</strong>
+                            <p>11:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery">
+        <div class="container">
+            <h2>清静舎ギャラリー</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" alt="清静舎 外観">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=300&fit=crop" alt="清静舎 庭園">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=300&fit=crop" alt="清静舎 客室">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" alt="清静舎 浴室">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>阿蘇文化リゾート</h3>
+                    <p>Experience the authentic heart of Japan in the volcanic wonderland of Mount Aso.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../../index.html#about">About</a></li>
+                        <li><a href="../../index.html#experiences">Experiences</a></li>
+                        <li><a href="../../index.html#accommodations">Rooms</a></li>
+                        <li><a href="../../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li>Aso City, Kumamoto</li>
+                        <li>+81 967-34-1234</li>
+                        <li>info@asocultural.jp</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Aso Cultural Resort. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+

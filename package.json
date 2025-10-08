@@ -4,11 +4,11 @@
   "description": "A beautiful static homepage for Aso Cultural Resort - Experience traditional Japan in the volcanic wonderland of Mount Aso",
   "main": "index.html",
   "scripts": {
-    "start": "npx live-server --port=3000 --open=/public/index.html",
+    "start": "npx live-server --port=3000 --open=/index.html",
     "serve": "python3 -m http.server 8000",
-    "dev": "npx live-server --port=3000 --open=/public/index.html --watch=.",
-    "build": "mkdir -p public && cp index.html styles.css public/",
-    "lint": "echo 'Linting HTML and CSS files...' && npx htmlhint public/index.html && npx stylelint public/styles.css",
+    "dev": "npx live-server --port=3000 --open=/index.html --watch=.",
+    "build": "echo 'Static HTML/CSS site - no build process required'",
+    "lint": "echo 'Linting HTML and CSS files...' && npx htmlhint index.html && npx stylelint styles.css",
     "deploy:vercel": "vercel --prod",
     "deploy:github": "git add . && git commit -m 'Deploy to GitHub Pages' && git push origin main"
   },
@@ -29,8 +29,8 @@
   "author": "Aso Cultural Resort",
   "license": "MIT",
   "devDependencies": {
-    "live-server": "^1.2.2",
     "htmlhint": "^1.1.4",
+    "live-server": "^1.2.2",
     "stylelint": "^15.10.3",
     "stylelint-config-standard": "^34.0.0"
   },
@@ -41,5 +41,8 @@
   "homepage": "https://aso-cultural-resort.github.io/homepage",
   "engines": {
     "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.16"
   }
 }
