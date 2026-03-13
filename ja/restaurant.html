@@ -46,9 +46,41 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <h2>阿蘇文化リゾート</h2>
-                <span>Aso Cultural Resort</span>
+            <div class="header-nav">
+                <div class="nav-left">
+                    <a href="/index.html" class="nav-link">
+                        <img src="/images/Home.png" alt="ホーム" class="nav-icon">
+                        <span>ホーム</span>
+                    </a>
+                    <a href="ja/experiences/" class="nav-link">
+                        <img src="/images/taiken.png" alt="体験" class="nav-icon" loading="lazy">
+                        <span>体験</span>
+                    </a>
+                    <a href="ja/accommodations/" class="nav-link">
+                        <img src="/images/tatemono.png" alt="宿泊" class="nav-icon">
+                        <span>宿泊</span>
+                    </a>
+                </div>
+                <div class="nav-center">
+                    <a href="/index.html">
+                        <h1>鳴鳳堂</h1>
+                        <p>MEIHODO</p>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a href="ja/restaurant.html" class="nav-link active">
+                        <img src="/images/syokuzi.png" alt="食事" class="nav-icon">
+                        <span>食事</span>
+                    </a>
+                    <a href="ja/location/" class="nav-link">
+                        <img src="/images/kamera.png" alt="撮影利用" class="nav-icon">
+                        <span>撮影利用</span>
+                    </a>
+                    <a href="index.html#access" class="nav-link">
+                        <img src="/images/tizu.png" alt="アクセス" class="nav-icon">
+                        <span>アクセス</span>
+                    </a>
+                </div>
             </div>
             <input type="checkbox" id="nav-toggle" class="nav-toggle">
             <label for="nav-toggle" class="hamburger">
@@ -56,23 +88,13 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </label>
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link">ホーム</a>
-                <a href="ja/experiences/" class="nav-link">体験</a>
-                <a href="ja/accommodations/" class="nav-link">客室</a>
-                <a href="ja/restaurant.html" class="nav-link active">レストラン</a>
-                <a href="ja/location/" class="nav-link">撮影利用</a>
-                <a href="index.html#access" class="nav-link">アクセス</a>
-                <a href="index.html#contact" class="nav-link">お問い合わせ</a>
-                <a href="ja/restaurant/reservation.html" class="nav-link book-now">ご予約</a>
-            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="restaurant-hero">
         <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&h=600&fit=crop" alt="料亭 鳴鳳堂 - 本格的な会席料理" loading="eager">
+            <img src="/public/images/top/ryotei.png" alt="料亭 鳴鳳堂 外観" loading="lazy">
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -229,7 +251,6 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 株式会社鳴鳳堂. すべての権利を保有します。</p>
             </div>
         </div>
     </footer>
@@ -238,10 +259,10 @@
     <div class="fixed-buttons">
         <div class="main-buttons">
             <a href="https://www.hpdsp.net/meihodo/hw/hwp3100/hww3101.do?yadNo=309467" class="vertical-btn accommodation-btn">
-                <span class="btn-text">宿泊一覧</span>
+                <span class="btn-text">宿泊予約</span>
             </a>
-            <a href="ja/experiences/" class="vertical-btn experience-btn">
-                <span class="btn-text">体験一覧</span>
+            <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=en" class="vertical-btn experience-btn">
+                <span class="btn-text">体験予約</span>
             </a>
         </div>
         <div class="language-buttons">
@@ -254,12 +275,12 @@
 
     <script>
         // Mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navToggle = document.getElementById('nav-toggle');
         const navMenu = document.querySelector('.nav-menu');
 
-        if (mobileMenuToggle && navMenu) {
-            mobileMenuToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('change', () => {
+                navMenu.classList.toggle('active', navToggle.checked);
             });
         }
 
@@ -279,3 +300,5 @@
     </script>
 </body>
 </html>
+
+

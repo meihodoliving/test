@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>体験プログラム - 阿蘇文化リゾート</title>
+    <title>体験プログラム - 鳴鳳堂</title>
     <link rel="stylesheet" href="../../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,33 +12,53 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <h2>阿蘇文化リゾート</h2>
-                <span>ASO CULTURAL RESORT</span>
+            <div class="header-nav">
+                <div class="nav-left">
+                    <a href="../../index.html" class="nav-link">
+                        <img src="/public/images/pictogram/Home.png" alt="ホーム" class="nav-icon">
+                        <span>ホーム</span>
+                    </a>
+                    <a href="index.html" class="nav-link">
+                        <img src="/public/images/pictogram/taiken.png" alt="体験" class="nav-icon" loading="lazy">
+                        <span>体験</span>
+                    </a>
+                    <a href="../accommodations/" class="nav-link">
+                        <img src="/public/images/pictogram/tatemono.png" alt="宿泊" class="nav-icon">
+                        <span>宿泊</span>
+                    </a>
+                </div>
+                <div class="nav-center">
+                    <a href="../../index.html">
+                        <h1>鳴鳳堂</h1>
+                        <p>MEIHODO</p>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a href="../restaurant/" class="nav-link">
+                        <img src="/public/images/pictogram/syokuzi.png" alt="食事" class="nav-icon">
+                        <span>食事</span>
+                    </a>
+                    <a href="../location/" class="nav-link">
+                        <img src="/public/images/pictogram/kamera.png" alt="撮影利用" class="nav-icon">
+                        <span>撮影利用</span>
+                    </a>
+                    <a href="../../index.html#access" class="nav-link">
+                        <img src="/public/images/pictogram/tizu.png" alt="アクセス" class="nav-icon">
+                        <span>アクセス</span>
+                    </a>
+                </div>
             </div>
-            <div class="nav-menu">
-                <a href="../../index.html" class="nav-link">ホーム</a>
-                <a href="../../index.html#about" class="nav-link">当館について</a>
-                <a href="../../index.html#experiences" class="nav-link">体験</a>
-                <a href="../../index.html#accommodations" class="nav-link">客室</a>
-                <a href="../restaurant/" class="nav-link">食事</a>
-                <a href="../location/" class="nav-link">撮影利用</a>
-                <a href="../../index.html#contact" class="nav-link">お問い合わせ</a>
-                <a href="../../index.html#contact" class="nav-link book-now">ご予約</a>
-            </div>
-            <div class="mobile-menu-toggle">
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </div>
+            </label>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&h=1080&fit=crop" alt="阿蘇の体験プログラム">
-        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">
@@ -46,10 +66,6 @@
                 <span class="hero-title-sub">心を磨く特別な時間</span>
             </h1>
             <p class="hero-description">武道から文化芸術まで、阿蘇の大自然の中で心を磨く多様な体験をお楽しみください</p>
-            <div class="hero-buttons">
-                <a href="#reservation" class="btn btn-primary">体験を予約</a>
-                <a href="#contact" class="btn btn-secondary">お問い合わせ</a>
-            </div>
         </div>
         <div class="scroll-indicator">
             <div class="scroll-arrow"></div>
@@ -77,7 +93,7 @@
             </div>
             <div class="samurai-featured">
                 <div class="samurai-image-container">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=400&fit=crop" alt="侍体験プログラム" class="samurai-featured-image">
+                    <img src="/public/images/experience/samurai.jpg" alt="侍体験プログラム イメージ" class="samurai-featured-image" loading="lazy">
                 </div>
                 <div class="samurai-content">
                     <h3>侍体験プログラム</h3>
@@ -102,7 +118,7 @@
                         <span class="tag">記念品</span>
                         <span class="tag">昼食付き</span>
                     </div>
-                    <a href="#samurai-experience" class="btn btn-primary">詳細を見る</a>
+                    <span class="btn btn-primary">詳細を見る</span>
                 </div>
             </div>
         </div>
@@ -116,9 +132,9 @@
                 <p class="section-subtitle">日本の伝統武道を通じて、精神と身体を鍛錬します</p>
             </div>
             <div class="experiences-grid">
-                <a href="#kyudo" class="experience-card">
+                <a href="http://127.0.0.1:5501/ja/experiences/kyudo/" class="experience-card experience-card-link" target="_self">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop" alt="弓道体験">
+                        <img src="/public/images/experience/kyudo.jpg" alt="弓道体験 イメージ" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>弓道</h3>
@@ -139,9 +155,9 @@
                         </div>
                     </div>
                 </a>
-                <a href="#iaido" class="experience-card">
+                <a href="http://127.0.0.1:5501/ja/experiences/iaido/" class="experience-card experience-card-link" target="_self" aria-label="居合道の詳細ページへ">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=200&fit=crop" alt="居合道体験">
+                        <img src="/public/images/experience/iaido.jpg" alt="居合道体験 イメージ" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>居合道</h3>
@@ -162,9 +178,9 @@
                         </div>
                     </div>
                 </a>
-                <a href="#karate" class="experience-card">
+                <a href="http://127.0.0.1:5501/ja/experiences/karate/" class="experience-card experience-card-link" target="_self" aria-label="空手の詳細ページへ">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop" alt="空手体験">
+                        <img src="/public/images/experience/karate.jpg" alt="空手体験 イメージ" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>空手</h3>
@@ -185,9 +201,9 @@
                         </div>
                     </div>
                 </a>
-                <a href="/ja/experiences/kendo/" class="experience-card">
+                <a href="http://127.0.0.1:5501/ja/experiences/kendo/" class="experience-card experience-card-link" target="_self" aria-label="剣道の詳細ページへ">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop" alt="剣道体験" loading="lazy">
+                        <img src="/public/images/experience/kendo.jpg" alt="剣道体験 イメージ" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>剣道</h3>
@@ -220,9 +236,9 @@
                 <p class="section-subtitle">日本の伝統文化を深く理解し、美意識を学びます</p>
             </div>
             <div class="experiences-grid">
-                <a href="#tea-ceremony" class="experience-card">
+                <a href="http://127.0.0.1:5501/ja/experiences/chado/" class="experience-card experience-card-link" target="_self" aria-label="茶道の詳細ページへ">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop" alt="茶道体験" loading="lazy" width="400" height="200">
+                        <img src="/public/images/experience/sadou.jpg" alt="茶道体験 イメージ" loading="lazy" width="400" height="200">
                     </div>
                     <div class="card-content">
                         <h3>茶道</h3>
@@ -243,9 +259,9 @@
                         </div>
                     </div>
                 </a>
-                <a href="/ja/experiences/taiko/" class="experience-card">
+                <a href="http://127.0.0.1:5501/ja/experiences/taiko/" class="experience-card experience-card-link" target="_self" aria-label="和太鼓の詳細ページへ">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=400&h=200&fit=crop" alt="和太鼓体験" loading="lazy" width="400" height="200">
+                        <img src="/public/images/experience/taiko.jpg" alt="和太鼓体験 イメージ" loading="lazy" width="400" height="200">
                     </div>
                     <div class="card-content">
                         <h3>和太鼓</h3>
@@ -266,9 +282,9 @@
                         </div>
                     </div>
                 </a>
-                <a href="#ikebana" class="experience-card">
+                <a href="http://127.0.0.1:5501/ja/experiences/kado/" class="experience-card experience-card-link" target="_self" aria-label="華道の詳細ページへ">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=200&fit=crop" alt="華道体験" loading="lazy" width="400" height="200">
+                        <img src="/public/images/experience/kadou.jpg" alt="華道体験 イメージ" loading="lazy" width="400" height="200">
                     </div>
                     <div class="card-content">
                         <h3>華道</h3>
@@ -289,9 +305,9 @@
                         </div>
                     </div>
                 </a>
-                <a href="/ja/experiences/bonseki/" class="experience-card">
+                <a href="http://127.0.0.1:5501/ja/experiences/bonseki/" class="experience-card experience-card-link" target="_self" aria-label="盆石の詳細ページへ">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop" alt="盆石体験" loading="lazy" width="400" height="200">
+                        <img src="/public/images/experience/bonseki.jpg" alt="盆石体験 イメージ" loading="lazy" width="400" height="200">
                     </div>
                     <div class="card-content">
                         <h3>盆石</h3>
@@ -324,9 +340,9 @@
                 <p class="section-subtitle">特別な時間を過ごしていただける、厳選された体験プログラムをご紹介します</p>
             </div>
             <div class="experiences-grid">
-                <a href="#samurai" class="experience-card">
+                <a href="http://127.0.0.1:5501/ja/experiences/samurai/" class="experience-card experience-card-link" target="_self" aria-label="侍体験コースの詳細ページへ">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop" alt="侍体験コース">
+                        <img src="/public/images/experience/samurai.jpg" alt="侍体験コース イメージ" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>侍体験コース</h3>
@@ -353,9 +369,12 @@
                         </div>
                     </div>
                 </a>
-                <a href="#meditation" class="experience-card">
+                <a href="http://127.0.0.1:5501/ja/experiences/meditation/" class="experience-card experience-card-link" target="_self" aria-label="自然瞑想プログラムの詳細ページへ">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop" alt="自然瞑想プログラム">
+                        <div class="image-placeholder">
+                            <i class="fas fa-leaf"></i>
+                            <p>自然瞑想プログラム</p>
+                        </div>
                     </div>
                     <div class="card-content">
                         <h3>自然瞑想プログラム</h3>
@@ -382,7 +401,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="#crafts" class="experience-card">
+                <a href="http://127.0.0.1:5501/ja/experiences/crafts/" class="experience-card experience-card-link" target="_self" aria-label="伝統工芸体験の詳細ページへ">
                     <div class="card-image">
                         <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop" alt="伝統工芸体験">
                     </div>
@@ -456,38 +475,41 @@
             </div>
             <div class="reservation-content">
                 <div class="reservation-info">
-                    <h3>予約について</h3>
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <div class="info-icon">📅</div>
-                            <h4>予約方法</h4>
-                            <p>電話・メール・オンラインでご予約いただけます</p>
+                    <div class="reservation-layout">
+                        <div class="reservation-cards">
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <div class="info-icon">📅</div>
+                                    <h4>予約方法</h4>
+                                    <p>電話・メール・オンラインでご予約いただけます</p>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-icon">⏰</div>
+                                    <h4>体験時間</h4>
+                                    <p>9:00 - 17:00（体験により異なります）</p>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-icon">👥</div>
+                                    <h4>定員</h4>
+                                    <p>体験により2-8名（要事前確認）</p>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-icon">💰</div>
+                                    <h4>料金</h4>
+                                    <p>10,000円〜30,000円（体験により異なります）</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-icon">⏰</div>
-                            <h4>体験時間</h4>
-                            <p>9:00 - 17:00（体験により異なります）</p>
+                        <div class="notice-box">
+                            <h4>ご注意事項</h4>
+                            <ul>
+                                <li>• 体験は事前予約制です</li>
+                                <li>• キャンセルは前日までにご連絡ください</li>
+                                <li>• 天候により体験内容が変更になる場合があります</li>
+                                <li>• 動きやすい服装でお越しください</li>
+                                <li>• 体験により年齢制限があります</li>
+                            </ul>
                         </div>
-                        <div class="info-item">
-                            <div class="info-icon">👥</div>
-                            <h4>定員</h4>
-                            <p>体験により2-8名（要事前確認）</p>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon">💰</div>
-                            <h4>料金</h4>
-                            <p>10,000円〜30,000円（体験により異なります）</p>
-                        </div>
-                    </div>
-                    <div class="notice-box">
-                        <h4>ご注意事項</h4>
-                        <ul>
-                            <li>• 体験は事前予約制です</li>
-                            <li>• キャンセルは前日までにご連絡ください</li>
-                            <li>• 天候により体験内容が変更になる場合があります</li>
-                            <li>• 動きやすい服装でお越しください</li>
-                            <li>• 体験により年齢制限があります</li>
-                        </ul>
                     </div>
                     <div class="reservation-button-container">
                         <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=ja" target="_blank" class="btn btn-primary btn-large reservation-btn">予約はこちら</a>
@@ -502,36 +524,39 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>阿蘇文化リゾート</h3>
+                    <h3>鳴鳳堂</h3>
                     <p>阿蘇の火山地帯で、本格的な日本の心を体験してください。</p>
                 </div>
                 <div class="footer-section">
-                    <h4>クイックリンク</h4>
-                    <ul>
-                        <li><a href="../../index.html#about">当館について</a></li>
-                        <li><a href="../../index.html#experiences">体験</a></li>
-                        <li><a href="../../index.html#accommodations">客室</a></li>
-                        <li><a href="../../index.html#contact">お問い合わせ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
                     <h4>体験メニュー</h4>
-                    <ul>
-                        <li><a href="#martial-arts">武道体験</a></li>
-                        <li><a href="#cultural">文化体験</a></li>
-                        <li><a href="#special">特別プログラム</a></li>
-                    </ul>
+                    <div class="experience-menu-columns">
+                        <div class="experience-column">
+                            <ul>
+                                <li><a href="#">弓道</a></li>
+                                <li><a href="#">居合道</a></li>
+                                <li><a href="#">剣道</a></li>
+                                <li><a href="#">空手</a></li>
+                            </ul>
+                        </div>
+                        <div class="experience-column">
+                            <ul>
+                                <li><a href="#">茶道</a></li>
+                                <li><a href="#">盆石</a></li>
+                                <li><a href="#">和太鼓</a></li>
+                                <li><a href="#">華道</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="footer-section">
                     <h4>お問い合わせ情報</h4>
-                    <p>〒869-2612<br>
-                    熊本県阿蘇市一の宮町宮地1234<br>
-                    TEL: 0967-34-1234<br>
-                    Email: info@asoculturalresort.com</p>
+                    <p>〒869-2231<br>
+                    熊本県阿蘇市永草1943-28<br>
+                    TEL: 0967-24-5090<br>
+                    Email: meihodoliving@gmail.com</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 阿蘇文化リゾート. すべての権利を保有します。</p>
             </div>
         </div>
     </footer>
@@ -541,10 +566,10 @@
         <!-- Main Action Buttons -->
         <div class="main-buttons">
             <a href="https://www.hpdsp.net/meihodo/hw/hwp3100/hww3101.do?yadNo=309467" class="vertical-btn accommodation-btn">
-                <span class="btn-text">宿泊一覧</span>
+                <span class="btn-text">宿泊予約</span>
             </a>
-            <a href="../../index.html#experiences" class="vertical-btn experience-btn">
-                <span class="btn-text">体験一覧</span>
+            <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=ja" target="_blank" class="vertical-btn experience-btn">
+                <span class="btn-text">体験予約</span>
             </a>
         </div>
         

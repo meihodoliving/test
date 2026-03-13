@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>阿蘇文化リゾート - 本格的な日本を体験</title>
+    <title>鳴鳳堂 - 本格的な日本を体験</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
 </head>
 <body>
     <!-- Initial Load Overlay -->
@@ -18,9 +21,41 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <h2>阿蘇文化リゾート</h2>
-                <span>Aso Cultural Resort</span>
+            <div class="header-nav">
+                <div class="nav-left">
+                    <a href="/index.html" class="nav-link">
+                        <img src="/images/Home.png" alt="ホーム" class="nav-icon">
+                        <span>ホーム</span>
+                    </a>
+                    <a href="/ja/experiences/" class="nav-link">
+                        <img src="/images/taiken.png" alt="体験" class="nav-icon" loading="lazy">
+                        <span>体験</span>
+                    </a>
+                    <a href="/ja/accommodations/" class="nav-link">
+                        <img src="/images/tatemono.png" alt="宿泊" class="nav-icon">
+                        <span>宿泊</span>
+                    </a>
+                </div>
+                <div class="nav-center">
+                    <a href="/index.html">
+                        <h1>鳴鳳堂</h1>
+                        <p>MEIHODO</p>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a href="/ja/restaurant/" class="nav-link">
+                        <img src="/images/syokuzi.png" alt="食事" class="nav-icon">
+                        <span>食事</span>
+                    </a>
+                    <a href="/ja/location/" class="nav-link">
+                        <img src="/images/kamera.png" alt="撮影利用" class="nav-icon">
+                        <span>撮影利用</span>
+                    </a>
+                    <a href="#access" class="nav-link">
+                        <img src="/images/tizu.png" alt="アクセス" class="nav-icon">
+                        <span>アクセス</span>
+                    </a>
+                </div>
             </div>
             <input type="checkbox" id="nav-toggle" class="nav-toggle">
             <label for="nav-toggle" class="hamburger">
@@ -28,21 +63,12 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </label>
-            <div class="nav-menu">
-                <a href="#home" class="nav-link">ホーム</a>
-                <a href="/ja/experiences/" class="nav-link">体験</a>
-                <a href="/ja/rooms/" class="nav-link">客室</a>
-                <a href="/ja/restaurant/" class="nav-link">食事</a>
-                <a href="/ja/location/" class="nav-link">撮影利用</a>
-                <a href="#access" class="nav-link">アクセス</a>
-                <a href="#contact" class="nav-link">お問い合わせ</a>
-                <a href="#contact" class="nav-link book-now">ご予約</a>
-            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <img src="/public/images/top/top.JPG" alt="鳴鳳堂 ヒーロー画像" class="hero-image">
         <div class="hero-overlay"></div>
         <a href="#experiences" class="scroll-indicator">
             <div class="scroll-arrow"></div>
@@ -84,7 +110,7 @@
             <div class="experiences-grid">
                 <a href="/ja/experiences/kyudo/" class="experience-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop" alt="弓道体験 - 日本の伝統武道" loading="lazy">
+                        <img src="/public/images/experience/kyudo.jpg" alt="弓道体験 - 日本の伝統武道" loading="lazy" srcset="/public/images/experience/kyudo-480.jpg 480w, /public/images/experience/kyudo-768.jpg 768w, /public/images/experience/kyudo-1200.jpg 1200w, /public/images/experience/kyudo.jpg 1600w" sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1200px) 1200px, 1600px">
                     </div>
                     <div class="card-content">
                         <h3>弓道</h3>
@@ -94,7 +120,7 @@
                 </a>
                 <a href="/ja/experiences/iaido/" class="experience-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=200&fit=crop" alt="居合道体験 - 日本刀の居合術" loading="lazy">
+                        <img src="/public/images/experience/iaido.jpg" alt="居合道体験 - 日本刀の居合術" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>居合道</h3>
@@ -104,7 +130,7 @@
                 </a>
                 <a href="/ja/experiences/kendo/" class="experience-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop" alt="剣道体験 - 竹刀を使った武道" loading="lazy">
+                        <img src="/public/images/experience/kendo.jpg" alt="剣道体験 - 竹刀を使った武道" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>剣道</h3>
@@ -114,7 +140,7 @@
                 </a>
                 <a href="/ja/experiences/karate/" class="experience-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop" alt="空手体験 - 沖縄発祥の武道" loading="lazy">
+                        <img src="/public/images/experience/karate.jpg" alt="空手体験 - 沖縄発祥の武道" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>空手</h3>
@@ -124,7 +150,7 @@
                 </a>
                 <a href="/ja/experiences/bonseki/" class="experience-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop" alt="盆石体験 - 白砂と小石で山水を表現" loading="lazy">
+                        <img src="/public/images/experience/bonseki.jpg" alt="盆石体験 - 白砂と小石で山水を表現" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>盆石</h3>
@@ -134,7 +160,7 @@
                 </a>
                 <a href="/ja/experiences/chado/" class="experience-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop" alt="茶道体験 - 伝統的な茶道" loading="lazy">
+                        <img src="/public/images/experience/sadou.jpg" alt="茶道体験 - 伝統的な茶道" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>茶道</h3>
@@ -144,7 +170,7 @@
                 </a>
                 <a href="/ja/experiences/kado/" class="experience-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=200&fit=crop" alt="華道体験 - 生け花の芸術" loading="lazy">
+                        <img src="/public/images/experience/kadou.jpg" alt="華道体験 - 生け花の芸術" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>華道</h3>
@@ -154,7 +180,7 @@
                 </a>
                 <a href="/ja/experiences/taiko/" class="experience-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop" alt="和太鼓体験 - 躍動感あるリズム" loading="lazy">
+                        <img src="/public/images/experience/taiko.jpg" alt="和太鼓体験 - 躍動感あるリズム" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>和太鼓</h3>
@@ -171,12 +197,12 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">宿泊</h2>
-                <p class="section-subtitle">一棟ごとに趣の異なるお部屋をご用意。阿蘇の自然に囲まれた静寂な空間で、心安らぐひとときをお過ごしください。</p>
+                <p class="section-subtitle">一棟貸し切りのプライベートな空間です。阿蘇の自然に囲まれた静寂な空間で、心安らぐひとときをお過ごしください。</p>
             </div>
             <div class="accommodations-grid">
                 <a href="/ja/seiseikan/" class="accommodation-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop" alt="清静舎 - 静寂な和室">
+                        <img src="/public/images/seiseisya/seiseisya.jpg" alt="清静舎 外観" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>清静舎</h3>
@@ -184,7 +210,7 @@
                 </a>
                 <a href="/ja/geihinkan/" class="accommodation-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop" alt="迎賓館 - 露天風呂">
+                        <img src="/public/images/geihinkan/geihinkan.jpg" alt="迎賓館 外観" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>迎賓館</h3>
@@ -192,7 +218,7 @@
                 </a>
                 <a href="/ja/korokan/" class="accommodation-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop" alt="鴻臚館 - 現代和風客室">
+                        <img src="/public/images/kourokan/kourokan.jpg" alt="鴻臚館 外観" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>鴻臚館</h3>
@@ -200,7 +226,7 @@
                 </a>
                 <a href="/ja/bunshinkan/" class="accommodation-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=200&fit=crop" alt="文心館 - 広々とした和室">
+                        <img src="/public/images/bunsinkan/bunshinkan.jpg" alt="文心館 外観" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>文心館</h3>
@@ -208,7 +234,7 @@
                 </a>
                 <a href="/ja/edokan/" class="accommodation-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop" alt="江戸館 - 囲炉裏のある客室">
+                        <img src="/public/images/edokan/edokan.jpg" alt="江戸館 外観" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>江戸館</h3>
@@ -216,7 +242,7 @@
                 </a>
                 <a href="/ja/hinokinoma/" class="accommodation-card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop" alt="檜の間 - 檜材の客室">
+                        <img src="/public/images/hinokinoma/hinokinoma.jpg" alt="檜の間 外観" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>檜の間</h3>
@@ -235,7 +261,7 @@
             </div>
             <div class="restaurant-content">
                 <div class="restaurant-image">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop" alt="料亭 鳴鳳堂 - 会席料理">
+                    <img src="/public/images/top/ryotei.png" alt="料亭 鳴鳳堂 外観" loading="lazy">
                 </div>
                 <div class="restaurant-description">
                     <h3>本格的な会席料理</h3>
@@ -274,7 +300,7 @@
             </div>
             <div class="location-content">
                 <div class="location-image">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop" alt="撮影利用 - 鳴鳳堂の空間">
+                    <img src="/public/images/top/satuei.JPG" alt="撮影利用 外観" loading="lazy">
                 </div>
                 <div class="location-description">
                     <h3>伝統的な空間での撮影</h3>
@@ -395,149 +421,46 @@
         </div>
     </section>
 
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">ギャラリー</h2>
-                <p class="section-subtitle">阿蘇の美しさを発見</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item large">
-                    <i class="fas fa-mountain"></i>
-                    <div class="overlay">
-                        <h4>Mount Aso Crater</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <i class="fas fa-hot-tub"></i>
-                    <div class="overlay">
-                        <h4>温泉体験</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <i class="fas fa-leaf"></i>
-                    <div class="overlay">
-                        <h4>Japanese Garden</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <i class="fas fa-utensils"></i>
-                    <div class="overlay">
-                        <h4>Kaiseki Cuisine</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <i class="fas fa-bed"></i>
-                    <div class="overlay">
-                        <h4>伝統的な客室</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <i class="fas fa-paint-brush"></i>
-                    <div class="overlay">
-                        <h4>Cultural Activities</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">お問い合わせ</h2>
-                <p class="section-subtitle">あなたの文化体験を計画しましょう</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Get in Touch</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Address</h4>
-                            <p>123 Aso Cultural Resort<br>Aso City, Kumamoto Prefecture<br>Japan 869-2612</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+81 967-34-1234</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>info@asocultural.jp</p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form action="mailto:info@asocultural.jp" method="post" enctype="text/plain">
-                        <div class="form-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="subject" placeholder="Subject">
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary full-width">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>阿蘇文化リゾート</h3>
+                    <h3>鳴鳳堂</h3>
                     <p>阿蘇の火山地帯で、本格的な日本の心を体験してください。</p>
                 </div>
                 <div class="footer-section">
-                    <h4>クイックリンク</h4>
-                    <ul>
-                        <li><a href="/ja/experiences/">体験</a></li>
-                        <li><a href="#accommodations">客室</a></li>
-                        <li><a href="#contact">お問い合わせ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
                     <h4>体験メニュー</h4>
-                    <ul>
-                        <li><a href="#">温泉</a></li>
-                        <li><a href="#">茶道</a></li>
-                        <li><a href="#">書道</a></li>
-                        <li><a href="#">ハイキング</a></li>
-                    </ul>
+                    <div class="experience-menu-columns">
+                        <div class="experience-column">
+                            <ul>
+                                <li><a href="#">弓道</a></li>
+                                <li><a href="#">居合道</a></li>
+                                <li><a href="#">剣道</a></li>
+                                <li><a href="#">空手</a></li>
+                            </ul>
+                        </div>
+                        <div class="experience-column">
+                            <ul>
+                                <li><a href="#">茶道</a></li>
+                                <li><a href="#">盆石</a></li>
+                                <li><a href="#">和太鼓</a></li>
+                                <li><a href="#">華道</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="footer-section">
                     <h4>お問い合わせ情報</h4>
                     <ul>
-                        <li>熊本県阿蘇市</li>
-                        <li>+81 967-34-1234</li>
-                        <li>info@asocultural.jp</li>
+                        <li>〒869-2231</li>
+                        <li>熊本県阿蘇市永草1943-28</li>
+                        <li>TEL: 0967-24-5090</li>
+                        <li>Email: meihodoliving@gmail.com</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 阿蘇文化リゾート. すべての権利を保有します。</p>
             </div>
         </div>
     </footer>
@@ -547,10 +470,10 @@
         <!-- Main Action Buttons -->
         <div class="main-buttons">
             <a href="https://www.hpdsp.net/meihodo/hw/hwp3100/hww3101.do?yadNo=309467" class="vertical-btn accommodation-btn">
-                <span class="btn-text">宿泊一覧</span>
+                <span class="btn-text">宿泊予約</span>
             </a>
-            <a href="/ja/experiences/" class="vertical-btn experience-btn">
-                <span class="btn-text">体験一覧</span>
+            <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=en" class="vertical-btn experience-btn">
+                <span class="btn-text">体験予約</span>
             </a>
         </div>
         
@@ -748,5 +671,22 @@
 
     </script>
 
+    <!-- Performance optimization script -->
+    <script>
+        // Lazy load non-critical features
+        if ('IntersectionObserver' in window) {
+            const lazyElements = document.querySelectorAll('[data-lazy]');
+            const lazyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        element.classList.add('loaded');
+                        lazyObserver.unobserve(element);
+                    }
+                });
+            });
+            lazyElements.forEach(el => lazyObserver.observe(el));
+        }
+    </script>
 </body>
 </html>
