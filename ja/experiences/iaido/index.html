@@ -3,19 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>居合道体験 - 阿蘇文化リゾート 鳴鳳堂</title>
+    <title>居合道体験 - 鳴鳳堂 鳴鳳堂</title>
     <link rel="stylesheet" href="../../../styles.css">
     <link rel="stylesheet" href="../components.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .pricing-section {
+            background: var(--light-color);
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .pricing-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: var(--washi-texture);
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .pricing-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 50px var(--shadow);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: var(--washi-texture);
+            opacity: 0.02;
+            pointer-events: none;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-item {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .pricing-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px var(--shadow);
+            border-color: var(--accent-color);
+        }
+
+        .pricing-item h3 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .pricing-item .price {
+            font-size: 2rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            font-family: 'Noto Serif JP', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-item .note {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .pricing-details {
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-info-row {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .info-item {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .info-item strong {
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .pricing-details h4 {
+            font-size: 1.4rem;
+            color: var(--dark-color);
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: left;
+            justify-content: flex-start;
+        }
+
+        .pricing-details h4 i {
+            color: var(--accent-color);
+        }
+
+        .pricing-details ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .pricing-details li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            padding-left: 2rem;
+            position: relative;
+            text-align: left;
+        }
+
+        .pricing-details li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-details li::before {
+            content: '・';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .pricing-info-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(139, 115, 85, 0.05));
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-card {
+                padding: 2rem 1.5rem;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .pricing-details h4 {
+                font-size: 1.2rem;
+            }
+            .pricing-info-box {
+                padding: 1.2rem 1.5rem;
+            }
+            .pricing-info-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .info-item {
+                min-width: unset;
+            }
+            .pricing-details h4 {
+                text-align: left;
+                justify-content: flex-start;
+            }
+            .pricing-details ul {
+                text-align: left;
+            }
+            .pricing-details li {
+                text-align: left;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <h2>阿蘇文化リゾート</h2>
-                <span>Aso Cultural Resort</span>
+            <div class="header-nav">
+                <div class="nav-left">
+                    <a href="/index.html" class="nav-link">
+                        <img src="/images/Home.png" alt="ホーム" class="nav-icon">
+                        <span>ホーム</span>
+                    </a>
+                    <a href="../" class="nav-link active">
+                        <img src="/images/taiken.png" alt="体験" class="nav-icon" loading="lazy">
+                        <span>体験</span>
+                    </a>
+                    <a href="../../accommodations/" class="nav-link">
+                        <img src="/images/tatemono.png" alt="宿泊" class="nav-icon">
+                        <span>宿泊</span>
+                    </a>
+                </div>
+                <div class="nav-center">
+                    <a href="/index.html">
+                        <h1>鳴鳳堂</h1>
+                        <p>MEIHODO</p>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a href="../../restaurant/" class="nav-link">
+                        <img src="/images/syokuzi.png" alt="食事" class="nav-icon">
+                        <span>食事</span>
+                    </a>
+                    <a href="../../location/" class="nav-link">
+                        <img src="/images/kamera.png" alt="撮影利用" class="nav-icon">
+                        <span>撮影利用</span>
+                    </a>
+                    <a href="../../index.html#access" class="nav-link">
+                        <img src="/images/tizu.png" alt="アクセス" class="nav-icon">
+                        <span>アクセス</span>
+                    </a>
+                </div>
             </div>
             <input type="checkbox" id="nav-toggle" class="nav-toggle">
             <label for="nav-toggle" class="hamburger">
@@ -23,16 +262,6 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </label>
-            <div class="nav-menu">
-                <a href="/" class="nav-link">ホーム</a>
-                <a href="/ja/experiences/" class="nav-link">体験</a>
-                <a href="/ja/rooms/" class="nav-link">客室</a>
-                <a href="/ja/restaurant/" class="nav-link">食事</a>
-                <a href="/ja/location/" class="nav-link">撮影利用</a>
-                <a href="#access" class="nav-link">アクセス</a>
-                <a href="#contact" class="nav-link">お問い合わせ</a>
-                <a href="#contact" class="nav-link book-now">ご予約</a>
-            </div>
         </div>
     </nav>
 
@@ -65,13 +294,11 @@
         <div class="detail-content">
             <div class="detail-grid">
                 <div class="detail-text">
-                    <h2>居合道の精神性</h2>
-                    <p>居合道は、日本刀を抜刀して敵を制する古来の武術です。単なる技術の習得ではなく、心の修養と礼儀作法を重んじる「道」として発展してきました。</p>
-                    <p>阿蘇の静寂な環境の中で、刀を抜く瞬間の集中力、呼吸の調和、そして心の静寂を体験してください。居合道を通じて、武士道の精神と日本の伝統的な価値観に触れることができます。</p>
-                    <p>初心者の方でも安全に体験いただけます。経験豊富な指導者が丁寧にサポートいたします。</p>
+                    <h2>居合道</h2>
+                    <p>居合道体験では、日本刀の基本動作（礼法・抜刀・納刀・基本の型）を専門の指導者が丁寧に指導します。初心者でも安心して参加でき、集中力と姿勢、呼吸の整えを学びながら、日本の武道文化に触れる特別な時間をお過ごしいただけます。</p>
                 </div>
                 <div class="detail-image">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop" alt="居合道体験 - 阿蘇文化リゾート" loading="lazy">
+                    <img src="/public/images/experience/iaido.jpg" alt="居合道体験 - 鳴鳳堂" loading="lazy">
                 </div>
             </div>
         </div>
@@ -101,13 +328,6 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>心の静寂</h3>
-                    <p>居合道の稽古を通じて、心の静寂と内なる平和を見つけることができます。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
                     <h3>武士道精神</h3>
@@ -117,55 +337,46 @@
         </div>
     </section>
 
-    <!-- Schedule Section -->
-    <section class="info-section">
-        <div class="info-content">
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="pricing-content">
             <div class="section-header">
-                <h2 class="section-title">体験スケジュール</h2>
-                <p class="section-subtitle">居合道体験の詳細なスケジュールをご案内します</p>
+                <h2 class="section-title">料金・詳細</h2>
+                <p class="section-subtitle">居合道体験の料金と詳細をご案内します</p>
             </div>
-            <div class="info-card">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>時間</th>
-                            <th>内容</th>
-                            <th>所要時間</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>09:00</td>
-                            <td>受付・着替え</td>
-                            <td>30分</td>
-                        </tr>
-                        <tr>
-                            <td>09:30</td>
-                            <td>居合道の歴史と精神についての説明</td>
-                            <td>30分</td>
-                        </tr>
-                        <tr>
-                            <td>10:00</td>
-                            <td>基本姿勢と刀の持ち方の練習</td>
-                            <td>45分</td>
-                        </tr>
-                        <tr>
-                            <td>10:45</td>
-                            <td>休憩</td>
-                            <td>15分</td>
-                        </tr>
-                        <tr>
-                            <td>11:00</td>
-                            <td>実際の居合の型の練習</td>
-                            <td>60分</td>
-                        </tr>
-                        <tr>
-                            <td>12:00</td>
-                            <td>振り返りと質疑応答</td>
-                            <td>30分</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="pricing-card">
+                <div class="pricing-grid">
+                    <div class="pricing-item">
+                        <h3>大人（1名）</h3>
+                        <div class="price">¥12,000</div>
+                        <div class="note">税込</div>
+                    </div>
+                    <div class="pricing-item">
+                        <h3>子供（8〜11歳）</h3>
+                        <div class="price">¥6,000</div>
+                        <div class="note">税込</div>
+                    </div>
+                </div>
+                <div class="pricing-details">
+                    <div class="pricing-info-row">
+                        <div class="info-item">
+                            <strong>所要時間：</strong>60分
+                        </div>
+                        <div class="info-item">
+                            <strong>参加人数：</strong>1〜8名様
+                        </div>
+                    </div>
+                    <div class="pricing-info-box">
+                        <p>※お子様のみでのご参加はご遠慮いただいております。必ず保護者の方の同伴をお願いいたします。</p>
+                    </div>
+                    <h4><i class="fas fa-info-circle"></i>注意事項</h4>
+                    <ul>
+                        <li>武道着は当方で用意いたします。</li>
+                        <li>約3日前までのご予約をお願いします（当日予約も可能な場合があります）。</li>
+                        <li>初心者大歓迎です。</li>
+                        <li>動きやすい服装でお越しください。</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -176,7 +387,7 @@
             <h2>居合道体験を予約する</h2>
             <p>阿蘇の静寂な環境の中で、日本の伝統武道である居合道を体験してみませんか？<br>初心者の方でも安心してご参加いただけます。</p>
             <div class="cta-buttons">
-                <a href="#contact" class="btn-cta btn-cta-primary">
+                <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=ja" target="_blank" class="btn-cta btn-cta-primary">
                     <i class="fas fa-calendar-alt"></i>
                     今すぐ予約する
                 </a>
@@ -193,17 +404,10 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>阿蘇文化リゾート</h3>
+                    <h3>鳴鳳堂</h3>
                     <p>阿蘇の火山地帯で、本格的な日本の心を体験してください。</p>
                 </div>
                 <div class="footer-section">
-                    <h4>クイックリンク</h4>
-                    <ul>
-                        <li><a href="/ja/experiences/">体験</a></li>
-                        <li><a href="#accommodations">客室</a></li>
-                        <li><a href="#contact">お問い合わせ</a></li>
-                    </ul>
-                </div>
                 <div class="footer-section">
                     <h4>体験メニュー</h4>
                     <ul>
@@ -223,7 +427,6 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 阿蘇文化リゾート. すべての権利を保有します。</p>
             </div>
         </div>
     </footer>
