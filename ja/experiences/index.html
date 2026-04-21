@@ -15,15 +15,15 @@
             <div class="header-nav">
                 <div class="nav-left">
                     <a href="../../index.html" class="nav-link">
-                        <img src="/public/images/pictogram/Home.png" alt="ホーム" class="nav-icon">
+                        <img src="/images/Home.png" alt="ホーム" class="nav-icon">
                         <span>ホーム</span>
                     </a>
                     <a href="index.html" class="nav-link">
-                        <img src="/public/images/pictogram/taiken.png" alt="体験" class="nav-icon" loading="lazy">
+                        <img src="/images/taiken.png" alt="体験" class="nav-icon" loading="lazy">
                         <span>体験</span>
                     </a>
                     <a href="../accommodations/" class="nav-link">
-                        <img src="/public/images/pictogram/tatemono.png" alt="宿泊" class="nav-icon">
+                        <img src="/images/tatemono.png" alt="宿泊" class="nav-icon">
                         <span>宿泊</span>
                     </a>
                 </div>
@@ -35,15 +35,15 @@
                 </div>
                 <div class="nav-right">
                     <a href="../restaurant/" class="nav-link">
-                        <img src="/public/images/pictogram/syokuzi.png" alt="食事" class="nav-icon">
+                        <img src="/images/syokuzi.png" alt="食事" class="nav-icon">
                         <span>食事</span>
                     </a>
                     <a href="../location/" class="nav-link">
-                        <img src="/public/images/pictogram/kamera.png" alt="撮影利用" class="nav-icon">
+                        <img src="/images/kamera.png" alt="撮影利用" class="nav-icon">
                         <span>撮影利用</span>
                     </a>
-                    <a href="../../index.html#access" class="nav-link">
-                        <img src="/public/images/pictogram/tizu.png" alt="アクセス" class="nav-icon">
+                    <a href="/ja/access/" class="nav-link">
+                        <img src="/images/tizu.png" alt="アクセス" class="nav-icon">
                         <span>アクセス</span>
                     </a>
                 </div>
@@ -58,7 +58,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero" style="background-image: url('/images/yorei.png');">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">
@@ -91,36 +91,26 @@
                 <h2 class="section-title">侍体験</h2>
                 <p class="section-subtitle">侍の精神と技を体験できる特別なプログラムをご用意しています。</p>
             </div>
-            <div class="samurai-featured">
+            <a href="/ja/experiences/samurai/" class="samurai-featured samurai-featured-link" target="_self" aria-label="侍体験の詳細ページへ">
                 <div class="samurai-image-container">
                     <img src="/public/images/experience/samurai.jpg" alt="侍体験プログラム イメージ" class="samurai-featured-image" loading="lazy">
                 </div>
                 <div class="samurai-content">
                     <h3>侍体験プログラム</h3>
-                    <p>本格的な侍の装束を身にまとい、弓道・居合道・茶道を組み合わせた特別な体験プログラムです。侍の心構えと礼儀作法を学び、日本の伝統文化の深さを体感してください。</p>
+                    <p>江戸時代の侍の修練を参考に、約2時間半で剣術・茶の湯・弓道・太鼓までを体感するプログラムです。試し切りから修了式まで、武士の技と心に触れられます。</p>
                     <div class="experience-details">
                         <div class="detail-item">
                             <span class="detail-label">時間:</span>
-                            <span class="detail-value">4時間</span>
+                            <span class="detail-value">2.5時間</span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">料金:</span>
-                            <span class="detail-value price">30,000円</span>
+                            <span class="detail-value price">35,000円</span>
                         </div>
-                        <div class="detail-item">
-                            <span class="detail-label">レベル:</span>
-                            <span class="detail-value">初級〜中級</span>
                         </div>
-                    </div>
-                    <div class="experience-tags">
-                        <span class="tag">武道着レンタル</span>
-                        <span class="tag">写真撮影</span>
-                        <span class="tag">記念品</span>
-                        <span class="tag">昼食付き</span>
-                    </div>
-                    <span class="btn btn-primary">詳細を見る</span>
+                    
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -146,21 +136,17 @@
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">料金:</span>
-                                <span class="detail-value price">12,000円</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">レベル:</span>
-                                <span class="detail-value">初級〜上級</span>
+                                <span class="detail-value price">15,000円</span>
                             </div>
                         </div>
                     </div>
                 </a>
-                <a href="http://127.0.0.1:5501/ja/experiences/iaido/" class="experience-card experience-card-link" target="_self" aria-label="居合道の詳細ページへ">
+                <a href="http://127.0.0.1:5501/ja/experiences/iaido/" class="experience-card experience-card-link" target="_self" aria-label="試し切りの詳細ページへ">
                     <div class="card-image">
-                        <img src="/public/images/experience/iaido.jpg" alt="居合道体験 イメージ" loading="lazy">
+                        <img src="/public/images/experience/iaido.jpg" alt="試し切り体験 イメージ" loading="lazy">
                     </div>
                     <div class="card-content">
-                        <h3>居合道</h3>
+                        <h3>試し切り</h3>
                         <p>刀を抜く瞬間の美しさと精神性を学ぶ、伝統的な武道体験です。侍の心構えと礼儀作法を身につけます。</p>
                         <div class="experience-details">
                             <div class="detail-item">
@@ -169,11 +155,7 @@
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">料金:</span>
-                                <span class="detail-value price">12,000円</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">レベル:</span>
-                                <span class="detail-value">初級〜中級</span>
+                                <span class="detail-value price">15,000円</span>
                             </div>
                         </div>
                     </div>
@@ -192,11 +174,7 @@
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">料金:</span>
-                                <span class="detail-value price">12,000円</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">レベル:</span>
-                                <span class="detail-value">初級〜上級</span>
+                                <span class="detail-value price">15,000円</span>
                             </div>
                         </div>
                     </div>
@@ -215,11 +193,7 @@
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">料金:</span>
-                                <span class="detail-value price">12,000円</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">レベル:</span>
-                                <span class="detail-value">初級〜中級</span>
+                                <span class="detail-value price">15,000円</span>
                             </div>
                         </div>
                     </div>
@@ -252,10 +226,6 @@
                                 <span class="detail-label">料金:</span>
                                 <span class="detail-value price">10,000円</span>
                             </div>
-                            <div class="detail-item">
-                                <span class="detail-label">レベル:</span>
-                                <span class="detail-value">初級</span>
-                            </div>
                         </div>
                     </div>
                 </a>
@@ -265,7 +235,7 @@
                     </div>
                     <div class="card-content">
                         <h3>和太鼓</h3>
-                        <p>和太鼓の躍動感あるリズムを体験。基本動作から簡単なフレーズまで、初心者でも楽しめます。</p>
+                        <p>和太鼓の躍動感あるリズムを体験。基本動作から簡単なフレーズまで楽しめます。</p>
                         <div class="experience-details">
                             <div class="detail-item">
                                 <span class="detail-label">時間:</span>
@@ -273,11 +243,7 @@
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">料金:</span>
-                                <span class="detail-value price">10,000円</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">レベル:</span>
-                                <span class="detail-value">初級〜中級</span>
+                                <span class="detail-value price">12,000円</span>
                             </div>
                         </div>
                     </div>
@@ -298,10 +264,6 @@
                                 <span class="detail-label">料金:</span>
                                 <span class="detail-value price">22,500円</span>
                             </div>
-                            <div class="detail-item">
-                                <span class="detail-label">レベル:</span>
-                                <span class="detail-value">初級</span>
-                            </div>
                         </div>
                     </div>
                 </a>
@@ -319,11 +281,7 @@
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">料金:</span>
-                                <span class="detail-value price">10,000円</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">レベル:</span>
-                                <span class="detail-value">初級〜中級</span>
+                                <span class="detail-value price">12,000円</span>
                             </div>
                         </div>
                     </div>
@@ -340,27 +298,25 @@
                 <p class="section-subtitle">特別な時間を過ごしていただける、厳選された体験プログラムをご紹介します</p>
             </div>
             <div class="experiences-grid">
-                <a href="http://127.0.0.1:5501/ja/experiences/samurai/" class="experience-card experience-card-link" target="_self" aria-label="侍体験コースの詳細ページへ">
+                <a href="/ja/experiences/samurai/" class="experience-card experience-card-link" target="_self" aria-label="侍体験コースの詳細ページへ">
                     <div class="card-image">
                         <img src="/public/images/experience/samurai.jpg" alt="侍体験コース イメージ" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>侍体験コース</h3>
-                        <p>武道着を着て、本格的な侍体験をしていただけます。弓道、居合道、茶道を組み合わせた特別なプログラムです。</p>
+                        <p>武道着に着替え、試し切り・茶の湯・弓道指南・大太鼓・修了式まで、本格的な侍体験を約2時間半でお楽しみいただけます。</p>
                         <div class="experience-tags">
                             <span class="tag">武道着レンタル</span>
-                            <span class="tag">写真撮影</span>
-                            <span class="tag">記念品</span>
-                            <span class="tag">昼食付き</span>
+                            <span class="tag">多言語対応</span>
                         </div>
                         <div class="experience-details">
                             <div class="detail-item">
                                 <span class="detail-label">時間:</span>
-                                <span class="detail-value">4時間</span>
+                                <span class="detail-value">2.5時間</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">料金:</span>
-                                <span class="detail-value price">30,000円</span>
+                                <span class="detail-value price">35,000円</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">定員:</span>
@@ -434,6 +390,37 @@
         </div>
     </section>
 
+    <!-- Shugyo Experiences Section -->
+    <section id="shugyo" class="experiences">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">修行体験</h2>
+                <p class="section-subtitle">心身を整える修行体験をご用意しています</p>
+            </div>
+            <div class="experiences-grid">
+                <a href="/ja/experiences/takigyo/" class="experience-card experience-card-link" target="_self" aria-label="滝行の詳細ページへ">
+                    <div class="card-image">
+                        <img src="/public/images/experience/takigyo.jpg" alt="滝行体験 イメージ" loading="lazy" width="400" height="200">
+                    </div>
+                    <div class="card-content">
+                        <h3>滝行</h3>
+                        <p>冷たい滝の水に身を置き、呼吸と集中を整える修行体験。阿蘇の自然の中で心身をリフレッシュします。</p>
+                        <div class="experience-details">
+                            <div class="detail-item">
+                                <span class="detail-label">時間:</span>
+                                <span class="detail-value">1.5時間</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">料金:</span>
+                                <span class="detail-value price">5,000円</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Benefits Section -->
     <section id="benefits" class="benefits">
         <div class="container">
@@ -496,7 +483,7 @@
                                 <div class="info-item">
                                     <div class="info-icon">💰</div>
                                     <h4>料金</h4>
-                                    <p>10,000円〜30,000円（体験により異なります）</p>
+                                    <p>5,000円〜35,000円（体験により異なります）</p>
                                 </div>
                             </div>
                         </div>
@@ -533,7 +520,7 @@
                         <div class="experience-column">
                             <ul>
                                 <li><a href="#">弓道</a></li>
-                                <li><a href="#">居合道</a></li>
+                                <li><a href="#">試し切り</a></li>
                                 <li><a href="#">剣道</a></li>
                                 <li><a href="#">空手</a></li>
                             </ul>
@@ -550,10 +537,7 @@
                 </div>
                 <div class="footer-section">
                     <h4>お問い合わせ情報</h4>
-                    <p>〒869-2231<br>
-                    熊本県阿蘇市永草1943-28<br>
-                    TEL: 0967-24-5090<br>
-                    Email: meihodoliving@gmail.com</p>
+                    <p>〒869-2231<br> 熊本県阿蘇市永草1943-28<br> TEL: 0967-24-5090<br> Email: meihodoliving@gmail.com</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -576,9 +560,9 @@
         <!-- Language Buttons -->
         <div class="language-buttons">
             <button class="lang-btn" data-lang="jp">JP</button>
-            <button class="lang-btn" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="zh-tw">繁</button>
-            <button class="lang-btn" data-lang="zh-cn">簡</button>
+            <a href="../../en/experiences/index.html" class="lang-btn" data-lang="en">EN</a>
+            <a href="/zh-tw/experiences/index.html" class="lang-btn" data-lang="zh-tw">繁</a>
+            <a href="/zh-cn/experiences/index.html" class="lang-btn" data-lang="zh-cn">簡</a>
         </div>
     </div>
 

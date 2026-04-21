@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geihinkan - Meihodo</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>鳴鳳堂</h2>
+                <span>MEIHODO</span>
+            </div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <div class="nav-menu">
+                <a href="../../index.html" class="nav-link">Home</a>
+                <a href="../../index.html#about" class="nav-link">About</a>
+                <a href="../../index.html#experiences" class="nav-link">Experiences</a>
+                <a href="../../index.html#accommodations" class="nav-link">Stay</a>
+                <a href="../../index.html#gallery" class="nav-link">Gallery</a>
+                <a href="../../index.html#contact" class="nav-link">Contact</a>
+                <a href="../../index.html#contact" class="nav-link book-now">Book now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-image">
+            <div class="image-placeholder">
+                <i class="fas fa-building"></i>
+                <p>Geihinkan</p>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Geihinkan</h1>
+            <p class="hero-subtitle">An elegant residence for distinguished guests</p>
+        </div>
+    </section>
+
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-main">
+                    <div class="content-section">
+                        <h2>About Geihinkan</h2>
+                        <p>Geihinkan is refined accommodation designed to welcome special guests in style. Surrounded by the nature of Aso, it features an open-air bath where you can savor unhurried, indulgent moments.</p>
+                        <p>From the deck overlooking lush gardens, enjoy the changing seasons—a stay that feels truly woven into the landscape.</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h2>Suite highlights</h2>
+                        <div class="room-types">
+                            <div class="room-type">
+                                <h3>Open-air bath suite</h3>
+                                <p>Relax in an open-air bath embraced by Aso’s nature—a private moment to refresh body and mind.</p>
+                                <ul>
+                                    <li>Private open-air bath</li>
+                                    <li>Deck terrace</li>
+                                    <li>Garden views</li>
+                                    <li>Premium amenities</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-sidebar">
+                    <div class="booking-card">
+                        <h3>Reservations</h3>
+                        <div class="booking-form">
+                            <div class="form-group">
+                                <label for="checkin">Check-in</label>
+                                <input type="date" id="checkin" name="checkin">
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout">Check-out</label>
+                                <input type="date" id="checkout" name="checkout">
+                            </div>
+                            <div class="form-group">
+                                <label for="guests">Guests</label>
+                                <select id="guests" name="guests">
+                                    <option value="1">1 guest</option>
+                                    <option value="2">2 guests</option>
+                                    <option value="3">3 guests</option>
+                                    <option value="4">4 guests</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary full-width">Book now</button>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>At a glance</h3>
+                        <div class="info-item">
+                            <strong>Capacity</strong>
+                            <p>2–4 guests</p>
+                        </div>
+                        <div class="info-item">
+                            <strong>Room type</strong>
+                            <p>Open-air bath suite</p>
+                        </div>
+                        <div class="info-item">
+                            <strong>Rates</strong>
+                            <p>From ¥35,000 per night with two meals</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>鳴鳳堂</h3>
+                    <p>Experience the authentic heart of Japan in the volcanic wonderland of Mount Aso.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../../index.html#about">About</a></li>
+                        <li><a href="../../index.html#experiences">Experiences</a></li>
+                        <li><a href="../../index.html#accommodations">Rooms</a></li>
+                        <li><a href="../../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li>Aso City, Kumamoto</li>
+                        <li>+81 967-34-1234</li>
+                        <li>info@asocultural.jp</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MEIHODO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

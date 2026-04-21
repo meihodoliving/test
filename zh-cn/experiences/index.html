@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>体验项目 - 鸣凤堂</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="header-nav">
+                <div class="nav-left">
+                    <a href="/zh-cn/index.html" class="nav-link">
+                        <img src="/images/Home.png" alt="首页" class="nav-icon">
+                        <span>首页</span>
+                    </a>
+                    <a href="index.html" class="nav-link">
+                        <img src="/images/taiken.png" alt="体验" class="nav-icon" loading="lazy">
+                        <span>体验</span>
+                    </a>
+                    <a href="../accommodations/" class="nav-link">
+                        <img src="/images/tatemono.png" alt="住宿" class="nav-icon">
+                        <span>住宿</span>
+                    </a>
+                </div>
+                <div class="nav-center">
+                    <a href="/zh-cn/index.html">
+                        <h1>鸣凤堂</h1>
+                        <p>MEIHODO</p>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a href="../restaurant/" class="nav-link">
+                        <img src="/images/syokuzi.png" alt="餐饮" class="nav-icon">
+                        <span>餐饮</span>
+                    </a>
+                    <a href="../location/" class="nav-link">
+                        <img src="/images/kamera.png" alt="场地拍摄" class="nav-icon">
+                        <span>场地拍摄</span>
+                    </a>
+                    <a href="/zh-cn/access/" class="nav-link">
+                        <img src="/images/tizu.png" alt="交通" class="nav-icon">
+                        <span>交通</span>
+                    </a>
+                </div>
+            </div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero" style="background-image: url('/images/yorei.png');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-title-main">体验项目</span>
+                <span class="hero-title-sub">砥砺心性的珍贵时光</span>
+            </h1>
+            <p class="hero-description">从武道到文化艺术，在阿苏的广袤自然中，开启多元体验，沉静内心、涵养品格。</p>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Experience Navigation Links -->
+    <section class="experience-nav">
+        <div class="container">
+            <div class="nav-links">
+                <a href="#samurai" class="nav-link">武士体验</a>
+                <a href="#martial-arts" class="nav-link">武道</a>
+                <a href="#cultural" class="nav-link">文化</a>
+                <a href="#benefits" class="nav-link">修行</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Samurai Experience Section -->
+    <section id="samurai-experience" class="experiences">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">武士体验</h2>
+                <p class="section-subtitle">为您呈现感受武士精神与技艺的特别项目。</p>
+            </div>
+            <a href="/zh-cn/experiences/samurai/" class="samurai-featured samurai-featured-link" target="_self" aria-label="前往武士体验详情页">
+                <div class="samurai-image-container">
+                    <img src="/public/images/experience/samurai.jpg" alt="武士体验项目示意" class="samurai-featured-image" loading="lazy">
+                </div>
+                <div class="samurai-content">
+                    <h3>武士体验项目</h3>
+                    <p>参考江户时代武士修炼，约两个半小时体验剑术、茶道、弓道与太鼓，包含试斩与结业式等内容。</p>
+                    <div class="experience-details">
+                        <div class="detail-item">
+                            <span class="detail-label">时长：</span>
+                            <span class="detail-value">2.5小时</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">费用：</span>
+                            <span class="detail-value price">35,000日元</span>
+                        </div>
+                        </div>
+                    
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Martial Arts Section -->
+    <section id="martial-arts" class="experiences">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">武道体验</h2>
+                <p class="section-subtitle">透过日本传统武道，锤炼心性、强健体魄。</p>
+            </div>
+            <div class="experiences-grid">
+                <a href="kyudo/" class="experience-card experience-card-link" target="_self">
+                    <div class="card-image">
+                        <img src="/public/images/experience/kyudo.jpg" alt="弓道体验示意" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>弓道</h3>
+                        <p>在正规道场体验日本传统武道弓道。培养专注与静心，追求身心调和。</p>
+                        <div class="experience-details">
+                            <div class="detail-item">
+                                <span class="detail-label">时长：</span>
+                                <span class="detail-value">2小时</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">费用：</span>
+                                <span class="detail-value price">15,000日元</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="iaido/" class="experience-card experience-card-link" target="_self" aria-label="前往试斩详情页">
+                    <div class="card-image">
+                        <img src="/public/images/experience/iaido.jpg" alt="试斩体验示意" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>试斩</h3>
+                        <p>学习拔刀瞬间的美感与心性，感受传统武道。体悟武士的心境与礼仪。</p>
+                        <div class="experience-details">
+                            <div class="detail-item">
+                                <span class="detail-label">时长：</span>
+                                <span class="detail-value">1.5小时</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">费用：</span>
+                                <span class="detail-value price">15,000日元</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="karate/" class="experience-card experience-card-link" target="_self" aria-label="前往空手道详情页">
+                    <div class="card-image">
+                        <img src="/public/images/experience/karate.jpg" alt="空手道体验示意" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>空手道</h3>
+                        <p>学习发源于冲绳的空手道基本动作与精神。兼顾体能提升与心性锤炼。</p>
+                        <div class="experience-details">
+                            <div class="detail-item">
+                                <span class="detail-label">时长：</span>
+                                <span class="detail-value">1.5小时</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">费用：</span>
+                                <span class="detail-value price">15,000日元</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="kendo/" class="experience-card experience-card-link" target="_self" aria-label="前往剑道详情页">
+                    <div class="card-image">
+                        <img src="/public/images/experience/kendo.jpg" alt="剑道体验示意" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>剑道</h3>
+                        <p>透过日本传统剑道修习礼仪与精神力量。可体验竹刀基本动作与对抗形式。</p>
+                        <div class="experience-details">
+                            <div class="detail-item">
+                                <span class="detail-label">时长：</span>
+                                <span class="detail-value">2小时</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">费用：</span>
+                                <span class="detail-value price">15,000日元</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Experiences Section -->
+    <section id="cultural" class="experiences">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">文化体验</h2>
+                <p class="section-subtitle">深入理解日本传统文化，涵养审美与心境。</p>
+            </div>
+            <div class="experiences-grid">
+                <a href="chado/" class="experience-card experience-card-link" target="_self" aria-label="前往茶道详情页">
+                    <div class="card-image">
+                        <img src="/public/images/experience/sadou.jpg" alt="茶道体验示意" loading="lazy" width="400" height="200">
+                    </div>
+                    <div class="card-content">
+                        <h3>茶道</h3>
+                        <p>学习日本传统茶道的心意与规程。于静谧中安顿身心，体会「一期一会」。</p>
+                        <div class="experience-details">
+                            <div class="detail-item">
+                                <span class="detail-label">时长：</span>
+                                <span class="detail-value">1小时</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">费用：</span>
+                                <span class="detail-value price">10,000日元</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="taiko/" class="experience-card experience-card-link" target="_self" aria-label="前往和太鼓详情页">
+                    <div class="card-image">
+                        <img src="/public/images/experience/taiko.jpg" alt="和太鼓体验示意" loading="lazy" width="400" height="200">
+                    </div>
+                    <div class="card-content">
+                        <h3>和太鼓</h3>
+                        <p>感受和太鼓富有张力的节奏。从基础打法到简单乐句，尽兴体验。</p>
+                        <div class="experience-details">
+                            <div class="detail-item">
+                                <span class="detail-label">时长：</span>
+                                <span class="detail-value">1.5小时</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">费用：</span>
+                                <span class="detail-value price">12,000日元</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="kado/" class="experience-card experience-card-link" target="_self" aria-label="前往花道详情页">
+                    <div class="card-image">
+                        <img src="/public/images/experience/kadou.jpg" alt="花道体验示意" loading="lazy" width="400" height="200">
+                    </div>
+                    <div class="card-content">
+                        <h3>花道</h3>
+                        <p>通过插花亲近自然之美与日本审美。应季赏花，整理心绪。</p>
+                        <div class="experience-details">
+                            <div class="detail-item">
+                                <span class="detail-label">时长：</span>
+                                <span class="detail-value">1.5小时</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">费用：</span>
+                                <span class="detail-value price">22,500日元</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="bonseki/" class="experience-card experience-card-link" target="_self" aria-label="前往盆石详情页">
+                    <div class="card-image">
+                        <img src="/public/images/experience/bonseki.jpg" alt="盆石体验示意" loading="lazy" width="400" height="200">
+                    </div>
+                    <div class="card-content">
+                        <h3>盆石</h3>
+                        <p>以白砂与碎石呈现山水景致的日本传统艺术。在安静创作中平和心境。</p>
+                        <div class="experience-details">
+                            <div class="detail-item">
+                                <span class="detail-label">时长：</span>
+                                <span class="detail-value">1.5小时</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">费用：</span>
+                                <span class="detail-value price">12,000日元</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Programs Section -->
+    <section id="samurai" class="experiences">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">特别项目</h2>
+                <p class="section-subtitle">为您精选值得珍藏时光的特别体验。</p>
+            </div>
+            <div class="experiences-grid">
+                <a href="/zh-cn/experiences/samurai/" class="experience-card experience-card-link" target="_self" aria-label="前往武士体验课程详情页">
+                    <div class="card-image">
+                        <img src="/public/images/experience/samurai.jpg" alt="武士体验课程示意" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>武士体验课程</h3>
+                        <p>更换武道服后，依次体验试斩、茶道、弓道指导、大太鼓与结业式，全流程约两个半小时。</p>
+                        <div class="experience-tags">
+                            <span class="tag">武道服租赁</span>
+                            <span class="tag">日中英对应</span>
+                        </div>
+                        <div class="experience-details">
+                            <div class="detail-item">
+                                <span class="detail-label">时长：</span>
+                                <span class="detail-value">2.5小时</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">费用：</span>
+                                <span class="detail-value price">35,000日元</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">名额：</span>
+                                <span class="detail-value">8人</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="../../ja/experiences/meditation/" class="experience-card experience-card-link" target="_self" aria-label="前往自然冥想项目详情页（日文）">
+                    <div class="card-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-leaf"></i>
+                            <p>自然冥想项目</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>自然冥想项目</h3>
+                        <p>在阿苏壮阔自然中沉静内心、与自我对话的特别冥想体验。</p>
+                        <div class="experience-tags">
+                            <span class="tag">自然向导</span>
+                            <span class="tag">冥想指导</span>
+                            <span class="tag">纪念品</span>
+                            <span class="tag">含轻食</span>
+                        </div>
+                        <div class="experience-details">
+                            <div class="detail-item">
+                                <span class="detail-label">时长：</span>
+                                <span class="detail-value">2小时</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">费用：</span>
+                                <span class="detail-value price">5,000日元起</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">名额：</span>
+                                <span class="detail-value">6人</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="../../ja/experiences/crafts/" class="experience-card experience-card-link" target="_self" aria-label="前往传统工艺体验详情页（日文）">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop" alt="传统工艺体验">
+                    </div>
+                    <div class="card-content">
+                        <h3>传统工艺体验</h3>
+                        <p>体验日本传统工艺。陶艺、和纸、木工等，在匠人指导下亲手感受技艺。</p>
+                        <div class="experience-tags">
+                            <span class="tag">含材料费</span>
+                            <span class="tag">作品可带回</span>
+                            <span class="tag">匠人指导</span>
+                            <span class="tag">纪念品</span>
+                        </div>
+                        <div class="experience-details">
+                            <div class="detail-item">
+                                <span class="detail-label">时长：</span>
+                                <span class="detail-value">3小时</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">费用：</span>
+                                <span class="detail-value price">8,000日元起</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">名额：</span>
+                                <span class="detail-value">4人</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 修行体验 Section -->
+    <section id="shugyo" class="experiences">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">修行体验</h2>
+                <p class="section-subtitle">让身心沉静下来的修行体验</p>
+            </div>
+            <div class="experiences-grid">
+                <a href="/zh-cn/experiences/takigyo/" class="experience-card experience-card-link" target="_self" aria-label="前往滝行详情页">
+                    <div class="card-image">
+                        <img src="/public/images/experience/takigyo.jpg" alt="滝行 体验示意" loading="lazy" width="400" height="200">
+                    </div>
+                    <div class="card-content">
+                        <h3>滝行</h3>
+                        <p>在瀑布之下调息专注，感受清凉水流带来的净化与焕新。于阿苏的自然中重整身心。</p>
+                        <div class="experience-details">
+                            <div class="detail-item">
+                                <span class="detail-label">时长：</span>
+                                <span class="detail-value">1.5小时</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">费用：</span>
+                                <span class="detail-value price">5,000日元</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">体验的收获</h2>
+                <p class="section-subtitle">砥砺心性的体验所带来的独特效益。</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">🧘</div>
+                    <h3>心性锤炼</h3>
+                    <p>通过武道与冥想，培养专注力与精神力。</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎌</div>
+                    <h3>文化理解</h3>
+                    <p>深入理解日本传统文化，涵养审美意趣。</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🌿</div>
+                    <h3>与自然相融</h3>
+                    <p>在阿苏广袤自然中，放松身心、焕新自我。</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">👥</div>
+                    <h3>人际缘分</h3>
+                    <p>因共同体验而结缘，结识新友。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">体验预约</h2>
+                <p class="section-subtitle">欢迎随时咨询预约。我们将依您的需求，推荐最适合的体验方案。</p>
+            </div>
+            <div class="reservation-content">
+                <div class="reservation-info">
+                    <div class="reservation-layout">
+                        <div class="reservation-cards">
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <div class="info-icon">📅</div>
+                                    <h4>预约方式</h4>
+                                    <p>可通过电话、邮件或在线预约。</p>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-icon">⏰</div>
+                                    <h4>体验时段</h4>
+                                    <p>9:00 - 17:00（依项目而异）</p>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-icon">👥</div>
+                                    <h4>名额</h4>
+                                    <p>依项目2–8人（请事先确认）</p>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-icon">💰</div>
+                                    <h4>费用</h4>
+                                    <p>5,000日元〜35,000日元（依项目而异）</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notice-box">
+                            <h4>注意事项</h4>
+                            <ul>
+                                <li>• 体验采预约制</li>
+                                <li>• 取消请于前一日之前联系</li>
+                                <li>• 天候可能导致内容变更</li>
+                                <li>• 请穿着便于活动的服装</li>
+                                <li>• 部分体验有年龄限制</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="reservation-button-container">
+                        <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=ja" target="_blank" class="btn btn-primary btn-large reservation-btn">前往预约</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>鸣凤堂</h3>
+                    <p>在阿苏火山大地，感受真挚的日本之心。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>体验菜单</h4>
+                    <div class="experience-menu-columns">
+                        <div class="experience-column">
+                            <ul>
+                                <li><a href="kyudo/">弓道</a></li>
+                                <li><a href="iaido/">试斩</a></li>
+                                <li><a href="kendo/">剑道</a></li>
+                                <li><a href="karate/">空手道</a></li>
+                            </ul>
+                        </div>
+                        <div class="experience-column">
+                            <ul>
+                                <li><a href="chado/">茶道</a></li>
+                                <li><a href="bonseki/">盆石</a></li>
+                                <li><a href="taiko/">和太鼓</a></li>
+                                <li><a href="kado/">花道</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>联系信息</h4>
+                    <p>〒869-2231<br> 熊本县阿苏市永草1943-28<br> TEL: 0967-24-5090<br> Email: meihodoliving@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed Buttons -->
+    <div class="fixed-buttons">
+        <!-- Main Action Buttons -->
+        <div class="main-buttons">
+            <a href="https://www.hpdsp.net/meihodo/hw/hwp3100/hww3101.do?yadNo=309467" class="vertical-btn accommodation-btn">
+                <span class="btn-text">住宿预约</span>
+            </a>
+            <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=ja" target="_blank" class="vertical-btn experience-btn">
+                <span class="btn-text">体验预约</span>
+            </a>
+        </div>
+        
+        <!-- Language Buttons -->
+        <div class="language-buttons">
+            <a href="../../ja/experiences/index.html" class="lang-btn" data-lang="jp">JP</a>
+            <a href="../../en/experiences/index.html" class="lang-btn" data-lang="en">EN</a>
+            <a href="/zh-tw/experiences/index.html" class="lang-btn" data-lang="zh-tw">繁</a>
+            <a href="/zh-cn/experiences/index.html" class="lang-btn" data-lang="zh-cn">簡</a>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

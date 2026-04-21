@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鳴鳳堂 - 在阿蘇沉浸體驗道地日本</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+</head>
+<body>
+    <!-- Initial Load Overlay -->
+    <div id="initial-load-overlay" class="initial-load-overlay" aria-hidden="true">
+        <div class="overlay-content">
+            <p class="overlay-text">靜下來，與自己對話的一段時光。</p>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="header-nav">
+                <div class="nav-left">
+                    <a href="/zh-tw/index.html" class="nav-link">
+                        <img src="/images/Home.png" alt="首頁" class="nav-icon">
+                        <span>首頁</span>
+                    </a>
+                    <a href="/zh-tw/experiences/" class="nav-link">
+                        <img src="/images/taiken.png" alt="體驗" class="nav-icon" loading="lazy">
+                        <span>體驗</span>
+                    </a>
+                    <a href="/zh-tw/accommodations/" class="nav-link">
+                        <img src="/images/tatemono.png" alt="住宿" class="nav-icon">
+                        <span>住宿</span>
+                    </a>
+                </div>
+                <div class="nav-center">
+                    <a href="/zh-tw/about/">
+                        <h1>鳴鳳堂</h1>
+                        <p>MEIHODO</p>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a href="/zh-tw/restaurant/" class="nav-link">
+                        <img src="/images/syokuzi.png" alt="餐飲" class="nav-icon">
+                        <span>餐飲</span>
+                    </a>
+                    <a href="/zh-tw/location/" class="nav-link">
+                        <img src="/images/kamera.png" alt="攝影使用" class="nav-icon">
+                        <span>攝影使用</span>
+                    </a>
+                    <a href="/zh-tw/access/" class="nav-link">
+                        <img src="/images/tizu.png" alt="交通方式" class="nav-icon">
+                        <span>交通方式</span>
+                    </a>
+                </div>
+            </div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <img src="/public/images/top/top.JPG" alt="鳴鳳堂 主視覺" class="hero-image">
+        <div class="hero-overlay"></div>
+        <a href="#experiences" class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </a>
+    </section>
+
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="philosophy">
+        <div class="container">
+            <div class="philosophy-content">
+                <div class="catchphrase-section">
+                    <div class="catchphrase-container">
+                        <div class="catchphrase-line">阿蘇大地的自然脈動，</div>
+                        <div class="catchphrase-line">滿足五感的美味饗宴，</div>
+                        <div class="catchphrase-line">讓人忘卻日常的沉浸體驗，</div>
+                        <div class="catchphrase-line">一處滿溢和風心意的所在。</div>
+                    </div>
+                </div>
+                <div class="main-text-section">
+                    <div class="main-text-content">
+                        <p>坐落於壯闊的阿蘇山麓，鳴鳳堂是一座融合文化與自然的度假之所。</p>
+                        <p>在約 56,000㎡ 的腹地中，散落著和風建築群。從弓道、試斬、空手等武道體驗，<br>
+                        到茶道、華道、盆石等文化藝術，皆有豐富課程讓您沉澱心緒、磨練身心。</p>
+                        <p>在自然與傳統的環抱中暫離喧囂，度過療癒身心、難以忘懷的特別時光。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="experiences">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">在阿蘇沉浸體驗武士文化與日本傳統</h2>
+                <p class="section-subtitle">被阿蘇大自然環繞的「鳴鳳堂」，提供弓道、空手、劍道、試斬等武道體驗，以及和太鼓、茶道、盆石、華道、瀑布修行等傳統文化課程。也可穿上武道服挑戰「武士體驗課程」，深受親子旅行與情侶旅遊喜愛。</p>
+            </div>
+            <div class="experiences-grid">
+                <a href="/zh-tw/experiences/kyudo/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/kyudo.jpg" alt="弓道體驗－日本傳統武道" loading="lazy" srcset="/public/images/experience/kyudo-480.jpg 480w, /public/images/experience/kyudo-768.jpg 768w, /public/images/experience/kyudo-1200.jpg 1200w, /public/images/experience/kyudo.jpg 1600w" sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1200px) 1200px, 1600px">
+                    </div>
+                    <div class="card-content">
+                        <h3>弓道</h3>
+                        <p>透過日本傳統武道「弓道」，鍛鍊專注與內在的安定。</p>
+                        <div class="card-button">查看詳情</div>
+                    </div>
+                </a>
+                <a href="/zh-tw/experiences/iaido/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/iaido.jpg" alt="試斬體驗－日本刀試斬" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>試斬</h3>
+                        <p>學習使用日本刀的試斬，體會武士的心法與禮儀精神。</p>
+                        <div class="card-button">查看詳情</div>
+                    </div>
+                </a>
+                <a href="/zh-tw/experiences/kendo/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/kendo.jpg" alt="劍道體驗－使用竹刀的武道" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>剣道</h3>
+                        <p>透過使用竹刀的劍道練習，培養禮儀與精神韌性。</p>
+                        <div class="card-button">查看詳情</div>
+                    </div>
+                </a>
+                <a href="/zh-tw/experiences/karate/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/karate.jpg" alt="空手體驗－源自沖繩的武道" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>空手</h3>
+                        <p>在源自沖繩的空手中學習基本動作與型，鍛鍊身體與心志。</p>
+                        <div class="card-button">查看詳情</div>
+                    </div>
+                </a>
+                <a href="/zh-tw/experiences/bonseki/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/bonseki.jpg" alt="盆石體驗－以白砂與小石表現山水" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>盆石</h3>
+                        <p>以白砂與小石描繪山水景致，體驗日本傳統藝術的靜雅之美。</p>
+                        <div class="card-button">查看詳情</div>
+                    </div>
+                </a>
+                <a href="/zh-tw/experiences/chado/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/sadou.jpg" alt="茶道體驗－傳統茶道" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>茶道</h3>
+                        <p>循著茶道的儀式與節奏，感受日本美學與精神文化的核心。</p>
+                        <div class="card-button">查看詳情</div>
+                    </div>
+                </a>
+                <a href="/zh-tw/experiences/kado/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/kadou.jpg" alt="華道體驗－插花藝術" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>華道</h3>
+                        <p>透過插花的構成與留白，表現自然之美與日式美感。</p>
+                        <div class="card-button">查看詳情</div>
+                    </div>
+                </a>
+                <a href="/zh-tw/experiences/taiko/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/taiko.jpg" alt="和太鼓體驗－躍動的節奏" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>和太鼓</h3>
+                        <p>親手敲響和太鼓的震撼節奏，感受日本傳統音樂的能量。</p>
+                        <div class="card-button">查看詳情</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodations Section -->
+    <section id="accommodations" class="accommodations">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">住宿</h2>
+                <p class="section-subtitle">皆為一棟包棟的私密空間。在阿蘇自然環繞的寧靜氛圍中，請放慢腳步，度過安心放鬆的片刻。</p>
+            </div>
+            <div class="accommodations-grid">
+                <a href="/zh-tw/seiseikan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="/public/images/seiseisya/seiseisya.jpg" alt="清静舎 外觀" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>清静舎</h3>
+                    </div>
+                </a>
+                <a href="/zh-tw/geihinkan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="/public/images/geihinkan/geihinkan.jpg" alt="迎賓館 外觀" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>迎賓館</h3>
+                    </div>
+                </a>
+                <a href="/zh-tw/korokan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="/public/images/kourokan/kourokan.jpg" alt="鴻臚館 外觀" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>鴻臚館</h3>
+                    </div>
+                </a>
+                <a href="/zh-tw/bunshinkan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="/public/images/bunsinkan/bunshinkan.jpg" alt="文心館 外觀" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>文心館</h3>
+                    </div>
+                </a>
+                <a href="/zh-tw/edokan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="/public/images/edokan/edokan.jpg" alt="江戸館 外觀" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>江戸館</h3>
+                    </div>
+                </a>
+                <a href="/zh-tw/hinokinoma/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="/public/images/hinokinoma/hinokinoma.jpg" alt="檜之間 外觀" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>檜之間</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Section -->
+    <section id="restaurant" class="restaurant">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">料亭 鳴鳳堂</h2>
+                <p class="section-subtitle">以四季食材入饌，呈現道地且講究的會席料理。</p>
+            </div>
+            <div class="restaurant-content">
+                <div class="restaurant-image">
+                    <a href="/zh-tw/restaurant/" class="restaurant-image-link">
+                        <img src="/public/images/top/ryotei.png" alt="料亭 鳴鳳堂 外觀" loading="lazy">
+                    </a>
+                </div>
+                <div class="restaurant-description">
+                    <h3>道地會席料理</h3>
+                    <p>以阿蘇豐饒自然孕育的旬味食材為主角，運用傳統技法細緻呈現，帶來層層堆疊的會席饗宴。</p>
+                    <p>嚴選在地新鮮蔬菜、天草直送海鮮，以及熊本特產，邀您享受一場令人難忘的味覺體驗。</p>
+                    <div class="restaurant-features">
+                        <div class="feature-item">
+                            <i class="fas fa-leaf"></i>
+                            <span>四季旬味</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-fish"></i>
+                            <span>新鮮海鮮</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-seedling"></i>
+                            <span>在地蔬菜</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-wine-glass"></i>
+                            <span>嚴選日本酒</span>
+                        </div>
+                    </div>
+                    <a href="/zh-tw/restaurant/" class="btn btn-primary">查看詳情</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">攝影使用</h2>
+                <p class="section-subtitle">鳴鳳堂的空間可作為多元拍攝場景使用。</p>
+            </div>
+            <div class="location-content">
+                <div class="location-image">
+                    <img src="/public/images/top/satuei.JPG" alt="攝影使用 外觀" loading="lazy">
+                </div>
+                <div class="location-description">
+                    <h3>在傳統空間中拍攝</h3>
+                    <p>以鳴鳳堂優美的日式建築與庭園為背景，可用於婚禮、紀念攝影、商品拍攝等多種用途。</p>
+                    <p>在阿蘇壯闊自然環繞的靜謐氛圍中，留下值得珍藏的特別畫面。</p>
+                    <div class="location-features">
+                        <div class="feature-item">
+                            <i class="fas fa-camera"></i>
+                            <span>平面攝影</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-video"></i>
+                            <span>影片拍攝</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-heart"></i>
+                            <span>婚禮</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-gem"></i>
+                            <span>商業拍攝</span>
+                        </div>
+                    </div>
+                    <a href="/zh-tw/location/" class="btn btn-primary">查看詳情</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access" class="access">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">交通方式</h2>
+                <p class="section-subtitle">前往鳴鳳堂的交通資訊：自駕、鐵路與機場路線指引。</p>
+            </div>
+            <div class="access-content">
+                <div class="access-info">
+                    <div class="access-details">
+                        <div class="access-item">
+                            <div class="access-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="access-text">
+                                <h4>地址</h4>
+                                <p>熊本縣阿蘇市永草1943-28</p>
+                            </div>
+                        </div>
+                        <div class="access-item">
+                            <div class="access-icon">
+                                <i class="fas fa-train"></i>
+                            </div>
+                            <div class="access-text">
+                                <h4>最近車站</h4>
+                                <p>市之川站／阿蘇站</p>
+                            </div>
+                        </div>
+                        <div class="access-item">
+                            <div class="access-icon">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <div class="access-text">
+                                <h4>從機場出發</h4>
+                                <p>自熊本機場開車約 35 分鐘</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="access-buttons">
+                        <a href="/zh-tw/access/" class="btn btn-primary">交通資訊詳情</a>
+                    </div>
+                </div>
+                <div class="access-map">
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.1234567890123!2d131.1234567890123!3d32.1234567890123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDA3JzI0LjQiTiAxMzHCsDA3JzI0LjQiRQ!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp&q=熊本県阿蘇市永草1943-28"
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="鳴鳳堂位置－熊本縣阿蘇市永草1943-28"
+                            aria-label="Google 地圖顯示鳴鳳堂位置">
+                        </iframe>
+                    </div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=熊本県阿蘇市永草1943-28" target="_blank" class="btn btn-primary map-button">在 Google 地圖中開啟</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Services Section -->
+    <section id="partnership" class="partnership">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">合作服務</h2>
+                <p class="section-subtitle">介紹與鳴鳳堂合作的服務，讓您的旅程更加舒適愜意。</p>
+            </div>
+            <div class="partnership-grid">
+                <div class="partnership-card">
+                    <div class="partnership-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop" alt="餐廳 山水家">
+                    </div>
+                    <div class="partnership-content">
+                        <h3>餐廳 山水家</h3>
+                        <p>合作餐廳，以在地食材呈現道地和食料理。</p>
+                        <a href="#" class="btn btn-primary">查看詳情</a>
+                    </div>
+                </div>
+                <div class="partnership-card">
+                    <div class="partnership-image">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop" alt="按摩 Cocoriraku">
+                    </div>
+                    <div class="partnership-content">
+                        <h3>按摩 Cocoriraku</h3>
+                        <p>入住期間可預約舒壓按摩服務，放鬆身心、恢復活力。</p>
+                        <a href="#" class="btn btn-primary">查看詳情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>鳴鳳堂</h3>
+                    <p>在阿蘇火山地帶，體驗道地的日本之心。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>體驗項目</h4>
+                    <div class="experience-menu-columns">
+                        <div class="experience-column">
+                            <ul>
+                                <li><a href="#">弓道</a></li>
+                                <li><a href="#">試斬</a></li>
+                                <li><a href="#">剣道</a></li>
+                                <li><a href="#">空手</a></li>
+                            </ul>
+                        </div>
+                        <div class="experience-column">
+                            <ul>
+                                <li><a href="#">茶道</a></li>
+                                <li><a href="#">盆石</a></li>
+                                <li><a href="#">和太鼓</a></li>
+                                <li><a href="#">華道</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>聯絡資訊</h4>
+                    <ul>
+                        <li>〒869-2231</li>
+                        <li>熊本縣阿蘇市永草1943-28</li>
+                        <li>TEL: 0967-24-5090</li>
+                        <li>Email: meihodoliving@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed Action Buttons -->
+    <div class="fixed-buttons">
+        <!-- Main Action Buttons -->
+        <div class="main-buttons">
+            <a href="https://www.hpdsp.net/meihodo/hw/hwp3100/hww3101.do?yadNo=309467" class="vertical-btn accommodation-btn">
+                <span class="btn-text">住宿預約</span>
+            </a>
+            <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=en" class="vertical-btn experience-btn">
+                <span class="btn-text">體驗預約</span>
+            </a>
+        </div>
+        
+        <!-- Language Buttons -->
+        <div class="language-buttons">
+            <button class="lang-btn" data-lang="jp">JP</button>
+            <a href="../en/index.html" class="lang-btn" data-lang="en">EN</a>
+            <a href="/zh-tw/index.html" class="lang-btn" data-lang="zh-tw">繁</a>
+            <a href="/zh-cn/index.html" class="lang-btn" data-lang="zh-cn">簡</a>
+        </div>
+    </div>
+
+    <script>
+        // Initial Load Overlay Configuration
+        const OVERLAY_CONFIG = {
+            enabled: true,
+            textDelay: 500, // Delay before overlay text (ms)
+            textDuration: 2500, // Overlay text visible duration (ms)
+            fadeOutDuration: 2000, // Fade-out duration (ms)
+            sessionKey: 'initialLoadShown',
+            skipOnInteraction: true
+        };
+
+        // Initial Load Overlay Controller
+        class InitialLoadOverlay {
+            constructor() {
+                this.overlay = document.getElementById('initial-load-overlay');
+                this.textElement = this.overlay?.querySelector('.overlay-text');
+                this.isShown = sessionStorage.getItem(OVERLAY_CONFIG.sessionKey) === 'true';
+                this.isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                this.hasInteracted = false;
+                this.animationTimeouts = [];
+                
+                this.init();
+            }
+
+            init() {
+                // Skip if already shown in this session or reduced motion is preferred
+                if (this.isShown || this.isReducedMotion || !OVERLAY_CONFIG.enabled) {
+                    this.hideOverlay();
+                    return;
+                }
+
+                // Skip if not on home page
+                if (!this.isHomePage()) {
+                    this.hideOverlay();
+                    return;
+                }
+
+                this.setupEventListeners();
+                this.startAnimation();
+            }
+
+            isHomePage() {
+                const path = window.location.pathname;
+                return path === '/' || path === '/index.html' || path === '/ja/' || path === '/ja/index.html'
+                    || path === '/en/' || path === '/en/index.html'
+                    || path === '/zh-cn/' || path === '/zh-cn/index.html'
+                    || path === '/zh-tw/' || path === '/zh-tw/index.html'
+                    || path.endsWith('/ja/index.html') || path.endsWith('/en/index.html')
+                    || path.endsWith('/zh-cn/index.html') || path.endsWith('/zh-tw/index.html');
+            }
+
+            setupEventListeners() {
+                if (!OVERLAY_CONFIG.skipOnInteraction) return;
+
+                const events = ['click', 'scroll', 'keydown', 'touchstart'];
+                const skipOverlay = () => {
+                    if (this.hasInteracted) return;
+                    this.hasInteracted = true;
+                    this.clearTimeouts();
+                    this.hideOverlay();
+                };
+
+                events.forEach(event => {
+                    document.addEventListener(event, skipOverlay, { once: true, passive: true });
+                });
+            }
+
+            startAnimation() {
+                // Use requestAnimationFrame to ensure DOM is ready
+                requestAnimationFrame(() => {
+                    if (this.overlay && !this.hasInteracted) {
+                        this.showText();
+                    }
+                });
+            }
+
+            showText() {
+                if (!this.textElement || this.hasInteracted) return;
+
+                // Reset text state
+                this.textElement.style.opacity = '0';
+                this.textElement.style.transform = 'scale(0.95) translateY(0)';
+
+                // Show text after delay
+                const showTimeout = setTimeout(() => {
+                    if (this.hasInteracted) return;
+                    
+                    this.textElement.style.transition = 'opacity 1.5s ease-in-out, transform 1.5s ease-in-out';
+                    this.textElement.style.opacity = '1';
+                    this.textElement.style.transform = 'scale(1.0) translateY(0)';
+
+                    // Fade text out after display
+                    const hideTimeout = setTimeout(() => {
+                        if (this.hasInteracted) return;
+                        this.fadeOutText();
+                    }, OVERLAY_CONFIG.textDuration);
+
+                    this.animationTimeouts.push(hideTimeout);
+                }, OVERLAY_CONFIG.textDelay);
+
+                this.animationTimeouts.push(showTimeout);
+            }
+
+            fadeOutText() {
+                if (!this.textElement || this.hasInteracted) return;
+
+                this.textElement.style.transition = 'opacity 1s ease-in-out, transform 1s ease-in-out';
+                this.textElement.style.opacity = '0';
+                this.textElement.style.transform = 'scale(1.0) translateY(-10px)';
+
+                // Fade entire overlay after text
+                const overlayTimeout = setTimeout(() => {
+                    if (this.hasInteracted) return;
+                    this.fadeOutOverlay();
+                }, 1000);
+
+                this.animationTimeouts.push(overlayTimeout);
+            }
+
+            fadeOutOverlay() {
+                if (this.overlay && !this.hasInteracted) {
+                    this.overlay.style.transition = `opacity ${OVERLAY_CONFIG.fadeOutDuration}ms ease-in-out`;
+                    this.overlay.style.opacity = '0';
+                    
+                    // Remove overlay after fade completes
+                    const removeTimeout = setTimeout(() => {
+                        this.hideOverlay();
+                    }, OVERLAY_CONFIG.fadeOutDuration);
+
+                    this.animationTimeouts.push(removeTimeout);
+                }
+            }
+
+            clearTimeouts() {
+                this.animationTimeouts.forEach(timeout => {
+                    if (timeout) clearTimeout(timeout);
+                });
+                this.animationTimeouts = [];
+            }
+
+            hideOverlay() {
+                this.clearTimeouts();
+                
+                if (this.overlay) {
+                    this.overlay.classList.add('hidden');
+                    
+                    // Remove from DOM after a short delay to ensure smooth transition
+                    setTimeout(() => {
+                        if (this.overlay && this.overlay.parentNode) {
+                            this.overlay.parentNode.removeChild(this.overlay);
+                        }
+                    }, 100);
+                }
+
+                // Mark as shown in session storage
+                sessionStorage.setItem(OVERLAY_CONFIG.sessionKey, 'true');
+            }
+        }
+
+        // Initialize overlay when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new InitialLoadOverlay();
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+    </script>
+
+    <!-- Performance optimization script -->
+    <script>
+        // Lazy load non-critical features
+        if ('IntersectionObserver' in window) {
+            const lazyElements = document.querySelectorAll('[data-lazy]');
+            const lazyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        element.classList.add('loaded');
+                        lazyObserver.unobserve(element);
+                    }
+                });
+            });
+            lazyElements.forEach(el => lazyObserver.observe(el));
+        }
+    </script>
+</body>
+</html>

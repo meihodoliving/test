@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meihodo — Experience authentic Japan in Aso</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+</head>
+<body>
+    <!-- Initial Load Overlay -->
+    <div id="initial-load-overlay" class="initial-load-overlay" aria-hidden="true">
+        <div class="overlay-content">
+            <p class="overlay-text">A quiet moment to turn inward and reflect.</p>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="header-nav">
+                <div class="nav-left">
+                    <a href="/en/index.html" class="nav-link">
+                        <img src="/images/Home.png" alt="Home" class="nav-icon">
+                        <span>Home</span>
+                    </a>
+                    <a href="/en/experiences/" class="nav-link">
+                        <img src="/images/taiken.png" alt="Experiences" class="nav-icon" loading="lazy">
+                        <span>Experiences</span>
+                    </a>
+                    <a href="/en/accommodations/" class="nav-link">
+                        <img src="/images/tatemono.png" alt="Stay" class="nav-icon">
+                        <span>Stay</span>
+                    </a>
+                </div>
+                <div class="nav-center">
+                    <a href="/en/about/">
+                        <h1>鳴鳳堂</h1>
+                        <p>MEIHODO</p>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a href="/en/restaurant/" class="nav-link">
+                        <img src="/images/syokuzi.png" alt="Dining" class="nav-icon">
+                        <span>Dining</span>
+                    </a>
+                    <a href="/en/location/" class="nav-link">
+                        <img src="/images/kamera.png" alt="Photo shoots" class="nav-icon">
+                        <span>Photo shoots</span>
+                    </a>
+                    <a href="/en/access/" class="nav-link">
+                        <img src="/images/tizu.png" alt="Access" class="nav-icon">
+                        <span>Access</span>
+                    </a>
+                </div>
+            </div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <img src="/public/images/top/top.JPG" alt="Meihodo — hero image" class="hero-image">
+        <div class="hero-overlay"></div>
+        <a href="#experiences" class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </a>
+    </section>
+
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="philosophy">
+        <div class="container">
+            <div class="philosophy-content">
+                <div class="catchphrase-section">
+                    <div class="catchphrase-container">
+                        <div class="catchphrase-line">Nature breathes in Aso,</div>
+                        <div class="catchphrase-line">feasts that awaken the senses,</div>
+                        <div class="catchphrase-line">experiences that carry you from the everyday,</div>
+                        <div class="catchphrase-line">a place where the heart of Japan endures.</div>
+                    </div>
+                </div>
+                <div class="main-text-section">
+                    <div class="main-text-content">
+                        <p>Set at the foot of majestic Mt. Aso, Meihodo is a cultural resort shaped by tradition and landscape.</p>
+                        <p>Across 56,000 square meters of Japanese architecture, forge mind and spirit—<br>                        from kyūdō, tameshigiri, karate and other martial arts to chadō, kadō, bonseki and classical arts.</p>
+                        <p>Surrounded by nature and tradition, gift yourself time away from routine to restore body and mind.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="experiences">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Samurai spirit and Japanese culture—experienced in Aso</h2>
+                <p class="section-subtitle">Surrounded by Aso’s wilderness, Meihodo offers martial arts—from kyūdō, karate, kendo and tameshigiri—to taiko, tea ceremony, bonseki, kadō and more. Train in full gear with our samurai immersion course—a favorite with families and couples alike.</p>
+            </div>
+            <div class="experiences-grid">
+                <a href="/en/experiences/kyudo/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/kyudo.jpg" alt="Kyūdō — Japanese archery" loading="lazy" srcset="/public/images/experience/kyudo-480.jpg 480w, /public/images/experience/kyudo-768.jpg 768w, /public/images/experience/kyudo-1200.jpg 1200w, /public/images/experience/kyudo.jpg 1600w" sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1200px) 1200px, 1600px">
+                    </div>
+                    <div class="card-content">
+                        <h3>Kyūdō</h3>
+                        <p>Through kyūdō—Japanese archery—cultivate focus and a calm mind.</p>
+                        <div class="card-button">Learn more</div>
+                    </div>
+                </a>
+                <a href="/en/experiences/iaido/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/iaido.jpg" alt="Tameshigiri — test cutting with the katana" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Tameshigiri</h3>
+                        <p>Study tameshigiri with the katana—manners, posture and the samurai spirit.</p>
+                        <div class="card-button">Learn more</div>
+                    </div>
+                </a>
+                <a href="/en/experiences/kendo/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/kendo.jpg" alt="Kendō — bamboo sword" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Kendō</h3>
+                        <p>Train kendō with the shinai—etiquette, resilience and inner strength.</p>
+                        <div class="card-button">Learn more</div>
+                    </div>
+                </a>
+                <a href="/en/experiences/karate/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/karate.jpg" alt="Karate — Okinawan martial art" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Karate</h3>
+                        <p>Okinawan karate—basics, kata and conditioning for body and mind.</p>
+                        <div class="card-button">Learn more</div>
+                    </div>
+                </a>
+                <a href="/en/experiences/bonseki/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/bonseki.jpg" alt="Bonseki — sand landscape" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Bonseki</h3>
+                        <p>Create miniature landscapes in sand and stone—a classical Japanese art.</p>
+                        <div class="card-button">Learn more</div>
+                    </div>
+                </a>
+                <a href="/en/experiences/chado/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/sadou.jpg" alt="Tea ceremony — sadō" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Tea ceremony</h3>
+                        <p>Experience sadō and discover Japanese aesthetics and hospitality of quiet grace.</p>
+                        <div class="card-button">Learn more</div>
+                    </div>
+                </a>
+                <a href="/en/experiences/kado/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/kadou.jpg" alt="Kadō — flower arrangement" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Kadō (ikebana)</h3>
+                        <p>Express nature’s beauty through ikebana.</p>
+                        <div class="card-button">Learn more</div>
+                    </div>
+                </a>
+                <a href="/en/experiences/taiko/" class="experience-card">
+                    <div class="card-image">
+                        <img src="/public/images/experience/taiko.jpg" alt="Taiko — Japanese drums" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Taiko</h3>
+                        <p>Feel the drive of taiko and the energy of Japanese percussion.</p>
+                        <div class="card-button">Learn more</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodations Section -->
+    <section id="accommodations" class="accommodations">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Stay</h2>
+                <p class="section-subtitle">Private villas—each reserved entirely for your party. Unwind in quiet surroundings embraced by Aso’s nature.</p>
+            </div>
+            <div class="accommodations-grid">
+                <a href="/en/seiseikan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="/public/images/seiseisya/seiseisya.jpg" alt="Seiseikan exterior" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Seiseikan</h3>
+                    </div>
+                </a>
+                <a href="/en/geihinkan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="/public/images/geihinkan/geihinkan.jpg" alt="Geihinkan exterior" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Geihinkan</h3>
+                    </div>
+                </a>
+                <a href="/en/korokan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="/public/images/kourokan/kourokan.jpg" alt="Kōrokan exterior" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Kōrokan</h3>
+                    </div>
+                </a>
+                <a href="/en/bunshinkan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="/public/images/bunsinkan/bunshinkan.jpg" alt="Bunshinkan exterior" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Bunshinkan</h3>
+                    </div>
+                </a>
+                <a href="/en/edokan/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="/public/images/edokan/edokan.jpg" alt="Edokan exterior" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Edokan</h3>
+                    </div>
+                </a>
+                <a href="/en/hinokinoma/" class="accommodation-card">
+                    <div class="card-image">
+                        <img src="/public/images/hinokinoma/hinokinoma.jpg" alt="Hinokinoma exterior" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Hinokinoma</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Section -->
+    <section id="restaurant" class="restaurant">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ryotei Meihodo</h2>
+                <p class="section-subtitle">Seasonal kaiseki crafted with ingredients from Aso and beyond.</p>
+            </div>
+            <div class="restaurant-content">
+                <div class="restaurant-image">
+                    <a href="/en/restaurant/" class="restaurant-image-link">
+                        <img src="/public/images/top/ryotei.png" alt="Ryotei Meihodo exterior" loading="lazy">
+                    </a>
+                </div>
+                <div class="restaurant-description">
+                    <h3>Authentic kaiseki</h3>
+                    <p>We serve kaiseki shaped by the seasons—prepared with traditional technique and ingredients born from Aso’s rich land.</p>
+                    <p>Enjoy fresh local vegetables, seafood from Amakusa waters, and Kumamoto specialties in a meal to remember.</p>
+                    <div class="restaurant-features">
+                        <div class="feature-item">
+                            <i class="fas fa-leaf"></i>
+                            <span>Seasonal ingredients</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-fish"></i>
+                            <span>Fresh seafood</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-seedling"></i>
+                            <span>Local produce</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-wine-glass"></i>
+                            <span>Selected sake</span>
+                        </div>
+                    </div>
+                    <a href="/en/restaurant/" class="btn btn-primary">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Filming &amp; photo shoots</h2>
+                <p class="section-subtitle">Use Meihodo’s spaces as a distinctive on-location set for photography and film.</p>
+            </div>
+            <div class="location-content">
+                <div class="location-image">
+                    <img src="/public/images/top/satuei.JPG" alt="Filming — exterior" loading="lazy">
+                </div>
+                <div class="location-description">
+                    <h3>Shoot in classical Japanese spaces</h3>
+                    <p>Set weddings, portraits or product work against our architecture and gardens—crafted for memorable visuals.</p>
+                    <p>In the stillness beneath Aso’s peaks, capture images that stay with you.</p>
+                    <div class="location-features">
+                        <div class="feature-item">
+                            <i class="fas fa-camera"></i>
+                            <span>Photography</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-video"></i>
+                            <span>Video</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-heart"></i>
+                            <span>Weddings</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-gem"></i>
+                            <span>Commercial</span>
+                        </div>
+                    </div>
+                    <a href="/en/location/" class="btn btn-primary">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access" class="access">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Access</h2>
+                <p class="section-subtitle">How to reach Meihodo—by car, train or from the airport.</p>
+            </div>
+            <div class="access-content">
+                <div class="access-info">
+                    <div class="access-details">
+                        <div class="access-item">
+                            <div class="access-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="access-text">
+                                <h4>Address</h4>
+                                <p>1943-28 Nagakusa, Aso City, Kumamoto</p>
+                            </div>
+                        </div>
+                        <div class="access-item">
+                            <div class="access-icon">
+                                <i class="fas fa-train"></i>
+                            </div>
+                            <div class="access-text">
+                                <h4>Nearest stations</h4>
+                                <p>Ichinokawa Station / Aso Station</p>
+                            </div>
+                        </div>
+                        <div class="access-item">
+                            <div class="access-icon">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <div class="access-text">
+                                <h4>From the airport</h4>
+                                <p>About 35 minutes by car from Kumamoto Airport</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="access-buttons">
+                        <a href="/en/access/" class="btn btn-primary">Access guide</a>
+                    </div>
+                </div>
+                <div class="access-map">
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.1234567890123!2d131.1234567890123!3d32.1234567890123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDA3JzI0LjQiTiAxMzHCsDA3JzI0LjQiRQ!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp&q=熊本県阿蘇市永草1943-28"
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Meihodo — Nagakusa 1943-28, Aso, Kumamoto"
+                            aria-label="Google Map — Meihodo location">
+                        </iframe>
+                    </div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=熊本県阿蘇市永草1943-28" target="_blank" class="btn btn-primary map-button">Open in Google Maps</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Services Section -->
+    <section id="partnership" class="partnership">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Partner services</h2>
+                <p class="section-subtitle">Partners who extend your stay—dining, wellness and more.</p>
+            </div>
+            <div class="partnership-grid">
+                <div class="partnership-card">
+                    <div class="partnership-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop" alt="Restaurant Sansuika">
+                    </div>
+                    <div class="partnership-content">
+                        <h3>Restaurant Sansuika</h3>
+                        <p>Partner restaurant serving Japanese cuisine centered on local ingredients.</p>
+                        <a href="#" class="btn btn-primary">Learn more</a>
+                    </div>
+                </div>
+                <div class="partnership-card">
+                    <div class="partnership-image">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop" alt="Massage Kokoriraku">
+                    </div>
+                    <div class="partnership-content">
+                        <h3>Massage Kokoriraku</h3>
+                        <p>Relaxation massage available during your stay.</p>
+                        <a href="#" class="btn btn-primary">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>鳴鳳堂</h3>
+                    <p>Experience the heart of Japan in the volcanic landscape of Aso.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Experiences</h4>
+                    <div class="experience-menu-columns">
+                        <div class="experience-column">
+                            <ul>
+                                <li><a href="#">Kyūdō</a></li>
+                                <li><a href="#">Tameshigiri</a></li>
+                                <li><a href="#">Kendō</a></li>
+                                <li><a href="#">Karate</a></li>
+                            </ul>
+                        </div>
+                        <div class="experience-column">
+                            <ul>
+                                <li><a href="#">Tea ceremony</a></li>
+                                <li><a href="#">Bonseki</a></li>
+                                <li><a href="#">Taiko</a></li>
+                                <li><a href="#">Kadō</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>〒869-2231</li>
+                        <li>1943-28 Nagakusa, Aso City, Kumamoto</li>
+                        <li>TEL: 0967-24-5090</li>
+                        <li>Email: meihodoliving@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed Action Buttons -->
+    <div class="fixed-buttons">
+        <!-- Main Action Buttons -->
+        <div class="main-buttons">
+            <a href="https://www.hpdsp.net/meihodo/hw/hwp3100/hww3101.do?yadNo=309467" class="vertical-btn accommodation-btn">
+                <span class="btn-text">Book stay</span>
+            </a>
+            <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=en" class="vertical-btn experience-btn">
+                <span class="btn-text">Book experiences</span>
+            </a>
+        </div>
+        
+        <!-- Language Buttons -->
+        <div class="language-buttons">
+            <a href="/ja/index.html" class="lang-btn" data-lang="jp">JP</a>
+            <a href="/en/index.html" class="lang-btn" data-lang="en">EN</a>
+            <a href="/zh-tw/index.html" class="lang-btn" data-lang="zh-tw">繁</a>
+            <a href="/zh-cn/index.html" class="lang-btn" data-lang="zh-cn">簡</a>
+        </div>
+    </div>
+
+    <script>
+        // Initial Load Overlay Configuration
+        const OVERLAY_CONFIG = {
+            enabled: true,
+            textDelay: 500, // テキスト表示までの遅延（ミリ秒）
+            textDuration: 2500, // テキスト表示時間（ミリ秒）
+            fadeOutDuration: 2000, // フェードアウト時間（ミリ秒）
+            sessionKey: 'initialLoadShown',
+            skipOnInteraction: true
+        };
+
+        // Initial Load Overlay Controller
+        class InitialLoadOverlay {
+            constructor() {
+                this.overlay = document.getElementById('initial-load-overlay');
+                this.textElement = this.overlay?.querySelector('.overlay-text');
+                this.isShown = sessionStorage.getItem(OVERLAY_CONFIG.sessionKey) === 'true';
+                this.isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                this.hasInteracted = false;
+                this.animationTimeouts = [];
+                
+                this.init();
+            }
+
+            init() {
+                // Skip if already shown in this session or reduced motion is preferred
+                if (this.isShown || this.isReducedMotion || !OVERLAY_CONFIG.enabled) {
+                    this.hideOverlay();
+                    return;
+                }
+
+                // Skip if not on home page
+                if (!this.isHomePage()) {
+                    this.hideOverlay();
+                    return;
+                }
+
+                this.setupEventListeners();
+                this.startAnimation();
+            }
+
+            isHomePage() {
+                const path = window.location.pathname;
+                return path === '/' || path === '/index.html' || path === '/ja/' || path === '/ja/index.html'
+                    || path === '/en/' || path === '/en/index.html'
+                    || path.endsWith('/ja/index.html') || path.endsWith('/en/index.html');
+            }
+
+            setupEventListeners() {
+                if (!OVERLAY_CONFIG.skipOnInteraction) return;
+
+                const events = ['click', 'scroll', 'keydown', 'touchstart'];
+                const skipOverlay = () => {
+                    if (this.hasInteracted) return;
+                    this.hasInteracted = true;
+                    this.clearTimeouts();
+                    this.hideOverlay();
+                };
+
+                events.forEach(event => {
+                    document.addEventListener(event, skipOverlay, { once: true, passive: true });
+                });
+            }
+
+            startAnimation() {
+                // Use requestAnimationFrame to ensure DOM is ready
+                requestAnimationFrame(() => {
+                    if (this.overlay && !this.hasInteracted) {
+                        this.showText();
+                    }
+                });
+            }
+
+            showText() {
+                if (!this.textElement || this.hasInteracted) return;
+
+                // テキストを初期状態に設定
+                this.textElement.style.opacity = '0';
+                this.textElement.style.transform = 'scale(0.95) translateY(0)';
+
+                // 0.5秒後にテキストを表示
+                const showTimeout = setTimeout(() => {
+                    if (this.hasInteracted) return;
+                    
+                    this.textElement.style.transition = 'opacity 1.5s ease-in-out, transform 1.5s ease-in-out';
+                    this.textElement.style.opacity = '1';
+                    this.textElement.style.transform = 'scale(1.0) translateY(0)';
+
+                    // 2.5秒後にテキストをフェードアウト
+                    const hideTimeout = setTimeout(() => {
+                        if (this.hasInteracted) return;
+                        this.fadeOutText();
+                    }, OVERLAY_CONFIG.textDuration);
+
+                    this.animationTimeouts.push(hideTimeout);
+                }, OVERLAY_CONFIG.textDelay);
+
+                this.animationTimeouts.push(showTimeout);
+            }
+
+            fadeOutText() {
+                if (!this.textElement || this.hasInteracted) return;
+
+                this.textElement.style.transition = 'opacity 1s ease-in-out, transform 1s ease-in-out';
+                this.textElement.style.opacity = '0';
+                this.textElement.style.transform = 'scale(1.0) translateY(-10px)';
+
+                // テキストフェードアウト後にオーバーレイ全体をフェードアウト
+                const overlayTimeout = setTimeout(() => {
+                    if (this.hasInteracted) return;
+                    this.fadeOutOverlay();
+                }, 1000);
+
+                this.animationTimeouts.push(overlayTimeout);
+            }
+
+            fadeOutOverlay() {
+                if (this.overlay && !this.hasInteracted) {
+                    this.overlay.style.transition = `opacity ${OVERLAY_CONFIG.fadeOutDuration}ms ease-in-out`;
+                    this.overlay.style.opacity = '0';
+                    
+                    // フェードアウト完了後に削除
+                    const removeTimeout = setTimeout(() => {
+                        this.hideOverlay();
+                    }, OVERLAY_CONFIG.fadeOutDuration);
+
+                    this.animationTimeouts.push(removeTimeout);
+                }
+            }
+
+            clearTimeouts() {
+                this.animationTimeouts.forEach(timeout => {
+                    if (timeout) clearTimeout(timeout);
+                });
+                this.animationTimeouts = [];
+            }
+
+            hideOverlay() {
+                this.clearTimeouts();
+                
+                if (this.overlay) {
+                    this.overlay.classList.add('hidden');
+                    
+                    // Remove from DOM after a short delay to ensure smooth transition
+                    setTimeout(() => {
+                        if (this.overlay && this.overlay.parentNode) {
+                            this.overlay.parentNode.removeChild(this.overlay);
+                        }
+                    }, 100);
+                }
+
+                // Mark as shown in session storage
+                sessionStorage.setItem(OVERLAY_CONFIG.sessionKey, 'true');
+            }
+        }
+
+        // Initialize overlay when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new InitialLoadOverlay();
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+    </script>
+
+    <!-- Performance optimization script -->
+    <script>
+        // Lazy load non-critical features
+        if ('IntersectionObserver' in window) {
+            const lazyElements = document.querySelectorAll('[data-lazy]');
+            const lazyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        element.classList.add('loaded');
+                        lazyObserver.unobserve(element);
+                    }
+                });
+            });
+            lazyElements.forEach(el => lazyObserver.observe(el));
+        }
+    </script>
+</body>
+</html>

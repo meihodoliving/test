@@ -5,192 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>侍体験 - 鳴鳳堂 鳴鳳堂</title>
     <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../components.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* 弓道ページ専用のスタイル */
-        .kyudo-hero {
-            height: 60vh;
-            background: var(--gradient-overlay), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="kyudo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%238B7355;stop-opacity:1" /><stop offset="50%" style="stop-color:%232F4F4F;stop-opacity:1" /><stop offset="100%" style="stop-color:%231C1C1C;stop-opacity:1" /></linearGradient></defs><rect fill="url(%23kyudo)" width="1200" height="800"/><circle fill="%23D4AF37" cx="600" cy="300" r="120" opacity="0.1"/><polygon fill="%238B7355" points="200,600 400,400 600,600" opacity="0.08"/><polygon fill="%232F4F4F" points="800,700 1000,500 1200,700" opacity="0.08"/></svg>');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .kyudo-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--gradient-overlay);
-        }
-
-        .kyudo-hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 40px;
-        }
-
-        .kyudo-title {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeInUp 1.2s ease 0.5s forwards;
-        }
-
-        .kyudo-title .japanese {
-            display: block;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-            font-weight: 600;
-            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
-        }
-
-        .kyudo-title .english {
-            display: block;
-            font-weight: 300;
-            letter-spacing: 2px;
-            font-size: 1.8rem;
-            opacity: 0.9;
-        }
-
-        .kyudo-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            font-weight: 300;
-            line-height: 1.8;
-            animation: fadeInUp 1.2s ease 1s forwards;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .breadcrumb {
-            background: var(--light-color);
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .breadcrumb-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .breadcrumb-list {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .breadcrumb-list a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .breadcrumb-list a:hover {
-            color: var(--accent-color);
-        }
-
-        .breadcrumb-separator {
-            color: var(--border-color);
-        }
-
-        .experience-detail {
-            padding: 120px 0;
-            background: var(--white);
-            position: relative;
-        }
-
-        .experience-detail::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: var(--washi-texture);
-            opacity: 0.02;
-            pointer-events: none;
-        }
-
-        .detail-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .detail-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: start;
-            margin-bottom: 4rem;
-        }
-
-        .detail-text {
-            padding: 2rem 0;
-        }
-
-        .detail-text h2 {
-            font-size: 2.5rem;
-            color: var(--dark-color);
-            margin-bottom: 2rem;
-            font-family: 'Noto Serif JP', serif;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-
-        .detail-text p {
-            font-size: 1.1rem;
-            line-height: 2;
-            color: var(--text-primary);
-            margin-bottom: 2rem;
-        }
-
-        .detail-image {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px var(--shadow);
-        }
-
-        .detail-image img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .detail-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .features-section {
+        .pricing-section {
             background: var(--light-color);
             padding: 120px 0;
             position: relative;
         }
 
-        .features-section::before {
+        .pricing-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -202,98 +27,16 @@
             pointer-events: none;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
+        .pricing-content {
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
             position: relative;
             z-index: 1;
         }
 
-        .feature-card {
+        .pricing-card {
             background: var(--white);
-            padding: 3rem 2.5rem;
-            border-radius: 24px;
-            text-align: center;
-            box-shadow: 0 15px 40px var(--shadow);
-            border: 1px solid var(--border-color);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: var(--washi-texture);
-            opacity: 0.02;
-            pointer-events: none;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px var(--shadow-dark);
-            border-color: var(--accent-color);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 2rem;
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1);
-            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
-        }
-
-        .feature-icon i {
-            font-size: 2rem;
-            color: var(--white);
-        }
-
-        .feature-card h3 {
-            font-size: 1.4rem;
-            color: var(--dark-color);
-            margin-bottom: 1.5rem;
-            font-family: 'Noto Serif JP', serif;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-
-        .feature-card p {
-            color: var(--text-primary);
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-
-        .schedule-section {
-            padding: 120px 0;
-            background: var(--white);
-        }
-
-        .schedule-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .schedule-table {
-            background: var(--light-color);
             border-radius: 24px;
             padding: 3rem;
             box-shadow: 0 20px 50px var(--shadow);
@@ -302,7 +45,7 @@
             overflow: hidden;
         }
 
-        .schedule-table::before {
+        .pricing-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -310,164 +53,169 @@
             right: 0;
             bottom: 0;
             background-image: var(--washi-texture);
-            opacity: 0.03;
+            opacity: 0.02;
             pointer-events: none;
         }
 
-        .schedule-table table {
-            width: 100%;
-            border-collapse: collapse;
-            position: relative;
-            z-index: 1;
-        }
-
-        .schedule-table th,
-        .schedule-table td {
-            padding: 1.5rem 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .schedule-table th {
-            background: var(--accent-color);
-            color: var(--white);
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            font-size: 1.1rem;
-        }
-
-        .schedule-table td {
-            color: var(--text-primary);
-            font-size: 1.05rem;
-        }
-
-        .schedule-table tr:hover {
-            background: rgba(212, 175, 55, 0.05);
-        }
-
-        .cta-section {
-            background: var(--dark-color);
-            color: var(--white);
-            padding: 120px 0;
-            text-align: center;
-            position: relative;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: var(--washi-texture);
-            opacity: 0.05;
-            pointer-events: none;
-        }
-
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-content h2 {
-            font-size: 2.8rem;
-            margin-bottom: 2rem;
-            font-family: 'Noto Serif JP', serif;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-
-        .cta-content p {
-            font-size: 1.2rem;
-            line-height: 1.8;
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
             margin-bottom: 3rem;
-            opacity: 0.9;
+            position: relative;
+            z-index: 1;
         }
 
-        .cta-buttons {
+        .pricing-item {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .pricing-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px var(--shadow);
+            border-color: var(--accent-color);
+        }
+
+        .pricing-item h3 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .pricing-item .price {
+            font-size: 2rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            font-family: 'Noto Serif JP', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-item .note {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .pricing-details {
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-info-row {
             display: flex;
             gap: 2rem;
-            justify-content: center;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
         }
 
-        .btn-cta {
-            padding: 20px 40px;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            letter-spacing: 0.05em;
-            font-family: 'Noto Serif JP', serif;
+        .info-item {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            flex: 1;
+            min-width: 200px;
         }
 
-        .btn-cta-primary {
-            background: var(--accent-color);
-            color: var(--white);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-cta-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
-            background: #C19B2E;
-        }
-
-        .btn-cta-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-cta-secondary:hover {
-            background: var(--white);
+        .info-item strong {
             color: var(--dark-color);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+        }
+
+        .pricing-details h4 {
+            font-size: 1.4rem;
+            color: var(--dark-color);
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: left;
+            justify-content: flex-start;
+        }
+
+        .pricing-details h4 i {
+            color: var(--accent-color);
+        }
+
+        .pricing-details ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .pricing-details li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            padding-left: 2rem;
+            position: relative;
+            text-align: left;
+        }
+
+        .pricing-details li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-details li::before {
+            content: '・';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .pricing-info-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(139, 115, 85, 0.05));
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .flow-card .pricing-details {
+            margin-top: 0;
         }
 
         @media (max-width: 768px) {
-            .kyudo-title {
-                font-size: 2.5rem;
+            .pricing-card {
+                padding: 2rem 1.5rem;
             }
-
-            .kyudo-title .japanese {
-                font-size: 2rem;
-            }
-
-            .detail-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .features-grid {
+            .pricing-grid {
                 grid-template-columns: 1fr;
             }
-
-            .cta-buttons {
+            .pricing-details h4 {
+                font-size: 1.2rem;
+            }
+            .pricing-info-box {
+                padding: 1.2rem 1.5rem;
+            }
+            .pricing-info-row {
                 flex-direction: column;
-                align-items: center;
+                gap: 1rem;
             }
-
-            .schedule-table {
-                padding: 2rem 1rem;
+            .info-item {
+                min-width: unset;
             }
-
-            .schedule-table th,
-            .schedule-table td {
-                padding: 1rem 0.5rem;
-                font-size: 0.9rem;
+            .pricing-details h4 {
+                text-align: left;
+                justify-content: flex-start;
+            }
+            .pricing-details ul {
+                text-align: left;
+            }
+            .pricing-details li {
+                text-align: left;
             }
         }
     </style>
@@ -506,7 +254,7 @@
                         <img src="/images/kamera.png" alt="撮影利用" class="nav-icon">
                         <span>撮影利用</span>
                     </a>
-                    <a href="../../index.html#access" class="nav-link">
+                    <a href="/ja/access/" class="nav-link">
                         <img src="/images/tizu.png" alt="アクセス" class="nav-icon">
                         <span>アクセス</span>
                     </a>
@@ -535,13 +283,13 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="kyudo-hero">
-        <div class="kyudo-hero-content">
-            <h1 class="kyudo-title">
+    <section class="experience-hero">
+        <div class="experience-hero-content">
+            <h1 class="experience-title">
                 <span class="japanese">侍体験</span>
                 <span class="english">Samurai Experience</span>
             </h1>
-            <p class="kyudo-subtitle">本格的な侍の装束を身にまとい、弓道・居合道・茶道を組み合わせた特別な体験プログラム。侍の心構えと礼儀作法を学び、日本の伝統文化の深さを体感してください。</p>
+            <p class="experience-subtitle">江戸時代の侍の修練を参考に、剣術・茶の湯・弓道・太鼓まで—約2時間半、心を磨く特別な時間をご用意しています。</p>
         </div>
     </section>
 
@@ -550,10 +298,8 @@
         <div class="detail-content">
             <div class="detail-grid">
                 <div class="detail-text">
-                    <h2>侍体験の精神性</h2>
-                    <p>侍体験は、単なるコスチューム体験ではありません。日本の伝統的な武道と文化を総合的に体験し、武士道の精神性を学ぶ特別なプログラムです。本格的な侍の装束を身にまとい、その身のこなしを実践することで、侍の心構えを体得していただけます。</p>
-                    <p>阿蘇の雄大な自然に囲まれた鳴鳳堂では、静寂な環境の中で侍の精神に触れることができます。弓道、居合道、茶道という三つの武道・文化を組み合わせることで、侍が重視した「文武両道」の精神を体験してください。</p>
-                    <p>初心者の方でも安心してご参加いただけます。経験豊富な指導者が丁寧にサポートし、武道着の着付けから指導いたします。</p>
+                    <h2>侍体験</h2>
+                    <p>鳴鳳堂の侍体験では、江戸時代の侍の修練を参考に、心を磨く約2時間半の旅にご参加いただきます。剣術、茶の湯、弓道、そして迫力のある太鼓演奏を体験できます。侍が日々の修練で磨いた技と心を感じ、日本の歴史に深く触れた達成感を味わっていただけます。</p>
                 </div>
                 <div class="detail-image">
                     <img src="/public/images/experience/samurai.jpg" alt="侍体験 - 鳴鳳堂" loading="lazy">
@@ -562,110 +308,70 @@
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Flow Section -->
     <section class="features-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">侍体験の特徴</h2>
-                <p class="section-subtitle">本格的な侍体験を通じて、武士道の精神を体験してください</p>
+                <h2 class="section-title">体験の流れ</h2>
+                <p class="section-subtitle">当日のおおまかな進行です</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-ninja"></i>
+            <div class="pricing-content">
+                <div class="pricing-card flow-card">
+                    <div class="pricing-details">
+                        <ul>
+                            <li>武道着に着替え</li>
+                            <li>試し切り</li>
+                            <li>茶の湯</li>
+                            <li>弓道指南</li>
+                            <li>大太鼓</li>
+                            <li>修了式</li>
+                        </ul>
                     </div>
-                    <h3>本格的な装束</h3>
-                    <p>侍の伝統的な装束を実際に着用し、その身のこなしと心構えを学ぶことができます。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <h3>文武両道</h3>
-                    <p>弓道、居合道、茶道という武道と文化を組み合わせ、侍が重視した文武両道の精神を体験します。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>武士道の精神</h3>
-                    <p>礼儀作法、誠実さ、そして自己鍛錬という武士道の基本理念を学びます。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-camera"></i>
-                    </div>
-                    <h3>記念写真</h3>
-                    <p>侍の装束を着た姿を写真に収め、貴重な思い出としてお持ち帰りいただけます。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Schedule Section -->
-    <section class="schedule-section">
-        <div class="schedule-content">
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="pricing-content">
             <div class="section-header">
-                <h2 class="section-title">体験スケジュール</h2>
-                <p class="section-subtitle">侍体験の詳細なスケジュールをご案内します</p>
+                <h2 class="section-title">料金・詳細</h2>
+                <p class="section-subtitle">侍体験の料金と詳細をご案内します</p>
             </div>
-            <div class="schedule-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>時間</th>
-                            <th>内容</th>
-                            <th>所要時間</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>09:00</td>
-                            <td>受付・侍の装束への着替え</td>
-                            <td>30分</td>
-                        </tr>
-                        <tr>
-                            <td>09:30</td>
-                            <td>侍と武士道についての説明</td>
-                            <td>30分</td>
-                        </tr>
-                        <tr>
-                            <td>10:00</td>
-                            <td>弓道の基本と実践</td>
-                            <td>60分</td>
-                        </tr>
-                        <tr>
-                            <td>11:00</td>
-                            <td>休憩</td>
-                            <td>15分</td>
-                        </tr>
-                        <tr>
-                            <td>11:15</td>
-                            <td>居合道の基本と実践</td>
-                            <td>60分</td>
-                        </tr>
-                        <tr>
-                            <td>12:15</td>
-                            <td>茶道体験</td>
-                            <td>45分</td>
-                        </tr>
-                        <tr>
-                            <td>13:00</td>
-                            <td>昼食（侍弁当）</td>
-                            <td>60分</td>
-                        </tr>
-                        <tr>
-                            <td>14:00</td>
-                            <td>記念写真撮影</td>
-                            <td>30分</td>
-                        </tr>
-                        <tr>
-                            <td>14:30</td>
-                            <td>振り返りと質疑応答</td>
-                            <td>30分</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="pricing-card">
+                <div class="pricing-grid">
+                    <div class="pricing-item">
+                        <h3>大人（1名）</h3>
+                        <div class="price">¥35,000</div>
+                        <div class="note">税込</div>
+                    </div>
+                    <div class="pricing-item">
+                        <h3>子供（8〜11歳）</h3>
+                        <div class="price">¥17,500</div>
+                        <div class="note">税込</div>
+                    </div>
+                </div>
+                <div class="pricing-details">
+                    <div class="pricing-info-row">
+                        <div class="info-item">
+                            <strong>所要時間：</strong>2.5時間
+                        </div>
+                        <div class="info-item">
+                            <strong>参加人数：</strong>1〜8名様
+                        </div>
+                    </div>
+                    <div class="pricing-info-box">
+                        <p>※お子様のみでのご参加はご遠慮いただいております。<br>必ず保護者の方の同伴をお願いいたします。</p>
+                    </div>
+                    <h4><i class="fas fa-info-circle"></i>注意事項</h4>
+                    <ul>
+                        <li>体験は日本語、英語、中国語で対応可能です</li>
+                        <li>事前予約が必要です</li>
+                        <li>動きやすい服装でお越しください</li>
+                        <li>稽古着は当方で用意いたします</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -674,9 +380,9 @@
     <section class="cta-section">
         <div class="cta-content">
             <h2>侍体験を予約する</h2>
-            <p>阿蘇の雄大な自然の中で、日本の伝統的な武士道を体験してみませんか？<br>初心者の方でも安心してご参加いただけます。</p>
+            <p>阿蘇の自然の中で、侍の修練の世界を体感してみませんか？</p>
             <div class="cta-buttons">
-                <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=ja" target="_blank" class="btn-cta btn-cta-primary">
+                <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=ja" target="_blank" class="btn-cta btn-cta-primary" rel="noopener noreferrer">
                     <i class="fas fa-calendar-alt"></i>
                     今すぐ予約する
                 </a>
@@ -699,24 +405,12 @@
                 <div class="footer-section">
                 <div class="footer-section">
                     <h4>体験メニュー</h4>
-                    <div class="experience-menu-columns">
-                        <div class="experience-column">
-                            <ul>
-                                <li><a href="#">弓道</a></li>
-                                <li><a href="#">居合道</a></li>
-                                <li><a href="#">剣道</a></li>
-                                <li><a href="#">空手</a></li>
-                            </ul>
-                        </div>
-                        <div class="experience-column">
-                            <ul>
-                                <li><a href="#">茶道</a></li>
-                                <li><a href="#">盆石</a></li>
-                                <li><a href="#">和太鼓</a></li>
-                                <li><a href="#">華道</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <ul>
+                        <li><a href="/ja/experiences/kyudo/">弓道</a></li>
+                        <li><a href="/ja/experiences/kendo/">剣道</a></li>
+                        <li><a href="/ja/experiences/chado/">茶道</a></li>
+                        <li><a href="/ja/experiences/samurai/">侍体験</a></li>
+                    </ul>
                 </div>
                 <div class="footer-section">
                     <h4>お問い合わせ情報</h4>
@@ -733,7 +427,6 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
         const navToggle = document.getElementById('nav-toggle');
         const navMenu = document.querySelector('.nav-menu');
 
@@ -743,7 +436,6 @@
             });
         }
 
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -761,7 +453,6 @@
             });
         });
 
-        // Navbar background change on scroll
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 100) {
@@ -774,5 +465,4 @@
         });
     </script>
 </body>
-</html>
 </html>
