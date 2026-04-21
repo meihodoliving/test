@@ -8,7 +8,7 @@
 /ja/experiences/
 ├── components.css          # 共通コンポーネントスタイル
 ├── kyudo/                  # 弓道ページ（基準デザイン）
-├── iaido/                  # 居合道ページ
+├── iaido/                  # 試し切りページ（URLは /iaido/）
 ├── kendo/                  # 剣道ページ
 ├── karate/                 # 空手ページ
 ├── bonseki/                # 盆石ページ
