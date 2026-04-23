@@ -13,9 +13,8 @@
     <link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/location/">
     <link rel="stylesheet" href="../../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="location-page-en">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -104,105 +103,16 @@
             </div>
             <div class="space-content">
                 <p class="space-description">
-                    Across our extensive grounds you’ll find many buildings suited to photography—a dojo, kyudo range, taiko plaza, tea room, jujitsu hall, waterfall area, drum tower, Sanmaidō hall, forest paths, and kamado cottages. Shoot outdoors or indoors for a look unlike a typical studio or urban location.<br>
+                    Across our extensive grounds you’ll find many buildings suited to photography.<br>
+                    A dojo, kyudo range, taiko plaza, tea room, jujitsu hall, waterfall area, drum tower, Sanmaidō hall, forest paths, and kamado cottages. Shoot outdoors or indoors for a look unlike a typical studio or urban location.<br>
                     <strong>Note: Changing rooms are available. The room assigned depends on group size and activity bookings.</strong>
                 </p>
-                <div class="facility-grid">
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-home"></i>
-                                <p>Dojo</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>Dojo</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-bullseye"></i>
-                                <p>Kyudo range</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>Kyudo range</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-music"></i>
-                                <p>Taiko plaza</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>Taiko plaza</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-leaf"></i>
-                                <p>Tea room</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>Tea room</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-fist-raised"></i>
-                                <p>Jujitsu hall</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>Jujitsu hall</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-water"></i>
-                                <p>Waterfall area</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>Waterfall area</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-tower-broadcast"></i>
-                                <p>Drum tower</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>Drum tower</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-tree"></i>
-                                <p>Forest path</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>Forest path</h3>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="pricing-section">
+    <section id="pricing" class="pricing-section location-pricing">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Rates</h2>
@@ -214,21 +124,39 @@
                         <table class="pricing-table">
                             <thead>
                                 <tr>
-                                    <th>Plan</th>
-                                    <th>Weekdays</th>
-                                    <th>Weekends &amp; holidays</th>
+                                    <th scope="col">Plan</th>
+                                    <th scope="col">Weekdays</th>
+                                    <th scope="col">Weekends &amp; holidays</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>6-hour plan (9:00–17:00)</td>
-                                    <td>¥9,000 per person</td>
-                                    <td>Groups of 1–4: ¥52,000<br>Each additional guest +¥11,000</td>
+                                    <td>6-hour plan (9:00~17:00)</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">Per person <span class="location-price-amount">¥9,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1–4 guests <span class="location-price-amount">¥52,000</span></p>
+                                            <p class="location-price-line location-price-line--add">Per additional guest <span class="location-price-amount">+¥11,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>8-hour plan (9:00–17:00)</td>
-                                    <td>¥11,000 per person</td>
-                                    <td>Groups of 1–4: ¥56,000<br>Each additional guest +¥12,000</td>
+                                    <td>8-hour plan (9:00~17:00)</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">Per person <span class="location-price-amount">¥11,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1–4 guests <span class="location-price-amount">¥56,000</span></p>
+                                            <p class="location-price-line location-price-line--add">Per additional guest <span class="location-price-amount">+¥12,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -240,26 +168,53 @@
                         <table class="pricing-table">
                             <thead>
                                 <tr>
-                                    <th>Plan</th>
-                                    <th>Weekdays</th>
-                                    <th>Weekends &amp; holidays</th>
+                                    <th scope="col">Plan</th>
+                                    <th scope="col">Weekdays</th>
+                                    <th scope="col">Weekends &amp; holidays</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>4-hour plan (9:00–17:00)</td>
-                                    <td>¥4,000 per person</td>
-                                    <td>Groups of 1–4: ¥28,000<br>Each additional guest +¥5,000</td>
+                                    <td>4-hour plan (9:00~17:00)</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">Per person <span class="location-price-amount">¥4,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1–4 guests <span class="location-price-amount">¥28,000</span></p>
+                                            <p class="location-price-line location-price-line--add">Per additional guest <span class="location-price-amount">+¥5,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>6-hour plan (9:00–17:00)</td>
-                                    <td>¥5,000 per person</td>
-                                    <td>Groups of 1–4: ¥32,000<br>Each additional guest +¥6,000</td>
+                                    <td>6-hour plan (9:00~17:00)</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">Per person <span class="location-price-amount">¥5,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1–4 guests <span class="location-price-amount">¥32,000</span></p>
+                                            <p class="location-price-line location-price-line--add">Per additional guest <span class="location-price-amount">+¥6,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>8-hour plan (9:00–17:00)</td>
-                                    <td>¥6,000 per person</td>
-                                    <td>Groups of 1–4: ¥36,000<br>Each additional guest +¥7,000</td>
+                                    <td>8-hour plan (9:00~17:00)</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">Per person <span class="location-price-amount">¥6,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1–4 guests <span class="location-price-amount">¥36,000</span></p>
+                                            <p class="location-price-line location-price-line--add">Per additional guest <span class="location-price-amount">+¥7,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -298,7 +253,7 @@
             </div>
             <div class="cancellation-content">
                 <p class="cancellation-text">
-                    <strong>Same day / no-show: 100% · Day before: 50%</strong><br>
+                    <strong>Same day / no-show: 100% · Day before: 50%</strong>
                     Repeated no-shows without notice may affect future bookings.
                 </p>
             </div>
@@ -312,10 +267,13 @@
                 <h2 class="section-title">Terms of use</h2>
             </div>
             <div class="terms-content">
-                <p class="terms-text">
-                    Before booking a photography session, please review the full terms of use. All visitors agree to follow facility guidelines and to respect the cultural significance of our spaces.
-                </p>
-                <a href="#" class="btn btn-secondary">View terms of use</a>
+                <div class="terms-text-block">
+                    <p class="terms-text">
+                        <span class="terms-text__line">Before booking a photography session, please review the full terms of use.</span>
+                        <span class="terms-text__line">All visitors agree to follow facility guidelines and to respect the cultural significance of our spaces.</span>
+                    </p>
+                </div>
+                <a href="terms.html" class="btn btn-primary">View terms of use</a>
             </div>
         </div>
     </section>
@@ -326,7 +284,7 @@
             <div class="booking-content">
                 <h2 class="booking-title">Book a photography session</h2>
                 <p class="booking-description">Capture the quiet beauty of traditional architecture and gardens tailored to your creative needs.</p>
-                <a href="../../index.html#contact" class="btn btn-primary">Contact us to book</a>
+                <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses/24346/calendars" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Contact us to book</a>
             </div>
         </div>
     </section>
@@ -347,7 +305,7 @@
                         <li><a href="#pricing">Rates</a></li>
                         <li><a href="#guidelines">Using the venue</a></li>
                         <li><a href="#cancellation">Cancellation policy</a></li>
-                        <li><a href="#terms">Terms of use</a></li>
+                        <li><a href="terms.html">Terms of use</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -378,22 +336,22 @@
         <!-- Language Buttons -->
         <div class="language-buttons">
             <button class="lang-btn" data-lang="jp">JP</button>
-            <a href="index.html" class="lang-btn" data-lang="en">EN</a>
+            <a href="../../en/location/index.html" class="lang-btn" data-lang="en">EN</a>
             <a href="/zh-tw/location/index.html" class="lang-btn" data-lang="zh-tw">繁</a>
             <a href="/zh-cn/location/index.html" class="lang-btn" data-lang="zh-cn">簡</a>
         </div>
     </div>
 
     <script>
+        // Mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
 
-        if (mobileMenuToggle && navMenu) {
-            mobileMenuToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-            });
-        }
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
 
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();

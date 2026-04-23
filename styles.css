@@ -18,6 +18,9 @@
     --border-color: #E8E4D9;       /* 薄い生成り - Light beige */
     --shadow: rgba(139, 115, 85, 0.08);
     --shadow-dark: rgba(139, 115, 85, 0.15);
+    /* 本文の読みやすい行長（サイト全体のテキストカラム） */
+    --prose-measure: 40rem;
+    --gutter-x: clamp(1.1rem, 3.5vw, 2.4rem);
     --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     --gradient-overlay: linear-gradient(rgba(44, 44, 44, 0.2), rgba(44, 44, 44, 0.4));
     --washi-texture: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><defs><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.1 0"/></filter></defs><rect width="100" height="100" filter="url(%23noise)" opacity="0.1"/></svg>');
@@ -42,9 +45,71 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: min(72rem, 100%);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 var(--gutter-x, clamp(1.1rem, 3.5vw, 2.4rem));
+}
+
+/* ----------------------------------------------------------------
+   サイト全体：本文 p の可読行長（ブロックを中央寄せ、本文は原則左揃え）
+   .section-header 内の見出し、ヒーロー、カード・価格表等は下でリセット
+   ---------------------------------------------------------------- */
+section:not(.hero) .container p:not(.section-subtitle),
+main .container p:not(.section-subtitle) {
+    max-width: var(--prose-measure, 40rem);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: start;
+}
+
+/* セクション小見出し等は従来どおり中央・独自の幅 */
+section:not(.hero) .container p.section-subtitle,
+main .container p.section-subtitle {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: auto;
+}
+
+/* 箇条書きブロック全体を本文カラム幅に揃える */
+section:not(.hero) .container .guidelines-content {
+    max-width: var(--prose-measure, 40rem);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: start;
+}
+
+/* 上記より具体的に指定（カード・表内の p は幅いっぱい） */
+section:not(.hero) .container .experience-card p,
+section:not(.hero) .container .experience-card-link p,
+section:not(.hero) .container .accommodation-card p,
+section:not(.hero) .container .wine-card p,
+section:not(.hero) .container .menu-card p,
+section:not(.hero) .container .pricing-card p,
+section:not(.hero) .container .menu-sections p,
+section:not(.hero) .container .menu-item p,
+section:not(.hero) .container .detail-card p,
+section:not(.hero) .container .type-card p,
+section:not(.hero) .container .info-item p,
+footer .container p,
+section:not(.hero) .container .pricing-content p,
+table p,
+th p,
+td p,
+section:not(.hero) .container p.cancellation-text,
+body.location-terms-page main .location-terms-block__body p,
+body.location-terms-page main .container p.location-terms-cta,
+.location-pricing p.location-price-line,
+.location-pricing p.location-price-line--add,
+.location-pricing .location-price-stack p {
+    max-width: none;
+    width: auto;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: inherit;
 }
 
 /* Navigation */
@@ -336,6 +401,20 @@ body {
     padding: 4rem 0;
     text-align: center;
     color: var(--white);
+}
+
+.cta-block--centered .cta-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-block--centered .cta-content .btn {
+    margin-top: 24px;
 }
 
 .cta-content h2 {
@@ -930,6 +1009,23 @@ section {
     z-index: 1;
 }
 
+/* 体験一覧：単体カード（例：滝行）を中央に配置 */
+.experiences--featured-single .experiences-grid {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+}
+
+.experiences--featured-single .experience-card {
+    width: min(62%, 760px);
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .experiences--featured-single .experience-card {
+        width: 100%;
+    }
+}
+
 .experience-card {
     background: var(--white);
     border-radius: 16px;
@@ -986,7 +1082,8 @@ section {
     transform: scale(1.02);
 }
 
-.card-content {
+/* 体験カード */
+.experience-card .card-content {
     padding: 1.5rem;
     position: relative;
     z-index: 2;
@@ -1002,14 +1099,14 @@ section {
     letter-spacing: 0.05em;
 }
 
-.card-content p {
+.experience-card .card-content p {
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 1rem;
     font-size: 0.9rem;
 }
 
-.card-button {
+.experience-card .card-button {
     background: var(--accent-color);
     color: var(--white);
     padding: 0.5rem 1rem;
@@ -1021,6 +1118,35 @@ section {
     display: inline-block;
     width: 100%;
     box-sizing: border-box;
+}
+
+/* トップページ（/index.html）の体験カードのみ：余白とボタン位置を統一 */
+body.home-index #experiences .experiences-grid {
+    align-items: stretch;
+}
+
+body.home-index #experiences .experience-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+body.home-index #experiences .experience-card .card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+body.home-index #experiences .experience-card .card-content h3 {
+    margin-bottom: 0.55rem; /* タイトル→本文を詰める */
+}
+
+body.home-index #experiences .experience-card .card-content p {
+    margin-bottom: 0.9rem; /* 本文→ボタンを軽く詰める */
+}
+
+body.home-index #experiences .experience-card .card-button {
+    margin-top: auto; /* ボタンを下揃え */
 }
 
 .experience-card:hover .card-button {
@@ -1046,6 +1172,73 @@ section {
     transition: 0.2s;
 }
 
+/* 体験一覧「武道体験」「文化体験」各4カード：高さ揃え・料金枠下揃え（#martial-arts / #cultural のみ） */
+#martial-arts .experiences-grid,
+#cultural .experiences-grid {
+    align-items: stretch;
+}
+
+#martial-arts a.experience-card.experience-card-link,
+#cultural a.experience-card.experience-card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+#martial-arts .experience-card .card-image,
+#cultural .experience-card .card-image {
+    flex: 0 0 auto;
+}
+
+#martial-arts .experience-card .card-content,
+#cultural .experience-card .card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 1.45rem 1.5rem 1.35rem;
+    text-align: center;
+}
+
+#martial-arts .card-content h3,
+#cultural .card-content h3 {
+    margin: 0 0 0.7rem 0;
+    flex: 0 0 auto;
+}
+
+#martial-arts .card-content p,
+#cultural .card-content p {
+    flex: 1 1 auto;
+    margin: 0;
+    min-height: 0;
+    width: 100%;
+    line-height: 1.66;
+    font-size: 0.9rem;
+    /* 本文と料金枠の間に最低限の空間（下揃え時も“呼吸感”を確保） */
+    padding-bottom: 1.15rem;
+}
+
+#martial-arts .experience-details,
+#cultural .experience-details {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
+    margin-bottom: 0;
+    /* 枠内は武道/文化カード専用にコンパクト化（全ページ共通の .experience-details 上書き） */
+    padding: 0.55rem 0.85rem 0.5rem;
+    gap: 0.35rem;
+    border-top: 1px solid rgba(139, 115, 85, 0.12);
+}
+
+#martial-arts .experience-details .detail-item,
+#cultural .experience-details .detail-item {
+    padding: 0.4rem 0;
+}
+
 /* Accommodations Section */
 .accommodations {
     background: var(--light-color);
@@ -1062,8 +1255,8 @@ section {
 .info-content {
     display: flex;
     justify-content: center;
-    gap: 4rem;
-    max-width: 800px;
+    gap: 3rem;
+    max-width: 960px;
     margin: 0 auto;
 }
 
@@ -1092,6 +1285,53 @@ section {
     color: var(--text-light);
     font-size: 0.95rem;
     line-height: 1.5;
+}
+
+/* 宿泊情報：チェックイン／アウトを2段表示（.accommodation-info のみ） */
+.info-item--check-times {
+    align-items: flex-start;
+}
+
+.info-item--check-times > i {
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+}
+
+.check-times {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0.2rem 0 0 0;
+    text-align: left;
+}
+
+.check-times p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    letter-spacing: 0.02em;
+}
+
+/* タイトル「チェックイン・チェックアウト」を1行化（幅は広め・字間微調整） */
+.info-item--check-times .info-text h3 {
+    font-size: 1.02rem;
+    letter-spacing: 0.04em;
+    line-height: 1.35;
+    white-space: nowrap;
+}
+
+/* 宿泊について：本文を1行化（CJK・PC。英語は文量のため自然折返し） */
+.info-item--stay-info .info-text p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    letter-spacing: 0.02em;
+}
+
+:lang(ja) .accommodation-info .info-item--stay-info .info-text p,
+:lang(zh-CN) .accommodation-info .info-item--stay-info .info-text p,
+:lang(zh-TW) .accommodation-info .info-item--stay-info .info-text p {
+    white-space: nowrap;
 }
 
 .accommodations::before {
@@ -1188,6 +1428,54 @@ section {
     letter-spacing: 0.05em;
 }
 
+/* 宿「宿泊」セクション：客室カード内「詳細を見る」下揃え（#accommodations の accommodation-card のみ） */
+#accommodations.accommodations .accommodations-grid {
+    align-items: stretch;
+}
+
+#accommodations.accommodations a.accommodation-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+    box-sizing: border-box;
+}
+
+#accommodations.accommodations .accommodation-card .card-image {
+    flex: 0 0 auto;
+}
+
+#accommodations.accommodations .accommodation-card .card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    box-sizing: border-box;
+}
+
+#accommodations.accommodations .accommodation-card .card-content h3 {
+    margin: 0 0 0.75rem 0;
+    flex: 0 0 auto;
+}
+
+#accommodations.accommodations .accommodation-card .card-content p {
+    flex: 1 1 auto;
+    /* 説明文と「詳細を見る」の間に一定の呼吸感（下揃えの margin-top: auto は維持） */
+    margin: 0 0 0.85rem 0;
+    min-height: 0;
+}
+
+#accommodations.accommodations .accommodation-card .card-button {
+    margin-top: auto;
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 0.6rem 1.15rem;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
 
 /* Contact Section */
 .contact {
@@ -1793,7 +2081,7 @@ section {
 .btn-text {
     color: #FFFFFF;
     font-family: 'Noto Serif JP', serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     writing-mode: vertical-rl;
     /* Keep CJK vertical, but prevent Latin words splitting per-character */
@@ -2074,12 +2362,23 @@ section {
     }
 
     .btn-text {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .lang-btn {
         font-size: 11px;
         padding: 3px 6px;
+    }
+
+    /* 極窄：チェックイン系タイトルは改行可 */
+    .info-item--check-times .info-text h3 {
+        white-space: normal;
+    }
+
+    :lang(ja) .accommodation-info .info-item--stay-info .info-text p,
+    :lang(zh-CN) .accommodation-info .info-item--stay-info .info-text p,
+    :lang(zh-TW) .accommodation-info .info-item--stay-info .info-text p {
+        white-space: normal;
     }
 }
 
@@ -4494,6 +4793,27 @@ section {
     background-attachment: fixed;
 }
 
+/* 「メニュー」メイン見出し（.menu-sections 直下の h2 ※従来 .menu-section h2 だけでは当たらない） */
+.menu-sections .container > h2 {
+    font-family: "Noto Serif JP", serif;
+    font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+    font-weight: 600;
+    color: var(--dark-color);
+    text-align: center;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    margin: 0 auto 2.25rem;
+    max-width: 100%;
+}
+
+@media (max-width: 600px) {
+    .menu-sections .container > h2 {
+        font-size: clamp(1.85rem, 5.2vw, 2.5rem);
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.06em;
+    }
+}
+
 .menu-section {
     margin-bottom: 4rem;
     padding: 3rem 0;
@@ -4705,6 +5025,11 @@ section {
     font-family: 'Noto Serif JP', serif;
 }
 
+/* リード文を省略した場合（見出しのみ）：下マージンを畳み、section の余白に任せる */
+.gallery-section .container > h2:last-child {
+    margin-bottom: 0;
+}
+
 .gallery-section p {
     font-size: 1.1rem;
     line-height: 1.8;
@@ -4714,6 +5039,25 @@ section {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* 料亭：アレルギー案内（.allergy-notice は各言語 /restaurant で共通） */
+.allergy-notice .notice-content h3 {
+    font-family: "Noto Serif JP", serif;
+    font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+    font-weight: 600;
+    color: var(--dark-color);
+    letter-spacing: 0.06em;
+    line-height: 1.45;
+    text-align: center;
+    margin: 0 0 1.35rem;
+}
+
+@media (max-width: 600px) {
+    .allergy-notice .notice-content h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1.1rem;
+    }
 }
 
 .photo-gallery {
@@ -5191,24 +5535,338 @@ section {
     }
 }
 
-/* アクセス案内ページ（/ja/access/） */
+/* アクセス案内ページ（/ja/access/）— 可読性・余白・上質感 */
 #access-guide.photography-gallery-intro {
     padding-top: 7rem;
-    padding-bottom: 3rem;
+    padding-bottom: 4.5rem;
+}
+
+#access-guide .section-header {
+    margin-bottom: clamp(2.5rem, 5vw, 3.25rem);
+}
+
+#access-guide .section-title {
+    margin-bottom: 1.25rem;
+}
+
+#access-guide .section-subtitle {
+    line-height: 1.9;
+    letter-spacing: 0.08em;
+    word-break: normal;
+    line-break: strict;
+    overflow-wrap: normal;
+    text-wrap: pretty;
 }
 
 .access-guide-hero {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 0.5rem;
 }
 
 .access-guide-caption {
     text-align: center;
-    max-width: 720px;
-    margin: 1.25rem auto 2rem;
+    max-width: 40rem;
+    margin: 1.75rem auto 2.75rem;
     color: var(--text-secondary);
-    line-height: 1.75;
+    line-height: 1.95;
+    letter-spacing: 0.04em;
+    font-size: 1.02rem;
+    word-break: normal;
+    line-break: strict;
+    overflow-wrap: normal;
+    text-wrap: pretty;
+}
+
+#access-guide .gallery-intro-content {
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0.5rem;
+}
+
+#access-guide .gallery-intro-content .gallery-description {
+    line-height: 1.95;
+    letter-spacing: 0.04em;
+    margin: 0 0 1.4rem;
+    color: var(--text-primary);
+    font-size: 1.02rem;
+    font-weight: 400;
+    word-break: normal;
+    line-break: strict;
+    overflow-wrap: normal;
+    text-wrap: pretty;
+}
+
+#access-guide .gallery-intro-content .gallery-description:last-of-type {
+    margin-bottom: 0;
+}
+
+/* アクセス案内：車・電車・飛行機カード */
+#access-travel-info.access,
+section#access-travel-info.access {
+    position: relative;
+    z-index: 1;
+    padding-top: 4.5rem;
+    padding-bottom: 4.75rem;
+}
+
+#access-travel-info .section-header {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.35rem;
+    max-width: 42rem;
+}
+
+#access-travel-info .section-header .section-title {
+    margin-bottom: 1.15rem;
+}
+
+#access-travel-info .section-header .section-subtitle {
+    line-height: 1.9;
+    letter-spacing: 0.08em;
+    max-width: 36rem;
+    word-break: normal;
+    line-break: strict;
+    overflow-wrap: normal;
+    text-wrap: pretty;
+}
+
+#access-travel-info .access-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    gap: clamp(1.25rem, 3.2vw, 1.65rem);
+    margin: 0 auto;
+    padding: 0;
+}
+
+#access-travel-info .access-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0; /* 汎用 .access-item の gap と icon の margin を二重にしない */
+    width: 100%;
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 1.7rem clamp(1.25rem, 3.5vw, 2rem) 1.9rem;
+    text-align: center;
+    align-self: center;
+    box-sizing: border-box;
+    background: var(--light-color);
+    border: 1px solid rgba(139, 115, 85, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 6px 32px rgba(47, 79, 79, 0.06);
+    margin-bottom: 0;
+    transition: box-shadow 0.35s ease, transform 0.35s ease, border-color 0.3s ease;
+}
+
+#access-travel-info .access-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(47, 79, 79, 0.1);
+    border-color: rgba(139, 115, 85, 0.16);
+}
+
+#access-travel-info .access-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 0.95rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+#access-travel-info .access-icon i {
+    font-size: 1.15rem;
+}
+
+#access-travel-info .access-text {
+    text-align: center;
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 0 0.15rem;
+}
+
+#access-travel-info .access-text h4 {
+    text-align: center;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.22rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.07em;
+    color: var(--dark-color);
+    margin: 0 0 0.65rem 0;
+    word-break: normal;
+    line-break: strict;
+    overflow-wrap: normal;
+}
+
+/* 路線1行=1ブロック。br 廃止時は .access-body 内の p が対象 */
+#access-travel-info .access-text .access-body {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#access-travel-info .access-text .access-body p {
+    text-align: center;
+    margin: 0 0 0.42em;
+    padding: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.95;
+    letter-spacing: 0.045em;
+    word-break: normal;
+    line-break: strict;
+    overflow-wrap: normal;
+}
+
+#access-travel-info .access-text .access-body p:last-child {
+    margin-bottom: 0;
+}
+
+#access-travel-info .access-text .access-body p.access-line--note {
+    margin-top: 0.55em;
+    margin-bottom: 0;
+}
+
+/* サブタイトル・本文の禁則付きフレーズ（「す。」「分」単独改行の防止） */
+#access-guide .section-subtitle .access-phrase-nowrap,
+#access-travel-info .section-header .section-subtitle .access-phrase-nowrap,
+#access-map-section .section-header .section-subtitle .access-phrase-nowrap {
+    white-space: nowrap;
+}
+
+#access-travel-info .access-text .access-body--merged p {
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    line-break: strict;
+}
+
+#access-travel-info .access-text .access-body--merged p .access-phrase-nowrap {
+    white-space: nowrap;
+    display: inline;
+}
+
+#access-travel-info .access-text .access-body--merged p .access-line--note {
+    display: block;
+    margin-top: 0.55em;
+    margin-bottom: 0;
+}
+
+@media (max-width: 360px) {
+    #access-guide .section-subtitle .access-phrase-nowrap,
+    #access-travel-info .section-header .section-subtitle .access-phrase-nowrap,
+    #access-map-section .section-header .section-subtitle .access-phrase-nowrap,
+    #access-travel-info .access-text .access-body--merged p .access-phrase-nowrap {
+        white-space: normal;
+    }
+}
+
+#access-travel-info .access-item:last-child {
+    margin-bottom: 0;
+}
+
+/* 地図ブロック前後の息抜き */
+#access-map-section .section-header {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.75rem;
+    max-width: 42rem;
+}
+
+#access-map-section .map-container {
+    margin-bottom: 1.9rem;
+}
+
+#access-map-section .section-header .section-subtitle {
+    line-height: 1.88;
+    letter-spacing: 0.07em;
+    word-break: normal;
+    line-break: strict;
+    overflow-wrap: normal;
+    text-wrap: pretty;
+}
+
+/* アクセスページ画像（259.jpg）— アクセス案内セクション直下 */
+#access-travel-info .access-photo--travel {
+    max-width: 52rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.25rem;
+    margin-bottom: 2.1rem;
+    text-align: center;
+}
+
+#access-travel-info .access-photo--travel img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 18px;
+    box-shadow: 0 10px 32px rgba(47, 79, 79, 0.08);
+    object-fit: contain;
+}
+
+@media (max-width: 640px) {
+    #access-guide.photography-gallery-intro {
+        padding-top: 6.25rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .access-guide-caption {
+        margin: 1.4rem auto 2.1rem;
+        line-height: 1.9;
+    }
+
+    #access-travel-info.access,
+    section#access-travel-info.access {
+        padding-top: 3.4rem;
+        padding-bottom: 3.6rem;
+    }
+
+    #access-travel-info .section-header {
+        margin-bottom: 1.9rem;
+    }
+
+    #access-travel-info .access-details {
+        gap: 1.1rem;
+    }
+
+    #access-travel-info .access-item {
+        padding: 1.5rem 1.25rem 1.7rem;
+    }
+
+    #access-travel-info .access-text h4 {
+        font-size: 1.12rem;
+        margin-bottom: 0.6rem;
+    }
+
+    #access-travel-info .access-text .access-body p {
+        font-size: 0.9rem;
+        line-height: 1.95;
+    }
+
+    #access-travel-info .access-icon {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 0.8rem;
+    }
+
+    #access-travel-info .access-photo--travel {
+        margin-top: 1.05rem;
+        margin-bottom: 1.7rem;
+        max-width: 100%;
+    }
 }
 
 /* 施設紹介 (/ja/about/ など) */
@@ -5237,19 +5895,44 @@ section {
 }
 
 .about-lead-block {
-    text-align: center;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
     margin-bottom: 4.5rem;
+    line-height: 1.9;
+    letter-spacing: 0.05em;
 }
 
 .about-lead-block p {
     font-size: 1.05rem;
-    line-height: 2.1;
+    line-height: 1.9;
     color: var(--text-primary);
-    margin-bottom: 1.75rem;
+    margin-bottom: 24px;
 }
 
 .about-lead-block p:last-child {
     margin-bottom: 0;
+}
+
+.about-map-section {
+    padding-top: 0.5rem;
+    padding-bottom: 3.5rem;
+}
+
+.about-map-figure {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.about-map-image {
+    width: min(100%, 900px);
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    border: 1px solid rgba(139, 115, 85, 0.12);
+    box-shadow: 0 12px 40px rgba(139, 115, 85, 0.06);
 }
 
 .facility-showcase {
@@ -5360,6 +6043,632 @@ section {
 
     .facility-block__text {
         text-align: left;
+    }
+}
+
+/* 撮影施設 /location/ 料金表（.pricing-content の max-width:600px を上書き） */
+.pricing-section.location-pricing {
+    position: relative;
+    padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+    background: var(--light-color);
+}
+
+.location-pricing .section-header {
+    margin-bottom: 2.5rem;
+}
+
+.location-pricing .pricing-content {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+    padding-left: 0;
+    padding-right: min(5.5rem, 14vw);
+    box-sizing: border-box;
+}
+
+.location-pricing .pricing-table-container {
+    background: var(--white);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 48px var(--shadow-dark);
+    padding: clamp(1.6rem, 2.5vw, 2.4rem) clamp(1.25rem, 2.2vw, 2.25rem) clamp(1.4rem, 2vw, 1.9rem);
+}
+
+.location-pricing .pricing-subtitle {
+    font-family: "Noto Serif JP", serif;
+    font-size: 1.32rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    text-align: center;
+    margin: 0 0 1.4rem 0;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid rgba(139, 115, 85, 0.2);
+    letter-spacing: 0.05em;
+    line-height: 1.45;
+}
+
+.location-pricing .table-wrapper {
+    margin: 0;
+    border-radius: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-gutter: stable;
+}
+
+.location-pricing .pricing-table {
+    width: 100%;
+    min-width: 32rem;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+}
+
+.location-pricing .pricing-table thead th {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 1.05rem 0.7rem 1.15rem;
+    vertical-align: bottom;
+    line-height: 1.35;
+    background: linear-gradient(180deg, rgba(139, 115, 85, 0.1) 0%, rgba(139, 115, 85, 0.03) 100%);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.location-pricing .pricing-table thead th:first-child {
+    text-align: left;
+    padding-left: 0.2rem;
+}
+
+.location-pricing .pricing-table th:nth-child(1) {
+    width: 40%;
+}
+
+.location-pricing .pricing-table th:nth-child(2) {
+    width: 26%;
+}
+
+.location-pricing .pricing-table th:nth-child(3) {
+    width: 34%;
+}
+
+.location-pricing .pricing-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.2s ease;
+}
+
+.location-pricing .pricing-table tbody tr:hover {
+    background: rgba(139, 115, 85, 0.04);
+}
+
+.location-pricing .pricing-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.location-pricing .pricing-table td {
+    padding: 1.15rem 0.6rem;
+    vertical-align: middle;
+}
+
+.location-pricing .pricing-table td:first-child {
+    font-weight: 500;
+    color: var(--dark-color);
+    line-height: 1.65;
+    padding-left: 0.15rem;
+    padding-right: 0.5rem;
+}
+
+.location-pricing .pricing-table td:nth-child(2),
+.location-pricing .pricing-table td:nth-child(3) {
+    text-align: center;
+}
+
+.location-pricing .location-price-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 18rem;
+    margin: 0 auto;
+}
+
+.location-pricing .location-price-line {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    text-align: center;
+}
+
+.location-pricing .location-price-line--add {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    width: 100%;
+    max-width: 16rem;
+    margin: 0;
+    padding-top: 0.4rem;
+    border-top: 1px dashed rgba(139, 115, 85, 0.3);
+    letter-spacing: 0.02em;
+}
+
+.location-pricing .location-price-amount {
+    font-family: "Inter", "Noto Sans JP", sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.location-pricing .pricing-note {
+    margin: 1.1rem 0 0 0;
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+    .location-pricing .pricing-content {
+        padding-right: min(3.5rem, 8vw);
+    }
+
+    .location-pricing .pricing-table thead th {
+        font-size: 0.72rem;
+    }
+
+    .location-pricing .location-price-amount {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 720px) {
+    .location-pricing .location-price-line,
+    .location-pricing .location-price-line--add {
+        font-size: 0.86rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .location-pricing .table-wrapper {
+        margin-left: -0.2rem;
+        margin-right: -0.2rem;
+        border-radius: 0;
+    }
+
+    .location-pricing .pricing-table {
+        min-width: 32rem;
+    }
+}
+
+/* 撮影利用 /ja/ & /en/ & /zh-tw/ & /zh-cn/location/ 料金案内：カードを中央配置（非対称 padding の補正） */
+body.location-page-ja .location-pricing .pricing-content,
+body.location-page-en .location-pricing .pricing-content,
+body.location-page-zh-tw .location-pricing .pricing-content,
+body.location-page-zh-cn .location-pricing .pricing-content {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(0.75rem, 2.8vw, 2rem);
+    padding-right: clamp(0.75rem, 2.8vw, 2rem);
+    max-width: min(60rem, 100%);
+}
+
+body.location-page-ja .location-pricing .pricing-table-container,
+body.location-page-en .location-pricing .pricing-table-container,
+body.location-page-zh-tw .location-pricing .pricing-table-container,
+body.location-page-zh-cn .location-pricing .pricing-table-container {
+    width: 100%;
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+    body.location-page-ja .location-pricing .pricing-content,
+    body.location-page-en .location-pricing .pricing-content,
+    body.location-page-zh-tw .location-pricing .pricing-content,
+    body.location-page-zh-cn .location-pricing .pricing-content {
+        padding-left: min(1.25rem, 4vw);
+        padding-right: min(1.25rem, 4vw);
+    }
+}
+
+@media (max-width: 600px) {
+    body.location-page-ja .location-pricing .pricing-table-container,
+    body.location-page-en .location-pricing .pricing-table-container,
+    body.location-page-zh-tw .location-pricing .pricing-table-container,
+    body.location-page-zh-cn .location-pricing .pricing-table-container {
+        max-width: 100%;
+    }
+}
+
+/* 撮影利用 /ja/ & /en/ & /zh-tw/ & /zh-cn/ — 利用規約文・CTA */
+body.location-page-ja #terms .terms-content,
+body.location-page-en #terms .terms-content,
+body.location-page-zh-tw #terms .terms-content,
+body.location-page-zh-cn #terms .terms-content,
+body.location-page-ja #booking .booking-content,
+body.location-page-en #booking .booking-content,
+body.location-page-zh-tw #booking .booking-content,
+body.location-page-zh-cn #booking .booking-content {
+    max-width: 42rem;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+}
+
+/* 利用規約リード：1段落・読み行幅・行間（丁寧な案内のトーン） */
+body.location-page-ja #terms .terms-content,
+body.location-page-en #terms .terms-content,
+body.location-page-zh-tw #terms .terms-content,
+body.location-page-zh-cn #terms .terms-content {
+    gap: 1.75rem;
+}
+
+body.location-page-ja #terms .terms-text-block,
+body.location-page-en #terms .terms-text-block,
+body.location-page-zh-tw #terms .terms-text-block,
+body.location-page-zh-cn #terms .terms-text-block {
+    width: 100%;
+    max-width: 36rem;
+    margin: 0 auto;
+}
+
+body.location-page-ja #terms .terms-text,
+body.location-page-en #terms .terms-text,
+body.location-page-zh-tw #terms .terms-text,
+body.location-page-zh-cn #terms .terms-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+    width: 100%;
+    margin: 0;
+    padding: 0.35rem 0.25rem 0.15rem;
+    box-sizing: border-box;
+    line-height: 2.02;
+    font-size: 1.04rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    text-align: center;
+    letter-spacing: 0.04em;
+}
+
+body.location-page-ja #terms .terms-text__line,
+body.location-page-en #terms .terms-text__line,
+body.location-page-zh-tw #terms .terms-text__line,
+body.location-page-zh-cn #terms .terms-text__line {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+body.location-page-ja #booking .booking-description,
+body.location-page-en #booking .booking-description,
+body.location-page-zh-tw #booking .booking-description,
+body.location-page-zh-cn #booking .booking-description {
+    margin: 0;
+    line-height: 1.9;
+    text-align: center;
+    max-width: 100%;
+}
+
+body.location-page-ja #booking .booking-title,
+body.location-page-en #booking .booking-title,
+body.location-page-zh-tw #booking .booking-title,
+body.location-page-zh-cn #booking .booking-title {
+    margin: 0;
+    text-align: center;
+    line-height: 1.45;
+}
+
+body.location-page-ja #terms .btn.btn-primary,
+body.location-page-en #terms .btn.btn-primary,
+body.location-page-zh-tw #terms .btn.btn-primary,
+body.location-page-zh-cn #terms .btn.btn-primary,
+body.location-page-ja #booking .btn.btn-primary,
+body.location-page-en #booking .btn.btn-primary,
+body.location-page-zh-tw #booking .btn.btn-primary,
+body.location-page-zh-cn #booking .btn.btn-primary {
+    flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+    body.location-page-ja #terms .terms-content,
+    body.location-page-en #terms .terms-content,
+    body.location-page-zh-tw #terms .terms-content,
+    body.location-page-zh-cn #terms .terms-content,
+    body.location-page-ja #booking .booking-content,
+    body.location-page-en #booking .booking-content,
+    body.location-page-zh-tw #booking .booking-content,
+    body.location-page-zh-cn #booking .booking-content {
+        gap: 1.3rem;
+        max-width: 100%;
+    }
+
+    body.location-page-ja #terms .terms-content,
+    body.location-page-en #terms .terms-content,
+    body.location-page-zh-tw #terms .terms-content,
+    body.location-page-zh-cn #terms .terms-content {
+        gap: 1.4rem;
+    }
+
+    body.location-page-ja #terms .terms-text,
+    body.location-page-en #terms .terms-text,
+    body.location-page-zh-tw #terms .terms-text,
+    body.location-page-zh-cn #terms .terms-text {
+        font-size: 1.02rem;
+        line-height: 1.95;
+        padding: 0.25rem 0.15rem 0;
+        gap: 0.95rem;
+        letter-spacing: 0.035em;
+    }
+}
+
+/* 撮影利用 /ja/ & /en/ & /zh-tw/ & /zh-cn/ — キャンセル規定 */
+body.location-page-ja #cancellation .cancellation-content,
+body.location-page-en #cancellation .cancellation-content,
+body.location-page-zh-tw #cancellation .cancellation-content,
+body.location-page-zh-cn #cancellation .cancellation-content {
+    max-width: 40rem;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 0.5rem 0.5rem;
+    text-align: center;
+}
+
+body.location-page-ja #cancellation .cancellation-text,
+body.location-page-en #cancellation .cancellation-text,
+body.location-page-zh-tw #cancellation .cancellation-text,
+body.location-page-zh-cn #cancellation .cancellation-text {
+    margin: 0;
+    line-height: 1.9;
+    text-align: center;
+    letter-spacing: 0.02em;
+    padding: 0.5rem 0.75rem 0.75rem;
+    box-sizing: border-box;
+}
+
+body.location-page-ja #cancellation .cancellation-text strong,
+body.location-page-en #cancellation .cancellation-text strong,
+body.location-page-zh-tw #cancellation .cancellation-text strong,
+body.location-page-zh-cn #cancellation .cancellation-text strong {
+    display: block;
+    margin: 0 auto 0.9rem;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    body.location-page-ja #cancellation .cancellation-content,
+    body.location-page-en #cancellation .cancellation-content,
+    body.location-page-zh-tw #cancellation .cancellation-content,
+    body.location-page-zh-cn #cancellation .cancellation-content {
+        max-width: 100%;
+        padding: 0 0.25rem 0.25rem;
+    }
+
+    body.location-page-ja #cancellation .cancellation-text,
+    body.location-page-en #cancellation .cancellation-text,
+    body.location-page-zh-tw #cancellation .cancellation-text,
+    body.location-page-zh-cn #cancellation .cancellation-text {
+        padding: 0.4rem 0.5rem 0.65rem;
+        line-height: 1.88;
+    }
+
+    body.location-page-ja #cancellation .cancellation-text strong,
+    body.location-page-en #cancellation .cancellation-text strong,
+    body.location-page-zh-tw #cancellation .cancellation-text strong,
+    body.location-page-zh-cn #cancellation .cancellation-text strong {
+        margin-bottom: 0.75rem;
+    }
+}
+
+/* 撮影利用規約ページ（/ja/location/terms.html、body.location-terms-page） */
+body.location-terms-page .about-page-title {
+    margin-bottom: 1.25rem;
+}
+
+body.location-terms-page .location-terms-back {
+    max-width: 720px;
+    margin: 0 auto 1.25rem;
+    text-align: left;
+}
+
+body.location-terms-page .location-terms-back__link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.25s ease;
+}
+
+body.location-terms-page .location-terms-back__link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+body.location-terms-page .location-terms-updated {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+    margin: 0 auto 2.75rem;
+    max-width: 40rem;
+}
+
+body.location-terms-page .location-terms-doc {
+    max-width: 720px;
+    margin: 0 auto 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+body.location-terms-page .location-terms-block {
+    padding: 2.5rem 2.25rem;
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid rgba(139, 115, 85, 0.12);
+    box-shadow: 0 12px 40px rgba(139, 115, 85, 0.06);
+}
+
+body.location-terms-page .location-terms-block__title {
+    font-family: "Noto Serif JP", serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.35rem);
+    font-weight: 700;
+    color: var(--dark-color);
+    margin: 0 0 1.35rem 0;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 0 0.35rem 1rem;
+    border-left: 4px solid var(--accent-color);
+    text-align: left;
+}
+
+body.location-terms-page .location-terms-block__body {
+    text-align: left;
+}
+
+body.location-terms-page .location-terms-block__body > p {
+    font-size: 1.02rem;
+    line-height: 1.95;
+    color: var(--text-primary);
+    margin: 0 0 1.1rem 0;
+    letter-spacing: 0.04em;
+}
+
+body.location-terms-page .location-terms-block__body > p:last-child {
+    margin-bottom: 0;
+}
+
+body.location-terms-page .location-terms-list {
+    margin: 0;
+    padding: 0 0 0 1.4rem;
+    list-style: disc;
+}
+
+body.location-terms-page .location-terms-list li {
+    font-size: 1.02rem;
+    line-height: 1.9;
+    color: var(--text-primary);
+    margin-bottom: 0.7rem;
+    padding-left: 0.2rem;
+    letter-spacing: 0.04em;
+}
+
+body.location-terms-page .location-terms-list li:last-child {
+    margin-bottom: 0;
+}
+
+body.location-terms-page .location-terms-block--contact .location-terms-block__body > p {
+    margin-bottom: 1.25rem;
+}
+
+body.location-terms-page .location-terms-contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+body.location-terms-page .location-terms-contact li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem 1.25rem;
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+body.location-terms-page .location-terms-contact__label {
+    flex: 0 0 3.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    letter-spacing: 0.05em;
+}
+
+body.location-terms-page .location-terms-contact__value {
+    flex: 1 1 12rem;
+    min-width: 0;
+    word-break: break-word;
+}
+
+body.location-terms-page .location-terms-contact a.location-terms-contact__value {
+    color: var(--primary-color);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    transition: color 0.2s ease;
+}
+
+body.location-terms-page .location-terms-contact a.location-terms-contact__value:hover {
+    color: var(--accent-color);
+}
+
+body.location-terms-page .location-terms-cta {
+    text-align: center;
+    margin: 0 0 1rem;
+    padding: 0 0.5rem;
+}
+
+@media (max-width: 768px) {
+    body.location-terms-page .location-terms-block {
+        padding: 1.75rem 1.25rem;
+    }
+
+    body.location-terms-page .location-terms-doc {
+        gap: 1.5rem;
+    }
+
+    body.location-terms-page .location-terms-updated {
+        margin-bottom: 2.25rem;
+    }
+
+    body.location-terms-page .location-terms-contact li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    body.location-terms-page .location-terms-contact__label {
+        flex-basis: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    body.location-terms-page .location-terms-block {
+        padding: 1.5rem 1.1rem;
+        border-radius: 12px;
+    }
+
+    body.location-terms-page .location-terms-block__title {
+        padding-left: 0.85rem;
+    }
+
+    body.location-terms-page .location-terms-list {
+        padding-left: 1.2rem;
     }
 }
 

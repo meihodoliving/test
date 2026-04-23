@@ -58,7 +58,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero" style="background-image: url('/images/1114.jpg');">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">
@@ -95,7 +95,7 @@
                     </div>
                     <div class="card-content">
                         <h3>迎賓館</h3>
-                        <p>特別なお客様をお迎えする格式高い客室で、最高級の日本旅館体験をお楽しみください。</p>
+                        <p>特別なお客様をお迎えする上質な空間で、ゆったりとした特別な滞在時間をお楽しみください。</p>
                         <div class="card-button">詳細を見る</div>
                     </div>
                 </a>
@@ -105,7 +105,7 @@
                     </div>
                     <div class="card-content">
                         <h3>鴻臚館</h3>
-                        <p>古来より伝わる格式高い空間で、日本の伝統文化を深く感じていただけます。</p>
+                        <p>落ち着いた上質な空間で、ゆったりと心安らぐ滞在をお楽しみいただけます。</p>
                         <div class="card-button">詳細を見る</div>
                     </div>
                 </a>
@@ -147,15 +147,18 @@
     <section class="accommodation-info">
         <div class="container">
             <div class="info-content">
-                <div class="info-item">
-                    <i class="fas fa-clock"></i>
+                <div class="info-item info-item--check-times">
+                    <i class="fas fa-clock" aria-hidden="true"></i>
                     <div class="info-text">
                         <h3>チェックイン・チェックアウト</h3>
-                        <p>チェックイン 15:00〜／チェックアウト 10:00</p>
+                        <div class="check-times" role="group" aria-label="チェックイン・チェックアウト">
+                            <p>チェックイン：15:00〜</p>
+                            <p>チェックアウト：10:00</p>
+                        </div>
                     </div>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-home"></i>
+                <div class="info-item info-item--stay-info">
+                    <i class="fas fa-home" aria-hidden="true"></i>
                     <div class="info-text">
                         <h3>宿泊について</h3>
                         <p>全棟一棟貸し。ご予約・お問い合わせはフォームまたはお電話にて。</p>
