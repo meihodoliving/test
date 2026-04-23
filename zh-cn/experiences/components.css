@@ -157,6 +157,11 @@
     font-size: 1.1rem;
     line-height: 2;
     color: var(--text-primary);
+    margin-bottom: 1.1rem;
+}
+
+/* 连续段落：段距略收，最后一段保留下边距 */
+.detail-text p:last-of-type {
     margin-bottom: 2rem;
 }
 

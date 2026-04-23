@@ -157,6 +157,11 @@
     font-size: 1.1rem;
     line-height: 2;
     color: var(--text-primary);
+    margin-bottom: 1.1rem;
+}
+
+/* 連続する段落：段間を抑え、最後の行は従来どおり下余白 */
+.detail-text p:last-of-type {
     margin-bottom: 2rem;
 }
 

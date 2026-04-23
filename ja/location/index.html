@@ -6,9 +6,8 @@
     <title>撮影利用 - 鳴鳳堂</title>
     <link rel="stylesheet" href="../../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="location-page-ja">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -83,7 +82,7 @@
             </div>
             <div class="gallery-intro-content">
                 <p class="gallery-description">
-                    鳴鳳堂では、コスプレを中心に様々な撮影での利用ができる場所として施設貸出を行なっております。担当者は元コスプレイヤー及び、元スタジオカメラマンです。お客様ごとに、様々なご相談・ご要望に寄り添ってご案内させていただきますので、安心してご利用ください。
+                    鳴鳳堂では、コスプレを中心に様々な撮影での利用ができる場所として施設貸出を行なっております。担当者は元スタジオカメラマンです。お客様ごとに、様々なご相談・ご要望に寄り添ってご案内させていただきますので、安心してご利用ください。
                 </p>
             </div>
         </div>
@@ -101,102 +100,12 @@
                     武道場・弓道場・大太鼓広場・お茶室、柔術堂・お滝場・鼓楼・三昧同・森の道・釜戸屋。野外での撮影はもちろん、室内でも撮影ができるため、通常のロケ撮影やスタジオ撮影とは違った撮影が可能です。<br>
                     <strong>注意：更衣室完備。人数や体験の予約状況によってご用意するお部屋が異なります。</strong>
                 </p>
-                <div class="facility-grid">
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-home"></i>
-                                <p>武道場</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>武道場</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-bullseye"></i>
-                                <p>弓道場</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>弓道場</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-music"></i>
-                                <p>大太鼓広場</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>大太鼓広場</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-leaf"></i>
-                                <p>お茶室</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>お茶室</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-fist-raised"></i>
-                                <p>柔術堂</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>柔術堂</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-water"></i>
-                                <p>お滝場</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>お滝場</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-tower-broadcast"></i>
-                                <p>鼓楼</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>鼓楼</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-tree"></i>
-                                <p>森の道</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>森の道</h3>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="pricing-section">
+    <section id="pricing" class="pricing-section location-pricing">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">料金案内</h2>
@@ -208,21 +117,39 @@
                         <table class="pricing-table">
                             <thead>
                                 <tr>
-                                    <th>プラン</th>
-                                    <th>平日</th>
-                                    <th>土日祝</th>
+                                    <th scope="col">プラン</th>
+                                    <th scope="col">平日</th>
+                                    <th scope="col">土日祝</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>6時間プラン (9:00~17:00)</td>
-                                    <td>お一人様 ¥9,000</td>
-                                    <td>1〜4名様 ¥52,000<br>追加1名様につき +¥11,000</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">お一人様 <span class="location-price-amount">¥9,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1〜4名様 <span class="location-price-amount">¥52,000</span></p>
+                                            <p class="location-price-line location-price-line--add">追加1名様につき <span class="location-price-amount">+¥11,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>8時間プラン (9:00~17:00)</td>
-                                    <td>お一人様 ¥11,000</td>
-                                    <td>1〜4名様 ¥56,000<br>追加1名様につき +¥12,000</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">お一人様 <span class="location-price-amount">¥11,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1〜4名様 <span class="location-price-amount">¥56,000</span></p>
+                                            <p class="location-price-line location-price-line--add">追加1名様につき <span class="location-price-amount">+¥12,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -234,26 +161,53 @@
                         <table class="pricing-table">
                             <thead>
                                 <tr>
-                                    <th>プラン</th>
-                                    <th>平日</th>
-                                    <th>土日祝</th>
+                                    <th scope="col">プラン</th>
+                                    <th scope="col">平日</th>
+                                    <th scope="col">土日祝</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>4時間プラン (9:00~17:00)</td>
-                                    <td>お一人様 ¥4,000</td>
-                                    <td>1〜4名様 ¥28,000<br>追加1名様につき +¥5,000</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">お一人様 <span class="location-price-amount">¥4,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1〜4名様 <span class="location-price-amount">¥28,000</span></p>
+                                            <p class="location-price-line location-price-line--add">追加1名様につき <span class="location-price-amount">+¥5,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>6時間プラン (9:00~17:00)</td>
-                                    <td>お一人様 ¥5,000</td>
-                                    <td>1〜4名様 ¥32,000<br>追加1名様につき +¥6,000</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">お一人様 <span class="location-price-amount">¥5,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1〜4名様 <span class="location-price-amount">¥32,000</span></p>
+                                            <p class="location-price-line location-price-line--add">追加1名様につき <span class="location-price-amount">+¥6,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>8時間プラン (9:00~17:00)</td>
-                                    <td>お一人様 ¥6,000</td>
-                                    <td>1〜4名様 ¥36,000<br>追加1名様につき +¥7,000</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">お一人様 <span class="location-price-amount">¥6,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1〜4名様 <span class="location-price-amount">¥36,000</span></p>
+                                            <p class="location-price-line location-price-line--add">追加1名様につき <span class="location-price-amount">+¥7,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -292,7 +246,7 @@
             </div>
             <div class="cancellation-content">
                 <p class="cancellation-text">
-                    <strong>当日/無断：１００％　前日：５０％</strong><br>
+                    <strong>当日/無断：１００％　前日：５０％</strong>
                     予告無く無断でキャンセルされた場合は次回以降のご利用をご遠慮頂く場合がございます。
                 </p>
             </div>
@@ -306,10 +260,13 @@
                 <h2 class="section-title">利用規約</h2>
             </div>
             <div class="terms-content">
-                <p class="terms-text">
-                    撮影セッションを予約する前に、完全な利用規約をご確認ください。すべての利用者は、施設ガイドラインに従い、私たちの空間の文化的意義を尊重することに同意する必要があります。
-                </p>
-                <a href="#" class="btn btn-secondary">利用規約を表示</a>
+                <div class="terms-text-block">
+                    <p class="terms-text">
+                        <span class="terms-text__line">撮影をご予約前に、利用規約を必ずご確認ください。</span>
+                        <span class="terms-text__line">ご利用にあたっては、施設ガイドラインをお守りいただき、空間の文化的価値にご配慮くださいますようお願いいたします。</span>
+                    </p>
+                </div>
+                <a href="terms.html" class="btn btn-primary">利用規約を表示</a>
             </div>
         </div>
     </section>
@@ -318,9 +275,9 @@
     <section id="booking" class="booking-cta">
         <div class="container">
             <div class="booking-content">
-                <h2 class="booking-title">撮影セッションを予約</h2>
-                <p class="booking-description">伝統的な日本建築と庭園の独特な美しさを撮影ニーズで体験してください。</p>
-                <a href="../../index.html#contact" class="btn btn-primary">今すぐ予約</a>
+                <h2 class="booking-title">撮影利用を予約</h2>
+                <p class="booking-description">伝統的な日本建築と庭園が織りなす趣ある空間で、特別な撮影体験をお楽しみください。</p>
+                <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses/24346/calendars" class="btn btn-primary" target="_blank" rel="noopener noreferrer">今すぐ予約</a>
             </div>
         </div>
     </section>
@@ -334,7 +291,6 @@
                     <p>阿蘇の火山地帯で、本格的な日本の心を体験してください。</p>
                 </div>
                 <div class="footer-section">
-                <div class="footer-section">
                     <h4>撮影利用</h4>
                     <ul>
                         <li><a href="#gallery-intro">撮影エリア・ギャラリー</a></li>
@@ -342,7 +298,7 @@
                         <li><a href="#pricing">料金案内</a></li>
                         <li><a href="#guidelines">施設ご利用にあたって</a></li>
                         <li><a href="#cancellation">キャンセル規定</a></li>
-                        <li><a href="#terms">利用規約</a></li>
+                        <li><a href="terms.html">利用規約</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

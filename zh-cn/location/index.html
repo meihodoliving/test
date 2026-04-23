@@ -6,9 +6,8 @@
     <title>场地拍摄｜鸣凤堂</title>
     <link rel="stylesheet" href="../../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="location-page-zh-cn">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -101,102 +100,12 @@
                     道场、弓道场、大鼓广场、茶室、柔术馆、瀑布修行处、鼓楼、三昧堂、林间小径与釜户屋等。既可户外取景，亦可室内拍摄，能带来与普通外景棚拍不同的体验。<br>
                     <strong>请注意：内设更衣室；实际使用的房间会因人数及体验活动预约状况而异。</strong>
                 </p>
-                <div class="facility-grid">
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-home"></i>
-                                <p>武道场</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>武道场</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-bullseye"></i>
-                                <p>弓道场</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>弓道场</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-music"></i>
-                                <p>大鼓广场</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>大鼓广场</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-leaf"></i>
-                                <p>茶室</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>茶室</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-fist-raised"></i>
-                                <p>柔术馆</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>柔术馆</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-water"></i>
-                                <p>瀑布修行处</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>瀑布修行处</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-tower-broadcast"></i>
-                                <p>鼓楼</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>鼓楼</h3>
-                        </div>
-                    </div>
-                    <div class="facility-card">
-                        <div class="facility-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-tree"></i>
-                                <p>林间小径</p>
-                            </div>
-                        </div>
-                        <div class="facility-content">
-                            <h3>林间小径</h3>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="pricing-section">
+    <section id="pricing" class="pricing-section location-pricing">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">费用说明</h2>
@@ -208,21 +117,39 @@
                         <table class="pricing-table">
                             <thead>
                                 <tr>
-                                    <th>方案</th>
-                                    <th>平日</th>
-                                    <th>周末与法定节假日</th>
+                                    <th scope="col">方案</th>
+                                    <th scope="col">平日</th>
+                                    <th scope="col">周末与法定节假日</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>6小时方案（9:00～17:00）</td>
-                                    <td>每位 ¥9,000</td>
-                                    <td>1～4位 ¥52,000<br>每增加1位 +¥11,000</td>
+                                    <td>6小时方案 (9:00~17:00)</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">每位 <span class="location-price-amount">¥9,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1～4位 <span class="location-price-amount">¥52,000</span></p>
+                                            <p class="location-price-line location-price-line--add">每增加1位 <span class="location-price-amount">+¥11,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>8小时方案（9:00～17:00）</td>
-                                    <td>每位 ¥11,000</td>
-                                    <td>1～4位 ¥56,000<br>每增加1位 +¥12,000</td>
+                                    <td>8小时方案 (9:00~17:00)</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">每位 <span class="location-price-amount">¥11,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1～4位 <span class="location-price-amount">¥56,000</span></p>
+                                            <p class="location-price-line location-price-line--add">每增加1位 <span class="location-price-amount">+¥12,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -234,26 +161,53 @@
                         <table class="pricing-table">
                             <thead>
                                 <tr>
-                                    <th>方案</th>
-                                    <th>平日</th>
-                                    <th>周末与法定节假日</th>
+                                    <th scope="col">方案</th>
+                                    <th scope="col">平日</th>
+                                    <th scope="col">周末与法定节假日</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>4小时方案（9:00～17:00）</td>
-                                    <td>每位 ¥4,000</td>
-                                    <td>1～4位 ¥28,000<br>每增加1位 +¥5,000</td>
+                                    <td>4小时方案 (9:00~17:00)</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">每位 <span class="location-price-amount">¥4,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1～4位 <span class="location-price-amount">¥28,000</span></p>
+                                            <p class="location-price-line location-price-line--add">每增加1位 <span class="location-price-amount">+¥5,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>6小时方案（9:00～17:00）</td>
-                                    <td>每位 ¥5,000</td>
-                                    <td>1～4位 ¥32,000<br>每增加1位 +¥6,000</td>
+                                    <td>6小时方案 (9:00~17:00)</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">每位 <span class="location-price-amount">¥5,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1～4位 <span class="location-price-amount">¥32,000</span></p>
+                                            <p class="location-price-line location-price-line--add">每增加1位 <span class="location-price-amount">+¥6,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>8小时方案（9:00～17:00）</td>
-                                    <td>每位 ¥6,000</td>
-                                    <td>1～4位 ¥36,000<br>每增加1位 +¥7,000</td>
+                                    <td>8小时方案 (9:00~17:00)</td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">每位 <span class="location-price-amount">¥6,000</span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="location-price-stack">
+                                            <p class="location-price-line">1～4位 <span class="location-price-amount">¥36,000</span></p>
+                                            <p class="location-price-line location-price-line--add">每增加1位 <span class="location-price-amount">+¥7,000</span></p>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -292,7 +246,7 @@
             </div>
             <div class="cancellation-content">
                 <p class="cancellation-text">
-                    <strong>当日／未联系取消：100％　前一日：50％</strong><br>
+                    <strong>当日／未联系取消：100％　前一日：50％</strong>
                     若未事先告知擅自取消，日后使用可能受限。
                 </p>
             </div>
@@ -306,10 +260,13 @@
                 <h2 class="section-title">使用条款</h2>
             </div>
             <div class="terms-content">
-                <p class="terms-text">
-                    预约拍摄前请完整阅读使用条款。所有使用者须遵守设施指引，并同意尊重本空间的文化意义。
-                </p>
-                <a href="#" class="btn btn-secondary">查看使用条款</a>
+                <div class="terms-text-block">
+                    <p class="terms-text">
+                        <span class="terms-text__line">预约拍摄前请完整阅读使用条款。</span>
+                        <span class="terms-text__line">所有使用者须遵守设施指引，并同意尊重本空间的文化意义。</span>
+                    </p>
+                </div>
+                <a href="terms.html" class="btn btn-primary">查看使用条款</a>
             </div>
         </div>
     </section>
@@ -320,7 +277,7 @@
             <div class="booking-content">
                 <h2 class="booking-title">预约拍摄时段</h2>
                 <p class="booking-description">在传统日式建筑与庭园中，满足您的拍摄想象。</p>
-                <a href="/zh-cn/index.html#contact" class="btn btn-primary">立即预约</a>
+                <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses/24346/calendars" class="btn btn-primary" target="_blank" rel="noopener noreferrer">立即预约</a>
             </div>
         </div>
     </section>
@@ -341,7 +298,7 @@
                         <li><a href="#pricing">费用说明</a></li>
                         <li><a href="#guidelines">使用须知</a></li>
                         <li><a href="#cancellation">取消规定</a></li>
-                        <li><a href="#terms">使用条款</a></li>
+                        <li><a href="terms.html">使用条款</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -383,11 +340,9 @@
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
 
-        if (mobileMenuToggle && navMenu) {
-            mobileMenuToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-            });
-        }
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

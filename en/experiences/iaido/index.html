@@ -214,6 +214,19 @@
                 text-align: left;
             }
         }
+
+        /* EN tameshigiri: match JA line length & rhythm (this page only) */
+        .experience-hero .experience-subtitle {
+            max-width: min(42rem, 92vw);
+        }
+        .detail-text p {
+            max-width: 38rem;
+        }
+        @media (max-width: 768px) {
+            .detail-text p {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -271,7 +284,7 @@
             <nav class="breadcrumb-list">
                 <a href="/">Home</a>
                 <span class="breadcrumb-separator">></span>
-                <a href="../">Experiences</a>
+                <a href="/en/experiences/">Experiences</a>
                 <span class="breadcrumb-separator">></span>
                 <span>Tameshigiri</span>
             </nav>
@@ -295,10 +308,12 @@
             <div class="detail-grid">
                 <div class="detail-text">
                     <h2>Tameshigiri</h2>
-                    <p>This session introduces essential sword forms—etiquette, drawing, sheathing, and foundational kata—with patient instruction. Beginners work at a comfortable pace, developing focus, posture, and breath while connecting with classical budo.</p>
+                    <p>This tameshigiri experience uses a real Japanese sword to cut rolled tatami.</p>
+                    <p>With guidance on correct posture and how to use your strength, you can feel the weight and edge of the blade for yourself.</p>
+                    <p>Enjoy a powerful budo experience built on focus and the beauty of each cut.</p>
                 </div>
                 <div class="detail-image">
-                    <img src="/public/images/experience/iaido.jpg" alt="Tameshigiri experience at Meihodo" loading="lazy">
+                    <img src="/public/images/experience/06.png" alt="Tameshigiri experience at Meihodo" loading="lazy">
                 </div>
             </div>
         </div>
@@ -406,7 +421,6 @@
                     <h3>鳴鳳堂</h3>
                     <p>Experience an authentic Japanese spirit in Aso’s volcanic highlands.</p>
                 </div>
-                <div class="footer-section">
                 <div class="footer-section">
                     <h4>Experiences</h4>
                     <ul>
