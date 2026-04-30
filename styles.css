@@ -803,6 +803,15 @@ body.location-terms-page main .container p.location-terms-cta,
     padding-bottom: 60px;
 }
 
+.hero .hero-content {
+    text-align: center;
+}
+
+.hero .hero-title-sub {
+    display: block;
+    line-height: 1.75;
+}
+
 .hero-image {
     position: absolute;
     top: 0;
@@ -1146,6 +1155,36 @@ body.home-index #experiences .experience-card .card-content p {
 }
 
 body.home-index #experiences .experience-card .card-button {
+    margin-top: auto; /* ボタンを下揃え */
+}
+
+/* Traditional Chinese top page (/zh-tw/index.html): align experience card buttons */
+body.home-zh-tw #experiences .experiences-grid {
+    align-items: stretch;
+}
+
+body.home-zh-tw #experiences .experience-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+body.home-zh-tw #experiences .experience-card .card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+body.home-zh-tw #experiences .experience-card .card-content p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    min-height: 4.8em; /* 3 lines at line-height: 1.6 */
+}
+
+body.home-zh-tw #experiences .experience-card .card-button {
     margin-top: auto; /* ボタンを下揃え */
 }
 
@@ -1781,6 +1820,138 @@ body.home-index #experiences .experience-card .card-button {
     overflow: hidden;
 }
 
+/* EN top page: make philosophy section more compact */
+body.home-en .philosophy {
+    padding-top: 92px;
+    padding-bottom: 92px;
+}
+
+body.home-en .philosophy-content {
+    gap: 64px;
+}
+
+body.home-en .catchphrase-container {
+    gap: 18px;
+}
+
+body.home-en .catchphrase-line {
+    line-height: 1.28;
+}
+
+body.home-en .main-text-content {
+    padding: 44px 42px;
+}
+
+body.home-en .main-text-content p {
+    line-height: 2.0;
+    margin-bottom: 20px;
+}
+
+body.home-en .main-text-content p:first-child {
+    margin-bottom: 26px;
+    line-height: 1.6;
+}
+
+/* Traditional Chinese top page: philosophy catchphrase hierarchy & readability */
+body.home-zh-tw .philosophy {
+    padding-top: 110px;
+    padding-bottom: 110px;
+}
+
+body.home-zh-tw .philosophy-content {
+    gap: 72px;
+}
+
+body.home-zh-tw .catchphrase-section {
+    padding-block: 0.75rem;
+}
+
+body.home-zh-tw .catchphrase-container {
+    gap: 1.4em;
+    max-width: 100%;
+    align-items: stretch;
+    justify-content: center;
+    padding: 1.1rem 0.75rem 1.35rem;
+}
+
+/* TC catchphrase: one phrase = one line, unified size, emphasis via spacing only (no size variation) */
+body.home-zh-tw .philosophy .catchphrase-line {
+    font-size: 2.05rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1.78;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+    word-break: keep-all;
+    line-break: strict;
+}
+
+body.home-zh-tw .main-text-content {
+    padding: 56px 48px;
+}
+
+body.home-zh-tw .main-text-content p {
+    text-align: left;
+    line-height: 2.15;
+    letter-spacing: 0.06em;
+    margin-bottom: 1.35em;
+    text-justify: none;
+}
+
+body.home-zh-tw .main-text-content p:first-child {
+    line-height: 1.9;
+    margin-bottom: 1.5em;
+    text-align: left;
+}
+
+body.home-zh-tw .main-text-content p:last-child {
+    margin-bottom: 0;
+    font-style: normal;
+    color: #3d3d3d;
+    font-weight: 400;
+}
+
+/* Traditional Chinese homepage: section titles — breathing room, readable subtitles, spacing to cards */
+body.home-zh-tw .section-header {
+    margin-bottom: 7.75rem;
+}
+
+body.home-zh-tw .section-title {
+    font-size: 3.18rem;
+    letter-spacing: 0.085em;
+    margin-bottom: 2.35rem;
+}
+
+body.home-zh-tw .section-subtitle {
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    line-height: 1.72;
+}
+
+/* EN top page: align experience card buttons */
+body.home-en #experiences .experiences-grid {
+    align-items: stretch;
+}
+
+body.home-en #experiences .experience-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+body.home-en #experiences .experience-card .card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+body.home-en #experiences .experience-card .card-button {
+    margin-top: auto;
+}
+
 .philosophy::before {
     content: '';
     position: absolute;
@@ -1963,6 +2134,10 @@ body.home-index #experiences .experience-card .card-button {
     .main-text-content p:first-child {
         font-size: 1.3rem;
     }
+
+    body.home-zh-tw .philosophy .catchphrase-line {
+        font-size: 1.8rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1982,6 +2157,10 @@ body.home-index #experiences .experience-card .card-button {
     
     .catchphrase-line {
         font-size: 1.8rem;
+    }
+
+    body.home-zh-tw .philosophy .catchphrase-line {
+        font-size: 1.55rem;
     }
     
     .main-text-content {
@@ -2021,6 +2200,10 @@ body.home-index #experiences .experience-card .card-button {
     
     .catchphrase-line {
         font-size: 1.6rem;
+    }
+
+    body.home-zh-tw .philosophy .catchphrase-line {
+        font-size: 1.28rem;
     }
     
     .main-text-content {
@@ -2297,6 +2480,20 @@ body.home-index #experiences .experience-card .card-button {
         font-size: 2.2rem;
     }
 
+    body.home-zh-tw .section-title {
+        font-size: 2.36rem;
+        margin-bottom: 2rem;
+    }
+
+    body.home-zh-tw .section-header {
+        margin-bottom: 6.75rem;
+    }
+
+    body.home-zh-tw .section-subtitle {
+        line-height: 1.7;
+        padding: 0 0.35rem;
+    }
+
     .experiences-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.2rem;
@@ -2339,6 +2536,15 @@ body.home-index #experiences .experience-card .card-button {
 
     .section-title {
         font-size: 1.5rem;
+    }
+
+    body.home-zh-tw .section-title {
+        font-size: 1.62rem;
+        margin-bottom: 1.65rem;
+    }
+
+    body.home-zh-tw .section-header {
+        margin-bottom: 5.5rem;
     }
 
     .features {
@@ -2646,6 +2852,20 @@ body.home-index #experiences .experience-card .card-button {
     color: var(--text-primary);
     font-size: 0.9rem;
     line-height: 1.5;
+    text-align: center;
+}
+
+/* 体験一覧（/ja/experiences/）：括弧注記を2行目に見せる */
+.info-item p .info-main {
+    display: block;
+}
+
+.info-item p .info-note {
+    display: block;
+    margin-top: 0.22em;
+    line-height: 1.35;
+    color: var(--text-secondary);
+    white-space: nowrap;
 }
 
 .notice-box {
@@ -3403,6 +3623,44 @@ body.home-index #experiences .experience-card .card-button {
 
 .restaurant .btn {
     margin-top: 1.5rem;
+}
+
+/* Traditional Chinese homepage: restaurant “道地會席料理” block — full vertical axis centered */
+body.home-zh-tw #restaurant .restaurant-description {
+    text-align: center;
+}
+
+body.home-zh-tw #restaurant .restaurant-description h3 {
+    text-align: center;
+}
+
+body.home-zh-tw #restaurant .restaurant-description p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.home-zh-tw #restaurant .restaurant-features {
+    justify-items: stretch;
+    row-gap: 1rem;
+    column-gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+body.home-zh-tw #restaurant .restaurant-features .feature-item {
+    justify-content: center;
+    text-align: center;
+}
+
+body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.75rem;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Responsive adjustments for restaurant section */
@@ -5601,6 +5859,11 @@ body.home-index #experiences .experience-card .card-button {
 
 #access-guide .gallery-intro-content .gallery-description:last-of-type {
     margin-bottom: 0;
+}
+
+#access-guide .gallery-intro-content .access-contact-cta {
+    display: block;
+    margin-top: 0.35rem;
 }
 
 /* アクセス案内：車・電車・飛行機カード */
