@@ -7037,3 +7037,101 @@ body.location-terms-page .location-terms-cta {
     }
 }
 
+/* ============================================================
+   Design System: consistent links, buttons, hover & touch states
+   Removes browser-default blue and unifies interaction across pages.
+   ============================================================ */
+
+a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:visited {
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+footer a,
+.footer a,
+.footer-section a {
+    color: rgba(255, 255, 255, 0.78);
+    text-decoration: none;
+    transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+footer a:hover,
+.footer a:hover,
+.footer-section a:hover {
+    color: var(--accent-color);
+}
+
+.btn,
+.book-now,
+.experience-card .card-button,
+.accommodation-card .card-button,
+.lang-btn,
+.experience-btn,
+.nav-cta {
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                background 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease;
+    will-change: transform;
+}
+
+.btn-primary:hover,
+.book-now:hover,
+.experience-card:hover .card-button,
+.accommodation-card:hover .card-button {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(212, 175, 55, 0.38);
+    background: #C19B2E;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(255, 255, 255, 0.22);
+}
+
+.btn:active,
+.book-now:active,
+.experience-card:active .card-button,
+.accommodation-card:active .card-button,
+.lang-btn:active,
+.nav-cta:active {
+    transform: translateY(0) scale(0.97);
+    transition-duration: 0.08s;
+}
+
+@media (hover: none) {
+    .btn:active,
+    .book-now:active,
+    .experience-card:active .card-button,
+    .accommodation-card:active .card-button {
+        background: #C19B2E;
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.28);
+    }
+}
+
