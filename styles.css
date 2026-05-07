@@ -2216,7 +2216,7 @@ body.home-en #experiences .experience-card .card-button {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    z-index: 1000;
+    z-index: 3000;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -2227,6 +2227,20 @@ body.home-en #experiences .experience-card .card-button {
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+/* EN pages: fixed vertical buttons — spacing + size so text never overflows */
+html[lang="en"] .fixed-buttons {
+    gap: 26px;
+}
+
+html[lang="en"] .main-buttons {
+    gap: 22px;
+}
+
+html[lang="en"] .vertical-btn {
+    width: 1.2cm;  /* a touch wider for long EN labels */
+    height: 150px; /* taller so “Book an Experience” stays inside */
 }
 
 .vertical-btn {
@@ -2565,6 +2579,12 @@ body.home-en #experiences .experience-card .card-button {
     .vertical-btn {
         width: 0.8cm; /* モバイルでは少し小さく */
         height: 100px;
+    }
+
+    /* EN pages: keep mobile vertical buttons tall enough for long labels */
+    html[lang="en"] .vertical-btn {
+        width: 0.95cm;
+        height: 124px;
     }
 
     .btn-text {
