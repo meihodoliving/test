@@ -1,4 +1,7 @@
 {
+  "framework": null,
+  "buildCommand": "echo 'static site - no build'",
+  "installCommand": "echo 'static site - no install'",
   "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false
