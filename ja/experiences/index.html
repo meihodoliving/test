@@ -15,15 +15,15 @@
             <div class="header-nav">
                 <div class="nav-left">
                     <a href="../../index.html" class="nav-link">
-                        <img src="/images/Home.png" alt="ホーム" class="nav-icon">
+                        <img src="/images/Home.webp" alt="ホーム" class="nav-icon">
                         <span>ホーム</span>
                     </a>
                     <a href="index.html" class="nav-link">
-                        <img src="/images/taiken.png" alt="体験" class="nav-icon" loading="lazy">
+                        <img src="/images/taiken.webp" alt="体験" class="nav-icon" loading="lazy">
                         <span>体験</span>
                     </a>
                     <a href="../accommodations/" class="nav-link">
-                        <img src="/images/tatemono.png" alt="宿泊" class="nav-icon">
+                        <img src="/images/tatemono.webp" alt="宿泊" class="nav-icon">
                         <span>宿泊</span>
                     </a>
                 </div>
@@ -35,19 +35,28 @@
                 </div>
                 <div class="nav-right">
                     <a href="../restaurant/" class="nav-link">
-                        <img src="/images/syokuzi.png" alt="食事" class="nav-icon">
+                        <img src="/images/syokuzi.webp" alt="食事" class="nav-icon">
                         <span>食事</span>
                     </a>
                     <a href="../location/" class="nav-link">
-                        <img src="/images/kamera.png" alt="撮影利用" class="nav-icon">
+                        <img src="/images/kamera.webp" alt="撮影利用" class="nav-icon">
                         <span>撮影利用</span>
                     </a>
                     <a href="/ja/access/" class="nav-link">
-                        <img src="/images/tizu.png" alt="アクセス" class="nav-icon">
+                        <img src="/images/tizu.webp" alt="アクセス" class="nav-icon">
                         <span>アクセス</span>
                     </a>
                 </div>
+            </div>            <!-- Language Switcher -->
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-btn" id="lang-btn" aria-label="Change language" aria-expanded="false" aria-haspopup="true">
+                    <span class="lang-current" id="lang-current">JP</span>
+                    <svg class="lang-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <ul class="lang-dropdown" id="lang-dropdown" role="menu">
+                </ul>
             </div>
+
             <input type="checkbox" id="nav-toggle" class="nav-toggle">
             <label for="nav-toggle" class="hamburger">
                 <span class="bar"></span>
@@ -58,7 +67,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero" style="background-image: url('/images/yorei.png');">
+    <section id="home" class="hero" style="background-image: url('/images/yorei.webp');">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">
@@ -93,7 +102,7 @@
             </div>
             <a href="/ja/experiences/samurai/" class="samurai-featured samurai-featured-link" target="_self" aria-label="侍体験の詳細ページへ">
                 <div class="samurai-image-container">
-                    <img src="/public/images/experience/samurai.jpg" alt="侍体験プログラム イメージ" class="samurai-featured-image" loading="lazy">
+                    <img src="/public/images/experience/samurai.webp" alt="侍体験プログラム イメージ" class="samurai-featured-image" loading="lazy">
                 </div>
                 <div class="samurai-content">
                     <h3>侍体験プログラム</h3>
@@ -124,7 +133,7 @@
             <div class="experiences-grid">
                 <a href="http://127.0.0.1:5501/ja/experiences/kyudo/" class="experience-card experience-card-link" target="_self">
                     <div class="card-image">
-                        <img src="/public/images/experience/kyudo.jpg" alt="弓道体験 イメージ" loading="lazy">
+                        <img src="/public/images/experience/kyudo.webp" alt="弓道体験 イメージ" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>弓道</h3>
@@ -143,7 +152,7 @@
                 </a>
                 <a href="http://127.0.0.1:5501/ja/experiences/iaido/" class="experience-card experience-card-link" target="_self" aria-label="試し切りの詳細ページへ">
                     <div class="card-image">
-                        <img src="/public/images/experience/06.png" alt="試し切り体験 イメージ" loading="lazy">
+                        <img src="/public/images/experience/06.webp" alt="試し切り体験 イメージ" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>試し切り</h3>
@@ -162,7 +171,7 @@
                 </a>
                 <a href="http://127.0.0.1:5501/ja/experiences/karate/" class="experience-card experience-card-link" target="_self" aria-label="空手の詳細ページへ">
                     <div class="card-image">
-                        <img src="/public/images/experience/karate.jpg" alt="空手体験 イメージ" loading="lazy">
+                        <img src="/public/images/experience/karate.webp" alt="空手体験 イメージ" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>空手</h3>
@@ -181,7 +190,7 @@
                 </a>
                 <a href="http://127.0.0.1:5501/ja/experiences/kendo/" class="experience-card experience-card-link" target="_self" aria-label="剣道の詳細ページへ">
                     <div class="card-image">
-                        <img src="/public/images/experience/kendo.jpg" alt="剣道体験 イメージ" loading="lazy">
+                        <img src="/public/images/experience/kendo.webp" alt="剣道体験 イメージ" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>剣道</h3>
@@ -212,7 +221,7 @@
             <div class="experiences-grid">
                 <a href="http://127.0.0.1:5501/ja/experiences/chado/" class="experience-card experience-card-link" target="_self" aria-label="茶道の詳細ページへ">
                     <div class="card-image">
-                        <img src="/public/images/experience/sadou.jpg" alt="茶道体験 イメージ" loading="lazy" width="400" height="200">
+                        <img src="/public/images/experience/sadou.webp" alt="茶道体験 イメージ" loading="lazy" width="400" height="200">
                     </div>
                     <div class="card-content">
                         <h3>茶道</h3>
@@ -231,7 +240,7 @@
                 </a>
                 <a href="http://127.0.0.1:5501/ja/experiences/taiko/" class="experience-card experience-card-link" target="_self" aria-label="和太鼓の詳細ページへ">
                     <div class="card-image">
-                        <img src="/public/images/experience/taiko.jpg" alt="和太鼓体験 イメージ" loading="lazy" width="400" height="200">
+                        <img src="/public/images/experience/taiko.webp" alt="和太鼓体験 イメージ" loading="lazy" width="400" height="200">
                     </div>
                     <div class="card-content">
                         <h3>和太鼓</h3>
@@ -250,7 +259,7 @@
                 </a>
                 <a href="http://127.0.0.1:5501/ja/experiences/kado/" class="experience-card experience-card-link" target="_self" aria-label="華道の詳細ページへ">
                     <div class="card-image">
-                        <img src="/public/images/experience/kadou.jpg" alt="華道体験 イメージ" loading="lazy" width="400" height="200">
+                        <img src="/public/images/experience/kadou.webp" alt="華道体験 イメージ" loading="lazy" width="400" height="200">
                     </div>
                     <div class="card-content">
                         <h3>華道</h3>
@@ -269,7 +278,7 @@
                 </a>
                 <a href="http://127.0.0.1:5501/ja/experiences/bonseki/" class="experience-card experience-card-link" target="_self" aria-label="盆石の詳細ページへ">
                     <div class="card-image">
-                        <img src="/public/images/experience/bonseki.jpg" alt="盆石体験 イメージ" loading="lazy" width="400" height="200">
+                        <img src="/public/images/experience/bonseki.webp" alt="盆石体験 イメージ" loading="lazy" width="400" height="200">
                     </div>
                     <div class="card-content">
                         <h3>盆石</h3>
@@ -300,7 +309,7 @@
             <div class="experiences-grid">
                 <a href="/ja/experiences/takigyo/" class="experience-card experience-card-link" target="_self" aria-label="滝行の詳細ページへ">
                     <div class="card-image">
-                        <img src="/images/takigyo/01.png" alt="滝行体験 イメージ" loading="lazy" width="400" height="200">
+                        <img src="/images/takigyo/01.webp" alt="滝行体験 イメージ" loading="lazy" width="400" height="200">
                     </div>
                     <div class="card-content">
                         <h3>滝行</h3>
@@ -490,5 +499,6 @@
         });
 
     </script>
+    <script src="/lang-switcher.js" defer></script>
 </body>
 </html>

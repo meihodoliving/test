@@ -227,15 +227,15 @@
             <div class="header-nav">
                 <div class="nav-left">
                     <a href="/index.html" class="nav-link">
-                        <img src="/images/Home.png" alt="ホーム" class="nav-icon">
+                        <img src="/images/Home.webp" alt="ホーム" class="nav-icon">
                         <span>ホーム</span>
                     </a>
                     <a href="../" class="nav-link active">
-                        <img src="/images/taiken.png" alt="体験" class="nav-icon" loading="lazy">
+                        <img src="/images/taiken.webp" alt="体験" class="nav-icon" loading="lazy">
                         <span>体験</span>
                     </a>
                     <a href="../../accommodations/" class="nav-link">
-                        <img src="/images/tatemono.png" alt="宿泊" class="nav-icon">
+                        <img src="/images/tatemono.webp" alt="宿泊" class="nav-icon">
                         <span>宿泊</span>
                     </a>
                 </div>
@@ -247,19 +247,28 @@
                 </div>
                 <div class="nav-right">
                     <a href="../../restaurant/" class="nav-link">
-                        <img src="/images/syokuzi.png" alt="食事" class="nav-icon">
+                        <img src="/images/syokuzi.webp" alt="食事" class="nav-icon">
                         <span>食事</span>
                     </a>
                     <a href="../../location/" class="nav-link">
-                        <img src="/images/kamera.png" alt="撮影利用" class="nav-icon">
+                        <img src="/images/kamera.webp" alt="撮影利用" class="nav-icon">
                         <span>撮影利用</span>
                     </a>
                     <a href="/zh-tw/access/" class="nav-link">
-                        <img src="/images/tizu.png" alt="アクセス" class="nav-icon">
+                        <img src="/images/tizu.webp" alt="アクセス" class="nav-icon">
                         <span>アクセス</span>
                     </a>
                 </div>
+            </div>            <!-- Language Switcher -->
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-btn" id="lang-btn" aria-label="Change language" aria-expanded="false" aria-haspopup="true">
+                    <span class="lang-current" id="lang-current">JP</span>
+                    <svg class="lang-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <ul class="lang-dropdown" id="lang-dropdown" role="menu">
+                </ul>
             </div>
+
             <input type="checkbox" id="nav-toggle" class="nav-toggle">
             <label for="nav-toggle" class="hamburger">
                 <span class="bar"></span>
@@ -302,7 +311,7 @@
                     <p>鳴鳳堂的侍體驗以江戶時代武士的修練為藍本，邀請您參與約兩個半小時、涵養心性的旅程。您將體驗劍術、茶道、弓道，以及氣勢懾人的太鼓演奏，感受武士在日常修練中琢磨的技藝與心境，並深刻體會日本歷史的厚度與成就感。</p>
                 </div>
                 <div class="detail-image">
-                    <img src="/public/images/experience/samurai.jpg" alt="侍體驗 - 鳴鳳堂" loading="lazy">
+                    <img src="/public/images/experience/samurai.webp" alt="侍體驗 - 鳴鳳堂" loading="lazy">
                 </div>
             </div>
         </div>
@@ -464,5 +473,6 @@
             }
         });
     </script>
+    <script src="/lang-switcher.js" defer></script>
 </body>
 </html>

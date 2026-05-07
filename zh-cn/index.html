@@ -24,15 +24,15 @@
             <div class="header-nav">
                 <div class="nav-left">
                     <a href="/zh-cn/index.html" class="nav-link">
-                        <img src="/images/Home.png" alt="首页" class="nav-icon">
+                        <img src="/images/Home.webp" alt="首页" class="nav-icon">
                         <span>首页</span>
                     </a>
                     <a href="/zh-cn/experiences/" class="nav-link">
-                        <img src="/images/taiken.png" alt="体验" class="nav-icon" loading="lazy">
+                        <img src="/images/taiken.webp" alt="体验" class="nav-icon" loading="lazy">
                         <span>体验</span>
                     </a>
                     <a href="/zh-cn/accommodations/" class="nav-link">
-                        <img src="/images/tatemono.png" alt="住宿" class="nav-icon">
+                        <img src="/images/tatemono.webp" alt="住宿" class="nav-icon">
                         <span>住宿</span>
                     </a>
                 </div>
@@ -44,19 +44,28 @@
                 </div>
                 <div class="nav-right">
                     <a href="/zh-cn/restaurant/" class="nav-link">
-                        <img src="/images/syokuzi.png" alt="餐饮" class="nav-icon">
+                        <img src="/images/syokuzi.webp" alt="餐饮" class="nav-icon">
                         <span>餐饮</span>
                     </a>
                     <a href="/zh-cn/location/" class="nav-link">
-                        <img src="/images/kamera.png" alt="拍摄与场地" class="nav-icon">
+                        <img src="/images/kamera.webp" alt="拍摄与场地" class="nav-icon">
                         <span>拍摄与场地</span>
                     </a>
                     <a href="/zh-cn/access/" class="nav-link">
-                        <img src="/images/tizu.png" alt="交通指南" class="nav-icon">
+                        <img src="/images/tizu.webp" alt="交通指南" class="nav-icon">
                         <span>交通指南</span>
                     </a>
                 </div>
+            </div>            <!-- Language Switcher -->
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-btn" id="lang-btn" aria-label="Change language" aria-expanded="false" aria-haspopup="true">
+                    <span class="lang-current" id="lang-current">JP</span>
+                    <svg class="lang-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <ul class="lang-dropdown" id="lang-dropdown" role="menu">
+                </ul>
             </div>
+
             <input type="checkbox" id="nav-toggle" class="nav-toggle">
             <label for="nav-toggle" class="hamburger">
                 <span class="bar"></span>
@@ -68,7 +77,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <img src="/public/images/top/top.JPG" alt="鸣凤堂 主视觉" class="hero-image">
+        <img src="/public/images/top/top.webp" alt="鸣凤堂 主视觉" class="hero-image">
         <div class="hero-overlay"></div>
         <a href="#experiences" class="scroll-indicator">
             <div class="scroll-arrow"></div>
@@ -109,7 +118,7 @@
             <div class="experiences-grid">
                 <a href="/zh-cn/experiences/kyudo/" class="experience-card">
                     <div class="card-image">
-                        <img src="/public/images/experience/kyudo.jpg" alt="弓道体验——日本传统武道" loading="lazy" srcset="/public/images/experience/kyudo-480.jpg 480w, /public/images/experience/kyudo-768.jpg 768w, /public/images/experience/kyudo-1200.jpg 1200w, /public/images/experience/kyudo.jpg 1600w" sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1200px) 1200px, 1600px">
+                        <img src="/public/images/experience/kyudo.webp" alt="弓道体验——日本传统武道" loading="lazy" srcset="/public/images/experience/kyudo-480.jpg 480w, /public/images/experience/kyudo-768.jpg 768w, /public/images/experience/kyudo-1200.jpg 1200w, /public/images/experience/kyudo.webp 1600w" sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1200px) 1200px, 1600px">
                     </div>
                     <div class="card-content">
                         <h3>弓道</h3>
@@ -119,7 +128,7 @@
                 </a>
                 <a href="/zh-cn/experiences/iaido/" class="experience-card">
                     <div class="card-image">
-                        <img src="/public/images/experience/06.png" alt="试斩体验——日本刀的拔刀术" loading="lazy">
+                        <img src="/public/images/experience/06.webp" alt="试斩体验——日本刀的拔刀术" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>试斩</h3>
@@ -129,7 +138,7 @@
                 </a>
                 <a href="/zh-cn/experiences/kendo/" class="experience-card">
                     <div class="card-image">
-                        <img src="/public/images/experience/kendo.jpg" alt="剑道体验——竹剑武道" loading="lazy">
+                        <img src="/public/images/experience/kendo.webp" alt="剑道体验——竹剑武道" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>剑道</h3>
@@ -139,7 +148,7 @@
                 </a>
                 <a href="/zh-cn/experiences/karate/" class="experience-card">
                     <div class="card-image">
-                        <img src="/public/images/experience/karate.jpg" alt="空手道体验——冲绳发源的武道" loading="lazy">
+                        <img src="/public/images/experience/karate.webp" alt="空手道体验——冲绳发源的武道" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>空手道</h3>
@@ -149,7 +158,7 @@
                 </a>
                 <a href="/zh-cn/experiences/bonseki/" class="experience-card">
                     <div class="card-image">
-                        <img src="/public/images/experience/bonseki.jpg" alt="盆石体验——砂与石的山水意境" loading="lazy">
+                        <img src="/public/images/experience/bonseki.webp" alt="盆石体验——砂与石的山水意境" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>盆石</h3>
@@ -159,7 +168,7 @@
                 </a>
                 <a href="/zh-cn/experiences/chado/" class="experience-card">
                     <div class="card-image">
-                        <img src="/public/images/experience/sadou.jpg" alt="茶道体验——传统茶事" loading="lazy">
+                        <img src="/public/images/experience/sadou.webp" alt="茶道体验——传统茶事" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>茶道</h3>
@@ -169,7 +178,7 @@
                 </a>
                 <a href="/zh-cn/experiences/kado/" class="experience-card">
                     <div class="card-image">
-                        <img src="/public/images/experience/kadou.jpg" alt="花道体验——插花艺术" loading="lazy">
+                        <img src="/public/images/experience/kadou.webp" alt="花道体验——插花艺术" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>花道</h3>
@@ -179,7 +188,7 @@
                 </a>
                 <a href="/zh-cn/experiences/taiko/" class="experience-card">
                     <div class="card-image">
-                        <img src="/public/images/experience/taiko.jpg" alt="和太鼓体验——澎湃节奏" loading="lazy">
+                        <img src="/public/images/experience/taiko.webp" alt="和太鼓体验——澎湃节奏" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>和太鼓</h3>
@@ -201,7 +210,7 @@
             <div class="accommodations-grid">
                 <a href="/zh-cn/seiseikan/" class="accommodation-card">
                     <div class="card-image">
-                        <img src="/public/images/seiseisya/seiseisya.jpg" alt="清静舍 外观" loading="lazy">
+                        <img src="/public/images/seiseisya/seiseisya.webp" alt="清静舍 外观" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>清静舍</h3>
@@ -209,7 +218,7 @@
                 </a>
                 <a href="/zh-cn/geihinkan/" class="accommodation-card">
                     <div class="card-image">
-                        <img src="/public/images/geihinkan/geihinkan.jpg" alt="迎宾馆 外观" loading="lazy">
+                        <img src="/public/images/geihinkan/geihinkan.webp" alt="迎宾馆 外观" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>迎宾馆</h3>
@@ -217,7 +226,7 @@
                 </a>
                 <a href="/zh-cn/korokan/" class="accommodation-card">
                     <div class="card-image">
-                        <img src="/public/images/kourokan/kourokan.jpg" alt="鸿胪馆 外观" loading="lazy">
+                        <img src="/public/images/kourokan/kourokan.webp" alt="鸿胪馆 外观" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>鸿胪馆</h3>
@@ -225,7 +234,7 @@
                 </a>
                 <a href="/zh-cn/bunshinkan/" class="accommodation-card">
                     <div class="card-image">
-                        <img src="/public/images/bunsinkan/bunshinkan.jpg" alt="文心馆 外观" loading="lazy">
+                        <img src="/public/images/bunsinkan/bunshinkan.webp" alt="文心馆 外观" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>文心馆</h3>
@@ -233,7 +242,7 @@
                 </a>
                 <a href="/zh-cn/edokan/" class="accommodation-card">
                     <div class="card-image">
-                        <img src="/public/images/edokan/edokan.jpg" alt="江户馆 外观" loading="lazy">
+                        <img src="/public/images/edokan/edokan.webp" alt="江户馆 外观" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>江户馆</h3>
@@ -241,7 +250,7 @@
                 </a>
                 <a href="/zh-cn/hinokinoma/" class="accommodation-card">
                     <div class="card-image">
-                        <img src="/public/images/hinokinoma/hinokinoma.jpg" alt="桧木之间 外观" loading="lazy">
+                        <img src="/public/images/hinokinoma/hinokinoma.webp" alt="桧木之间 外观" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>桧木之间</h3>
@@ -261,7 +270,7 @@
             <div class="restaurant-content">
                 <div class="restaurant-image">
                     <a href="/zh-cn/restaurant/" class="restaurant-image-link">
-                        <img src="/public/images/top/ryotei.png" alt="料亭鸣凤堂 外观" loading="lazy">
+                        <img src="/public/images/top/ryotei.webp" alt="料亭鸣凤堂 外观" loading="lazy">
                     </a>
                 </div>
                 <div class="restaurant-description">
@@ -301,7 +310,7 @@
             </div>
             <div class="location-content">
                 <div class="location-image">
-                    <img src="/public/images/top/satuei.JPG" alt="拍摄场地 外观" loading="lazy">
+                    <img src="/public/images/top/satuei.webp" alt="拍摄场地 外观" loading="lazy">
                 </div>
                 <div class="location-description">
                     <h3>在传统建筑空间中拍摄</h3>
@@ -403,7 +412,7 @@
             <div class="partnership-grid">
                 <div class="partnership-card">
                     <div class="partnership-image">
-                        <img src="/images/19.png?v=2" alt="餐厅 山水家">
+                        <img src="/images/19.webp?v=2" alt="餐厅 山水家">
                     </div>
                     <div class="partnership-content">
                         <h3>餐厅 山水家</h3>
@@ -413,7 +422,7 @@
                 </div>
                 <div class="partnership-card">
                     <div class="partnership-image">
-                        <img src="/images/18.jpg" alt="按摩 心之楽">
+                        <img src="/images/18.webp" alt="按摩 心之楽">
                     </div>
                     <div class="partnership-content">
                         <h3>按摩 心之楽</h3>
@@ -696,5 +705,6 @@
             lazyElements.forEach(el => lazyObserver.observe(el));
         }
     </script>
+    <script src="/lang-switcher.js" defer></script>
 </body>
 </html>

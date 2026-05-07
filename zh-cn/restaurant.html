@@ -15,7 +15,7 @@
     <meta name="twitter:title" content="料亭鸣凤堂｜阿苏自然风光孕育的四季之味">
     <meta name="twitter:description" content="料亭鸣凤堂奉上融合阿苏丰饶自然与传统技法的怀石料理；另有寿司套餐、和风早餐与烧烤等多样餐饮体验。">
     <meta name="twitter:image" content="https://www.meihodo.com/twitter-image-restaurant.jpg">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script type="application/ld+json">
@@ -49,15 +49,15 @@
             <div class="header-nav">
                 <div class="nav-left">
                     <a href="/zh-cn/index.html" class="nav-link">
-                        <img src="/images/Home.png" alt="首页" class="nav-icon">
+                        <img src="/images/Home.webp" alt="首页" class="nav-icon">
                         <span>首页</span>
                     </a>
                     <a href="experiences/" class="nav-link">
-                        <img src="/images/taiken.png" alt="体验" class="nav-icon" loading="lazy">
+                        <img src="/images/taiken.webp" alt="体验" class="nav-icon" loading="lazy">
                         <span>体验</span>
                     </a>
                     <a href="accommodations/" class="nav-link">
-                        <img src="/images/tatemono.png" alt="住宿" class="nav-icon">
+                        <img src="/images/tatemono.webp" alt="住宿" class="nav-icon">
                         <span>住宿</span>
                     </a>
                 </div>
@@ -69,19 +69,28 @@
                 </div>
                 <div class="nav-right">
                     <a href="restaurant.html" class="nav-link active">
-                        <img src="/images/syokuzi.png" alt="餐饮" class="nav-icon">
+                        <img src="/images/syokuzi.webp" alt="餐饮" class="nav-icon">
                         <span>餐饮</span>
                     </a>
                     <a href="location/" class="nav-link">
-                        <img src="/images/kamera.png" alt="摄影场地" class="nav-icon">
+                        <img src="/images/kamera.webp" alt="摄影场地" class="nav-icon">
                         <span>摄影场地</span>
                     </a>
                     <a href="/zh-cn/access/" class="nav-link">
-                        <img src="/images/tizu.png" alt="交通指南" class="nav-icon">
+                        <img src="/images/tizu.webp" alt="交通指南" class="nav-icon">
                         <span>交通指南</span>
                     </a>
                 </div>
+            </div>            <!-- Language Switcher -->
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-btn" id="lang-btn" aria-label="Change language" aria-expanded="false" aria-haspopup="true">
+                    <span class="lang-current" id="lang-current">JP</span>
+                    <svg class="lang-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <ul class="lang-dropdown" id="lang-dropdown" role="menu">
+                </ul>
             </div>
+
             <input type="checkbox" id="nav-toggle" class="nav-toggle">
             <label for="nav-toggle" class="hamburger">
                 <span class="bar"></span>
@@ -94,7 +103,7 @@
     <!-- Hero Section -->
     <section class="restaurant-hero">
         <div class="hero-image">
-            <img src="/public/images/top/ryotei.png" alt="料亭鸣凤堂外观" loading="lazy">
+            <img src="/public/images/top/ryotei.webp" alt="料亭鸣凤堂外观" loading="lazy">
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -298,6 +307,7 @@
             });
         });
     </script>
+    <script src="/lang-switcher.js" defer></script>
 </body>
 </html>
 

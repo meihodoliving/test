@@ -15,15 +15,15 @@
             <div class="header-nav">
                 <div class="nav-left">
                     <a href="/index.html" class="nav-link">
-                        <img src="/images/Home.png" alt="首頁" class="nav-icon">
+                        <img src="/images/Home.webp" alt="首頁" class="nav-icon">
                         <span>首頁</span>
                     </a>
                     <a href="../experiences/" class="nav-link">
-                        <img src="/images/taiken.png" alt="體驗" class="nav-icon" loading="lazy">
+                        <img src="/images/taiken.webp" alt="體驗" class="nav-icon" loading="lazy">
                         <span>體驗</span>
                     </a>
                     <a href="../accommodations/" class="nav-link">
-                        <img src="/images/tatemono.png" alt="住宿" class="nav-icon">
+                        <img src="/images/tatemono.webp" alt="住宿" class="nav-icon">
                         <span>住宿</span>
                     </a>
                 </div>
@@ -35,19 +35,28 @@
                 </div>
                 <div class="nav-right">
                     <a href="../restaurant/" class="nav-link">
-                        <img src="/images/syokuzi.png" alt="餐飲" class="nav-icon">
+                        <img src="/images/syokuzi.webp" alt="餐飲" class="nav-icon">
                         <span>餐飲</span>
                     </a>
                     <a href="/index.html" class="nav-link">
-                        <img src="/images/kamera.png" alt="攝影使用" class="nav-icon">
+                        <img src="/images/kamera.webp" alt="攝影使用" class="nav-icon">
                         <span>攝影使用</span>
                     </a>
                     <a href="/zh-tw/access/" class="nav-link">
-                        <img src="/images/tizu.png" alt="交通資訊" class="nav-icon">
+                        <img src="/images/tizu.webp" alt="交通資訊" class="nav-icon">
                         <span>交通資訊</span>
                     </a>
                 </div>
+            </div>            <!-- Language Switcher -->
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-btn" id="lang-btn" aria-label="Change language" aria-expanded="false" aria-haspopup="true">
+                    <span class="lang-current" id="lang-current">JP</span>
+                    <svg class="lang-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <ul class="lang-dropdown" id="lang-dropdown" role="menu">
+                </ul>
             </div>
+
             <input type="checkbox" id="nav-toggle" class="nav-toggle">
             <label for="nav-toggle" class="hamburger">
                 <span class="bar"></span>
@@ -60,7 +69,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-image">
-            <img src="/public/images/top/satuei.JPG" alt="攝影使用 外觀" loading="lazy">
+            <img src="/public/images/top/satuei.webp" alt="攝影使用 外觀" loading="lazy">
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -359,5 +368,6 @@
             });
         });
     </script>
+    <script src="/lang-switcher.js" defer></script>
 </body>
 </html>

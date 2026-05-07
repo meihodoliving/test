@@ -223,15 +223,15 @@
             <div class="header-nav">
                 <div class="nav-left">
                     <a href="/zh-cn/index.html" class="nav-link">
-                        <img src="/images/Home.png" alt="首页" class="nav-icon">
+                        <img src="/images/Home.webp" alt="首页" class="nav-icon">
                         <span>首页</span>
                     </a>
                     <a href="../" class="nav-link active">
-                        <img src="/images/taiken.png" alt="体验" class="nav-icon" loading="lazy">
+                        <img src="/images/taiken.webp" alt="体验" class="nav-icon" loading="lazy">
                         <span>体验</span>
                     </a>
                     <a href="../../accommodations/" class="nav-link">
-                        <img src="/images/tatemono.png" alt="住宿" class="nav-icon">
+                        <img src="/images/tatemono.webp" alt="住宿" class="nav-icon">
                         <span>住宿</span>
                     </a>
                 </div>
@@ -243,19 +243,28 @@
                 </div>
                 <div class="nav-right">
                     <a href="../../restaurant/" class="nav-link">
-                        <img src="/images/syokuzi.png" alt="餐饮" class="nav-icon">
+                        <img src="/images/syokuzi.webp" alt="餐饮" class="nav-icon">
                         <span>餐饮</span>
                     </a>
                     <a href="../../location/" class="nav-link">
-                        <img src="/images/kamera.png" alt="场地拍摄" class="nav-icon">
+                        <img src="/images/kamera.webp" alt="场地拍摄" class="nav-icon">
                         <span>场地拍摄</span>
                     </a>
                     <a href="/zh-cn/access/" class="nav-link">
-                        <img src="/images/tizu.png" alt="交通" class="nav-icon">
+                        <img src="/images/tizu.webp" alt="交通" class="nav-icon">
                         <span>交通</span>
                     </a>
                 </div>
+            </div>            <!-- Language Switcher -->
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-btn" id="lang-btn" aria-label="Change language" aria-expanded="false" aria-haspopup="true">
+                    <span class="lang-current" id="lang-current">JP</span>
+                    <svg class="lang-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <ul class="lang-dropdown" id="lang-dropdown" role="menu">
+                </ul>
             </div>
+
             <input type="checkbox" id="nav-toggle" class="nav-toggle">
             <label for="nav-toggle" class="hamburger">
                 <span class="bar"></span>
@@ -298,7 +307,7 @@
                     <p>本课程使用竹刀与护具学习剑道的技术与心性。剑道是日本传统武道，锻炼身心并涵养礼节与敬意。经验丰富的教练将悉心指导基本技术、步法与礼仪，为剑道修习打下坚实基础。在这条跨越世纪的武道路上，习得身心的调和与力量。</p>
                 </div>
                 <div class="detail-image">
-                    <img src="/public/images/experience/kendo.jpg" alt="剑道体验 - 鸣凤堂" loading="lazy">
+                    <img src="/public/images/experience/kendo.webp" alt="剑道体验 - 鸣凤堂" loading="lazy">
                 </div>
             </div>
         </div>
@@ -477,5 +486,6 @@
             }
         });
     </script>
+    <script src="/lang-switcher.js" defer></script>
 </body>
 </html>

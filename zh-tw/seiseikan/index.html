@@ -15,15 +15,15 @@
             <div class="header-nav">
                 <div class="nav-left">
                     <a href="../../index.html" class="nav-link">
-                        <img src="/images/Home.png" alt="ホーム" class="nav-icon">
+                        <img src="/images/Home.webp" alt="ホーム" class="nav-icon">
                         <span>ホーム</span>
                     </a>
                     <a href="../experiences/" class="nav-link">
-                        <img src="/images/taiken.png" alt="体験" class="nav-icon" loading="lazy">
+                        <img src="/images/taiken.webp" alt="体験" class="nav-icon" loading="lazy">
                         <span>体験</span>
                     </a>
                     <a href="../accommodations/" class="nav-link active">
-                        <img src="/images/tatemono.png" alt="宿泊" class="nav-icon">
+                        <img src="/images/tatemono.webp" alt="宿泊" class="nav-icon">
                         <span>宿泊</span>
                     </a>
                 </div>
@@ -35,19 +35,28 @@
                 </div>
                 <div class="nav-right">
                     <a href="../restaurant/" class="nav-link">
-                        <img src="/images/syokuzi.png" alt="食事" class="nav-icon">
+                        <img src="/images/syokuzi.webp" alt="食事" class="nav-icon">
                         <span>食事</span>
                     </a>
                     <a href="../location/" class="nav-link">
-                        <img src="/images/kamera.png" alt="撮影利用" class="nav-icon">
+                        <img src="/images/kamera.webp" alt="撮影利用" class="nav-icon">
                         <span>撮影利用</span>
                     </a>
                     <a href="/zh-tw/access/" class="nav-link">
-                        <img src="/images/tizu.png" alt="アクセス" class="nav-icon">
+                        <img src="/images/tizu.webp" alt="アクセス" class="nav-icon">
                         <span>アクセス</span>
                     </a>
                 </div>
+            </div>            <!-- Language Switcher -->
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-btn" id="lang-btn" aria-label="Change language" aria-expanded="false" aria-haspopup="true">
+                    <span class="lang-current" id="lang-current">JP</span>
+                    <svg class="lang-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <ul class="lang-dropdown" id="lang-dropdown" role="menu">
+                </ul>
             </div>
+
             <input type="checkbox" id="nav-toggle" class="nav-toggle">
             <label for="nav-toggle" class="hamburger">
                 <span class="bar"></span>
@@ -65,7 +74,7 @@
                 <p class="section-subtitle">静寂と安らぎに包まれた特別な空間をご紹介します</p>
             </div>
             <div class="hero-image-section">
-                <img src="../../public/images/seiseisya/seiseisya.jpg" alt="清静舎 外観" class="hero-image" loading="lazy">
+                <img src="../../public/images/seiseisya/seiseisya.webp" alt="清静舎 外観" class="hero-image" loading="lazy">
             </div>
             <div class="room-content">
                 <div class="room-description">
@@ -216,13 +225,13 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="/images/seiseisya/DSC02702-HDR.jpg" alt="清靜舎 — DSC02702-HDR.jpg" loading="lazy">
+                    <img src="/images/seiseisya/DSC02702-HDR.webp" alt="清靜舎 — DSC02702-HDR.jpg" loading="lazy">
                     <div class="gallery-overlay">
                         <h4>圖 1</h4>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/images/seiseisya/DSC02720-HDR.jpg" alt="清靜舎 — DSC02720-HDR.jpg" loading="lazy">
+                    <img src="/images/seiseisya/DSC02720-HDR.webp" alt="清靜舎 — DSC02720-HDR.jpg" loading="lazy">
                     <div class="gallery-overlay">
                         <h4>圖 2</h4>
                     </div>
@@ -395,5 +404,6 @@
         // ページ読み込み時に初期化
         document.addEventListener('DOMContentLoaded', initPricingTabs);
     </script>
+    <script src="/lang-switcher.js" defer></script>
 </body>
 </html>
