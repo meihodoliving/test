@@ -2415,7 +2415,7 @@ html[lang="en"] .vertical-btn {
     box-shadow: none;
 }
 
-.lang-btn.active {
+.language-buttons .lang-btn.active {
     color: #8B7355;
     font-weight: 600;
 }
