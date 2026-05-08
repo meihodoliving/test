@@ -28,6 +28,14 @@
 
 html {
     scroll-behavior: smooth;
+    /* Anchor links account for the fixed navbar height */
+    scroll-padding-top: 96px;
+}
+
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 76px;
+    }
 }
 
 body {
@@ -1056,31 +1064,32 @@ body.location-terms-page main .container p.location-terms-cta,
 
 /* Sections */
 section {
-    padding: 120px 0;
+    padding: clamp(72px, 11vw, 120px) 0;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 6rem;
+    margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
 }
 
 .section-title {
-    font-size: 3rem;
+    font-size: clamp(1.6rem, 4.4vw, 2.6rem);
     color: var(--dark-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     font-weight: 600;
     font-family: 'Noto Serif JP', serif;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
 }
 
 .section-subtitle {
-    font-size: 1.2rem;
+    font-size: clamp(0.96rem, 1.4vw, 1.1rem);
     color: var(--text-secondary);
     font-weight: 300;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.02em;
     max-width: 600px;
     margin: 0 auto;
-    line-height: 1.8;
+    line-height: 1.85;
 }
 
 
@@ -2344,8 +2353,8 @@ body.home-en #experiences .experience-card .card-button {
 /* Fixed Action Buttons */
 .fixed-buttons {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: max(30px, calc(20px + env(safe-area-inset-bottom)));
+    right: max(20px, calc(16px + env(safe-area-inset-right)));
     z-index: 3000;
     display: flex;
     flex-direction: column;
@@ -2361,44 +2370,45 @@ body.home-en #experiences .experience-card .card-button {
 
 /* EN pages: fixed vertical buttons — spacing + size so text never overflows */
 html[lang="en"] .fixed-buttons {
-    gap: 26px;
+    gap: 16px;
 }
 
 html[lang="en"] .main-buttons {
-    gap: 22px;
+    gap: 14px;
 }
 
 html[lang="en"] .vertical-btn {
-    width: 1.2cm;  /* a touch wider for long EN labels */
-    height: 150px; /* taller so “Book an Experience” stays inside */
+    width: 50px;
+    height: 154px;
 }
 
 .vertical-btn {
-    width: 1cm; /* 1cm = 約37.8px */
-    height: 120px;
-    background: linear-gradient(135deg, #2C2C2C, #1A1A1A); /* 落ち着いた黒 */
-    border: 2px solid #8B7355; /* 渋い茶色の枠線 */
-    border-radius: 8px;
+    width: 44px;
+    height: 132px;
+    background: linear-gradient(135deg, #2C2C2C, #1A1A1A);
+    border: 1px solid rgba(212, 175, 55, 0.32); /* gold hairline */
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                border-color 0.35s ease;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 22px rgba(28, 28, 28, 0.22),
+                0 1px 3px rgba(28, 28, 28, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .vertical-btn::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, #4A4A4A, #2C2C2C);
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.35s ease;
 }
 
 .vertical-btn:hover::before {
@@ -2408,66 +2418,42 @@ html[lang="en"] .vertical-btn {
 .btn-text {
     color: #FFFFFF;
     font-family: 'Noto Serif JP', serif;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 500;
     writing-mode: vertical-rl;
-    /* Keep CJK vertical, but prevent Latin words splitting per-character */
     text-orientation: mixed;
     white-space: nowrap;
     word-break: keep-all;
-    line-height: 1.1;
-    letter-spacing: 0.06em;
+    line-height: 1.15;
+    letter-spacing: 0.14em;
     position: relative;
     z-index: 2;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .vertical-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    border-color: #A0522D; /* ホバー時の枠線色変更 */
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(28, 28, 28, 0.30),
+                0 2px 6px rgba(28, 28, 28, 0.14),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    border-color: rgba(212, 175, 55, 0.65); /* gold accent on hover */
+}
+
+.vertical-btn:active {
+    transform: translateY(-1px);
+    transition-duration: 0.12s;
 }
 
 .accommodation-btn {
-    background: linear-gradient(135deg, #2F4F4F, #1C3A3A); /* 濃紺 */
+    background: linear-gradient(160deg, #355757 0%, #1F3838 100%); /* 深緑 — brand secondary */
 }
 
 .experience-btn {
-    background: linear-gradient(135deg, #654321, #4A2C2A); /* 渋い茶色 */
+    background: linear-gradient(160deg, #5A4A39 0%, #2E2419 100%); /* 渋い土色 — derived from brand primary */
 }
 
+/* Redundant with the navbar language switcher — hidden visually, markup retained */
 .language-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: center;
-}
-
-.language-buttons .lang-btn {
-    background: none;
-    border: none;
-    color: #888888; /* グレー文字 */
-    font-family: 'Noto Serif JP', serif;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    padding: 4px 8px;
-    transition: all 0.3s ease;
-    border-radius: 4px;
-    letter-spacing: 0.05em;
-    box-shadow: none;
-}
-
-.language-buttons .lang-btn:hover {
-    color: #000000; /* ホバー時は黒文字 */
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(1.1);
-    box-shadow: none;
-}
-
-.language-buttons .lang-btn.active {
-    color: #8B7355;
-    font-weight: 600;
+    display: none;
 }
 
 /* Responsive Design */
@@ -2745,24 +2731,26 @@ html[lang="en"] .vertical-btn {
 
     /* Fixed buttons responsive */
     .fixed-buttons {
-        bottom: 20px;
-        right: 20px;
-        gap: 15px;
+        bottom: max(20px, calc(14px + env(safe-area-inset-bottom)));
+        right: max(14px, calc(12px + env(safe-area-inset-right)));
+        gap: 14px;
     }
 
     .vertical-btn {
-        width: 0.8cm; /* モバイルでは少し小さく */
-        height: 100px;
+        width: 38px;
+        height: 110px;
+        border-radius: 10px;
     }
 
     /* EN pages: keep mobile vertical buttons tall enough for long labels */
     html[lang="en"] .vertical-btn {
-        width: 0.95cm;
-        height: 124px;
+        width: 44px;
+        height: 130px;
     }
 
     .btn-text {
-        font-size: 11px;
+        font-size: 12px;
+        letter-spacing: 0.12em;
     }
 
     .lang-btn {
@@ -5788,15 +5776,33 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     .initial-load-overlay {
         transition: none;
         opacity: 0;
         display: none;
     }
-    
+
     .overlay-text {
         transition: none;
         opacity: 0;
+    }
+
+    /* Calm down hovers / parallax for users who request reduced motion */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .hero {
+        background-attachment: scroll;
     }
 }
 
