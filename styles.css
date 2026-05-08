@@ -2488,6 +2488,39 @@ html[lang="en"] .vertical-btn {
 
 @media (max-width: 768px) {
     .header-nav {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        max-height: calc(100vh - 80px);
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: none;
+        background: var(--light-color);
+        text-align: center;
+        transition: left 0.3s ease;
+        box-shadow: 0 10px 27px var(--shadow);
+        padding: 1rem 0;
+        z-index: 1000;
+        backdrop-filter: blur(20px);
+        overflow-y: auto;
+        gap: 0;
+        margin: 0;
+    }
+
+    .navbar:has(.nav-toggle:checked) .header-nav {
+        left: 0;
+    }
+
+    .header-nav .nav-left,
+    .header-nav .nav-right {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .header-nav .nav-center {
         display: none;
     }
 
