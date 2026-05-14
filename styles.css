@@ -102,6 +102,8 @@ section:not(.hero) .container .menu-item p,
 section:not(.hero) .container .detail-card p,
 section:not(.hero) .container .type-card p,
 section:not(.hero) .container .info-item p,
+section:not(.hero) .container .cta-content p,
+section:not(.hero) .container .notice-content p,
 footer .container p,
 section:not(.hero) .container .pricing-content p,
 table p,
@@ -133,6 +135,7 @@ body.location-terms-page main .container p.location-terms-cta,
     box-shadow: 0 2px 20px var(--shadow);
 }
 
+/* Desktop: center the logo on the whole navbar regardless of ig/lang on the right */
 /* Breadcrumb */
 .breadcrumb {
     background: var(--light-color);
@@ -815,7 +818,7 @@ body.location-terms-page main .container p.location-terms-cta,
     transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     box-shadow: 0 2px 8px rgba(28, 28, 28, 0.18);
     flex-shrink: 0;
-    margin-right: 10px;
+    margin-right: 14px;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -842,7 +845,7 @@ body.location-terms-page main .container p.location-terms-cta,
     .ig-btn {
         width: 34px;
         height: 34px;
-        margin-right: 8px;
+        margin-right: 12px;
     }
 
     .ig-btn svg {
@@ -1334,6 +1337,30 @@ body.home-zh-tw #experiences .experience-card .card-content p {
 
 body.home-zh-tw #experiences .experience-card .card-button {
     margin-top: auto; /* ボタンを下揃え */
+}
+
+/* Desktop: align "詳細を見る" buttons across all home-page experience cards.
+   Body-class-agnostic so the unmarked /ja/ and /zh-cn/ top pages get it too. */
+@media (min-width: 769px) {
+    #experiences .experiences-grid {
+        align-items: stretch;
+    }
+
+    #experiences .experience-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    #experiences .experience-card .card-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+    }
+
+    #experiences .experience-card .card-button {
+        margin-top: auto;
+    }
 }
 
 .experience-card:hover .card-button {
@@ -2039,6 +2066,32 @@ body.home-zh-tw .main-text-content {
     padding: 56px 48px;
 }
 
+/* Simplified Chinese top page: keep each catchphrase phrase on one line.
+   /zh-cn/index.html has no body class, so target via html[lang]. */
+html[lang="zh-CN"] .catchphrase-section {
+    padding-block: 0.75rem;
+}
+
+html[lang="zh-CN"] .catchphrase-container {
+    gap: 1.4em;
+    max-width: 100%;
+    align-items: stretch;
+    justify-content: center;
+    padding: 1.1rem 0.75rem 1.35rem;
+}
+
+html[lang="zh-CN"] .philosophy .catchphrase-line {
+    font-size: 2.05rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1.78;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+    word-break: keep-all;
+    line-break: strict;
+}
+
 body.home-zh-tw .main-text-content p {
     text-align: left;
     line-height: 2.15;
@@ -2283,7 +2336,8 @@ body.home-en #experiences .experience-card .card-button {
         font-size: 1.3rem;
     }
 
-    body.home-zh-tw .philosophy .catchphrase-line {
+    body.home-zh-tw .philosophy .catchphrase-line,
+    html[lang="zh-CN"] .philosophy .catchphrase-line {
         font-size: 1.8rem;
     }
 }
@@ -2307,7 +2361,8 @@ body.home-en #experiences .experience-card .card-button {
         font-size: 1.8rem;
     }
 
-    body.home-zh-tw .philosophy .catchphrase-line {
+    body.home-zh-tw .philosophy .catchphrase-line,
+    html[lang="zh-CN"] .philosophy .catchphrase-line {
         font-size: 1.55rem;
     }
     
@@ -2388,7 +2443,13 @@ html[lang="en"] .main-buttons {
 
 html[lang="en"] .vertical-btn {
     width: 50px;
-    height: 154px;
+    height: 230px;
+}
+
+html[lang="en"] .vertical-btn .btn-text {
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    padding: 14px 0;
 }
 
 .vertical-btn {
@@ -2463,6 +2524,60 @@ html[lang="en"] .vertical-btn {
 /* Redundant with the navbar language switcher — hidden visually, markup retained */
 .language-buttons {
     display: none;
+}
+
+/* Desktop header: center the logo on the navbar regardless of right-side ig/lang widgets */
+@media (min-width: 1200px) {
+    .nav-container {
+        position: relative;
+    }
+
+    .header-nav {
+        flex: 1;
+        max-width: none;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+    }
+
+    .nav-center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        margin: 0;
+    }
+
+    .nav-left,
+    .nav-right {
+        gap: 18px;
+    }
+
+    .nav-left {
+        padding-right: 130px;
+    }
+
+    .nav-right {
+        padding-left: 130px;
+        padding-right: 30px;
+    }
+
+    .nav-container > .ig-btn,
+    .nav-container > .lang-switcher {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 3;
+    }
+
+    .nav-container > .lang-switcher {
+        right: 20px;
+    }
+
+    .nav-container > .ig-btn {
+        right: 110px;
+        margin-right: 0;
+    }
 }
 
 /* Responsive Design */
@@ -2544,16 +2659,17 @@ html[lang="en"] .vertical-btn {
     .header-nav {
         position: fixed;
         top: 80px;
-        left: -100%;
-        width: 100%;
+        right: -100%;
+        left: auto;
+        width: min(75%, 320px);
         max-height: calc(100vh - 80px);
         display: flex;
         flex-direction: column;
         grid-template-columns: none;
         background: var(--light-color);
-        text-align: center;
-        transition: left 0.3s ease;
-        box-shadow: 0 10px 27px var(--shadow);
+        text-align: left;
+        transition: right 0.3s ease;
+        box-shadow: -6px 10px 27px var(--shadow);
         padding: 1rem 0;
         z-index: 1000;
         backdrop-filter: blur(20px);
@@ -2563,7 +2679,7 @@ html[lang="en"] .vertical-btn {
     }
 
     .navbar:has(.nav-toggle:checked) .header-nav {
-        left: 0;
+        right: 0;
     }
 
     .header-nav .nav-left,
@@ -2571,6 +2687,7 @@ html[lang="en"] .vertical-btn {
         flex-direction: column;
         gap: 0;
         width: 100%;
+        align-items: stretch;
         justify-content: flex-start;
     }
 
@@ -2612,29 +2729,33 @@ html[lang="en"] .vertical-btn {
     }
 
     /* Close menu when clicking nav links */
-    .nav-link {
+    .header-nav .nav-link {
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 1rem;
-        padding: 1.5rem 0;
+        padding: 1.25rem 1.75rem;
         border-bottom: 1px solid var(--border-color);
-        margin: 0 2rem;
+        margin: 0;
         border-radius: 0;
         min-width: auto;
+        width: 100%;
         justify-content: flex-start;
-    }
-    
-    .nav-link .nav-icon {
-        width: 24px;
-        height: 24px;
+        text-align: left;
     }
 
-    .nav-link:last-child {
+    .header-nav .nav-link .nav-icon {
+        width: 24px;
+        height: 24px;
+        flex: 0 0 24px;
+        object-position: left center;
+    }
+
+    .header-nav .nav-link:last-child {
         border-bottom: none;
     }
 
-    .nav-link:hover {
+    .header-nav .nav-link:hover {
         background: rgba(212, 175, 55, 0.1);
         color: var(--accent-color);
     }
@@ -2675,11 +2796,35 @@ html[lang="en"] .vertical-btn {
 
     .experiences-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.2rem;
+        gap: 0.85rem;
     }
-    
+
+    #experiences .experience-card .card-content {
+        padding: 1rem 0.85rem 1.1rem;
+    }
+
+    #experiences .experience-card .card-content h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.45rem;
+    }
+
+    #experiences .experience-card .card-content p {
+        font-size: 0.82rem;
+        line-height: 1.55;
+        margin-bottom: 0.85rem;
+    }
+
+    #experiences .experience-card .card-button {
+        font-size: 0.78rem;
+        padding: 0.45rem 0.75rem;
+    }
+
     .accommodations-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    #accommodations.accommodations .accommodation-card .card-button {
+        border-radius: 14px;
     }
 
     .info-content {
@@ -2750,7 +2895,12 @@ html[lang="en"] .vertical-btn {
     /* EN pages: keep mobile vertical buttons tall enough for long labels */
     html[lang="en"] .vertical-btn {
         width: 44px;
-        height: 130px;
+        height: 200px;
+    }
+
+    html[lang="en"] .vertical-btn .btn-text {
+        letter-spacing: 0.08em;
+        padding: 10px 0;
     }
 
     .btn-text {
@@ -3160,7 +3310,7 @@ html[lang="en"] .vertical-btn {
 
 /* Responsive adjustments for experience page */
 @media (max-width: 768px) {
-    .experiences-grid {
+    .experiences:not(#experiences) .experiences-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
@@ -3798,13 +3948,15 @@ html[lang="en"] .vertical-btn {
 .restaurant-features .feature-item {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 0.5rem;
     background: var(--light-color);
     border-radius: 8px;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--text-primary);
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .restaurant-features .feature-item:hover {
@@ -5424,6 +5576,78 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     margin-bottom: 1rem;
 }
 
+/* Menu card with image: text on the left, image on the right (desktop).
+   Stacks on mobile with the image as a banner on top.
+   Price flows under the heading (no absolute positioning) to avoid overlap. */
+.menu-item--with-image {
+    display: flex;
+    gap: 1.75rem;
+    align-items: flex-start;
+}
+
+.menu-item--with-image .menu-item__body {
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: left;
+    position: static;
+}
+
+.menu-item--with-image .menu-item__media {
+    margin: 0;
+    flex: 0 0 38%;
+    max-width: 320px;
+    aspect-ratio: 3 / 2;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f7f5ee;
+}
+
+.menu-item--with-image .menu-item__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Override the .menu-item absolute price positioning so the price flows
+   in-line under the heading and never overlaps the title or image. */
+.menu-item--with-image .menu-price {
+    position: static;
+    top: auto;
+    right: auto;
+    text-align: left;
+    margin-bottom: 1.25rem;
+}
+
+.menu-item--with-image h4 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    padding-right: 0;
+}
+
+.menu-item--with-image .menu-details {
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .menu-item--with-image {
+        /* DOM order is body → media; reverse to keep the image as a banner
+           on top of the text on mobile, matching the original breakfast card. */
+        flex-direction: column-reverse;
+        gap: 1.25rem;
+    }
+
+    .menu-item--with-image .menu-item__media {
+        flex: 0 0 auto;
+        max-width: 100%;
+        aspect-ratio: 16 / 10;
+    }
+
+    .menu-item--with-image .menu-price {
+        margin-bottom: 1rem;
+    }
+}
+
 /* Responsive Menu Styles */
 @media (max-width: 768px) {
     .menu-category h3 {
@@ -5502,6 +5726,13 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
 }
 
 /* 料亭：アレルギー案内（.allergy-notice は各言語 /restaurant で共通） */
+.allergy-notice .notice-content {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 .allergy-notice .notice-content h3 {
     font-family: "Noto Serif JP", serif;
     font-size: clamp(1.3rem, 2.2vw, 1.7rem);
@@ -5511,6 +5742,11 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     line-height: 1.45;
     text-align: center;
     margin: 0 0 1.35rem;
+}
+
+.allergy-notice .notice-content p {
+    text-align: center;
+    margin: 0;
 }
 
 @media (max-width: 600px) {

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>弓道体験 - 鳴鳳堂 鳴鳳堂</title>
     <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../components.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -202,103 +203,6 @@
 
         .detail-image:hover img {
             transform: scale(1.05);
-        }
-
-        .features-section {
-            background: var(--light-color);
-            padding: 120px 0;
-            position: relative;
-        }
-
-        .features-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: var(--washi-texture);
-            opacity: 0.03;
-            pointer-events: none;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-card {
-            background: var(--white);
-            padding: 3rem 2.5rem;
-            border-radius: 24px;
-            text-align: center;
-            box-shadow: 0 15px 40px var(--shadow);
-            border: 1px solid var(--border-color);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: var(--washi-texture);
-            opacity: 0.02;
-            pointer-events: none;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px var(--shadow-dark);
-            border-color: var(--accent-color);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 2rem;
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1);
-            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
-        }
-
-        .feature-icon i {
-            font-size: 2rem;
-            color: var(--white);
-        }
-
-        .feature-card h3 {
-            font-size: 1.4rem;
-            color: var(--dark-color);
-            margin-bottom: 1.5rem;
-            font-family: 'Noto Serif JP', serif;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-
-        .feature-card p {
-            color: var(--text-primary);
-            line-height: 1.8;
-            font-size: 1.05rem;
         }
 
         .schedule-section {
@@ -652,10 +556,6 @@
                 gap: 3rem;
             }
 
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -880,7 +780,7 @@
                     <ul>
                         <li>弓道着は当方で用意いたします。</li>
                         <li>約3日前までのご予約をお願いします（当日予約も可能な場合があります）。</li>
-<li>動きやすい服装でお越しください。</li>
+<li>着替えやすい服装でお越しください。</li>
                     </ul>
                 </div>
             </div>
@@ -891,7 +791,7 @@
     <section class="cta-section">
         <div class="cta-content">
             <h2>弓道体験を予約する</h2>
-            <p>阿蘇の雄大な自然の中で、日本の伝統武道である弓道を体験してみませんか？<br>。</p>
+            <p>阿蘇の雄大な自然の中で、日本の伝統武道である弓道を体験してみませんか？</p>
             <div class="cta-buttons">
                 <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=ja" target="_blank" class="btn-cta btn-cta-primary">
                     <i class="fas fa-calendar-alt"></i>
