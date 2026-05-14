@@ -2,6 +2,46 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## ⚠️ Live site comes first — read this every session
+
+This site is **in production**. Every push to `main` deploys to both
+- Vercel: `https://test-seven-lime-14.vercel.app`
+- GitHub Pages: `https://meihodoliving.github.io/test/`
+
+**The deployed site must stay rendering correctly at all times.** A broken deploy is the most expensive kind of failure here, because real visitors see it. Optimize every change around this priority.
+
+### Before acting on any prompt
+
+1. **Read the user's prompt twice.** If the request is bulk/mechanical — "delete X", "rename Y", "remove all Z", "rewrite paths", "consolidate", "move everything to …" — pause and ask yourself: *does the thing I'm about to remove or change exist for a reason that local testing won't surface?* This repo has at least three foot-guns that look harmless locally and break only on Vercel (see "Deployment invariants" below). When in doubt, **ask the user** before making the change. A 10-second clarification is cheaper than a broken production site.
+2. **Pre-flight audit** before any bulk edit to HTML, CSS, or directory structure:
+   ```bash
+   grep -rn '/public/' --include='*.html' .                       # must be empty
+   grep -rn 'href="\.\./[a-z]' --include='*.html' */experiences/   # must be empty
+   [ -d public ] && echo BAD || echo OK                            # must say OK
+   ```
+3. **Never** run destructive commands (`rm -rf`, `git rm`, mass `sed`) without first proving the targets are safe to remove. Move-then-verify-then-delete, not delete-then-hope.
+
+### Before pushing to main
+
+1. `git diff --stat origin/main..HEAD` — eyeball the file count and which trees are touched. If a change you didn't expect appears, investigate before pushing.
+2. Re-run the pre-flight audits above. They must still be clean after your edits.
+3. If the change touches HTML structure or assets, push and then **curl-verify the live site** before walking away:
+   ```bash
+   curl -sL https://test-seven-lime-14.vercel.app/en/experiences/samurai | grep -c 'class="experience-hero"'    # > 0
+   curl -sI https://test-seven-lime-14.vercel.app/en/experiences/components.css | head -1                       # 200, not 404
+   curl -sI https://test-seven-lime-14.vercel.app/styles.css | grep -i content-length                           # 156000+ bytes
+   ```
+4. If GitHub Pages goes red, fix it immediately. Check with `GH_TOKEN=<token> gh run list --repo meihodoliving/test --limit 3`. The most common failure is a deprecated `actions/*` version.
+
+### Why local "works" ≠ deployed works
+
+Local servers (`live-server`, `python http.server`) do NOT replicate Vercel's behavior:
+- They don't auto-treat `public/` as a static-asset root.
+- They don't strip trailing slashes (Vercel's `cleanUrls: true` does).
+- They serve every file in the working tree without honoring `.vercelignore`.
+
+A page can render perfectly locally and be completely broken on Vercel. **Trust the deployed-site curl checks, not local rendering, when verifying a fix is real.**
+
 ## Project
 
 Static multilingual marketing site for **鳴鳳堂 (Meihodo) / Aso Cultural Resort**. Pure HTML + CSS + a tiny vanilla JS file ([lang-switcher.js](lang-switcher.js)). No build step for the live site — files are served as-is.
@@ -75,17 +115,26 @@ Because `cleanUrls: true` is set on Vercel, prefer linking to `/ja/about/` rathe
 
 ### Deployment invariants — DO NOT VIOLATE
 
-These rules exist because each one has already caused a "deployed site looks broken, local looks fine" outage. Do not "re-introduce a `public/` for organization" or similar.
+Each rule below corresponds to a real outage that has hit this repo. The pattern in every case was the same: the change looked fine locally, was pushed, and broke production. **Don't reopen any of these.**
 
-1. **No `public/` directory. Ever.** Vercel auto-treats `public/` as a static asset root, which silently shadows the repo-root `styles.css` / `index.html` with whatever is inside `public/` — even when `outputDirectory: "."` is set. Local servers (`live-server`, `python http.server`) do not do this, so the disparity is invisible until deploy. If you find yourself creating `public/anything`, stop — put the files at the repo root (`/images/`, `/styles.css`, etc.) instead. Commits `d079a20` and the `public/` removal after `fa5b0eb` both fixed this exact bug.
-2. **All image references use `/images/...` (absolute, from repo root).** Never `/public/images/...`, never `./images/...`. Mirror scripts and the four-language tree depend on this absolute form resolving identically at every URL depth.
-3. **`styles.css` is loaded relative (`../styles.css`, `../../styles.css`, …) matching the page's depth.** Don't change to absolute `/styles.css` without auditing every page — GitHub Pages and Vercel both serve from root, but the relative form is what's audited and what the mirror scripts produce.
-4. **If the deployed site looks visually broken but local is fine,** the first thing to check is whether a `public/` directory has reappeared or whether any HTML file contains `/public/`. Run `grep -rn '/public/' --include='*.html' .` from the repo root — it should return nothing.
-5. **Never use `..` in `href` / `src` from any deep page** (anything not at the language root). With `cleanUrls: true` + `trailingSlash: false`, Vercel canonicalizes `/ja/experiences/iaido/` to `/ja/experiences/iaido` (no trailing slash). The browser then treats `iaido` as a *filename* in `/ja/experiences/`, so `../components.css` resolves to `/ja/components.css` (404) instead of `/ja/experiences/components.css`. Local servers preserve the trailing slash and don't hit this — so the page renders fine locally and totally unstyled on Vercel. Use absolute paths from the repo root for any cross-directory reference: `<link href="/ja/experiences/components.css">`, `<a href="/ja/experiences/chado/">`, etc. The root `styles.css` link is fine as `../../../styles.css` because too-many-`..`s clamp at `/`. Audit with: `grep -rn 'href="\.\./' --include='*.html' <lang>/experiences/` — should return nothing.
+1. **No `public/` directory. Ever.** Vercel auto-treats `public/` as a static-asset root and silently shadows the repo-root `styles.css` / `index.html` with whatever's inside `public/` — even when `outputDirectory: "."` is set. Local servers don't do this, so the disparity is invisible until deploy. If you're about to create `public/anything`, stop — put the files at the repo root (`/images/`, `/styles.css`, etc.). Caused outages: `d079a20` (first fix), and again post-`fa5b0eb` (full removal).
+2. **All image references are absolute from the repo root: `/images/...`.** Never `/public/images/...`, never `./images/...`, never `../images/...`. Absolute paths resolve identically at every URL depth, in every language tree, on both deploy targets. Caused outage: 216 stale `/public/images/...` refs across 72 files after `public/` was deleted.
+3. **Cross-directory links from sub-pages must be absolute, not `..`-relative.** Vercel runs `cleanUrls: true` + `trailingSlash: false`, which canonicalizes `/en/experiences/iaido/` → `/en/experiences/iaido` (no trailing slash). The browser then treats `iaido` as a *filename* in `/en/experiences/`, so `../components.css` resolves to `/en/components.css` (**404**), not `/en/experiences/components.css`. Local servers preserve the trailing slash and don't hit this, so the page renders fine locally and totally unstyled on Vercel. Concrete rules:
+   - Cross-directory: use absolute. `<link href="/en/experiences/components.css">`, `<a href="/en/experiences/chado/">`.
+   - Up-to-root: relative is fine as long as you have *enough* `..`s to clamp at `/`. From a page at depth N, use N `..`s (or more — extras clamp harmlessly). E.g. `<link href="../../../styles.css">` from `/en/experiences/<slug>/index.html` works because three `..`s clamp to `/`.
+   - **Anything in between is broken on Vercel.** A single `..` from depth ≥ 2 is the trap.
+   - Audit with: `grep -rn 'href="\.\./[a-z]' --include='*.html' */experiences/` — must be empty. Caused outage: every experience page was unstyled because `<link href="../components.css">` 404'd silently.
+4. **Never deploy without verifying the live site.** After pushing a change that touches HTML/CSS/assets, curl the deployed page and grep for the styles you expect to see. The "Before pushing to main" section above has the exact commands.
+
+If the deployed site looks visually broken but local is fine, your first three checks are:
+- `grep -rn '/public/' --include='*.html' .` → must be empty (rule 1+2)
+- `ls public/` → must say "No such file" (rule 1)
+- `grep -rn 'href="\.\./[a-z]' --include='*.html' */experiences/` → must be empty (rule 3)
 
 ## Conventions
 
-- Internal links use absolute paths rooted at language: `href="/ja/experiences/"`, not relative `../`. The mirror scripts depend on this — relative paths break the `s/\/ja\//\/zh-tw\//` rewrite.
-- Image `src`/`srcset` paths are absolute from repo root: `src="/images/top/top.webp"`. See "Deployment invariants" above for why.
-- When editing structure under `/ja/`, propagate to the other three language trees (or run the mirror scripts) so the language switcher does not 404.
-- Prices, room names, and other cross-page facts that have a generator script in [scripts/](scripts/) should be edited in the script, not in HTML.
+- **Internal links: absolute paths rooted at language.** `href="/ja/experiences/"`, not relative `../`. Two reasons: (a) the mirror scripts depend on it — relative paths break the `s/\/ja\//\/zh-tw\//` rewrite; (b) `..` from a sub-page breaks under Vercel `cleanUrls` (see Deployment invariant 3).
+- **Image `src`/`srcset`: absolute from repo root.** `src="/images/top/top.webp"`. See Deployment invariant 2.
+- **The only safe relative path is up-to-root.** `<link href="../styles.css">` from `/ja/index.html`, `<link href="../../../styles.css">` from a depth-3 page — both clamp at `/styles.css`. Everything else must be absolute.
+- **When editing structure under `/ja/`, propagate to the other three language trees** (or run the mirror scripts in `scripts/`) so the language switcher does not 404.
+- **Prices, room names, and other cross-page facts that have a generator script in [scripts/](scripts/) should be edited in the script, not in HTML.**
