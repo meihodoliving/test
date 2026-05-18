@@ -6765,6 +6765,251 @@ section#access-travel-info.access {
     }
 }
 
+/* ============================================================
+   施設紹介 — Meihodo "About" page redesign.
+   Scoped under body.about-meihodo-page so the shared
+   .about-page-* rules above keep serving the location-terms
+   page untouched. Purely additive / higher-specificity.
+   ============================================================ */
+
+body.about-meihodo-page .about-page-main {
+    padding-top: 0;
+    position: relative;
+    background: linear-gradient(180deg, var(--white) 0%, var(--light-color) 42%, var(--white) 100%);
+}
+
+/* --- Hero banner --- */
+body.about-meihodo-page .about-page-main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 27rem;
+    background:
+        linear-gradient(180deg, rgba(28, 28, 28, 0.28) 0%, rgba(28, 28, 28, 0.34) 45%, rgba(28, 28, 28, 0.66) 100%),
+        url("/images/top/top.webp") center / cover no-repeat;
+    z-index: 0;
+}
+
+body.about-meihodo-page .about-page-title {
+    position: relative;
+    z-index: 1;
+    color: var(--white);
+    margin: 0 0 7rem;
+    padding-top: 12rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 22px rgba(0, 0, 0, 0.5);
+}
+
+body.about-meihodo-page .about-page-title::after {
+    content: "ABOUT MEIHODO";
+    display: block;
+    margin-top: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.42em;
+    text-indent: 0.42em;
+    color: var(--accent-color);
+    text-shadow: none;
+}
+
+/* --- Intro lead card (lifts over the hero) --- */
+body.about-meihodo-page .about-lead-block {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    margin: 0 auto 5.5rem;
+    padding: clamp(2.25rem, 5vw, 3.75rem);
+    background: var(--white);
+    border-radius: 18px;
+    border: 1px solid rgba(139, 115, 85, 0.14);
+    box-shadow: 0 26px 64px rgba(28, 28, 28, 0.14);
+}
+
+body.about-meihodo-page .about-lead-block::before {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin: 0 auto 1.85rem;
+    background: var(--accent-color);
+}
+
+body.about-meihodo-page .about-lead-block p {
+    font-size: 1.05rem;
+    line-height: 2.05;
+    color: var(--text-primary);
+    margin-bottom: 1.4rem;
+}
+
+body.about-meihodo-page .about-lead-block p:first-child {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+    font-weight: 600;
+    line-height: 1.95;
+    color: var(--dark-color);
+}
+
+body.about-meihodo-page .about-lead-block p:last-child {
+    margin-bottom: 0;
+}
+
+/* --- Section headings with a gold underline --- */
+body.about-meihodo-page .about-section-heading {
+    position: relative;
+    padding-bottom: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+body.about-meihodo-page .about-section-heading::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 2px;
+    background: var(--accent-color);
+}
+
+/* --- Facility map --- */
+body.about-meihodo-page .about-map-section {
+    padding-top: 1.5rem;
+    padding-bottom: 4rem;
+}
+
+body.about-meihodo-page .about-map-image {
+    border-radius: 18px;
+    box-shadow: 0 18px 50px rgba(28, 28, 28, 0.12);
+}
+
+/* --- Facility cards (numbered) --- */
+body.about-meihodo-page .facility-showcase {
+    counter-reset: facility;
+    padding-top: 3.5rem;
+}
+
+body.about-meihodo-page .facility-block {
+    counter-increment: facility;
+    position: relative;
+    padding: clamp(2.25rem, 4vw, 3.25rem) clamp(1.75rem, 4vw, 3rem);
+    padding-top: 3.85rem;
+    margin-bottom: 2rem;
+    background: var(--white);
+    border-radius: 18px;
+    border: 1px solid rgba(139, 115, 85, 0.13);
+    box-shadow: 0 14px 40px rgba(28, 28, 28, 0.07);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+body.about-meihodo-page .facility-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 26px 58px rgba(28, 28, 28, 0.13);
+    border-color: rgba(212, 175, 55, 0.5);
+}
+
+body.about-meihodo-page .facility-block::before {
+    content: counter(facility, decimal-leading-zero);
+    position: absolute;
+    top: 1.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--accent-color);
+}
+
+body.about-meihodo-page .facility-block__title {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+body.about-meihodo-page .facility-block__title::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: rgba(139, 115, 85, 0.35);
+}
+
+/* --- Activity report timeline --- */
+body.about-meihodo-page .activity-year {
+    position: relative;
+    margin-bottom: 1.85rem;
+    padding: 1.95rem 2rem 2.1rem 2.5rem;
+    background: var(--white);
+    border: 1px solid rgba(139, 115, 85, 0.13);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 0 14px 14px 0;
+    box-shadow: 0 12px 34px rgba(28, 28, 28, 0.06);
+}
+
+body.about-meihodo-page .activity-year::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 2.15rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 3px solid var(--accent-color);
+}
+
+body.about-meihodo-page .activity-year h3 {
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.1rem;
+}
+
+body.about-meihodo-page .activity-year__list {
+    list-style: none;
+    padding-left: 0;
+}
+
+body.about-meihodo-page .activity-year__list li {
+    position: relative;
+    padding-left: 1.15rem;
+}
+
+body.about-meihodo-page .activity-year__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    body.about-meihodo-page .about-page-main::before {
+        height: 20rem;
+    }
+
+    body.about-meihodo-page .about-page-title {
+        padding-top: 8.5rem;
+        margin-bottom: 4.5rem;
+    }
+
+    body.about-meihodo-page .about-lead-block {
+        margin-bottom: 3.5rem;
+    }
+
+    body.about-meihodo-page .facility-block {
+        padding-top: 3.35rem;
+    }
+}
+
 /* 撮影施設 /location/ 料金表（.pricing-content の max-width:600px を上書き） */
 .pricing-section.location-pricing {
     position: relative;
