@@ -938,7 +938,8 @@ body.location-terms-page main .container p.location-terms-cta,
 
 /* Hero Section */
 .hero {
-    height: 60vh;
+    aspect-ratio: 16 / 9;
+    max-height: 100vh;
     background: var(--gradient-overlay);
     background-size: cover;
     background-position: center;
@@ -2870,7 +2871,6 @@ html[lang="en"] .vertical-btn .btn-text {
     }
 
     .hero {
-        height: 50vh;
         padding-bottom: 40px;
     }
     
@@ -2958,7 +2958,6 @@ html[lang="en"] .vertical-btn .btn-text {
     }
 
     .hero {
-        height: 40vh;
         padding-bottom: 30px;
     }
     
