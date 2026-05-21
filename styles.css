@@ -984,6 +984,59 @@ body.location-terms-page main .container p.location-terms-cta,
     z-index: 1;
 }
 
+/* Hero video controls */
+.hero-video-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 2;
+    display: flex;
+    gap: 10px;
+}
+
+.hero-vc-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.45);
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    transition: background 0.2s ease;
+}
+
+.hero-vc-btn:hover {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.hero-vc-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    fill: currentColor;
+}
+
+.hero-vc-btn .ic-play,
+.hero-vc-btn .ic-mute {
+    display: none;
+}
+
+.hero-vc-btn.is-paused .ic-pause,
+.hero-vc-btn.is-muted .ic-sound {
+    display: none;
+}
+
+.hero-vc-btn.is-paused .ic-play,
+.hero-vc-btn.is-muted .ic-mute {
+    display: block;
+}
+
 /* Phoenix animation - disabled */
 .hero::before {
     content: none;
