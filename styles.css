@@ -1066,6 +1066,22 @@ body.location-terms-page main .container p.location-terms-cta,
     display: inline;
 }
 
+/* Centered play/pause button */
+.hero-vc-btn--center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72px;
+    height: 72px;
+    z-index: 2;
+}
+
+.hero-vc-btn--center svg {
+    width: 30px;
+    height: 30px;
+}
+
 /* Hero video controls — small screens */
 @media (max-width: 480px) {
     .hero-video-controls {
@@ -1091,6 +1107,16 @@ body.location-terms-page main .container p.location-terms-cta,
 
     .hero-vc-label {
         font-size: 0.78rem;
+    }
+
+    .hero-vc-btn--center {
+        width: 58px;
+        height: 58px;
+    }
+
+    .hero-vc-btn--center svg {
+        width: 25px;
+        height: 25px;
     }
 }
 
