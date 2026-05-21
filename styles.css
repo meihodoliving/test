@@ -1037,6 +1037,62 @@ body.location-terms-page main .container p.location-terms-cta,
     display: block;
 }
 
+/* Sound button with text label for clarity */
+.hero-vc-btn--labeled {
+    width: auto;
+    border-radius: 22px;
+    padding: 0 16px;
+    gap: 7px;
+}
+
+.hero-vc-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.hero-vc-btn .lbl-sound-off {
+    display: none;
+}
+
+.hero-vc-btn.is-muted .lbl-sound-on {
+    display: none;
+}
+
+.hero-vc-btn.is-muted .lbl-sound-off {
+    display: inline;
+}
+
+/* Hero video controls — small screens */
+@media (max-width: 480px) {
+    .hero-video-controls {
+        bottom: 14px;
+        left: 14px;
+        gap: 8px;
+    }
+
+    .hero-vc-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .hero-vc-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .hero-vc-btn--labeled {
+        width: auto;
+        padding: 0 13px;
+    }
+
+    .hero-vc-label {
+        font-size: 0.78rem;
+    }
+}
+
 /* Phoenix animation - disabled */
 .hero::before {
     content: none;
