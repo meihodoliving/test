@@ -938,7 +938,7 @@ body.location-terms-page main .container p.location-terms-cta,
 
 /* Hero Section */
 .hero {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 20 / 9;
     max-height: 100vh;
     background: var(--gradient-overlay);
     background-size: cover;
@@ -972,6 +972,11 @@ body.location-terms-page main .container p.location-terms-cta,
     object-fit: cover;
     object-position: center;
     z-index: 0;
+}
+
+/* Hero video: anchor to bottom so the cropped 20% comes off the top */
+#hero-video.hero-image {
+    object-position: center bottom;
 }
 
 .hero-overlay {
