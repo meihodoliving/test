@@ -2902,9 +2902,11 @@ html[lang="en"] .vertical-btn .btn-text {
     }
 
     .hero {
+        /* Mobile/tablet: use the video's native 16:9 so the full frame shows */
+        aspect-ratio: 16 / 9;
         padding-bottom: 40px;
     }
-    
+
     .hero-image {
         width: 100%;
         height: 100%;
