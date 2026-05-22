@@ -2902,8 +2902,10 @@ html[lang="en"] .vertical-btn .btn-text {
     }
 
     .hero {
-        /* Mobile/tablet: use the video's native 16:9 so the full frame shows */
+        /* Mobile/tablet: use the video's native 16:9 so the full frame shows,
+           and clear the 81px fixed navbar so it isn't covered */
         aspect-ratio: 16 / 9;
+        margin-top: 81px;
         padding-bottom: 40px;
     }
 
