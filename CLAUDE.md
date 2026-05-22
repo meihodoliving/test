@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## ⚠️ Live site comes first — read this every session
 
 This site is **in production**. Every push to `main` deploys to both
-- Vercel: `https://test-seven-lime-14.vercel.app`
+- Vercel: `https://www.meihodo.com` (custom domain; `meihodo.com` apex redirects to `www`)
 - GitHub Pages: `https://meihodoliving.github.io/test/`
 
 **The deployed site must stay rendering correctly at all times.** A broken deploy is the most expensive kind of failure here, because real visitors see it. Optimize every change around this priority.
@@ -27,9 +27,9 @@ This site is **in production**. Every push to `main` deploys to both
 2. Re-run the pre-flight audits above. They must still be clean after your edits.
 3. If the change touches HTML structure or assets, push and then **curl-verify the live site** before walking away:
    ```bash
-   curl -sL https://test-seven-lime-14.vercel.app/en/experiences/samurai | grep -c 'class="experience-hero"'    # > 0
-   curl -sI https://test-seven-lime-14.vercel.app/en/experiences/components.css | head -1                       # 200, not 404
-   curl -sI https://test-seven-lime-14.vercel.app/styles.css | grep -i content-length                           # 156000+ bytes
+   curl -sL https://www.meihodo.com/en/experiences/samurai | grep -c 'class="experience-hero"'    # > 0
+   curl -sI https://www.meihodo.com/en/experiences/components.css | head -1                       # 200, not 404
+   curl -sI https://www.meihodo.com/styles.css | grep -i content-length                           # 156000+ bytes
    ```
 4. If GitHub Pages goes red, fix it immediately. Check with `GH_TOKEN=<token> gh run list --repo meihodoliving/test --limit 3`. The most common failure is a deprecated `actions/*` version.
 
