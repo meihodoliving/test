@@ -6723,7 +6723,8 @@ section#access-travel-info.access {
     }
 
     .access-guide-caption {
-        margin: 1.4rem auto 2.1rem;
+        margin: 2.5rem auto 2.1rem;
+        padding: 0 1rem;
         line-height: 1.9;
     }
 
