@@ -6772,6 +6772,27 @@ section#access-travel-info.access {
         margin-bottom: 1.7rem;
         max-width: 100%;
     }
+
+    #access-travel-info .access-item {
+        max-width: 100%;
+    }
+
+    #access-travel-info .access-text {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    #access-travel-info .access-text .access-body,
+    #access-travel-info .access-text .access-body--merged p {
+        max-width: 100%;
+        word-break: normal;
+        line-break: auto;
+        overflow-wrap: anywhere;
+    }
+
+    #access-travel-info .access-text .access-body--merged p .access-phrase-nowrap {
+        white-space: normal;
+    }
 }
 
 /* 施設紹介 (/ja/about/ など) */
