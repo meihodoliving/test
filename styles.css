@@ -6722,10 +6722,15 @@ section#access-travel-info.access {
         padding-bottom: 3.5rem;
     }
 
+    .access-guide-hero {
+        margin-bottom: 2rem;
+    }
+
     .access-guide-caption {
-        margin: 2.5rem auto 2.1rem;
-        padding: 0 1rem;
+        margin: 0 auto 2.1rem;
+        padding: 1.5rem 1.25rem 0;
         line-height: 1.9;
+        text-align: center;
     }
 
     #access-travel-info.access,
