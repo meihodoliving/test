@@ -7092,17 +7092,14 @@ body.about-meihodo-page .about-map-image {
     box-shadow: 0 18px 50px rgba(28, 28, 28, 0.12);
 }
 
-/* --- Facility cards (numbered) --- */
+/* --- Facility cards --- */
 body.about-meihodo-page .facility-showcase {
-    counter-reset: facility;
     padding-top: 3.5rem;
 }
 
 body.about-meihodo-page .facility-block {
-    counter-increment: facility;
     position: relative;
     padding: clamp(2.25rem, 4vw, 3.25rem) clamp(1.75rem, 4vw, 3rem);
-    padding-top: 3.85rem;
     margin-bottom: 2rem;
     background: var(--white);
     border-radius: 18px;
@@ -7115,19 +7112,6 @@ body.about-meihodo-page .facility-block:hover {
     transform: translateY(-5px);
     box-shadow: 0 26px 58px rgba(28, 28, 28, 0.13);
     border-color: rgba(212, 175, 55, 0.5);
-}
-
-body.about-meihodo-page .facility-block::before {
-    content: counter(facility, decimal-leading-zero);
-    position: absolute;
-    top: 1.7rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    color: var(--accent-color);
 }
 
 body.about-meihodo-page .facility-block__title {
@@ -7210,10 +7194,6 @@ body.about-meihodo-page .activity-year__list li::before {
 
     body.about-meihodo-page .about-lead-block {
         margin-bottom: 3.5rem;
-    }
-
-    body.about-meihodo-page .facility-block {
-        padding-top: 3.35rem;
     }
 }
 
