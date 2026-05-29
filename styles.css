@@ -6340,6 +6340,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
 }
 
 .hero-image-section .hero-image {
+    position: static;
     width: 100%;
     height: auto;
     border-radius: 12px;
