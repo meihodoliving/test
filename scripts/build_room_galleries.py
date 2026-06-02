@@ -6,6 +6,7 @@ into ja|en|zh-cn|zh-tw/{room}/index.html for each guest room page.
 from __future__ import annotations
 
 import sys
+import unicodedata
 from pathlib import Path
 from urllib.parse import quote
 
@@ -92,6 +93,10 @@ def image_url_web(image_dir: str, filename: str) -> str:
 def build_grid_html(lang: str, room: str, image_dir: str, files: list[str]) -> str:
     lines = []
     for i, fn in enumerate(files, start=1):
+        # macOS hands back decomposed (NFD) filenames; git/Vercel store the
+        # precomposed (NFC) form (core.precomposeunicode=true). Emit NFC so the
+        # URL matches the deployed filename instead of 404-ing on Vercel.
+        fn = unicodedata.normalize("NFC", fn)
         url = image_url_web(image_dir, fn)
         ap = alt_prefix(lang, room)
         alt = f"{ap} — {fn}"
@@ -152,6 +157,11 @@ def main() -> int:
     for room, img_dir in ROOM_TO_DIR.items():
         folder = IMAGE_ROOT / img_dir
         files = list_image_files(folder)
+        # The page-header / hero image (named after the room or its image dir,
+        # e.g. geihinkan/geihinkan.webp) already appears at the top of the page;
+        # keep it out of the photo gallery.
+        hero_stems = {img_dir, room}
+        files = [f for f in files if Path(f).stem not in hero_stems]
         if not files:
             missing_dirs.append(img_dir)
             continue
