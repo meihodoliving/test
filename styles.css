@@ -3544,19 +3544,25 @@ html[lang="en"] .vertical-btn .btn-text {
 }
 
 @media (max-width: 480px) {
+    .experience-nav {
+        padding: 1.5rem 0;
+    }
+
     .experience-nav .nav-links {
-        gap: 1rem;
-        flex-direction: column;
-        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+        max-width: 400px;
     }
-    
+
     .experience-nav .nav-link {
-        font-size: 0.9rem;
-        padding: 0.5rem 1rem;
-        width: 200px;
+        font-size: 0.85rem;
+        padding: 0.5rem 0.6rem;
+        width: auto;
         text-align: center;
+        white-space: nowrap;
     }
-    
+
     .benefits-grid {
         grid-template-columns: 1fr;
     }
