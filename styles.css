@@ -3238,6 +3238,39 @@ html[lang="en"] .vertical-btn .btn-text {
     font-weight: 700;
 }
 
+/* Mobile: keep each detail row on one line, with label and value grouped
+   close together and the whole block centered (no space-between). The
+   details box becomes a 2-column grid (labels / values) so both columns
+   stay aligned; display:contents lets each label+value flow into it. */
+@media (max-width: 480px) {
+    .experience-details {
+        display: grid;
+        grid-template-columns: max-content max-content;
+        justify-content: center;
+        column-gap: 0.4em;
+        row-gap: 0.5rem;
+    }
+
+    #martial-arts .experience-details,
+    #cultural .experience-details {
+        display: grid;
+        grid-template-columns: max-content max-content;
+        justify-content: center;
+        column-gap: 0.4em;
+        row-gap: 0.4rem;
+    }
+
+    .detail-item {
+        display: contents;
+    }
+
+    .detail-label,
+    .detail-value {
+        text-align: left;
+        white-space: nowrap;
+    }
+}
+
 .experience-tags {
     display: flex;
     flex-wrap: wrap;
@@ -4269,7 +4302,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     .restaurant-image img {
         height: 300px;
     }
-    
+
     .restaurant-features {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.75rem;
