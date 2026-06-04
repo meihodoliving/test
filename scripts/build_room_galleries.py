@@ -20,7 +20,7 @@ ROOM_TO_DIR: dict[str, str] = {
     "geihinkan": "geihinkan",
     "hinokinoma": "hinokinoma",
     "korokan": "kourokan",
-    "seiseikan": "seiseisya",
+    "seiseisya": "seiseisya",
 }
 
 LANGS = ("ja", "en", "zh-cn", "zh-tw")
@@ -50,25 +50,25 @@ ALT_PREFIX = {
     ("ja", "geihinkan"): {"alt": "迎賓館"},
     ("ja", "hinokinoma"): {"alt": "檜の間"},
     ("ja", "korokan"): {"alt": "光籟館"},
-    ("ja", "seiseikan"): {"alt": "清静舎"},
+    ("ja", "seiseisya"): {"alt": "清静舎"},
     ("en", "bunshinkan"): {"alt": "Bunshinkan"},
     ("en", "edokan"): {"alt": "Edokan"},
     ("en", "geihinkan"): {"alt": "Geihinkan"},
     ("en", "hinokinoma"): {"alt": "Hinokinoma"},
     ("en", "korokan"): {"alt": "Korokan"},
-    ("en", "seiseikan"): {"alt": "Seiseikan"},
+    ("en", "seiseisya"): {"alt": "Seiseisya"},
     ("zh-cn", "bunshinkan"): {"alt": "文心馆"},
     ("zh-cn", "edokan"): {"alt": "江户馆"},
     ("zh-cn", "geihinkan"): {"alt": "迎宾馆"},
     ("zh-cn", "hinokinoma"): {"alt": "桧木间"},
     ("zh-cn", "korokan"): {"alt": "光籁馆"},
-    ("zh-cn", "seiseikan"): {"alt": "清静舍"},
+    ("zh-cn", "seiseisya"): {"alt": "清静舍"},
     ("zh-tw", "bunshinkan"): {"alt": "文心館"},
     ("zh-tw", "edokan"): {"alt": "江戶館"},
     ("zh-tw", "geihinkan"): {"alt": "迎賓館"},
     ("zh-tw", "hinokinoma"): {"alt": "檜之間"},
     ("zh-tw", "korokan"): {"alt": "光籟館"},
-    ("zh-tw", "seiseikan"): {"alt": "清靜舎"},
+    ("zh-tw", "seiseisya"): {"alt": "清靜舎"},
 }
 
 

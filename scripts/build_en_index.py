@@ -30,7 +30,7 @@ text = text.replace('href="/ja/location/"', 'href="/en/location/"')
 # Experience cards
 text = text.replace('href="/ja/experiences/', 'href="/en/experiences/')
 # Accommodations
-text = text.replace('href="/ja/seiseikan/"', 'href="/en/seiseikan/"')
+text = text.replace('href="/ja/seiseisya/"', 'href="/en/seiseisya/"')
 text = text.replace('href="/ja/geihinkan/"', 'href="/en/geihinkan/"')
 text = text.replace('href="/ja/korokan/"', 'href="/en/korokan/"')
 text = text.replace('href="/ja/bunshinkan/"', 'href="/en/bunshinkan/"')

@@ -4,5 +4,19 @@
   "installCommand": "echo 'static site - no install'",
   "outputDirectory": ".",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/ja/seiseikan", "destination": "/ja/seiseisya", "permanent": true },
+    { "source": "/ja/seiseikan/", "destination": "/ja/seiseisya", "permanent": true },
+    { "source": "/ja/seiseikan/index.html", "destination": "/ja/seiseisya", "permanent": true },
+    { "source": "/en/seiseikan", "destination": "/en/seiseisya", "permanent": true },
+    { "source": "/en/seiseikan/", "destination": "/en/seiseisya", "permanent": true },
+    { "source": "/en/seiseikan/index.html", "destination": "/en/seiseisya", "permanent": true },
+    { "source": "/zh-cn/seiseikan", "destination": "/zh-cn/seiseisya", "permanent": true },
+    { "source": "/zh-cn/seiseikan/", "destination": "/zh-cn/seiseisya", "permanent": true },
+    { "source": "/zh-cn/seiseikan/index.html", "destination": "/zh-cn/seiseisya", "permanent": true },
+    { "source": "/zh-tw/seiseikan", "destination": "/zh-tw/seiseisya", "permanent": true },
+    { "source": "/zh-tw/seiseikan/", "destination": "/zh-tw/seiseisya", "permanent": true },
+    { "source": "/zh-tw/seiseikan/index.html", "destination": "/zh-tw/seiseisya", "permanent": true }
+  ]
 }
