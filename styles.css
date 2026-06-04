@@ -4245,8 +4245,9 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     }
     
     .restaurant-features {
-        grid-template-columns: 1fr;
-        max-width: 300px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        max-width: 360px;
     }
     
     .restaurant-description h3 {
@@ -4258,8 +4259,10 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     }
     
     .restaurant-features .feature-item {
-        padding: 0.6rem;
+        padding: 0.6rem 0.4rem;
         font-size: 0.85rem;
+        white-space: normal;
+        text-align: center;
     }
 }
 
