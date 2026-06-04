@@ -7493,13 +7493,54 @@ body.about-meihodo-page .activity-year__list li::before {
 
 @media (max-width: 600px) {
     .location-pricing .table-wrapper {
-        margin-left: -0.2rem;
-        margin-right: -0.2rem;
-        border-radius: 0;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 12px;
     }
 
+    /* Fit the table within the card on phones — no forced horizontal scroll.
+       Dropping min-width lets table-layout:fixed wrap cell text to the column
+       width instead of overflowing the screen. */
     .location-pricing .pricing-table {
-        min-width: 32rem;
+        min-width: 0;
+        font-size: 0.82rem;
+    }
+
+    .location-pricing .pricing-table th:nth-child(1) {
+        width: 34%;
+    }
+
+    .location-pricing .pricing-table th:nth-child(2) {
+        width: 30%;
+    }
+
+    .location-pricing .pricing-table th:nth-child(3) {
+        width: 36%;
+    }
+
+    .location-pricing .pricing-table thead th {
+        padding: 0.6rem 0.3rem 0.65rem;
+        font-size: 0.66rem;
+        letter-spacing: 0.02em;
+    }
+
+    .location-pricing .pricing-table td {
+        padding: 0.7rem 0.3rem;
+    }
+
+    .location-pricing .pricing-table td:first-child {
+        padding-left: 0.2rem;
+        padding-right: 0.35rem;
+    }
+
+    .location-pricing .location-price-stack {
+        gap: 0.35rem;
+        max-width: none;
+    }
+
+    .location-pricing .location-price-line,
+    .location-pricing .location-price-line--add {
+        font-size: 0.78rem;
     }
 }
 
