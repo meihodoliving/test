@@ -3551,11 +3551,11 @@ html[lang="en"] .vertical-btn .btn-text {
     .reservation-cards .info-item {
         display: grid;
         grid-template-columns: 2.25rem 1.25rem 1fr;
-        column-gap: 0.75rem;
+        column-gap: 0.6rem;
         align-items: center;
         text-align: left;
-        min-height: 8.5rem;
-        padding: 1.5rem 2rem;
+        min-height: 5rem;
+        padding: 0.9rem 1.1rem;
     }
 
     .reservation-cards .info-item .info-icon {
