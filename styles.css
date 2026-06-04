@@ -963,6 +963,19 @@ body.location-terms-page main .container p.location-terms-cta,
     line-height: 1.75;
 }
 
+/* Accommodations hero: shrink the title and long subtitle on phones so the
+   copy wraps less and more of the background image shows (this page only). */
+@media (max-width: 480px) {
+    .accommodations-hero .hero-title-main {
+        font-size: 1.6rem;
+    }
+
+    .accommodations-hero .hero-title-sub {
+        font-size: 1.4rem;
+        line-height: 1.4;
+    }
+}
+
 .hero-image {
     position: absolute;
     top: 0;
