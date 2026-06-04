@@ -5185,6 +5185,30 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     gap: 2rem;
 }
 
+/* Mobile: the global `* { padding: 0 }` reset strips the list's left padding,
+   so the default outside bullets render past the screen edge and clip. Use an
+   explicit ・ bullet held inside the row, and guarantee long lines wrap. */
+@media (max-width: 480px) {
+    .guidelines-list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .guidelines-list li {
+        position: relative;
+        padding-left: 1.2rem;
+        overflow-wrap: anywhere;
+        line-height: 1.7;
+    }
+
+    .guidelines-list li::before {
+        content: "・";
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+
 .guideline-item {
     display: flex;
     align-items: flex-start;
