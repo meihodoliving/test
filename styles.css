@@ -8083,3 +8083,15 @@ footer a:hover,
     }
 }
 
+/* Mobile-only forced line break (e.g. JP top-page section title).
+   Hidden by default so tablet/PC keep a single line; shown only on mobile. */
+.mobile-br {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-br {
+        display: inline;
+    }
+}
+
