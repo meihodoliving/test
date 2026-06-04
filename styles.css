@@ -4300,7 +4300,8 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     }
     
     .restaurant-image img {
-        height: 300px;
+        height: auto;
+        aspect-ratio: 16 / 9;
     }
 
     .restaurant-features {
