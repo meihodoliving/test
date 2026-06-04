@@ -2090,6 +2090,26 @@ body.home-zh-tw #experiences .experience-card .card-button {
     }
 }
 
+/* Mobile: experience menu as a 2-column (row-major) grid */
+@media (max-width: 480px) {
+    .experience-menu-columns {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1rem;
+        row-gap: 0.5rem;
+    }
+
+    .experience-column,
+    .experience-column ul {
+        display: contents;
+    }
+
+    .experience-column ul li {
+        margin-bottom: 0;
+        white-space: nowrap;
+    }
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
