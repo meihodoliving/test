@@ -5796,11 +5796,15 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: #2C2C2C;
     margin-bottom: 2rem;
-    text-align: left;
+    text-align: center;
     font-family: 'Noto Serif JP', serif;
     border-bottom: 2px solid #D4AF37;
     padding-bottom: 0.5rem;
-    display: inline-block;
+    display: block;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .menu-item h4 {
