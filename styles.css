@@ -3761,6 +3761,16 @@ html[lang="en"] .vertical-btn .btn-text {
     position: relative;
 }
 
+/* Mobile: room pages open straight into this section (no .hero, which on
+   mobile gets margin-top:81px to clear the fixed navbar). Without that the
+   room-name title sits under the ~81px fixed header and gets clipped, so add
+   top clearance here. Phones only — tablet/PC already clear the navbar. */
+@media (max-width: 480px) {
+    .room-overview {
+        padding-top: 7rem;
+    }
+}
+
 .room-content {
     display: flex;
     justify-content: center;
