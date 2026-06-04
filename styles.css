@@ -5754,6 +5754,15 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-style: italic;
 }
 
+/* English restaurant catchcopy: center on mobile only. The global prose rule
+   (section:not(.hero) .container p) left-aligns it; this higher-specificity
+   rule re-centers it on phones without touching other pages or breakpoints. */
+@media (max-width: 480px) {
+    html[lang="en"] .menu-sections .container p.menu-description {
+        text-align: center;
+    }
+}
+
 .menu-item {
     background: #FFFFFF;
     border: 1px solid #D4AF37;
