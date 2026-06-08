@@ -2588,6 +2588,16 @@ body.home-en #experiences .experience-card .card-button {
     }
 }
 
+/* JP top page: on phones the catchphrase sits right under the hero image and
+   reads slightly top-heavy. Add a modest top margin so the block has room to
+   breathe and centres better in view. Smartphones + JP only; PC 2-col layout,
+   other languages, font/line-height/breaks all unchanged. */
+@media (max-width: 480px) {
+    html[lang="ja"] .catchphrase-section {
+        margin-top: 2.5rem;
+    }
+}
+
 /* Fixed Action Buttons */
 .fixed-buttons {
     position: fixed;
