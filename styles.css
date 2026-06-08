@@ -6609,6 +6609,13 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     text-wrap: pretty;
 }
 
+/* JP access caption: the global prose rule (section .container p) left-aligns
+   it, overriding the centering above. Re-center it on PC and mobile — this
+   caption only, JP page only; alignment is the only thing changed. */
+html[lang="ja"] .container p.gallery-description.access-guide-caption {
+    text-align: center;
+}
+
 #access-guide .gallery-intro-content {
     max-width: 40rem;
     margin-left: auto;
