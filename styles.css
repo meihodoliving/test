@@ -3078,15 +3078,20 @@ html[lang="en"] .vertical-btn .btn-text {
         border-radius: 10px;
     }
 
-    /* EN pages: keep mobile vertical buttons tall enough for long labels */
+    /* EN pages: keep mobile vertical buttons tall enough for long labels,
+       but trimmed down so they take less of the screen. Width unchanged. */
     html[lang="en"] .vertical-btn {
         width: 44px;
-        height: 200px;
+        height: 160px;
     }
 
     html[lang="en"] .vertical-btn .btn-text {
-        letter-spacing: 0.08em;
-        padding: 10px 0;
+        letter-spacing: 0.06em;
+        padding: 7px 0;
+    }
+
+    html[lang="en"] .main-buttons {
+        gap: 12px;
     }
 
     .btn-text {
