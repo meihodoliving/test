@@ -2073,11 +2073,14 @@ body.home-zh-tw #experiences .experience-card .card-button {
 /* Experience Menu Columns */
 .experience-menu-columns {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
+/* Size each column to its content so the two link lists sit close
+   together with an even gap, instead of stretching to half the
+   section width and leaving a large gap between the short labels. */
 .experience-column {
-    flex: 1;
+    flex: 0 1 auto;
 }
 
 .experience-column ul {
