@@ -2016,6 +2016,14 @@ body.home-zh-tw #experiences .experience-card .card-button {
     z-index: 1;
 }
 
+/* Footers that carry the experience/宿泊 menus have four sections —
+   lay them out in four even columns on desktop. Simple footers
+   (no menu columns) keep the three-column track above. */
+.footer-content:has(.experience-menu-columns) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+}
+
 .footer-section h3 {
     font-family: 'Noto Serif JP', serif;
     color: var(--accent-color);
@@ -2090,14 +2098,24 @@ body.home-zh-tw #experiences .experience-card .card-button {
     color: var(--accent-color);
 }
 
+/* Tablet: drop the four-section footer to two columns so the inner
+   menu columns keep enough room. */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .footer-content:has(.experience-menu-columns) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
 /* Responsive adjustments for experience columns and footer */
 @media (max-width: 768px) {
     .experience-menu-columns {
         flex-direction: column;
         gap: 1rem;
     }
-    
-    .footer-content {
+
+    .footer-content,
+    .footer-content:has(.experience-menu-columns) {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
