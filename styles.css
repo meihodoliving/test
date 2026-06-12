@@ -7110,7 +7110,42 @@ section#access-travel-info.access {
     margin-top: 0.65rem;
 }
 
+.about-faq-cta {
+    margin-top: 2rem;
+}
+
+.about-faq-cta__inner {
+    display: flex;
+    justify-content: center;
+}
+
+.about-faq-cta__btn {
+    text-align: center;
+}
+
+/* Tighten the gap to the following 活動報告 section so the button
+   reads as connected to it rather than floating between sections. */
+.about-faq-cta + .activity-report-section {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+}
+
 @media (max-width: 768px) {
+    .about-faq-cta {
+        margin-top: 1.5rem;
+    }
+
+    .about-faq-cta + .activity-report-section {
+        margin-top: 1.75rem;
+        padding-top: 1.5rem;
+    }
+
+    .about-faq-cta__btn {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+    }
+
     .about-page-main {
         padding-top: 6rem;
         padding-bottom: 3.5rem;
