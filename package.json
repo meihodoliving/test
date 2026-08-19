@@ -6,6 +6,8 @@
   "scripts": {
     "start": "npx live-server --port=3000 --open=/index.html",
     "serve": "python3 -m http.server 8000",
+    "back-office": "npx live-server --port=3100 --open=/back-office/index.html",
+    "test:back-office": "node --test back-office/test/core.test.js",
     "dev": "npx live-server --port=3000 --open=/index.html --watch=.",
     "optimize:images": "python3 scripts/optimize_images.py",
     "optimize:images:dry": "python3 scripts/optimize_images.py --dry-run",
