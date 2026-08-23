@@ -123,6 +123,7 @@
   function save() {
     clearTimeout(saveTimer);
     saveTimer = setTimeout(function () {
+      saveTimer = null;
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
         setSaveState('保存済み ' + new Date().toLocaleTimeString('ja-JP'), true);
@@ -138,6 +139,13 @@
     if (!el) return;
     el.textContent = text;
     el.classList.toggle('is-saved', !!ok);
+  }
+
+  // 遅延書き込みが残ったままタブを閉じられても失わないよう、離脱時に必ず吐き出す
+  function flush() {
+    if (!saveTimer) return;
+    clearTimeout(saveTimer); saveTimer = null;
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { /* 保存できない環境では何もしない */ }
   }
 
   function flash(msg, isError) {
@@ -1124,6 +1132,10 @@
       year: 'numeric', month: 'long', day: 'numeric', weekday: 'short'
     });
     load();
+    window.addEventListener('pagehide', flush);
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') flush();
+    });
     initTabs();
     initEntryForm();
     initEntryList();

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>資金表 → 現金出納帳 — 鳴鳳堂 バックオフィス</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%237a5c3e'/%3E%3Ctext x='16' y='23' font-size='18' text-anchor='middle' fill='%23fff' font-family='sans-serif'%3E%E5%86%86%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="./cashbook.css">
+</head>
+<body>
+
+<header class="app-bar">
+  <div class="app-bar__title">
+    <strong>資金表 → 現金出納帳</strong>
+    <span class="app-bar__sub">現金のみを抽出して出納帳を作る</span>
+  </div>
+  <div class="app-bar__meta">
+    <label class="inline">対象月
+      <select id="month-select"></select>
+    </label>
+    <button class="btn btn--sm" id="month-new">月を追加</button>
+    <span id="save-state" class="save-state">—</span>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="tab is-active" data-tab="load">1. 読み込み</button>
+  <button class="tab" data-tab="sort">2. 仕分け</button>
+  <button class="tab" data-tab="book">3. 検算・出納帳</button>
+  <button class="tab" data-tab="rules">ルール</button>
+  <button class="tab" data-tab="data">データ</button>
+</nav>
+
+<main>
+  <!-- ============================================ 読み込み -->
+  <section class="panel is-active" id="panel-load">
+    <div class="card">
+      <h2>対象月の設定</h2>
+      <form id="month-form" class="form-grid form-grid--tight" autocomplete="off">
+        <label>対象月<input type="month" id="m-label" required></label>
+        <label>期首残高（手許現金）<input type="number" id="m-opening" step="1"></label>
+        <label class="inline-check">
+          <input type="checkbox" id="m-estimate">
+          <span>この期首残高は逆算した推定値<span class="label-note">実際の手許現金と照合が済んだらチェックを外す</span></span>
+        </label>
+        <label>目標値（現金純増減）<span class="label-note">分かっていれば。検算に使います</span>
+          <input type="number" id="m-target" step="1" placeholder="例: 7012">
+        </label>
+        <div class="form-actions">
+          <button class="btn btn--primary" type="submit">保存</button>
+          <span class="hint" id="m-msg"></span>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>資金表を読み込む</h2>
+      <p class="hint">
+        <strong>.xlsx のまま読み込んでください。</strong>CSV に書き出すと文字色が失われ、
+        青・黒・赤の一次判定ができなくなります。色はあくまで目安として使い、通帳と突き合わせて確定します。
+      </p>
+      <div class="row">
+        <label class="file-btn">資金表（.xlsx）を選ぶ<input type="file" id="fund-file" accept=".xlsx" hidden></label>
+        <label class="file-btn">CSVで読む（色なし）<input type="file" id="fund-csv" accept=".csv,.txt" hidden></label>
+        <span id="fund-msg" class="hint"></span>
+      </div>
+      <div id="sheet-picker" class="row" hidden>
+        <label class="inline">シート<select id="sheet-select"></select></label>
+        <button class="btn btn--sm" id="sheet-apply">このシートを使う</button>
+      </div>
+      <div id="fund-columns" class="col-map"></div>
+      <div class="table-wrap" id="fund-preview"></div>
+    </div>
+
+    <div class="card">
+      <h2>銀行通帳を読み込む</h2>
+      <p class="hint">ネットバンキングの入出金明細CSV。資金表の各行が通帳に出ているかを突き合わせ、出ていれば銀行取引として現金出納帳から外します。</p>
+      <div class="row">
+        <label class="file-btn">通帳CSVを選ぶ<input type="file" id="bank-file" accept=".csv,.txt" hidden></label>
+        <span id="bank-msg" class="hint"></span>
+      </div>
+      <textarea id="bank-text" rows="4" placeholder="CSVを貼り付けてもかまいません"></textarea>
+      <div class="row">
+        <button class="btn" id="bank-parse">読み込む</button>
+      </div>
+      <div class="table-wrap" id="bank-preview"></div>
+    </div>
+
+    <div class="card">
+      <div class="row">
+        <button class="btn btn--primary" id="run-classify">判定して仕分けへ進む</button>
+        <span class="hint">確定済みの判断は上書きされません。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ 仕分け -->
+  <section class="panel" id="panel-sort">
+    <div class="card">
+      <div class="card__head">
+        <h2>仕分け</h2>
+        <div class="filters">
+          <select id="q-status">
+            <option value="review">要確認のみ</option>
+            <option value="">すべて</option>
+            <option value="cash">現金のみ</option>
+            <option value="bank">銀行のみ</option>
+            <option value="exclude">除外のみ</option>
+            <option value="none">判定不能のみ</option>
+          </select>
+          <input id="q-text" placeholder="摘要で検索">
+        </div>
+      </div>
+      <div id="sort-summary" class="match-summary"></div>
+      <div class="row">
+        <button class="btn btn--primary" id="confirm-confident">通帳・ルールで裏取りできた分をまとめて確定</button>
+        <span class="hint">色だけで判定した行は含みません。1件ずつ確認してください。</span>
+      </div>
+      <div class="table-wrap" id="sort-table"></div>
+    </div>
+  </section>
+
+  <!-- ============================================ 検算・出納帳 -->
+  <section class="panel" id="panel-book">
+    <div class="card">
+      <h2>検算</h2>
+      <p class="hint">現金純増減 ＝ 資金表残高の増減 − 銀行通帳上の動き。この値と「現金と確定した取引の合計」が一致すれば、仕分けに漏れがありません。</p>
+      <div id="recon"></div>
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h2>現金出納帳</h2>
+        <div class="filters">
+          <label class="inline"><input type="checkbox" id="include-unconfirmed"> 未確定も含めて表示</label>
+          <button class="btn btn--sm" id="book-csv">CSVで書き出す</button>
+          <button class="btn btn--sm" id="book-print">印刷</button>
+        </div>
+      </div>
+      <div id="book-head"></div>
+      <div class="table-wrap" id="book-table"></div>
+    </div>
+  </section>
+
+  <!-- ============================================ ルール -->
+  <section class="panel" id="panel-rules">
+    <div class="card">
+      <h2>判定ルール</h2>
+      <p class="hint">
+        一度確定した判断をルールとして残しておくと、翌月以降は自動で当たります。
+        判断の根拠（なぜ除外するのか）を書いておくと、後で見返したときに迷いません。
+      </p>
+      <form id="rule-form" class="form-grid form-grid--tight" autocomplete="off">
+        <label>摘要に含まれる語<input id="r-keyword" required placeholder="浄化槽"></label>
+        <label>判定
+          <select id="r-kind">
+            <option value="exclude">除外（口座振替など）</option>
+            <option value="cash">現金</option>
+            <option value="bank">銀行取引</option>
+          </select>
+        </label>
+        <label>根拠のメモ<input id="r-note" placeholder="口座振替のため現金出納帳の対象外"></label>
+        <div class="form-actions"><button class="btn btn--primary" type="submit">追加</button></div>
+      </form>
+      <div class="table-wrap" id="rule-table"></div>
+    </div>
+  </section>
+
+  <!-- ============================================ データ -->
+  <section class="panel" id="panel-data">
+    <div class="cards-2">
+      <div class="card">
+        <h2>突合の設定</h2>
+        <form id="settings-form" class="form-grid form-grid--tight">
+          <label>金額の許容差（円）<input type="number" id="s-tolerance" step="1" min="0"></label>
+          <label>日付のずれ許容（日）<input type="number" id="s-window" step="1" min="0"></label>
+          <div class="form-actions"><button class="btn btn--primary" type="submit">保存</button></div>
+        </form>
+      </div>
+      <div class="card">
+        <h2>保存と持ち出し</h2>
+        <p class="hint">データはこの端末のブラウザ内にのみ保存されます。月次で書き出して保管してください。</p>
+        <div class="btn-row">
+          <button class="btn" id="backup-export">バックアップを書き出す</button>
+          <label class="file-btn">バックアップを読み込む<input type="file" id="backup-import" accept=".json" hidden></label>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn--danger" id="wipe">全データを消去</button>
+        </div>
+        <p class="hint" id="data-msg"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="app-foot">
+  <span>社内用ツール — このページは公開サイトには含まれません。</span>
+  <a href="../index.html">資金繰り・債権債務へ</a>
+  <a href="./README.md">手順</a>
+</footer>
+
+<script src="../core.js"></script>
+<script src="./xlsx.js"></script>
+<script src="./cashbook.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
