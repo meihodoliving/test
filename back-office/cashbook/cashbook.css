@@ -1,0 +1,67 @@
+/* 資金表 → 現金出納帳 画面の追加分。基本は ../styles.css を使う。 */
+
+.cards-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+.cards-2 > * { min-width: 0; }
+@media (max-width: 900px) { .cards-2 { grid-template-columns: 1fr; } }
+
+.inline-check { flex-direction: row !important; align-items: flex-start; gap: .45rem; font-weight: 400; }
+.inline-check input { margin-top: .35rem; }
+
+/* 色分けの表示 */
+.tone { display: inline-block; padding: .05em .5em; border-radius: 4px; font-size: .72rem; border: 1px solid; }
+.tone--blue  { color: #1d4ed8; border-color: #bfd0f5; background: #eef3fd; }
+.tone--red   { color: #b91c1c; border-color: #f0cfcb; background: #fdeeec; }
+.tone--black { color: #44403c; border-color: #ddd8d1; background: #f4f2ef; }
+.tone--other { color: #78716c; border-color: #e5e1da; background: #faf9f7; }
+
+/* 判定 */
+.verdict { display: inline-block; padding: .05em .55em; border-radius: 4px; font-size: .75rem; font-weight: 600; }
+.verdict--cash    { color: #1d6b4f; background: #e7f2ec; }
+.verdict--bank    { color: #1d4ed8; background: #eaf0fd; }
+.verdict--exclude { color: #78716c; background: #f1efec; }
+.verdict--none    { color: #b45309; background: #fdf3e3; }
+
+.needs-check { background: #fdf9ef; }
+.needs-check td:first-child { box-shadow: inset 3px 0 0 #d9a441; }
+tr.settled-row td { color: inherit; }
+.confirmed-mark { color: #1d6b4f; font-weight: 700; }
+
+.why { font-size: .74rem; color: #8a8279; display: block; margin-top: .1rem; }
+
+/* 行内の分割フォーム */
+.split-row td { background: #fbfaf8; }
+.split-form { display: grid; gap: .5rem; padding: .3rem 0 .6rem; }
+.split-line { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+.split-line input[type="number"] { width: 8rem; }
+.split-line input[type="text"] { flex: 1 1 12rem; min-width: 8rem; }
+.split-total { font-size: .8rem; }
+.split-total.is-bad { color: #b91c1c; font-weight: 600; }
+.split-total.is-ok { color: #1d6b4f; font-weight: 600; }
+
+/* 検算 */
+.recon-grid { display: grid; gap: .1rem; max-width: 34rem; }
+.recon-line {
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding: .45rem .2rem; border-bottom: 1px solid var(--line, #e2ddd6);
+  font-variant-numeric: tabular-nums;
+}
+.recon-line:last-child { border-bottom: 0; }
+.recon-line--total { border-top: 2px solid #1c1917; font-weight: 700; margin-top: .3rem; }
+.recon-line span:last-child { white-space: nowrap; }
+.recon-note { font-size: .78rem; color: #8a8279; }
+
+.judge { padding: .7rem .9rem; border-radius: 6px; margin: .9rem 0 0; font-size: .88rem; }
+.judge--ok   { background: #eef6f1; border: 1px solid #cfe4d8; color: #1d6b4f; }
+.judge--bad  { background: #fdecea; border: 1px solid #e8c9c5; color: #b91c1c; }
+.judge--warn { background: #fef6e7; border: 1px solid #f0dcb8; color: #7c4a06; }
+
+.book-head { display: flex; flex-wrap: wrap; gap: 1.6rem; padding: .6rem 0 1rem; font-variant-numeric: tabular-nums; }
+.book-head b { font-size: 1.15rem; }
+
+.estimate-flag { font-size: .72rem; color: #b45309; }
+
+@media print {
+  .tabs, .app-bar, .app-foot, .filters, .btn, .card__head .filters { display: none !important; }
+  .panel { display: none !important; }
+  .panel.is-active { display: block !important; }
+}
