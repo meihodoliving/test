@@ -27,15 +27,45 @@
 
   function today() { return C.ymd(new Date()); }
 
-  function download(filename, text, mime) {
-    // Excel が UTF-8 と解釈できるよう CSV には BOM を付ける
-    var body = (mime || '').indexOf('csv') >= 0 ? '﻿' + text : text;
+  // Artifact として開いているときはブラウザの直接ダウンロードが機能しないため、
+  // その場合だけ claude.downloads 経由で保存する。通常のブラウザではこれまでどおり。
+  var downloadsCapability, downloadsChecked = false;
+  function getDownloadsCapability() {
+    if (downloadsChecked) return Promise.resolve(downloadsCapability);
+    downloadsChecked = true;
+    if (typeof window.claude === 'undefined' || !window.claude.use) return Promise.resolve(null);
+    return window.claude.use('downloads').then(function (d) { downloadsCapability = d; return d; })
+      .catch(function () { return null; });
+  }
+
+  function legacyDownload(filename, body, mime) {
     var blob = new Blob([body], { type: (mime || 'text/plain') + ';charset=utf-8' });
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
     a.href = url; a.download = filename;
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  function download(filename, text, mime) {
+    // Excel が UTF-8 と解釈できるよう CSV には BOM を付ける
+    var body = (mime || '').indexOf('csv') >= 0 ? '﻿' + text : text;
+    getDownloadsCapability().then(function (downloads) {
+      if (!downloads) return legacyDownload(filename, body, mime);
+      downloads.save({ filename: filename, data: body }).catch(function (err) {
+        var code = err && err.code;
+        if (code === 'declined') return;   // 保存しない選択は尊重する
+        if (code === 'rejected_extension' || code === 'extension_not_enabled') {
+          flash('このファイル形式（' + filename.split('.').pop() + '）はこの画面からは保存できません。', true);
+        } else if (code === 'too_large') {
+          flash('データが大きすぎて保存できませんでした。件数を絞って再度お試しください。', true);
+        } else if (code === 'rate_limited') {
+          flash('保存の確認が続けて出せません。少し待ってもう一度お試しください。', true);
+        } else {
+          flash('保存できませんでした。', true);
+        }
+      });
+    });
   }
 
   // 文字コードを判定しながらテキストファイルを読む（銀行 CSV は Shift_JIS が多い）
@@ -52,7 +82,7 @@
       fr.onerror = function () { reject(fr.error); };
       fr.onload = function () {
         var text = String(fr.result || '');
-        if (text.indexOf('�') >= 0) read('shift_jis');   // 化けていれば読み直す
+        if (text.indexOf('\uFFFD') >= 0) read('shift_jis');   // 化けていれば読み直す
         else resolve(text);
       };
       fr.readAsText(file, 'utf-8');

@@ -20,14 +20,44 @@
   function today() { return C.ymd(new Date()); }
   function thisMonth() { return today().slice(0, 7); }
 
-  function download(name, text, mime) {
-    var body = (mime || '').indexOf('csv') >= 0 ? '﻿' + text : text;
+  // Artifact として開いているときはブラウザの直接ダウンロードが機能しないため、
+  // その場合だけ claude.downloads 経由で保存する。通常のブラウザではこれまでどおり。
+  var downloadsCapability, downloadsChecked = false;
+  function getDownloadsCapability() {
+    if (downloadsChecked) return Promise.resolve(downloadsCapability);
+    downloadsChecked = true;
+    if (typeof window.claude === 'undefined' || !window.claude.use) return Promise.resolve(null);
+    return window.claude.use('downloads').then(function (d) { downloadsCapability = d; return d; })
+      .catch(function () { return null; });
+  }
+
+  function legacyDownload(filename, body, mime) {
     var blob = new Blob([body], { type: (mime || 'text/plain') + ';charset=utf-8' });
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
-    a.href = url; a.download = name;
+    a.href = url; a.download = filename;
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  function download(name, text, mime) {
+    var body = (mime || '').indexOf('csv') >= 0 ? '﻿' + text : text;
+    getDownloadsCapability().then(function (downloads) {
+      if (!downloads) return legacyDownload(name, body, mime);
+      downloads.save({ filename: name, data: body }).catch(function (err) {
+        var code = err && err.code;
+        if (code === 'declined') return;
+        if (code === 'rejected_extension' || code === 'extension_not_enabled') {
+          msg('data-msg', 'このファイル形式（' + name.split('.').pop() + '）はこの画面からは保存できません。');
+        } else if (code === 'too_large') {
+          msg('data-msg', 'データが大きすぎて保存できませんでした。');
+        } else if (code === 'rate_limited') {
+          msg('data-msg', '保存の確認が続けて出せません。少し待ってもう一度お試しください。');
+        } else {
+          msg('data-msg', '保存できませんでした。');
+        }
+      });
+    });
   }
 
   function readTextFile(file, encoding) {
@@ -43,7 +73,7 @@
       fr.onerror = function () { reject(fr.error); };
       fr.onload = function () {
         var t = String(fr.result || '');
-        if (t.indexOf('�') >= 0) read('shift_jis'); else resolve(t);
+        if (t.indexOf('\uFFFD') >= 0) read('shift_jis'); else resolve(t);
       };
       fr.readAsText(file, 'utf-8');
     });
