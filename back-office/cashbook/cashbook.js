@@ -26,11 +26,14 @@
     outflow:     ['出金', '出金額', '支出', '支払', 'payments', '出'],
     balance:     ['残高', '差引残高', '合計残高', 'balance'],
     account:     ['科目', '勘定科目', '経費科目', '費目', 'account'],
-    amount:      ['金額', '取引金額', 'amount']
+    amount:      ['金額', '取引金額', 'amount'],
+    // 会計ソフトへの入力が済んでいるかの印。銀行分は API 連携で自動記帳されるため、
+    // この列が意味を持つのは主に手入力が要る現金分。「済み」の行は当月の作業対象から外す。
+    processed:   ['会計処理', '処理状況', '入力状況']
   };
 
   function guessColumns(headerRow) {
-    var map = { date: -1, description: -1, inflow: -1, outflow: -1, balance: -1, account: -1, amount: -1 };
+    var map = { date: -1, description: -1, inflow: -1, outflow: -1, balance: -1, account: -1, amount: -1, processed: -1 };
     (headerRow || []).forEach(function (raw, i) {
       var h = C.normalizeName(cellText(raw));
       if (!h) return;
@@ -80,6 +83,32 @@
     return !row.some(function (c) { return C.parseDate(cellText(c)); });
   }
 
+  // 見出し名で摘要列が見つからないとき、他の列（日付・入金・出金・残高・科目など）
+  // として既に使われていない列のうち、文字量が最も多いものを摘要とみなす。
+  function inferDescriptionColumn(body, cols) {
+    var claimed = {};
+    Object.keys(cols).forEach(function (k) { if (cols[k] >= 0) claimed[cols[k]] = true; });
+    var sample = (body || []).slice(0, 30);
+    if (!sample.length) return -1;
+    var width = sample.reduce(function (w, r) { return Math.max(w, r ? r.length : 0); }, 0);
+    var best = { index: -1, textLen: 0 };
+    for (var i = 0; i < width; i++) {
+      if (claimed[i]) continue;
+      var textLen = 0, numericHits = 0, filled = 0;
+      sample.forEach(function (r) {
+        var t = cellText(r && r[i]).trim();
+        if (!t) return;
+        filled++;
+        if (C.parseAmount(t) != null || C.parseDate(t)) numericHits++;
+        else textLen += t.length;
+      });
+      // 数値・日付ばかりの列は摘要ではない
+      if (filled && numericHits / filled > 0.5) continue;
+      if (textLen > best.textLen) best = { index: i, textLen: textLen };
+    }
+    return best.textLen > 0 ? best.index : -1;
+  }
+
   /**
    * 資金表のシート → 取引の配列。
    * 金額が入金/出金の2列でも、符号付きの1列でも読める。
@@ -104,6 +133,12 @@
         body = rows.slice(best.index + 1);
       } else {
         cols = guessColumns([]);
+      }
+      // 摘要の見出しが空欄の資金表がある（「勘定科目」の隣に無題の列で入力されている等）。
+      // 見出し名で見つからなければ、中身の文字量から推測する。
+      if (cols.description < 0) {
+        var inferred = inferDescriptionColumn(body, cols);
+        if (inferred >= 0) cols.description = inferred;
       }
     } else if (rows.length && looksLikeHeader(rows[0], cols)) {
       headerRow = rows[0];
@@ -135,6 +170,7 @@
         return;
       }
 
+      var processedRaw = cols.processed >= 0 ? cellText(row[cols.processed]).trim() : '';
       entries.push({
         id: uid('f'),
         line: n + 1,
@@ -146,6 +182,7 @@
         account: cols.account >= 0 ? cellText(row[cols.account]).trim() : '',
         tone: cols.description >= 0 ? rowTone(row, cols.description) : rowTone(row, 0),
         color: (row[cols.description] && row[cols.description].color) || null,
+        alreadyProcessed: /済/.test(processedRaw),
         decision: null,        // 'cash' | 'bank' | 'exclude'
         reason: '',
         confirmed: false,      // 人が確定したか
@@ -204,13 +241,20 @@
   }
 
   /**
-   * 一次判定。優先順位は「人の確定 > ルール > 通帳一致 > 色」。
+   * 一次判定。優先順位は「人の確定 > 資金表の会計処理済み > ルール > 通帳一致 > 色」。
    * 色だけで決まったものは confident:false を返し、必ず確認に回す。
    */
   function classify(entry, context) {
     var ctx = context || {};
     if (entry.confirmed && entry.decision) {
       return { decision: entry.decision, reason: entry.reason || '確定済み', confident: true, source: 'confirmed' };
+    }
+
+    // 資金表の「会計処理」列に済みの印がある行は、すでに会計ソフトへの入力が
+    // 終わっている（銀行分は API 連携で自動記帳されるため、この印は主に現金分の
+    // 手入力完了を示す）。今月の作業対象からは外す。
+    if (entry.alreadyProcessed) {
+      return { decision: 'exclude', reason: '資金表の「会計処理」列で済みと記録済み', confident: true, source: 'processed' };
     }
 
     var rule = matchRule(entry, ctx.rules);

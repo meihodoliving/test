@@ -83,6 +83,66 @@ test('通帳に同じ動きがあれば銀行取引として確定する', () =>
   assert.ok(r.reason.includes('通帳'));
 });
 
+test('見出しに「会計処理」列があれば済みかどうかを読み取る', () => {
+  const HEADER = ['日付', '摘要', '入金', '出金', '残高', '勘定科目', '会計処理'];
+  const rows = [
+    HEADER,
+    [cell('2026/05/02'), cell('売上'), cell(85000), cell(''), cell(''), cell('売上高'), cell('済み')],
+    [cell('2026/05/10'), cell('消耗品購入'), cell(''), cell(12340), cell(''), cell('雑費'), cell('')]
+  ];
+  const r = CB.readFundTable(rows);
+  assert.strictEqual(r.entries[0].alreadyProcessed, true);
+  assert.strictEqual(r.entries[1].alreadyProcessed, false);
+});
+
+test('会計処理が済みの行は、色や科目にかかわらず作業対象から外す', () => {
+  // 実際の資金表は、本部勘定・消費税引当のような高額科目でも色は付いていないことが多い。
+  // 会計処理済みの印があれば、そちらを優先して確定扱いにする。
+  const e = {
+    description: '本部勘定（委託料）', account: '本部勘定（委託料）', tone: 'black',
+    inflow: 0, outflow: 1697856, date: '2026-05-10', alreadyProcessed: true
+  };
+  const [r] = CB.classifyAll([e], [], []);
+  assert.strictEqual(r.decision, 'exclude');
+  assert.strictEqual(r.confident, true);
+  assert.strictEqual(r.source, 'processed');
+});
+
+test('会計処理済みでも、ツール側で確定した判断のほうが優先される', () => {
+  const e = {
+    description: 'X', tone: 'black', inflow: 0, outflow: 1000, date: '2026-05-10',
+    alreadyProcessed: true, decision: 'cash', confirmed: true, reason: '現金で確認済み'
+  };
+  const [r] = CB.classifyAll([e], [], []);
+  assert.strictEqual(r.decision, 'cash');
+  assert.strictEqual(r.source, 'confirmed');
+});
+
+test('摘要の見出しが空欄でも、文字量から列を推測する', () => {
+  // 実際の資金表で見られる形：勘定科目の隣が無題（全角スペースのみ）で、そこに摘要が入っている
+  const HEADER = ['日付', '収入', '支出', '残高', '勘定科目', '　', '税10%'];
+  const rows = [
+    HEADER,
+    [cell('2026/05/02'), cell(96381), cell(''), cell(''), cell('借入金'), cell('増元家'), cell('')],
+    [cell('2026/05/10'), cell(''), cell(12340), cell(''), cell('雑費'), cell('スマレジ月額使用料'), cell('')]
+  ];
+  const r = CB.readFundTable(rows);
+  assert.strictEqual(r.columns.description, 5, '見出しが空欄でも G 列（5）を摘要と推測する');
+  assert.strictEqual(r.entries[0].description, '増元家');
+  assert.strictEqual(r.entries[1].description, 'スマレジ月額使用料');
+});
+
+test('列の対応をあらかじめ指定したときは、空欄の摘要でも推測で上書きしない', () => {
+  const HEADER = ['日付', '収入', '支出', '残高', '勘定科目', '　'];
+  const rows = [
+    HEADER,
+    [cell('2026/05/02'), cell(96381), cell(''), cell(''), cell('借入金'), cell('増元家')]
+  ];
+  const explicit = { date: 0, inflow: 1, outflow: 2, balance: 3, account: 4, description: -1 };
+  const r = CB.readFundTable(rows, { columns: explicit });
+  assert.strictEqual(r.entries[0].description, '', '摘要なしという明示的な指定は尊重する');
+});
+
 test('浄化槽点検のような口座振替は、ルールで除外できる', () => {
   const e = { description: '浄化槽点検', tone: 'black', inflow: 0, outflow: 16500, date: '2026-05-18' };
   const rules = [{ id: 'r1', kind: 'exclude', keyword: '浄化槽', note: '口座振替' }];
