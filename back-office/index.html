@@ -78,6 +78,12 @@
         <label>取引先カナ<span class="label-note">銀行摘要との照合に使用</span>
           <input id="f-kana" placeholder="カブシキガイシャマルマル">
         </label>
+        <label>確度<span class="label-note">見込みは資金不足の判定に使いません</span>
+          <select id="f-certainty">
+            <option value="confirmed">確定（請求書等あり）</option>
+            <option value="estimate">見込み（見積り・計画段階）</option>
+          </select>
+        </label>
         <label>請求番号
           <input id="f-docno" placeholder="INV-2026-001">
         </label>
@@ -116,6 +122,11 @@
             <option value="settled">決済済のみ</option>
             <option value="overdue">期日超過のみ</option>
           </select>
+          <select id="q-certainty">
+            <option value="">確度：すべて</option>
+            <option value="confirmed">確定のみ</option>
+            <option value="estimate">見込みのみ</option>
+          </select>
           <input id="q-text" placeholder="取引先・請求番号・摘要で検索">
           <button class="btn btn--sm" id="q-clear">条件クリア</button>
         </div>
@@ -127,6 +138,7 @@
         <button class="btn btn--sm" id="bulk-reopen">未決済に戻す</button>
         <button class="btn btn--sm btn--danger" id="bulk-delete">削除</button>
         <span class="spacer"></span>
+        <button class="btn btn--sm" id="copy-estimates" title="前月に発生日がある見込み案件を、日付を1か月ずらして複製します">前月の見込みをコピー</button>
         <button class="btn btn--sm" id="export-entries">表示中をCSV書き出し</button>
       </div>
       <div class="table-wrap" id="entry-table"></div>
@@ -210,7 +222,18 @@
         </div>
       </div>
       <div id="cf-alert"></div>
+      <p class="hint">「確定ベース」は請求書等で確定した分と固定費のみ。「見込み込み」は見積り・計画段階の案件も加えた事業計画用の数字です。</p>
       <div class="table-wrap" id="cf-table"></div>
+    </div>
+
+    <div class="card">
+      <div class="card__head">
+        <h2>本部への資金不足報告</h2>
+        <button class="btn btn--sm" id="shortage-copy">文面をコピー</button>
+      </div>
+      <p class="hint">確定ベースの残高が警戒水準を下回る場合に、資金移動を依頼する文面を自動で用意します。見込み案件はここでは根拠に含めません。</p>
+      <div id="shortage-report"></div>
+      <textarea id="shortage-text" rows="10" readonly></textarea>
     </div>
 
     <div class="card">

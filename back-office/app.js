@@ -96,7 +96,7 @@
   var state = defaultState();
   var ui = {
     selected: Object.create(null),
-    filters: { kind: '', status: 'open', text: '' },
+    filters: { kind: '', status: 'open', certainty: '', text: '' },
     dueTouched: false,     // 期日を手入力で上書きしたか
     parsedBank: null,      // 読み込んだ明細
     bankColumns: null,
@@ -195,8 +195,8 @@
       {
         label: '現預金残高（' + (state.settings.balanceAsOf || '—') + '時点）',
         value: C.yen(state.settings.openingBalance),
-        note: proj.min.label ? '最低見込 ' + C.yen(proj.min.balance) + '（' + proj.min.label + '）' : '',
-        alert: proj.min.balance < 0
+        note: proj.minConfirmed.label ? '最低見込（確定ベース） ' + C.yen(proj.minConfirmed.balance) + '（' + proj.minConfirmed.label + '）' : '',
+        alert: proj.minConfirmed.balance < 0
       },
       {
         label: '売掛残高（未回収）',
@@ -245,13 +245,13 @@
         }).join('')
       : '<p class="empty">期日超過も直近の支払もありません。</p>';
 
-    // 次の4週の資金繰り
+    // 次の4週の資金繰り（確定ベース。見込みは含まない）
     $('#mini-cashflow').innerHTML = tableHtml(
       ['週', '入金', '出金', '期末残高'],
       proj.periods.slice(0, 4).map(function (p) {
         return {
-          cls: p.shortage ? 'cf-short' : (p.alert ? 'cf-warn' : ''),
-          cells: [esc(p.label), { num: C.yen(p.inflow) }, { num: C.yen(p.outflow) }, { num: C.yen(p.closing) }]
+          cls: p.confirmedShortage ? 'cf-short' : (p.confirmedAlert ? 'cf-warn' : ''),
+          cells: [esc(p.label), { num: C.yen(p.confirmedInflow) }, { num: C.yen(p.confirmedOutflow) }, { num: C.yen(p.confirmedClosing) }]
         };
       }),
       '取引を登録すると予測が表示されます。'
@@ -306,6 +306,7 @@
       if (f.status === 'open' && e.status === 'settled') return false;
       if (f.status === 'settled' && e.status !== 'settled') return false;
       if (f.status === 'overdue' && !(e.status !== 'settled' && e.dueDate && e.dueDate < t)) return false;
+      if (f.certainty && (e.certainty === 'estimate' ? 'estimate' : 'confirmed') !== f.certainty) return false;
       if (q) {
         var hay = C.normalizeName([e.partyName, e.partyKana, e.docNo, e.memo].join(' '));
         if (hay.indexOf(q) < 0) return false;
@@ -329,7 +330,8 @@
       return '<tr class="' + cls + '">' +
         '<td><input type="checkbox" class="sel" data-id="' + esc(e.id) + '"' + (ui.selected[e.id] ? ' checked' : '') + '></td>' +
         '<td>' + esc(e.dueDate || '—') + (overdue ? ' <span class="hint">(' + (C.daysBetween(e.dueDate, t) || 0) + '日超過)</span>' : '') + '</td>' +
-        '<td><span class="tag tag--' + (e.kind === 'AR' ? 'ar">売掛' : 'ap">買掛') + '</span></td>' +
+        '<td><span class="tag tag--' + (e.kind === 'AR' ? 'ar">売掛' : 'ap">買掛') + '</span>' +
+          (e.certainty === 'estimate' ? ' <span class="tag tag--estimate">見込み</span>' : '') + '</td>' +
         '<td>' + esc(e.partyName || '—') + (e.partyKana ? '<br><span class="hint">' + esc(e.partyKana) + '</span>' : '') + '</td>' +
         '<td>' + esc(e.docNo || '') + '</td>' +
         '<td class="num ' + (e.kind === 'AR' ? 'amount-in' : 'amount-out') + '">' + esc(C.yen(e.amount)) + '</td>' +
@@ -405,6 +407,7 @@
       var id = $('#f-id').value;
       var payload = {
         kind: $('#f-kind').value,
+        certainty: $('#f-certainty').value === 'estimate' ? 'estimate' : 'confirmed',
         partyName: $('#f-party').value.trim(),
         partyKana: $('#f-kana').value.trim(),
         docNo: $('#f-docno').value.trim(),
@@ -447,6 +450,7 @@
     $('#f-party').value = ''; $('#f-kana').value = ''; $('#f-docno').value = '';
     $('#f-amount').value = ''; $('#f-due').value = ''; $('#f-memo').value = '';
     $('#f-issue').value = today();
+    $('#f-certainty').value = 'confirmed';
     ui.dueTouched = false;
     if (keepKind) $('#f-kind').value = kind;
     $('#f-submit').textContent = '登録する';
@@ -471,6 +475,7 @@
       else if (btn.dataset.act === 'edit') {
         $('#f-id').value = e.id;
         $('#f-kind').value = e.kind;
+        $('#f-certainty').value = e.certainty === 'estimate' ? 'estimate' : 'confirmed';
         $('#f-party').value = e.partyName || '';
         $('#f-kana').value = e.partyKana || '';
         $('#f-docno').value = e.docNo || '';
@@ -489,17 +494,18 @@
       renderEntries();
     });
 
-    ['#q-kind', '#q-status', '#q-text'].forEach(function (sel) {
+    ['#q-kind', '#q-status', '#q-certainty', '#q-text'].forEach(function (sel) {
       $(sel).addEventListener('input', function () {
         ui.filters.kind = $('#q-kind').value;
         ui.filters.status = $('#q-status').value;
+        ui.filters.certainty = $('#q-certainty').value;
         ui.filters.text = $('#q-text').value;
         renderEntries();
       });
     });
     $('#q-clear').addEventListener('click', function () {
-      $('#q-kind').value = ''; $('#q-status').value = 'open'; $('#q-text').value = '';
-      ui.filters = { kind: '', status: 'open', text: '' };
+      $('#q-kind').value = ''; $('#q-status').value = 'open'; $('#q-certainty').value = ''; $('#q-text').value = '';
+      ui.filters = { kind: '', status: 'open', certainty: '', text: '' };
       renderEntries();
     });
 
@@ -531,6 +537,31 @@
       ui.selected = Object.create(null);
       commit();
     });
+    // 見込み案件は月によって内容が変わるため、前月分をそのまま複製して起点にする
+    // （日付は1か月ずらす。項目の増減・金額の修正は複製後に手で行う）
+    $('#copy-estimates').addEventListener('click', function () {
+      var t = today();
+      var lastMonth = C.addMonthsClamped(t, -1, 1).slice(0, 7);
+      var source = state.entries.filter(function (e) {
+        return e.certainty === 'estimate' && e.status !== 'settled' && e.dueDate && e.dueDate.slice(0, 7) === lastMonth;
+      });
+      if (!source.length) {
+        $('#f-hint').textContent = '前月（' + lastMonth + '）に見込み案件が見つかりませんでした。';
+        return;
+      }
+      if (!confirm('前月の見込み案件 ' + source.length + '件を、日付を1か月ずらして複製します。よろしいですか？')) return;
+      source.forEach(function (e) {
+        state.entries.push(Object.assign({}, e, {
+          id: uid('e'),
+          issueDate: e.issueDate ? C.addMonthsClamped(e.issueDate, 1) : null,
+          dueDate: C.addMonthsClamped(e.dueDate, 1),
+          status: 'open', settledDate: null, source: 'copied'
+        }));
+      });
+      $('#f-hint').textContent = source.length + '件を複製しました。内容を確認・修正してください。';
+      commit();
+    });
+
     $('#export-entries').addEventListener('click', function () {
       download('債権債務_' + today() + '.csv', C.toCSV(C.entriesToRows(filteredEntries())), 'text/csv');
     });
@@ -806,41 +837,61 @@
 
     var p = projection(state.settings.cashflowUnit);
 
+    // 見込み案件で問題が隠れないよう、警告は確定ベース（minConfirmed）を基準にする
     var alertEl = $('#cf-alert');
-    if (p.min.balance < 0) {
+    var worst = p.minConfirmed;
+    var estimateGap = p.ending - p.confirmedEnding;
+    var estimateNote = estimateGap ? '（見込みを含めると ' + C.yen(p.min.balance) + '／' + (p.min.label || '—') + '）' : '';
+    if (worst.balance < 0) {
       alertEl.className = 'cf-alert cf-alert--danger';
-      alertEl.textContent = '資金ショートの見込みがあります：' + p.min.label + ' に残高 ' + C.yen(p.min.balance) +
-        '。入金の前倒し、支払の調整、資金調達の検討が必要です。';
-    } else if (p.min.balance < p.threshold) {
+      alertEl.textContent = '確定ベースで資金ショートの見込みがあります：' + worst.label + ' に残高 ' + C.yen(worst.balance) +
+        '。入金の前倒し、支払の調整、資金調達の検討が必要です。' + estimateNote;
+    } else if (worst.balance < p.threshold) {
       alertEl.className = 'cf-alert';
-      alertEl.textContent = '警戒水準（' + C.yen(p.threshold) + '）を下回る期間があります：' +
-        p.min.label + ' に残高 ' + C.yen(p.min.balance) + '。';
+      alertEl.textContent = '確定ベースで警戒水準（' + C.yen(p.threshold) + '）を下回る期間があります：' +
+        worst.label + ' に残高 ' + C.yen(worst.balance) + '。' + estimateNote;
     } else {
       alertEl.className = 'cf-alert cf-alert--ok';
-      alertEl.textContent = '予測期間中、残高は警戒水準を上回って推移する見込みです（最低 ' +
-        C.yen(p.min.balance) + '／' + (p.min.label || '—') + '）。';
+      alertEl.textContent = '確定ベースの残高は、予測期間中は警戒水準を上回って推移する見込みです（最低 ' +
+        C.yen(worst.balance) + '／' + (worst.label || '—') + '）。' + estimateNote;
     }
 
     $('#cf-table').innerHTML =
       '<table><thead><tr><th>期間</th><th class="num">期首残高</th><th class="num">入金</th>' +
-      '<th class="num">出金</th><th class="num">収支</th><th class="num">期末残高</th><th>内訳</th></tr></thead><tbody>' +
+      '<th class="num">出金</th><th class="num">収支</th><th class="num">期末残高（確定ベース）</th>' +
+      '<th class="num">期末残高（見込み込み）</th><th>内訳</th></tr></thead><tbody>' +
       p.periods.map(function (x) {
         var items = x.items.slice().sort(function (a, b) { return a.date < b.date ? -1 : 1; });
-        return '<tr class="' + (x.shortage ? 'cf-short' : (x.alert ? 'cf-warn' : '')) + '">' +
+        var hasEstimate = x.closing !== x.confirmedClosing;
+        return '<tr class="' + (x.confirmedShortage ? 'cf-short' : (x.confirmedAlert ? 'cf-warn' : '')) + '">' +
           '<td>' + esc(x.label) + '</td>' +
-          '<td class="num">' + esc(C.yen(x.opening)) + '</td>' +
+          '<td class="num">' + esc(C.yen(x.confirmedOpening)) + '</td>' +
           '<td class="num amount-in">' + esc(C.yen(x.inflow)) + '</td>' +
           '<td class="num amount-out">' + esc(C.yen(x.outflow)) + '</td>' +
-          '<td class="num">' + esc(C.yen(x.net)) + '</td>' +
-          '<td class="num">' + esc(C.yen(x.closing)) + '</td>' +
+          '<td class="num">' + esc(C.yen(x.confirmedNet)) + '</td>' +
+          '<td class="num">' + esc(C.yen(x.confirmedClosing)) + '</td>' +
+          '<td class="num' + (hasEstimate ? ' cf-estimate' : '') + '">' + esc(C.yen(x.closing)) + '</td>' +
           '<td>' + (items.length
             ? '<details class="cf-items"><summary>' + items.length + '件</summary><ul>' +
               items.map(function (i) {
                 return '<li>' + esc(i.date) + ' ' + (i.type === 'in' ? '入 ' : '出 ') +
-                  esc(i.name || '—') + ' ' + esc(C.yen(i.amount)) + (i.fixed ? '（固定）' : '') + '</li>';
+                  esc(i.name || '—') + ' ' + esc(C.yen(i.amount)) +
+                  (i.fixed ? '（固定）' : '') + (i.certainty === 'estimate' ? '（見込み）' : '') + '</li>';
               }).join('') + '</ul></details>'
             : '<span class="hint">—</span>') + '</td></tr>';
       }).join('') + '</tbody></table>';
+
+    renderShortageReport(p);
+  }
+
+  function renderShortageReport(p) {
+    var report = C.buildShortageReport(p, { companyName: state.settings.companyName });
+    var box = $('#shortage-report');
+    box.className = report.hasShortage ? 'judge judge--bad' : 'judge judge--ok';
+    box.textContent = report.hasShortage
+      ? '確定ベースで資金不足の見込みがあります（' + (report.worst.label || '—') + '／依頼額の目安 ' + C.yen(report.requestAmount) + '）。'
+      : '確定ベースでは、予測期間中に警戒水準を下回る見込みはありません。';
+    $('#shortage-text').value = report.body;
   }
 
   function initCashflow() {
@@ -856,6 +907,14 @@
       });
     });
     $('#cf-print').addEventListener('click', function () { window.print(); });
+    $('#shortage-copy').addEventListener('click', function () {
+      copyText($('#shortage-text').value).then(function () {
+        var btn = $('#shortage-copy');
+        var orig = btn.textContent;
+        btn.textContent = 'コピーしました';
+        setTimeout(function () { btn.textContent = orig; }, 1600);
+      });
+    });
 
     $('#rec-form').addEventListener('submit', function (ev) {
       ev.preventDefault();

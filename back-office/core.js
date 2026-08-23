@@ -621,6 +621,7 @@
 
     periods.forEach(function (p) {
       p.inflow = 0; p.outflow = 0; p.items = [];
+      p.confirmedInflow = 0; p.confirmedOutflow = 0;   // 見込み(estimate)を除いた保守的な内訳
     });
 
     function bucketFor(date) {
@@ -632,27 +633,44 @@
       return null;                                        // 予測期間より先は対象外
     }
 
+    // certainty: 'confirmed'（既定・請求書等で確定） | 'estimate'（見積り・計画段階）
     entries.forEach(function (e) {
       if (e.status === 'settled') return;
       var p = bucketFor(e.dueDate);
       if (!p) return;
       var amt = Number(e.amount) || 0;
-      if (e.kind === 'AR') { p.inflow += amt; p.items.push({ type: 'in', name: e.partyName, amount: amt, date: e.dueDate }); }
-      else if (e.kind === 'AP') { p.outflow += amt; p.items.push({ type: 'out', name: e.partyName, amount: amt, date: e.dueDate }); }
+      var certainty = e.certainty === 'estimate' ? 'estimate' : 'confirmed';
+      var item = { type: e.kind === 'AR' ? 'in' : 'out', name: e.partyName, amount: amt, date: e.dueDate, certainty: certainty };
+      if (e.kind === 'AR') {
+        p.inflow += amt;
+        if (certainty === 'confirmed') p.confirmedInflow += amt;
+        p.items.push(item);
+      } else if (e.kind === 'AP') {
+        p.outflow += amt;
+        if (certainty === 'confirmed') p.confirmedOutflow += amt;
+        p.items.push(item);
+      }
     });
 
+    // 固定費・定期入出金は性質上つねに確定扱い
     recurring.forEach(function (r) {
       var occ = recurringOccurrences(r, periods[0].start, periods[periods.length - 1].end);
       occ.forEach(function (date) {
         var p = bucketFor(date);
         if (!p) return;
         var amt = Number(r.amount) || 0;
-        if (r.kind === 'in') { p.inflow += amt; p.items.push({ type: 'in', name: r.name, amount: amt, date: date, fixed: true }); }
-        else { p.outflow += amt; p.items.push({ type: 'out', name: r.name, amount: amt, date: date, fixed: true }); }
+        if (r.kind === 'in') {
+          p.inflow += amt; p.confirmedInflow += amt;
+          p.items.push({ type: 'in', name: r.name, amount: amt, date: date, fixed: true, certainty: 'confirmed' });
+        } else {
+          p.outflow += amt; p.confirmedOutflow += amt;
+          p.items.push({ type: 'out', name: r.name, amount: amt, date: date, fixed: true, certainty: 'confirmed' });
+        }
       });
     });
 
     var bal = opening, min = { balance: Infinity, label: null };
+    var confirmedBal = opening, minConfirmed = { balance: Infinity, label: null };
     periods.forEach(function (p) {
       p.opening = bal;
       p.net = p.inflow - p.outflow;
@@ -661,9 +679,21 @@
       p.alert = p.closing < threshold;
       p.shortage = p.closing < 0;
       if (p.closing < min.balance) min = { balance: p.closing, label: p.label, period: p };
+
+      // 見込みを除いた、より保守的な残高（本部への報告はこちらを基準にする）
+      p.confirmedOpening = confirmedBal;
+      p.confirmedNet = p.confirmedInflow - p.confirmedOutflow;
+      confirmedBal += p.confirmedNet;
+      p.confirmedClosing = confirmedBal;
+      p.confirmedAlert = p.confirmedClosing < threshold;
+      p.confirmedShortage = p.confirmedClosing < 0;
+      if (p.confirmedClosing < minConfirmed.balance) minConfirmed = { balance: p.confirmedClosing, label: p.label, period: p };
     });
 
-    return { periods: periods, opening: opening, ending: bal, min: min, unit: unit, threshold: threshold };
+    return {
+      periods: periods, opening: opening, ending: bal, min: min, unit: unit, threshold: threshold,
+      confirmedEnding: confirmedBal, minConfirmed: minConfirmed
+    };
   }
 
   function formatWeekLabel(start, end) {
@@ -737,15 +767,79 @@
     return lines.join('\n');
   }
 
+  // ---------------------------------------------------------------- 本部への資金不足報告
+
+  /**
+   * 資金繰り予測から、本部へ出せる資金不足報告書を作る。
+   * 見込み（estimate）を含めた数字は参考として示しつつ、依頼する資金移動額は
+   * 見込みを除いた保守的な残高（confirmedClosing）を基準にする。
+   * 確定分だけでも資金ショートするなら、それは見積り待ちにはできない実額の不足だから。
+   */
+  function buildShortageReport(projection, options) {
+    var o = options || {};
+    var companyName = o.companyName || '鳴鳳堂';
+    var recipient = o.recipient || '本部';
+    var threshold = projection.threshold || 0;
+
+    var flagged = projection.periods.filter(function (p) { return p.confirmedAlert; });
+    var worst = projection.minConfirmed;
+    var requestAmount = worst && worst.balance < threshold ? Math.ceil((threshold - worst.balance) / 1000) * 1000 : 0;
+
+    var lines = [];
+    lines.push(recipient + ' 御中');
+    lines.push('');
+    lines.push(companyName + 'です。資金繰り予測の結果、下記のとおり資金移動をお願いしたく、ご報告いたします。');
+    lines.push('');
+
+    if (!flagged.length) {
+      lines.push('確定済みの債権債務・固定費の範囲では、予測期間中は警戒水準（' + yen(threshold) + '）を');
+      lines.push('下回る見込みはありません。');
+    } else {
+      lines.push('【資金不足の見込み】');
+      lines.push('最も厳しい時期： ' + (worst.label || '—') + '（確定ベースの残高 ' + yen(worst.balance) + '）');
+      if (requestAmount > 0) {
+        lines.push('ご依頼したい資金移動額の目安： ' + yen(requestAmount) +
+          '（警戒水準 ' + yen(threshold) + ' を確保するために必要な概算）');
+      }
+      lines.push('');
+      lines.push('内訳（確定分のみ・見込みは含みません）');
+      flagged.forEach(function (p) {
+        lines.push('・' + p.label + '　残高見込み ' + yen(p.confirmedClosing) +
+          (p.confirmedShortage ? '（資金ショート）' : '（警戒水準割れ）'));
+      });
+    }
+
+    var estimateNote = projection.ending !== projection.confirmedEnding;
+    if (estimateNote) {
+      lines.push('');
+      lines.push('【参考】見積り中の案件を含めた場合の予測期間末残高： ' + yen(projection.ending) +
+        '（確定分のみでは ' + yen(projection.confirmedEnding) + '）');
+    }
+
+    lines.push('');
+    lines.push('お手数をおかけしますが、ご確認のほどよろしくお願いいたします。');
+    lines.push('');
+    lines.push(companyName);
+
+    return {
+      hasShortage: flagged.length > 0,
+      worst: worst,
+      requestAmount: requestAmount,
+      flaggedPeriods: flagged,
+      body: lines.join('\n')
+    };
+  }
+
   // ---------------------------------------------------------------- 入出力
 
-  var ENTRY_HEADERS = ['区分', '取引先', '取引先カナ', '請求番号', '発生日', '期日', '金額', '状態', '決済日', '摘要'];
+  var ENTRY_HEADERS = ['区分', '確度', '取引先', '取引先カナ', '請求番号', '発生日', '期日', '金額', '状態', '決済日', '摘要'];
 
   function entriesToRows(entries) {
     var rows = [ENTRY_HEADERS.slice()];
     (entries || []).forEach(function (e) {
       rows.push([
         e.kind === 'AR' ? '売掛' : '買掛',
+        e.certainty === 'estimate' ? '見込み' : '確定',
         e.partyName || '', e.partyKana || '', e.docNo || '',
         e.issueDate || '', e.dueDate || '',
         Math.round(Number(e.amount) || 0),
@@ -776,26 +870,28 @@
       }
       var kindRaw = String(cell(0) || '').trim();
       var kind = /売|ar|受|入/i.test(kindRaw) ? 'AR' : (/買|ap|支|出/i.test(kindRaw) ? 'AP' : null);
-      var amount = parseAmount(cell(6));
-      var issueDate = parseDate(cell(4));
-      var dueDate = parseDate(cell(5));
+      var amount = parseAmount(cell(7));
+      var issueDate = parseDate(cell(5));
+      var dueDate = parseDate(cell(6));
       if (!kind || amount == null) {
         errors.push({ line: n + (hasHeader ? 2 : 1), reason: !kind ? '区分が「売掛」「買掛」のどちらか判別できません' : '金額を読み取れません', row: r });
         return;
       }
-      var statusRaw = String(cell(7) || '').trim();
+      var statusRaw = String(cell(8) || '').trim();
+      var certaintyRaw = String(cell(1) || '').trim();
       entries.push({
         id: (idPrefix || 'imp') + '-' + (n + 1) + '-' + Math.random().toString(36).slice(2, 7),
         kind: kind,
-        partyName: String(cell(1) || '').trim(),
-        partyKana: String(cell(2) || '').trim(),
-        docNo: String(cell(3) || '').trim(),
+        certainty: /見込|estimate|見積/i.test(certaintyRaw) ? 'estimate' : 'confirmed',
+        partyName: String(cell(2) || '').trim(),
+        partyKana: String(cell(3) || '').trim(),
+        docNo: String(cell(4) || '').trim(),
         issueDate: issueDate,
         dueDate: dueDate,
         amount: Math.abs(amount),
         status: /決済済|済|settled|paid/i.test(statusRaw) ? 'settled' : 'open',
-        settledDate: parseDate(cell(8)),
-        memo: String(cell(9) || '').trim(),
+        settledDate: parseDate(cell(9)),
+        memo: String(cell(10) || '').trim(),
         source: 'csv'
       });
     });
@@ -820,8 +916,8 @@
     // 集計
     summarize: summarize, byParty: byParty, agingBuckets: agingBuckets,
     projectCashflow: projectCashflow, recurringOccurrences: recurringOccurrences,
-    // 督促・入出力
-    buildReminders: buildReminders, reminderBody: reminderBody,
+    // 督促・本部報告・入出力
+    buildReminders: buildReminders, reminderBody: reminderBody, buildShortageReport: buildShortageReport,
     ENTRY_HEADERS: ENTRY_HEADERS, entriesToRows: entriesToRows, rowsToEntries: rowsToEntries
   };
 });

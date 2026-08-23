@@ -233,6 +233,79 @@ test('取込エラーは行番号つきで返す', () => {
   assert.strictEqual(r.errors[0].line, 2);
 });
 
+test('見込み案件は予測に含めつつ、確定ベースの残高は別に持つ', () => {
+  const r = C.projectCashflow({
+    entries: [
+      { id: 'c1', kind: 'AR', amount: 100000, dueDate: '2026-05-10', status: 'open', partyName: '確定分', certainty: 'confirmed' },
+      { id: 'e1', kind: 'AR', amount: 500000, dueDate: '2026-05-10', status: 'open', partyName: '見込み分', certainty: 'estimate' }
+    ],
+    openingBalance: 0, asOf: '2026-05-01', unit: 'month', periods: 1
+  });
+  assert.strictEqual(r.periods[0].inflow, 600000, '見込みも合算した予測残高');
+  assert.strictEqual(r.periods[0].closing, 600000);
+  assert.strictEqual(r.periods[0].confirmedInflow, 100000, '確定分だけの内訳');
+  assert.strictEqual(r.periods[0].confirmedClosing, 100000);
+  assert.strictEqual(r.ending, 600000);
+  assert.strictEqual(r.confirmedEnding, 100000);
+});
+
+test('certainty を省略した既存データは確定として扱う（後方互換）', () => {
+  const r = C.projectCashflow({
+    entries: [{ id: 'x1', kind: 'AP', amount: 30000, dueDate: '2026-05-10', status: 'open', partyName: '既存分' }],
+    openingBalance: 0, asOf: '2026-05-01', unit: 'month', periods: 1
+  });
+  assert.strictEqual(r.periods[0].confirmedOutflow, 30000);
+  assert.strictEqual(r.confirmedEnding, r.ending);
+});
+
+test('固定費・定期入出金は見込みではなく確定として数える', () => {
+  const r = C.projectCashflow({
+    entries: [],
+    recurring: [{ id: 'rec1', kind: 'out', name: '給与', amount: 200000, dayOfMonth: 25 }],
+    openingBalance: 0, asOf: '2026-05-01', unit: 'month', periods: 1
+  });
+  assert.strictEqual(r.periods[0].confirmedOutflow, 200000);
+  assert.strictEqual(r.confirmedEnding, -200000);
+});
+
+test('本部への資金不足報告：確定ベースでショートするときは金額と時期を示す', () => {
+  const proj = C.projectCashflow({
+    entries: [
+      { id: 'a1', kind: 'AP', amount: 900000, dueDate: '2026-05-15', status: 'open', partyName: '仕入先', certainty: 'confirmed' },
+      { id: 'a2', kind: 'AR', amount: 400000, dueDate: '2026-06-20', status: 'open', partyName: '見込み顧客', certainty: 'estimate' }
+    ],
+    openingBalance: 300000, asOf: '2026-05-01', unit: 'month', periods: 2, alertThreshold: 100000
+  });
+  const report = C.buildShortageReport(proj, { companyName: '鳴鳳堂', recipient: '本部' });
+  assert.strictEqual(report.hasShortage, true);
+  assert.ok(report.requestAmount > 0, '依頼額が算出される');
+  assert.ok(report.body.includes('本部 御中'));
+  assert.ok(report.body.includes('確定分のみ'), '確定ベースであることを明記する');
+  assert.ok(report.body.includes('見積り中の案件を含めた場合'), '見込みを含めた参考値も出す');
+  assert.ok(!report.body.includes('見込み顧客'), '見込み分の内訳は資金不足の根拠に混ぜない');
+});
+
+test('本部への資金不足報告：問題が無ければその旨を伝える', () => {
+  const proj = C.projectCashflow({
+    entries: [{ id: 'ok1', kind: 'AR', amount: 500000, dueDate: '2026-05-10', status: 'open', partyName: '順調', certainty: 'confirmed' }],
+    openingBalance: 1000000, asOf: '2026-05-01', unit: 'month', periods: 2, alertThreshold: 100000
+  });
+  const report = C.buildShortageReport(proj);
+  assert.strictEqual(report.hasShortage, false);
+  assert.ok(report.body.includes('下回る見込みはありません'));
+});
+
+test('確度つきの CSV が往復する', () => {
+  const src = [
+    { id: 'e1', kind: 'AR', certainty: 'estimate', partyName: '見込み先', amount: 200000, status: 'open' },
+    { id: 'c1', kind: 'AP', certainty: 'confirmed', partyName: '確定先', amount: 50000, status: 'open' }
+  ];
+  const back = C.rowsToEntries(C.parseCSV(C.toCSV(C.entriesToRows(src))));
+  assert.strictEqual(back.errors.length, 0);
+  assert.strictEqual(back.entries[0].certainty, 'estimate');
+  assert.strictEqual(back.entries[1].certainty, 'confirmed');
+});
+
 test('税込計算は切り捨て', () => {
   assert.strictEqual(C.withTax(1000, 10), 1100);
   assert.strictEqual(C.withTax(1111, 10), 1222);

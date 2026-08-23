@@ -166,6 +166,10 @@ tbody tr:hover { background: #fbfaf8; }
 .tag--ar { background: var(--ok-bg); border-color: #cfe4d8; color: var(--in); }
 .tag--ap { background: #fdf1ee; border-color: #f0d5cd; color: var(--out); }
 .tag--done { background: #f1efec; color: var(--ink-faint); }
+.tag--estimate { background: #f3edf9; border-color: #ddccf0; color: #6d4ea8; }
+
+/* 見込みを含めた列は、確定ベースと区別できるよう控えめに示す */
+.cf-estimate { color: var(--ink-faint); font-style: italic; }
 
 /* ---------------------------------------------------------- KPI */
 
