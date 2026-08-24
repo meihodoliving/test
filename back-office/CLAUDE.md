@@ -15,6 +15,8 @@ HANDOFF.md を貼り付けなくても、この内容が自動的に文脈とし
 - ロジックは `core.js` / `cashbook/cashbook.js` に分離してあり、`npm run test:back-office` で
   テストする。消込・締日計算・資金繰りの判定を変更するときは、**先にテストへ期待値を書いてから**
   ロジックを直す（お金の計算のため目視確認だけでは済ませない）。
+- `back-office/booking-yayoi/` は別プロジェクト（Booking.com債権管理・弥生会計連携）。
+  資金繰り・現金出納帳とは独立しており、詳細は `booking-yayoi/CLAUDE.md` を参照。
 
 ## 業務ルール（お客様に確認済み・変更不要）
 
