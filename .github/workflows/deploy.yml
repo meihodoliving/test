@@ -16,9 +16,6 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v5
 
-    - name: Exclude internal tooling from the public site
-      run: rm -rf back-office
-
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
