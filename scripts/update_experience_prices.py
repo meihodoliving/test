@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import argparse
+import json
 import re
 from pathlib import Path
 
@@ -112,6 +114,18 @@ PRICING_GRID_RE = re.compile(
 
 
 def patch_detail_pricing(html: str, lang: str, slug: str) -> str:
+    """Rewrite the visible pricing grid from PRICES.
+
+    WARNING: this has drifted from the pages and is currently destructive.
+    - kado renders three group-size tiers (1 guest / 2-3 / 4-8 at a lower rate)
+      and no child rate at all; PRICES cannot express that, so regenerating
+      drops the 4-8 guest tier and invents a child price the pages never show.
+    - The en and zh-tw pages use "<div class=\"price-per-person\">... / per
+      person</div>"; build_pricing_grid emits "<div class=\"note\">" and loses
+      the per-person qualifier.
+    Fix PRICES/build_pricing_grid to cover those shapes before running without
+    --jsonld-only.
+    """
     if slug == "samurai":
         return html
     m = PRICING_GRID_RE.search(html)
@@ -147,13 +161,159 @@ def patch_experiences_index_cards(html: str, lang: str) -> str:
     return html
 
 
-def main() -> int:
+
+# ---------------------------------------------------------------------------
+# Service JSON-LD for the experience detail pages.
+#
+# The offers are read back out of each page's rendered pricing grid rather than
+# straight from PRICES. PRICES still drives that grid, so the chain stays
+# PRICES -> visible price -> structured data; reading the last link off the
+# page guarantees the markup can never advertise a price the visitor is not
+# shown, which is what Google requires. It also keeps the pages that carry a
+# shape PRICES cannot express (kado's group tiers) correct.
+# ---------------------------------------------------------------------------
+
+SERVICE_START = "<!-- MEIHODO-SERVICE-JSONLD -->"
+SERVICE_END = "<!-- /MEIHODO-SERVICE-JSONLD -->"
+
+BRAND = {"ja": "鳴鳳堂", "en": "Meihodo", "zh-cn": "鸣凤堂", "zh-tw": "鳴鳳堂"}
+AREA_SERVED = {"ja": "阿蘇市", "en": "Aso", "zh-cn": "阿苏市", "zh-tw": "阿蘇市"}
+
+# Fallback only; the real link is read off each page so the two cannot diverge.
+ASOVIEW = {
+    "ja": "https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=ja",
+    "en": "https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=en",
+    "zh-cn": "https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=zh-CN",
+    "zh-tw": "https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=zh-TW",
+}
+
+TITLE_RE = re.compile(r"<title>\s*(.*?)\s*</title>", re.S)
+SUBTITLE_RE = re.compile(r'<p class="[a-z-]*subtitle"[^>]*>\s*([^<]{10,400}?)\s*</p>', re.S)
+ASOVIEW_RE = re.compile(r"https://www\.asoview\.com/[^\"']*courses\?language_type=[A-Za-z-]+")
+PRICING_ITEM_RE = re.compile(
+    r'<div class="pricing-item">\s*<h3>(?P<label>.*?)</h3>\s*<div class="price">(?P<price>.*?)</div>',
+    re.S,
+)
+SERVICE_BLOCK_RE = re.compile(
+    re.escape(SERVICE_START) + r".*?" + re.escape(SERVICE_END) + r"\n?", re.S
+)
+
+
+def _flat(text: str) -> str:
+    return " ".join(text.split())
+
+
+def service_type(html: str) -> str | None:
+    """The experience name, taken from the page <title> so it tracks the page."""
+    title = TITLE_RE.search(html)
+    if not title:
+        return None
+    name = _flat(title.group(1))
+    for sep in (" | ", " - ", " – "):
+        if sep in name:
+            name = name.split(sep)[0]
+            break
+    return name.strip() or None
+
+
+def service_description(html: str) -> str | None:
+    m = SUBTITLE_RE.search(html)
+    return _flat(m.group(1)) if m else None
+
+
+def booking_url(html: str, lang: str) -> str:
+    m = ASOVIEW_RE.search(html)
+    return m.group(0) if m else ASOVIEW[lang]
+
+
+def rendered_offers(html: str, url: str) -> list:
+    """Every priced row of the page's own pricing grid, as schema.org Offers."""
+    offers = []
+    for m in PRICING_ITEM_RE.finditer(html):
+        label = _flat(m.group("label"))
+        amount = re.sub(r"[^0-9]", "", m.group("price"))
+        if not amount:
+            # A row rendered as "-" carries no price (e.g. takigyo has no
+            # child rate); advertising one would misstate the offer.
+            continue
+        offers.append(
+            {
+                "@type": "Offer",
+                "name": label,
+                "price": amount,
+                "priceCurrency": "JPY",
+                "availability": "https://schema.org/InStock",
+                "url": url,
+            }
+        )
+    return offers
+
+
+def build_service_jsonld(html: str, lang: str, slug: str) -> str | None:
+    name = service_type(html)
+    desc = service_description(html)
+    if not name or not desc:
+        return None
+    url = booking_url(html, lang)
+    offers = rendered_offers(html, url)
+    if not offers:
+        return None
+    data = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": name,
+        "name": f"{name} - {BRAND[lang]}",
+        "url": f"https://www.meihodo.com/{lang}/experiences/{slug}/",
+        "description": desc,
+        "provider": {
+            "@type": "LodgingBusiness",
+            "@id": "https://www.meihodo.com/#lodgingbusiness",
+            "name": BRAND[lang],
+            "url": "https://www.meihodo.com/",
+        },
+        "areaServed": {"@type": "City", "name": AREA_SERVED[lang]},
+        "availableLanguage": ["ja", "en", "zh-Hans", "zh-Hant"],
+        "offers": offers,
+    }
+    body = json.dumps(data, ensure_ascii=False, indent=2)
+    body = "\n".join("    " + ln for ln in body.split("\n"))
+    return (
+        f"    {SERVICE_START}\n"
+        '    <script type="application/ld+json">\n'
+        f"{body}\n"
+        "    </script>\n"
+        f"    {SERVICE_END}\n"
+    )
+
+
+def patch_service_jsonld(html: str, lang: str, slug: str) -> str:
+    block = build_service_jsonld(html, lang, slug)
+    if block is None or "</head>" not in html:
+        return html
+    html = SERVICE_BLOCK_RE.sub("", html)
+    return html.replace("</head>", block + "</head>", 1)
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument(
+        "--jsonld-only",
+        action="store_true",
+        help=(
+            "Only refresh the Service JSON-LD; leave the visible pricing grid "
+            "untouched. Use this until build_pricing_grid matches the pages "
+            "again - see the note on patch_detail_pricing."
+        ),
+    )
+    args = ap.parse_args(argv)
     updated = 0
 
     # Patch experience list pages
     for lang in LANGS:
         p = REPO / lang / "experiences" / "index.html"
         if not p.exists():
+            continue
+        if args.jsonld_only:
             continue
         src = p.read_text(encoding="utf-8")
         out = patch_experiences_index_cards(src, lang)
@@ -168,7 +328,8 @@ def main() -> int:
             if not p.exists():
                 continue
             src = p.read_text(encoding="utf-8")
-            out = patch_detail_pricing(src, lang, slug)
+            out = src if args.jsonld_only else patch_detail_pricing(src, lang, slug)
+            out = patch_service_jsonld(out, lang, slug)
             if out != src:
                 p.write_text(out, encoding="utf-8")
                 updated += 1

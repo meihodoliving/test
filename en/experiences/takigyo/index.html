@@ -218,6 +218,44 @@
             }
         }
     </style>
+    <!-- MEIHODO-SERVICE-JSONLD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Takigyō",
+      "name": "Takigyō - Meihodo",
+      "url": "https://www.meihodo.com/en/experiences/takigyo/",
+      "description": "Stand beneath a waterfall and steady your breath—an immersive training experience for mind and body.",
+      "provider": {
+        "@type": "LodgingBusiness",
+        "@id": "https://www.meihodo.com/#lodgingbusiness",
+        "name": "Meihodo",
+        "url": "https://www.meihodo.com/"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Aso"
+      },
+      "availableLanguage": [
+        "ja",
+        "en",
+        "zh-Hans",
+        "zh-Hant"
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Adult (1 guest)",
+          "price": "5000",
+          "priceCurrency": "JPY",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=en"
+        }
+      ]
+    }
+    </script>
+    <!-- /MEIHODO-SERVICE-JSONLD -->
 </head>
 <body>
     <!-- Navigation -->

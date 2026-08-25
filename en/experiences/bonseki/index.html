@@ -215,6 +215,52 @@
             }
         }
     </style>
+    <!-- MEIHODO-SERVICE-JSONLD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Bonseki Experience",
+      "name": "Bonseki Experience - Meihodo",
+      "url": "https://www.meihodo.com/en/experiences/bonseki/",
+      "description": "Compose miniature landscapes with white sand and stones—a contemplative classical art.",
+      "provider": {
+        "@type": "LodgingBusiness",
+        "@id": "https://www.meihodo.com/#lodgingbusiness",
+        "name": "Meihodo",
+        "url": "https://www.meihodo.com/"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Aso"
+      },
+      "availableLanguage": [
+        "ja",
+        "en",
+        "zh-Hans",
+        "zh-Hant"
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Adult (1 guest)",
+          "price": "12000",
+          "priceCurrency": "JPY",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=en"
+        },
+        {
+          "@type": "Offer",
+          "name": "Child (ages 8–11)",
+          "price": "6000",
+          "priceCurrency": "JPY",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=en"
+        }
+      ]
+    }
+    </script>
+    <!-- /MEIHODO-SERVICE-JSONLD -->
 </head>
 <body>
     <!-- Navigation -->

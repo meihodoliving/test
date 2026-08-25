@@ -219,6 +219,52 @@
             }
         }
     </style>
+    <!-- MEIHODO-SERVICE-JSONLD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "武士体验",
+      "name": "武士体验 - 鸣凤堂",
+      "url": "https://www.meihodo.com/zh-cn/experiences/samurai/",
+      "description": "参考江户时代武士的修炼方式，在约两个半小时内体验剑术、茶道、弓道与太鼓，静心砺志。",
+      "provider": {
+        "@type": "LodgingBusiness",
+        "@id": "https://www.meihodo.com/#lodgingbusiness",
+        "name": "鸣凤堂",
+        "url": "https://www.meihodo.com/"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "阿苏市"
+      },
+      "availableLanguage": [
+        "ja",
+        "en",
+        "zh-Hans",
+        "zh-Hant"
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "成人（1名）",
+          "price": "35000",
+          "priceCurrency": "JPY",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=zh-CN"
+        },
+        {
+          "@type": "Offer",
+          "name": "儿童（8〜11岁）",
+          "price": "17500",
+          "priceCurrency": "JPY",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=zh-CN"
+        }
+      ]
+    }
+    </script>
+    <!-- /MEIHODO-SERVICE-JSONLD -->
 </head>
 <body>
     <!-- Navigation -->

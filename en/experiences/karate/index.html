@@ -215,6 +215,52 @@
             }
         }
     </style>
+    <!-- MEIHODO-SERVICE-JSONLD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Karate Experience",
+      "name": "Karate Experience - Meihodo",
+      "url": "https://www.meihodo.com/en/experiences/karate/",
+      "description": "Rooted in Okinawa—learn basics and kata while training body and mind.",
+      "provider": {
+        "@type": "LodgingBusiness",
+        "@id": "https://www.meihodo.com/#lodgingbusiness",
+        "name": "Meihodo",
+        "url": "https://www.meihodo.com/"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Aso"
+      },
+      "availableLanguage": [
+        "ja",
+        "en",
+        "zh-Hans",
+        "zh-Hant"
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Adult (1 guest)",
+          "price": "15000",
+          "priceCurrency": "JPY",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=en"
+        },
+        {
+          "@type": "Offer",
+          "name": "Child (ages 8–11)",
+          "price": "7500",
+          "priceCurrency": "JPY",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=en"
+        }
+      ]
+    }
+    </script>
+    <!-- /MEIHODO-SERVICE-JSONLD -->
 </head>
 <body>
     <!-- Navigation -->
