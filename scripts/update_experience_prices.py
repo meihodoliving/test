@@ -12,18 +12,75 @@ LANGS = ("ja", "en", "zh-cn", "zh-tw")
 SLUGS = ("samurai", "kyudo", "kendo", "iaido", "karate", "chado", "taiko", "bonseki", "kado", "takigyo")
 
 
+# Every experience is a list of (label key, amount) rows, in display order.
+# A list - rather than a fixed adult/child pair - is what lets kado keep its
+# group-size tiers and lets takigyo have no child row at all, instead of the
+# generator inventing rows that the pages never showed.
+#
+# "per_person" swaps the tax note for the per-person variant, which is the
+# markup kado uses because its tiers are per-head rates.
 PRICES = {
-    "samurai": {"adult": 35000, "child": 17500},
-    "kyudo": {"adult": 15000, "child": 7500},
-    "kendo": {"adult": 15000, "child": 7500},
-    "iaido": {"adult": 15000, "child": 7500},
-    "karate": {"adult": 15000, "child": 7500},
-    "chado": {"adult": 10000, "child": 5000},
-    "taiko": {"adult": 12000, "child": 6000},
-    "bonseki": {"adult": 12000, "child": 6000},
-    "kado": {"adult": 22500, "child": 11250},
-    "takigyo": {"adult": 5000, "child": None},
+    "samurai": {"rows": [("adult", 35000), ("child", 17500)]},
+    "kyudo": {"rows": [("adult", 15000), ("child", 7500)]},
+    "kendo": {"rows": [("adult", 15000), ("child", 7500)]},
+    "iaido": {"rows": [("adult", 15000), ("child", 7500)]},
+    "karate": {"rows": [("adult", 15000), ("child", 7500)]},
+    "chado": {"rows": [("adult", 10000), ("child", 5000)]},
+    "taiko": {"rows": [("adult", 12000), ("child", 6000)]},
+    "bonseki": {"rows": [("adult", 12000), ("child", 6000)]},
+    "kado": {
+        "rows": [("adult_1", 22500), ("adult_2_3", 22500), ("adult_4_8", 12500)],
+        "per_person": True,
+    },
+    "takigyo": {"rows": [("adult", 5000)]},
 }
+
+# Row labels per language. zh-tw needs its own entry: falling through to a
+# default used to put Japanese ("大人" / "子ども") on the Traditional Chinese
+# pages.
+LABELS = {
+    "ja": {
+        "adult": "大人（1名）",
+        "child": "子ども（8歳〜11歳）",
+        "adult_1": "大人（1名）",
+        "adult_2_3": "大人（2名〜3名）",
+        "adult_4_8": "大人（4名〜8名）",
+    },
+    "en": {
+        "adult": "Adult (1 guest)",
+        "child": "Child (ages 8–11)",
+        "adult_1": "Adult (1 guest)",
+        "adult_2_3": "Adults (2–3 guests)",
+        "adult_4_8": "Adults (4–8 guests)",
+    },
+    "zh-cn": {
+        "adult": "成人（1名）",
+        "child": "儿童（8〜11岁）",
+        "adult_1": "成人（1名）",
+        "adult_2_3": "成人（2〜3名）",
+        "adult_4_8": "成人（4〜8名）",
+    },
+    "zh-tw": {
+        "adult": "成人（1名）",
+        "child": "兒童（8〜11歲）",
+        "adult_1": "成人（1名）",
+        "adult_2_3": "成人（2〜3名）",
+        "adult_4_8": "成人（4〜8名）",
+    },
+}
+
+TAX_NOTE = {"ja": "税込", "en": "Tax included", "zh-cn": "含税", "zh-tw": "含稅"}
+PER_PERSON_NOTE = {
+    "ja": "（税込）/１名",
+    "en": "(inc. tax) / per person",
+    "zh-cn": "（含税）/1名",
+    "zh-tw": "（含稅）/1名",
+}
+
+
+def adult_price(slug: str) -> int:
+    """The headline rate, used on the experience list cards."""
+    return PRICES[slug]["rows"][0][1]
 
 
 def fmt_yen(amount: int) -> str:
@@ -58,53 +115,30 @@ def card_price_text(lang: str, amount: int) -> str:
 
 def pricing_labels(lang: str) -> tuple[str, str]:
     # adult label, child label (8–11)
-    if lang == "ja":
-        return ("大人（1名）", "子ども（8歳〜11歳）")
-    if lang == "en":
-        return ("Adult (1 guest)", "Child (ages 8–11)")
-    if lang == "zh-cn":
-        return ("成人（1名）", "儿童（8〜11岁）")
-    return ("大人（1名）", "子ども（8〜11歳）")
+    return (LABELS[lang]["adult"], LABELS[lang]["child"])
 
 
-def pricing_note(lang: str) -> str:
-    if lang == "ja":
-        return "税込"
-    if lang == "en":
-        return "Inc. tax"
-    if lang == "zh-cn":
-        return "含税"
-    return "含稅"
+def pricing_note(lang: str, slug: str | None = None) -> str:
+    if slug is not None and PRICES[slug].get("per_person"):
+        return PER_PERSON_NOTE[lang]
+    return TAX_NOTE[lang]
 
 
 def build_pricing_grid(lang: str, slug: str) -> str:
-    adult = PRICES[slug]["adult"]
-    child = PRICES[slug]["child"]
-    adult_label, child_label = pricing_labels(lang)
-    note = pricing_note(lang)
+    per_person = bool(PRICES[slug].get("per_person"))
+    note_class = "price-per-person" if per_person else "note"
+    note = pricing_note(lang, slug)
 
-    adult_html = (
-        "                    <div class=\"pricing-item\">\n"
-        f"                        <h3>{adult_label}</h3>\n"
-        f"                        <div class=\"price\">{fmt_yen(adult)}</div>\n"
-        f"                        <div class=\"note\">{note}</div>\n"
-        "                    </div>"
-    )
-
-    if child is None:
-        child_price = "-"
-    else:
-        child_price = fmt_yen(child)
-
-    child_html = (
-        "                    <div class=\"pricing-item\">\n"
-        f"                        <h3>{child_label}</h3>\n"
-        f"                        <div class=\"price\">{child_price}</div>\n"
-        f"                        <div class=\"note\">{note}</div>\n"
-        "                    </div>"
-    )
-
-    return f"{adult_html}\n{child_html}"
+    items = []
+    for key, amount in PRICES[slug]["rows"]:
+        items.append(
+            "                    <div class=\"pricing-item\">\n"
+            f"                        <h3>{LABELS[lang][key]}</h3>\n"
+            f"                        <div class=\"price\">{fmt_yen(amount)}</div>\n"
+            f"                        <div class=\"{note_class}\">{note}</div>\n"
+            "                    </div>"
+        )
+    return "\n".join(items)
 
 
 PRICING_GRID_RE = re.compile(
@@ -116,18 +150,10 @@ PRICING_GRID_RE = re.compile(
 def patch_detail_pricing(html: str, lang: str, slug: str) -> str:
     """Rewrite the visible pricing grid from PRICES.
 
-    WARNING: this has drifted from the pages and is currently destructive.
-    - kado renders three group-size tiers (1 guest / 2-3 / 4-8 at a lower rate)
-      and no child rate at all; PRICES cannot express that, so regenerating
-      drops the 4-8 guest tier and invents a child price the pages never show.
-    - The en and zh-tw pages use "<div class=\"price-per-person\">... / per
-      person</div>"; build_pricing_grid emits "<div class=\"note\">" and loses
-      the per-person qualifier.
-    Fix PRICES/build_pricing_grid to cover those shapes before running without
-    --jsonld-only.
+    Regenerating a page that already matches PRICES is a no-op; the grid is
+    rebuilt row for row from PRICES[slug]["rows"], so tiers, row counts and the
+    per-person note all survive.
     """
-    if slug == "samurai":
-        return html
     m = PRICING_GRID_RE.search(html)
     if not m:
         return html
@@ -138,8 +164,7 @@ def patch_detail_pricing(html: str, lang: str, slug: str) -> str:
 def patch_experiences_index_cards(html: str, lang: str) -> str:
     # Update all experience cards prices based on href to each slug.
     for slug in SLUGS:
-        adult = PRICES[slug]["adult"]
-        new_price = card_price_text(lang, adult)
+        new_price = card_price_text(lang, adult_price(slug))
 
         # Replace first price span inside the anchor card block for this slug.
         # Keep it conservative: anchor includes href to slug, then find first price span inside.
@@ -150,7 +175,7 @@ def patch_experiences_index_cards(html: str, lang: str) -> str:
         html = pattern.sub(lambda m, p=new_price: f"{m.group(1)}{p}{m.group(3)}", html, count=1)
 
     # Samurai featured block uses same span class.
-    sam_adult = card_price_text(lang, PRICES["samurai"]["adult"])
+    sam_adult = card_price_text(lang, adult_price("samurai"))
     html = re.sub(
         r'(<a[^>]+class="samurai-featured[^"]*"[^>]*>[\s\S]*?<span class="detail-value price">)([^<]+)(</span>)',
         lambda m, p=sam_adult: f"{m.group(1)}{p}{m.group(3)}",
@@ -194,8 +219,11 @@ PRICING_ITEM_RE = re.compile(
     r'<div class="pricing-item">\s*<h3>(?P<label>.*?)</h3>\s*<div class="price">(?P<price>.*?)</div>',
     re.S,
 )
+# The leading indentation is part of the match: leaving it behind made every
+# re-run insert the fresh block after the old block's whitespace, walking the
+# marker four spaces further right each time.
 SERVICE_BLOCK_RE = re.compile(
-    re.escape(SERVICE_START) + r".*?" + re.escape(SERVICE_END) + r"\n?", re.S
+    r"[ \t]*" + re.escape(SERVICE_START) + r".*?" + re.escape(SERVICE_END) + r"\n?", re.S
 )
 
 
