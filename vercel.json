@@ -17,6 +17,31 @@
     { "source": "/zh-cn/seiseikan/index.html", "destination": "/zh-cn/seiseisya", "statusCode": 301 },
     { "source": "/zh-tw/seiseikan", "destination": "/zh-tw/seiseisya", "statusCode": 301 },
     { "source": "/zh-tw/seiseikan/", "destination": "/zh-tw/seiseisya", "statusCode": 301 },
-    { "source": "/zh-tw/seiseikan/index.html", "destination": "/zh-tw/seiseisya", "statusCode": 301 }
+    { "source": "/zh-tw/seiseikan/index.html", "destination": "/zh-tw/seiseisya", "statusCode": 301 },
+
+    { "source": "/about-j", "destination": "/ja/about", "statusCode": 301 },
+    { "source": "/about-j/", "destination": "/ja/about", "statusCode": 301 },
+    { "source": "/about-j/index.html", "destination": "/ja/about", "statusCode": 301 },
+    { "source": "/access-j", "destination": "/ja/access", "statusCode": 301 },
+    { "source": "/access-j/", "destination": "/ja/access", "statusCode": 301 },
+    { "source": "/access-j/index.html", "destination": "/ja/access", "statusCode": 301 },
+    { "source": "/facilities-j", "destination": "/ja/accommodations", "statusCode": 301 },
+    { "source": "/facilities-j/", "destination": "/ja/accommodations", "statusCode": 301 },
+    { "source": "/facilities-j/index.html", "destination": "/ja/accommodations", "statusCode": 301 },
+    { "source": "/facilities-chinese", "destination": "/zh-cn/accommodations", "statusCode": 301 },
+    { "source": "/facilities-chinese/", "destination": "/zh-cn/accommodations", "statusCode": 301 },
+    { "source": "/facilities-chinese/index.html", "destination": "/zh-cn/accommodations", "statusCode": 301 },
+    { "source": "/experiences-j-1", "destination": "/ja/experiences", "statusCode": 301 },
+    { "source": "/experiences-j-1/", "destination": "/ja/experiences", "statusCode": 301 },
+    { "source": "/experiences-j-1/index.html", "destination": "/ja/experiences", "statusCode": 301 },
+    { "source": "/experiences", "destination": "/en/experiences", "statusCode": 301 },
+    { "source": "/experiences/", "destination": "/en/experiences", "statusCode": 301 },
+    { "source": "/experiences/index.html", "destination": "/en/experiences", "statusCode": 301 },
+    { "source": "/about", "destination": "/en/about", "statusCode": 301 },
+    { "source": "/about/", "destination": "/en/about", "statusCode": 301 },
+    { "source": "/about/index.html", "destination": "/en/about", "statusCode": 301 },
+    { "source": "/photography", "destination": "/ja/location", "statusCode": 301 },
+    { "source": "/photography/", "destination": "/ja/location", "statusCode": 301 },
+    { "source": "/photography/index.html", "destination": "/ja/location", "statusCode": 301 }
   ]
 }
