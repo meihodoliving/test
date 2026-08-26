@@ -7,6 +7,37 @@
     <link rel="stylesheet" href="../../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- MEIHODO-ACCOMMODATION-JSONLD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": [
+        "Accommodation",
+        "Product"
+      ],
+      "@id": "https://www.meihodo.com/zh-cn/bunshinkan/#accommodation",
+      "name": "文心馆",
+      "url": "https://www.meihodo.com/zh-cn/bunshinkan/",
+      "containedInPlace": {
+        "@type": "LodgingBusiness",
+        "@id": "https://www.meihodo.com/#lodgingbusiness",
+        "name": "鸣凤堂",
+        "url": "https://www.meihodo.com/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.hpdsp.net/meihodo/zh-cn/hw/hwp3200/hww3201init.do?screenId=HWW3601&taxType=0&otherPlanInRoomListCount=3&yadNo=309467&roomCount=1&dateUndecided=1&adultNum=2&planCd=L2979886&roomTypeCd=0583893&roomCrack=200000&rootCd=g&recommendType=E&stayCount=1"
+      },
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 6,
+        "unitText": "person"
+      }
+    }
+    </script>
+    <!-- /MEIHODO-ACCOMMODATION-JSONLD -->
 </head>
 <body>
     <!-- Navigation -->

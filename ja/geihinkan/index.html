@@ -7,6 +7,37 @@
     <link rel="stylesheet" href="../../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- MEIHODO-ACCOMMODATION-JSONLD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": [
+        "Accommodation",
+        "Product"
+      ],
+      "@id": "https://www.meihodo.com/ja/geihinkan/#accommodation",
+      "name": "迎賓館",
+      "url": "https://www.meihodo.com/ja/geihinkan/",
+      "containedInPlace": {
+        "@type": "LodgingBusiness",
+        "@id": "https://www.meihodo.com/#lodgingbusiness",
+        "name": "鳴鳳堂",
+        "url": "https://www.meihodo.com/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.hpdsp.net/meihodo/hw/hwp3200/hww3201init.do?screenId=HWW3601&otherPlanInRoomListCount=3&taxType=0&planCd=L2979886&roomTypeCd=0583890&yadNo=309467&roomCount=1&dateUndecided=1&adultNum=2&roomCrack=200000&rootCd=g&recommendType=E&stayCount=1"
+      },
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 8,
+        "unitText": "person"
+      }
+    }
+    </script>
+    <!-- /MEIHODO-ACCOMMODATION-JSONLD -->
 </head>
 <body>
     <!-- Navigation -->
