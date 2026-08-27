@@ -9,6 +9,8 @@
     "dev": "npx live-server --port=3000 --open=/index.html --watch=.",
     "optimize:images": "python3 scripts/optimize_images.py",
     "optimize:images:dry": "python3 scripts/optimize_images.py --dry-run",
+    "seo": "python3 scripts/build_seo.py",
+    "seo:check": "python3 scripts/build_seo.py --check",
     "build": "echo 'Static HTML/CSS site - no build process required'",
     "lint": "echo 'Linting HTML and CSS files...' && npx htmlhint index.html && npx stylelint styles.css",
     "deploy:vercel": "vercel --prod",

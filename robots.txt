@@ -1,0 +1,75 @@
+# https://www.meihodo.com/ - 鳴鳳堂 / Meihodo, Aso, Kumamoto, Japan
+# The whole site is public marketing content and is open to search and
+# answer engines. Named groups exist so any future restriction can be
+# scoped to one crawler instead of applying to all of them.
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: *
+Allow: /
+
+# Pre-migration stubs kept only so old inbound links resolve. They are
+# 301/308 redirects or duplicates of a canonical page, and are left out
+# of the sitemap for the same reason.
+Disallow: /zh-hans/
+Disallow: /zh-hant/
+
+Sitemap: https://www.meihodo.com/sitemap.xml

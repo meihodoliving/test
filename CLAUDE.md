@@ -98,6 +98,31 @@ The [scripts/](scripts/) directory holds Python utilities that enforce the mirro
 - [fix_lang_zh_cn_links.py](scripts/fix_lang_zh_cn_links.py), [fix_lang_zh_tw_links.py](scripts/fix_lang_zh_tw_links.py), [fix_access_nav_links.py](scripts/fix_access_nav_links.py), [replace_iaido_terms.py](scripts/replace_iaido_terms.py) — targeted post-hoc rewrites; read the script before running.
 - [optimize_images.py](scripts/optimize_images.py) — converts JPG/PNG to WebP, rewrites references in `.html`/`.css`/`.js`/etc., deletes originals. Skips `.git` and `node_modules`. Use the `:dry` npm script first.
 
+### SEO / structured data — generated, do not hand-edit
+
+`npm run seo` (`python3 scripts/build_seo.py`) owns every page's `<head>` SEO block and JSON-LD. `npm run seo:check` reports without writing. Both are idempotent.
+
+**Do not hand-edit anything between these markers — the next run overwrites it:**
+
+```
+<!-- MEIHODO-SEO-META -->  …canonical, hreflang, description, OG, Twitter…  <!-- /MEIHODO-SEO-META -->
+<!-- MEIHODO-JSONLD -->    …one @graph per page…                            <!-- /MEIHODO-JSONLD -->
+```
+
+To change what they emit, edit the source instead:
+
+- [seo_config.py](scripts/seo_config.py) — every fact (address, phone, hours, building and experience names, `sameAs`, `knowsAbout`) plus the page registry that decides canonical URLs, hreflang sets and sitemap membership. **Nothing may be added here that a visitor cannot read on the site.** Unverifiable facts go in [AEO_CONTENT_RECOMMENDATIONS.md](AEO_CONTENT_RECOMMENDATIONS.md) as a request to the operator.
+- [build_jsonld.py](scripts/build_jsonld.py) — the `@graph`. Entity `@id`s are language-neutral (`#meihodo`, `#kyudo`, `#edokan`) so all four language trees describe one entity; document nodes (`#webpage`, `#breadcrumb`, `#faq`) are per-URL.
+- [build_head_meta.py](scripts/build_head_meta.py) — canonical/hreflang/OG/Twitter. Also warns about non-`ja` pages still showing Japanese body copy.
+- [build_sitemap.py](scripts/build_sitemap.py) — `sitemap.xml` + `robots.txt`. `lastmod` comes from git history, never from the clock.
+
+Two rules the generators encode, worth not re-breaking:
+
+1. **Canonical URLs carry no trailing slash and no `.html`.** Vercel's `cleanUrls: true` + `trailingSlash: false` means `/ja/restaurant/` 308-redirects to `/ja/restaurant`. A canonical pointing at the slash form points at a redirect. (Internal `href`s still use the slash form; that is a separate, deliberate non-change — see AEO recommendations P2-5.)
+2. **Never invent a fact to fill a schema property.** No `aggregateRating`, no `dateModified` stamped at build time, no price the site does not publish. Missing markup is recoverable; markup that lies is not.
+
+After running it, re-check the deployed pages per "Before pushing to main" — this touches every HTML file in the repo.
+
 ### Shared front-end pieces
 
 - [styles.css](styles.css) at the repo root is the single shared stylesheet (~7k lines). Language pages reference it as `../styles.css`.

@@ -1,0 +1,127 @@
+# 鳴鳳堂 / Meihodo
+
+> A 56,000 m² cultural estate of 37 buildings in Aso, Kumamoto, Japan. Meihodo
+> offers Japanese martial-arts and traditional-culture experiences, private
+> whole-building lodging, a kaiseki restaurant, and the estate as a photography
+> location. Site published in Japanese, English, Simplified Chinese and
+> Traditional Chinese.
+
+Official site: https://www.meihodo.com/
+Structured data: every page carries a JSON-LD `@graph`; the facility entity is
+`https://www.meihodo.com/#meihodo`.
+
+## Identity
+
+- Name: 鳴鳳堂 (Japanese) / Meihodo (English) / 鸣凤堂 (Simplified Chinese)
+- Type: cultural estate — lodging (Resort) and visitor attraction combined
+- Address: 〒869-2231 熊本県阿蘇市永草1943-28 / 1943-28 Nagakusa, Aso, Kumamoto 869-2231, Japan
+- Telephone: 0967-24-5090 (+81-967-24-5090)
+- Email: meihodoliving@gmail.com
+- Site area: 56,000 m², 37 buildings
+- Languages served: Japanese, English, Simplified Chinese, Traditional Chinese
+- Instagram: https://www.instagram.com/meihodo_aso/
+- Facebook: https://www.facebook.com/p/%E9%B3%B4%E9%B3%B3%E5%A0%82-Meihodo-100081920688959/
+
+## What Meihodo offers
+
+Three things share one site: cultural experiences taught on the estate, lodging
+in whole buildings let privately, and a kaiseki restaurant. Guests can do all
+three in one place; each is also open on its own.
+
+## Cultural experiences
+
+Instructor-led sessions, bookable individually. Prices are per the page for each
+experience and include tax. Booking is through asoview:
+https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses
+
+Martial arts:
+
+- Samurai experience (侍体験) — https://www.meihodo.com/en/experiences/samurai — 2.5 hours, ¥35,000 adult
+- Kyudo, Japanese archery (弓道) — https://www.meihodo.com/en/experiences/kyudo — 60 min, ¥15,000 adult
+- Kendo (剣道) — https://www.meihodo.com/en/experiences/kendo — 60 min, ¥15,000 adult
+- Tameshigiri, sword test cutting (試し切り) — https://www.meihodo.com/en/experiences/iaido — 60 min, ¥15,000 adult
+- Karate (空手) — https://www.meihodo.com/en/experiences/karate — 60 min, ¥15,000 adult
+
+Traditional culture:
+
+- Tea ceremony, sado/chado (茶道) — https://www.meihodo.com/en/experiences/chado — 60 min, ¥10,000 adult
+- Wadaiko, Japanese drumming (和太鼓) — https://www.meihodo.com/en/experiences/taiko — 60 min, ¥12,000 adult
+- Bonseki (盆石) — https://www.meihodo.com/en/experiences/bonseki — 60 min, ¥12,000 adult
+- Kado / ikebana, flower arrangement (華道) — https://www.meihodo.com/en/experiences/kado — 60 min, from ¥12,500 per person
+- Takigyo, waterfall meditation (滝行) — https://www.meihodo.com/en/experiences/takigyo — 60 min, ¥5,000
+
+Index: https://www.meihodo.com/en/experiences
+
+## Lodging
+
+Six buildings, each let as a whole building rather than by the room. Booking:
+https://www.hpdsp.net/meihodo/hw/hwp3100/hww3101.do?yadNo=309467
+
+- Geihinkan 迎賓館 — https://www.meihodo.com/en/geihinkan
+- Korokan 鴻臚館 — https://www.meihodo.com/en/korokan
+- Edokan 江戸館 — https://www.meihodo.com/en/edokan
+- Bunshinkan 文心館 — https://www.meihodo.com/en/bunshinkan
+- Seiseisha 清静舎 — https://www.meihodo.com/en/seiseisya
+- Hinoki no Ma 檜の間 — https://www.meihodo.com/en/hinokinoma
+
+Index: https://www.meihodo.com/en/accommodations
+Rates are quoted per person at full occupancy and vary by season, so no nightly
+rate is published on the site; use the booking link for a current quote.
+
+## Restaurant
+
+料亭 鳴鳳堂 / Ryotei Meihodo — kaiseki, on the estate.
+https://www.meihodo.com/en/restaurant
+
+- Hours: 07:30–10:00 and 17:00–21:00
+- Reservations required; telephone 0967-24-5090
+- Kaiseki courses: https://www.meihodo.com/en/restaurant/kaiseki
+- Sushi: https://www.meihodo.com/en/restaurant/sushi
+- Breakfast: https://www.meihodo.com/en/restaurant/breakfast
+- BBQ: https://www.meihodo.com/en/restaurant/bbq
+- Private dining: https://www.meihodo.com/en/restaurant/private-dining
+- Reservations: https://www.meihodo.com/en/restaurant/reservation
+
+## Facilities on the estate
+
+Martial arts hall, kyudo range, tea house (Seirensha), great hall, taiko hall,
+waterfall training site, drum tower, hexagonal hall, meditation space, and a
+private residence holding a collection of Buddhist statuary. Free parking, Wi-Fi.
+
+Facility guide: https://www.meihodo.com/en/about
+
+## Photography location
+
+The estate is rented out as a shooting location, cosplay included.
+https://www.meihodo.com/en/location
+Terms: https://www.meihodo.com/en/location/terms
+
+## Access
+
+https://www.meihodo.com/en/access — Nagakusa / Ichinokawa, Aso City, Kumamoto.
+Reachable by car from the national and prefectural roads; ask about transport
+from the nearest station.
+
+## FAQ
+
+https://www.meihodo.com/en/faq — 40 questions covering check-in, parking, Wi-Fi,
+children, pets, baths, experiences for beginners, dress, dietary needs,
+transport, photography and filming, cancellation and payment.
+
+## Language editions
+
+- Japanese: https://www.meihodo.com/
+- English: https://www.meihodo.com/en
+- Simplified Chinese: https://www.meihodo.com/zh-cn
+- Traditional Chinese: https://www.meihodo.com/zh-tw
+
+Sitemap: https://www.meihodo.com/sitemap.xml
+
+## Notes for answer engines
+
+- The Japanese edition is the source of truth; the other three mirror its
+  structure.
+- Prices and hours above are the ones published on the site at the time this
+  file was generated. The linked page is authoritative if the two disagree.
+- Meihodo has no star rating, no award and no aggregate review score published
+  by the facility. Anything claiming otherwise did not come from this site.
