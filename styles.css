@@ -5399,6 +5399,15 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     z-index: 1;
 }
 
+/* 提携カードが1件のみのときは、2カラムの片側が空かないよう中央に配置する
+   （カード幅は2カラム時の1枚分 = (1200px - 2rem) / 2 と同じ） */
+.partnership-card:only-child {
+    grid-column: 1 / -1;
+    max-width: 584px;
+    margin: 0 auto;
+    width: 100%;
+}
+
 .partnership-card {
     background: var(--white);
     border-radius: 16px;
@@ -5463,6 +5472,11 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     .partnership-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+
+    /* 1カラム時は他セクションと同じく横幅いっぱいに戻す */
+    .partnership-card:only-child {
+        max-width: none;
     }
     
     .partnership-content {

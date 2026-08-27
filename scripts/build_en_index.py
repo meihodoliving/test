@@ -316,15 +316,6 @@ text = text.replace(
     '<p class="section-subtitle">鳴鳳堂と提携するサービスをご紹介します。滞在をより快適にするための特別なご案内です。</p>',
     '<p class="section-subtitle">Partners who extend your stay—dining, wellness and more.</p>',
 )
-text = text.replace('alt="レストラン 山水家"', 'alt="Restaurant Sansuika"')
-text = text.replace(
-    '<h3>レストラン 山水家</h3>',
-    '<h3>Restaurant Sansuika</h3>',
-)
-text = text.replace(
-    '<p>地元食材を活かした本格的な和食を楽しめる提携レストランです。</p>',
-    '<p>Partner restaurant serving Japanese cuisine centered on local ingredients.</p>',
-)
 text = text.replace('alt="マッサージ ここりらく"', 'alt="Massage Kokoriraku"')
 text = text.replace(
     '<h3>マッサージ ここりらく</h3>',
