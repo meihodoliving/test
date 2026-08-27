@@ -6,8 +6,17 @@
     { code: 'zh-tw', label: '繁體中文', short: '繁' }
   ];
 
+  // Base path the site is served under. "/" on Vercel (www.meihodo.com);
+  // "/test/" on GitHub Pages, where scripts/build_pages_base.py injects
+  // window.__BASE_PATH__ into <head> at build time. Everything below works off
+  // the path *relative to* the base, so the two hosts share one code path.
+  var BASE = ('/' + (window.__BASE_PATH__ || '/').replace(/^\/+|\/+$/g, '') + '/').replace('//', '/');
+
   var path = window.location.pathname;
-  var match = path.match(/^\/(ja|en|zh-cn|zh-tw|zh-hans|zh-hant)(\/|$)/);
+  // Keep the leading slash: BASE always ends in one, so slice one char short.
+  var rel = path.indexOf(BASE) === 0 ? path.slice(BASE.length - 1) : path;
+
+  var match = rel.match(/^\/(ja|en|zh-cn|zh-tw|zh-hans|zh-hant)(\/|$)/);
   var currentCode = match ? match[1] : 'ja';
 
   // Normalise zh-hans → zh-cn, zh-hant → zh-tw for display purposes
@@ -29,10 +38,12 @@
 
       var targetPath;
       if (match) {
-        targetPath = path.replace('/' + match[1], '/' + lang.code);
+        // Swap the language segment inside the base-relative path, then put
+        // the base back. BASE ends in "/" and rel starts with one.
+        targetPath = BASE.slice(0, -1) + rel.replace('/' + match[1], '/' + lang.code);
       } else {
-        // Root /index.html is treated as ja
-        targetPath = '/' + lang.code + '/';
+        // Root index.html is treated as ja
+        targetPath = BASE + lang.code + '/';
       }
 
       var li = document.createElement('li');

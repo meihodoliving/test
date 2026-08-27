@@ -1234,7 +1234,13 @@
             }
 
             isHomePage() {
-                const path = window.location.pathname;
+                // Strip the base path the site is served under, so the checks
+                // below match on both hosts. window.__BASE_PATH__ is injected
+                // by scripts/build_pages_base.py for GitHub Pages ("/test/")
+                // and is absent on Vercel, where the base is already "/".
+                const base = ('/' + (window.__BASE_PATH__ || '/').replace(/^\/+|\/+$/g, '') + '/').replace('//', '/');
+                const raw = window.location.pathname;
+                const path = raw.indexOf(base) === 0 ? raw.slice(base.length - 1) : raw;
                 return path === '/' || path === '/index.html' || path === '/ja/' || path === '/ja/index.html'
                     || path === '/en/' || path === '/en/index.html'
                     || path === '/zh-cn/' || path === '/zh-cn/index.html'

@@ -9,12 +9,26 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v4
 
     - name: Setup Pages
+      id: pages
       uses: actions/configure-pages@v5
+
+    # This site is served from the repo root on Vercel (www.meihodo.com) and
+    # from /test/ on GitHub Pages, so the root-absolute paths committed to the
+    # repo - which are what Vercel needs, per CLAUDE.md deployment invariant 2 -
+    # are rewritten onto the Pages base path here, in the throwaway CI checkout,
+    # and never committed. base_path comes from configure-pages, so renaming the
+    # repo or attaching a custom domain needs no change here.
+    #
+    # canonical, hreflang, og:*, twitter:* and the JSON-LD keep pointing at
+    # https://www.meihodo.com/ : Pages is a mirror, not the canonical home.
+    - name: Rewrite internal paths for the Pages base path
+      run: |
+        python3 scripts/build_pages_base.py --base "${{ steps.pages.outputs.base_path }}"
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
@@ -35,6 +49,3 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: true
-
-
-
