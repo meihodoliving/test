@@ -8683,6 +8683,55 @@ footer a:hover,
     text-align: center;
 }
 
+/* The campaign is booked by email or phone, so the CTA is a pair of actions
+   rather than one button. They sit side by side and wrap to a stack when the
+   row runs out of width. */
+.campaign-cta__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* The second of the pair. .btn-secondary is white-on-transparent for hero
+   overlays and would be invisible on this light background, so the outline
+   variant is defined here, scoped to the campaign CTA. */
+.campaign-cta .btn-outline {
+    background: transparent;
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+    box-shadow: none;
+}
+
+.campaign-cta .btn-outline:hover {
+    background: var(--secondary-color);
+    color: var(--white);
+    box-shadow: 0 12px 30px rgba(47, 79, 79, 0.25);
+}
+
+/* Contact details inside a .campaign-block. Same exemption from the site-wide
+   prose rule as the CTA lines below - these read as a labelled value, not as
+   body copy. */
+main .container .campaign-block p.campaign-contact-line {
+    max-width: none;
+    width: auto;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 1.08rem;
+    letter-spacing: 0.04em;
+}
+
+.campaign-contact-line a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(47, 79, 79, 0.3);
+    overflow-wrap: anywhere;
+}
+
+.campaign-contact-line a:hover {
+    border-bottom-color: var(--secondary-color);
+}
+
 /* The site-wide prose rule near the top of this file constrains every
    `main .container p` to --prose-measure and left-aligns it. That is right for
    body copy, but the CTA's supporting lines belong centred under the button,
@@ -8742,5 +8791,9 @@ main .container .campaign-cta p {
         justify-content: center;
         padding: 16px 20px;
         font-size: 1rem;
+    }
+
+    .campaign-cta__buttons {
+        gap: 0.75rem;
     }
 }
