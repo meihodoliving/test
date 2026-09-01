@@ -8806,3 +8806,257 @@ main .container .campaign-cta p {
         gap: 0.75rem;
     }
 }
+
+/* ----------------------------------------------------------------
+   お知らせ / Information
+   - 一覧ページ /ja/information/（.information-page-main, .information-list）
+   - トップページのお知らせセクション（.information-section）
+   見出しは既存の .section-header / .section-title / .section-subtitle、
+   ボタンは .btn .btn-primary、パンくずは既存の .breadcrumb /
+   .breadcrumb-nav をそのまま使うため、ここで足すのはカード本体と
+   英字ラベルだけに留めている。
+   ---------------------------------------------------------------- */
+
+/* 見出し上の英字ラベル（Information / お知らせ）。 */
+.section-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    margin-bottom: 0.9rem;
+}
+
+/* 一覧ページ本体。.breadcrumb が margin-top:80px でナビ下を確保するため、
+   ここでは about ページのような大きな padding-top は取らない。 */
+.information-page-main {
+    padding-top: 3.5rem;
+    padding-bottom: 5rem;
+    background: linear-gradient(180deg, var(--white) 0%, var(--light-color) 45%, var(--white) 100%);
+}
+
+.information-page-main .container--narrow {
+    max-width: 880px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* カテゴリー表示。記事が増えたらチップを 1 行足すだけで済むよう、
+   カード側の data-category と同じ文字列を使っている。現時点で存在する
+   カテゴリーだけを出しており、押せそうに見せないよう span で組む。 */
+.information-filter {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+    margin: 0 0 2.5rem;
+    padding: 0;
+}
+
+.information-filter__item {
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: var(--white);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+}
+
+.information-filter__item.is-current {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--white);
+}
+
+/* 記事一覧。1 記事 = 1 つの .information-card。追加は <li> を複製して
+   日付・カテゴリー・タイトル・概要・リンク先を差し替えるだけ。 */
+.information-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.information-card {
+    margin-bottom: 1.75rem;
+}
+
+.information-card:last-child {
+    margin-bottom: 0;
+}
+
+/* カード全体が 1 つのリンク。PC は画像＋文章の横並び、
+   768px 以下で縦並びに落とす。 */
+.information-card__link {
+    display: flex;
+    gap: 1.75rem;
+    align-items: flex-start;
+    padding: 1.75rem;
+    background: var(--white);
+    border: 1px solid rgba(139, 115, 85, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(139, 115, 85, 0.06);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.information-card__link:hover,
+.information-card__link:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 48px rgba(139, 115, 85, 0.16);
+}
+
+/* サムネイル。aspect-ratio + object-fit で、元画像の比率に関わらず
+   一覧上の高さを揃えつつ画像自体は歪ませない。 */
+.information-card__thumb {
+    flex: 0 0 240px;
+    aspect-ratio: 5 / 3;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--light-color);
+}
+
+.information-card__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.information-card__body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* 本文の可読行長ルール（ファイル冒頭）はカード内では邪魔になるので、
+   カード・表の p と同じ扱いに戻す。 */
+main .container .information-card .information-card__body p,
+section .container .information-card .information-card__body p {
+    max-width: none;
+    width: auto;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: start;
+}
+
+.information-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 0.6rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+}
+
+.information-card__category {
+    padding: 0.15rem 0.7rem;
+    border-radius: 999px;
+    background: var(--light-color);
+    border: 1px solid var(--border-color);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--primary-color);
+}
+
+.information-card__title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.7;
+    color: var(--dark-color);
+    margin: 0 0 0.7rem;
+}
+
+.information-card__summary {
+    font-size: 0.97rem;
+    line-height: 1.9;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+}
+
+.information-card__more {
+    display: inline-block;
+    font-size: 0.92rem;
+    letter-spacing: 0.08em;
+    color: var(--secondary-color);
+    border-bottom: 1px solid rgba(47, 79, 79, 0.3);
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.information-card__link:hover .information-card__more {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+/* トップページのお知らせセクション。既存セクションと同じ縦リズム。 */
+.information-section {
+    background: var(--white);
+    padding: 80px 0;
+}
+
+.information-section .information-list {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.information-section__more {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+@media (max-width: 768px) {
+    .information-page-main {
+        padding-top: 2.5rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .information-section {
+        padding: 56px 0;
+    }
+
+    /* スマートフォンは画像の上に文章、の縦並び。 */
+    .information-card__link {
+        flex-direction: column;
+        gap: 1.1rem;
+        padding: 1.4rem;
+        border-radius: 12px;
+    }
+
+    .information-card__thumb {
+        flex: 0 0 auto;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+
+    .information-card__title {
+        font-size: 1.06rem;
+    }
+
+    .information-section__more .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .information-card__link {
+        transition: none;
+    }
+
+    .information-card__link:hover,
+    .information-card__link:focus-visible {
+        transform: none;
+    }
+}

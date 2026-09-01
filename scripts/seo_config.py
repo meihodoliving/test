@@ -234,6 +234,8 @@ CRUMB = {
     # The 阿蘇ふっこう割 campaign is a domestic (Japanese) promotion and has no
     # translated edition, so this label only ever needs "ja".
     "campaign-aso-fukkou": {"ja": "阿蘇ふっこう割（熊本応援キャンペーン）"},
+    # The news index exists only in Japanese for now, so "ja" alone is enough.
+    "information": {"ja": "お知らせ"},
 }
 
 
@@ -352,6 +354,15 @@ def build_registry() -> list[Page]:
             _crumb(lang,
                    (CRUMB["accommodations"][lang], canonical_for(f"{lang}/accommodations/index.html")),
                    (BUILDING_NAMES["geihinkan"][lang], canonical_for(f"{lang}/geihinkan/index.html")))))
+
+    # Japanese-only news index. Same reasoning as the campaign page below:
+    # alternates_for() skips languages whose sibling file does not exist, so
+    # this advertises ja alone until /en/information/ and friends are written.
+    info_path = "ja/information/index.html"
+    pages.append(Page(
+        info_path, "ja", "information", "information",
+        canonical_for(info_path), True,
+        _crumb("ja", (CRUMB["information"]["ja"], canonical_for(info_path)))))
 
     # Japanese-only campaign page. The 阿蘇ふっこう割 promotion is run by Aso
     # City for the domestic market, so there is no /en, /zh-cn or /zh-tw

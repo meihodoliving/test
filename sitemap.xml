@@ -236,6 +236,12 @@
     <lastmod>2026-08-27</lastmod>
   </url>
   <url>
+    <loc>https://www.meihodo.com/ja/information</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/information"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/information"/>
+    <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
     <loc>https://www.meihodo.com/ja/korokan</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/korokan"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/korokan"/>
