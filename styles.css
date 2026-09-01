@@ -8693,6 +8693,15 @@ footer a:hover,
     justify-content: center;
 }
 
+/* Belt and braces for the campaign page's floating buttons: the 宿泊予約 anchor
+   is already absent from that page's markup, and this keeps it hidden if the
+   markup is ever regenerated from another page. Scoped to body.campaign-page,
+   so the other 155 pages are untouched. .experience-btn and the language
+   buttons stay - only the lodging-reservation entry point goes. */
+body.campaign-page .fixed-buttons .accommodation-btn {
+    display: none;
+}
+
 /* The second of the pair. .btn-secondary is white-on-transparent for hero
    overlays and would be invisible on this light background, so the outline
    variant is defined here, scoped to the campaign CTA. */

@@ -424,9 +424,14 @@
 
     <div class="fixed-buttons">
         <div class="main-buttons">
-            <a href="https://www.hpdsp.net/meihodo/hw/hwp3100/hww3101.do?yadNo=309467" class="vertical-btn accommodation-btn">
-                <span class="btn-text">宿泊予約</span>
-            </a>
+            <!-- The site-wide 宿泊予約 button is deliberately absent on this page.
+                 阿蘇ふっこう割 is booked by email or phone only, so a button that
+                 opens the ordinary reservation system here would read as "book
+                 through this and get the discount" - which is not how the
+                 subsidy works. Removed from the markup rather than hidden with
+                 CSS so the link is not in the document at all. Every other page
+                 keeps the button; body.campaign-page in styles.css is a guard in
+                 case this markup is ever regenerated. -->
             <a href="https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses?language_type=en" class="vertical-btn experience-btn">
                 <span class="btn-text">体験予約</span>
             </a>
