@@ -81,7 +81,7 @@ def build_block(page, src: str) -> str:
         description = C.FACILITY_DESCRIPTION[lang]
         image = C.DEFAULT_IMAGE
     else:
-        description = page_description(src)
+        description = page_description(src, page.path)
         image = page_image(src) or C.DEFAULT_IMAGE
 
     lines = [START]

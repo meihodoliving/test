@@ -240,6 +240,70 @@ CRUMB = {
 
 
 # ---------------------------------------------------------------------------
+# The 阿蘇ふっこう割 announcement.
+#
+# The campaign page is a dated announcement, not a standing description of a
+# facility, so it carries an Article node of its own on top of the usual
+# WebPage. Every literal here is readable on
+# https://www.meihodo.com/ja/campaign/aso-fukkou itself - the headline is the
+# page's own <h1>/<title>, the dates are the campaign dates the page states,
+# and the image is the banner it shows.
+#
+# datePublished / dateModified are NOT stamped from the clock: they are the
+# dates this page was published and last edited, kept here by hand so a
+# regenerate does not silently claim the article is fresher than it is.
+# ---------------------------------------------------------------------------
+CAMPAIGN_PATH = "ja/campaign/aso-fukkou/index.html"
+CAMPAIGN_ARTICLE = {
+    "headline": "【阿蘇ふっこう割】阿蘇に泊まって支える！熊本応援キャンペーン｜鳴鳳堂",
+    "alternativeHeadline": "鳴鳳堂は阿蘇ふっこう割（熊本応援キャンペーン）の対象宿泊施設です",
+    "datePublished": "2026-09-01",
+    "dateModified": "2026-09-01",
+    "image": f"{BASE}/images/top/web_banner.png",
+    "keywords": [
+        "阿蘇ふっこう割",
+        "熊本応援キャンペーン",
+        "阿蘇に泊まって支える",
+        "阿蘇市",
+        "鳴鳳堂",
+        "Meihodo",
+        "対象宿泊施設",
+        "宿泊割引",
+        "地域クーポン",
+        "熊本県阿蘇市",
+    ],
+    # The campaign itself, as an entity the article is about. Its @id is
+    # language-neutral like the other real-world entities in the graph.
+    "campaign_name": "阿蘇に泊まって支える！熊本応援キャンペーン（阿蘇ふっこう割）",
+    "campaign_alt": ["阿蘇ふっこう割", "熊本応援キャンペーン"],
+    "campaign_start": "2026-09-07",
+    "campaign_end": "2026-09-30",
+    "organizer": "阿蘇市",
+}
+
+ID_CAMPAIGN = f"{BASE}/#aso-fukkou-campaign"
+
+
+# ---------------------------------------------------------------------------
+# Meta-description overrides.
+#
+# build_head_meta.py normally reads a page's own first substantial paragraph.
+# Where an editor has written a better summary than the prose yields, it goes
+# here - keyed by repo-relative path - so the value survives a regenerate
+# instead of having to be re-typed into the generated block every run.
+# ---------------------------------------------------------------------------
+PAGE_DESCRIPTIONS = {
+    CAMPAIGN_PATH: (
+        "熊本県阿蘇市の文化リゾート鳴鳳堂は、阿蘇市が実施する"
+        "「阿蘇に泊まって支える！熊本応援キャンペーン（阿蘇ふっこう割）」の"
+        "対象宿泊施設です。2026年9月7日～9月30日の対象宿泊について、"
+        "1名1泊あたり最大5,000円の宿泊割引と2,000円分の地域クーポンを"
+        "ご利用いただけます。ご予約はメールまたはお電話での直接予約のみの受付です。"
+    ),
+}
+
+
+# ---------------------------------------------------------------------------
 # The page registry.
 #
 # Every entry is (relative file path, canonical path). The canonical path is
@@ -368,7 +432,7 @@ def build_registry() -> list[Page]:
     # City for the domestic market, so there is no /en, /zh-cn or /zh-tw
     # sibling; alternates_for() skips the languages whose file does not exist,
     # which leaves this page advertising ja alone - correct, not a gap.
-    campaign_path = "ja/campaign/aso-fukkou/index.html"
+    campaign_path = CAMPAIGN_PATH
     pages.append(Page(
         campaign_path, "ja", "campaign", "aso-fukkou",
         canonical_for(campaign_path), True,

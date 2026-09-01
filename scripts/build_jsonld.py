@@ -95,8 +95,15 @@ def entity_name(src: str, lang: str) -> str:
     return t.strip() or C.BRAND[lang]
 
 
-def page_description(src: str) -> str | None:
-    """The page's own meta description, else its first substantial paragraph."""
+def page_description(src: str, path: str | None = None) -> str | None:
+    """The page's own meta description, else its first substantial paragraph.
+
+    An entry in C.PAGE_DESCRIPTIONS wins over both: it is the editor's summary
+    of that page, and reading it from the config rather than from the generated
+    block is what stops a regenerate from drifting back to the prose.
+    """
+    if path and path in C.PAGE_DESCRIPTIONS:
+        return C.PAGE_DESCRIPTIONS[path]
     m = DESC_RE.search(src)
     if m and m.group(1).strip():
         return html.unescape(m.group(1)).strip()
@@ -220,16 +227,25 @@ def node_organization(lang: str) -> dict:
 def node_meihodo(lang: str, full: bool) -> dict:
     """The estate itself.
 
-    Typed Resort + TouristAttraction: Resort (a LodgingBusiness subtype) is what
-    a 56,000 sqm site that lodges guests and runs its own restaurant and
-    activity programme actually is, and TouristAttraction carries the half that
-    day visitors come for. Hotel would be wrong - nothing here is let by the
-    room.
+    Typed LodgingBusiness + Resort + TouristAttraction: Resort (a
+    LodgingBusiness subtype) is what a 56,000 sqm site that lodges guests and
+    runs its own restaurant and activity programme actually is, and
+    TouristAttraction carries the half that day visitors come for. Hotel would
+    be wrong - nothing here is let by the room.
+
+    LodgingBusiness is listed alongside Resort even though Resort is already a
+    subtype of it. It is redundant to a consumer that resolves the schema.org
+    hierarchy, and load-bearing for one that string-matches the type - which is
+    what "is this an accommodation?" checks tend to do.
     """
     base = {
-        "@type": ["Resort", "TouristAttraction"],
+        "@type": ["LodgingBusiness", "Resort", "TouristAttraction"],
         "@id": C.ID_MEIHODO,
         "name": C.BRAND[lang],
+        # Carried on the stub as well as the full node: "Meihodo" and "鳴鳳堂"
+        # are how the estate is named off-site, and a page that only ever says
+        # one of them gives an entity resolver nothing to match on.
+        "alternateName": C.ALT_NAMES[lang],
         "url": f"{C.BASE}/" if lang == "ja" else f"{C.BASE}/{lang}",
         "telephone": C.TELEPHONE,
         "address": node_address(lang),
@@ -239,7 +255,6 @@ def node_meihodo(lang: str, full: bool) -> dict:
         return base
 
     base.update({
-        "alternateName": C.ALT_NAMES[lang],
         "description": C.FACILITY_DESCRIPTION[lang],
         "image": [
             C.DEFAULT_IMAGE,
@@ -505,6 +520,73 @@ def node_restaurant(lang: str, description, image, full: bool) -> dict:
     return n
 
 
+def node_campaign(page) -> dict:
+    """The 阿蘇ふっこう割 promotion itself, as an entity separate from the article.
+
+    Typed SaleEvent: it is a dated, organiser-run offer period, and giving it
+    its own @id is what lets the article say "this article is *about* this
+    campaign" and the campaign say "鳴鳳堂 is a participant" - rather than
+    leaving a search engine to infer the connection from prose alone.
+    """
+    a = C.CAMPAIGN_ARTICLE
+    return {
+        "@type": "SaleEvent",
+        "@id": C.ID_CAMPAIGN,
+        "name": a["campaign_name"],
+        "alternateName": a["campaign_alt"],
+        "description": C.PAGE_DESCRIPTIONS[C.CAMPAIGN_PATH],
+        "url": page.canonical,
+        "startDate": a["campaign_start"],
+        "endDate": a["campaign_end"],
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "organizer": {
+            "@type": "GovernmentOrganization",
+            "name": a["organizer"],
+        },
+        # 鳴鳳堂 is a 対象宿泊施設 of the campaign: the qualifying stay happens
+        # here, and the campaign is about this estate. Those two properties are
+        # the machine-readable half of the sentence the page opens with.
+        # (Not performer - that expects a Person or PerformingGroup, and a
+        # wrong type is worse than a missing one.)
+        "location": {"@id": C.ID_MEIHODO},
+        "about": {"@id": C.ID_MEIHODO},
+    }
+
+
+def node_campaign_article(page, image: str | None) -> dict:
+    """The campaign page as a dated announcement.
+
+    NewsArticle rather than a bare WebPage: the page is an announcement with a
+    publication date and a subject, and the properties Google documents for
+    Article (headline / image / datePublished / dateModified / author /
+    publisher / mainEntityOfPage) only have somewhere to live on an Article.
+    """
+    a = C.CAMPAIGN_ARTICLE
+    return {
+        "@type": "NewsArticle",
+        "@id": f"{page.canonical}#article",
+        "headline": a["headline"],
+        "alternativeHeadline": a["alternativeHeadline"],
+        "description": C.PAGE_DESCRIPTIONS[C.CAMPAIGN_PATH],
+        "datePublished": a["datePublished"],
+        "dateModified": a["dateModified"],
+        "inLanguage": C.LANG_TAG[page.lang],
+        "url": page.canonical,
+        "mainEntityOfPage": {"@id": f"{page.canonical}#webpage"},
+        "isPartOf": {"@id": f"{page.canonical}#webpage"},
+        # 鳴鳳堂 wrote and publishes this announcement about its own
+        # participation; the organiser of the campaign is on the SaleEvent node.
+        "author": {"@id": C.ID_ORG},
+        "publisher": {"@id": C.ID_ORG},
+        "image": [image or a["image"]],
+        "keywords": a["keywords"],
+        "articleSection": C.CRUMB["information"]["ja"],
+        "about": [{"@id": C.ID_CAMPAIGN}, {"@id": C.ID_MEIHODO}],
+        "mentions": [{"@id": C.ID_CAMPAIGN}, {"@id": C.ID_MEIHODO}],
+    }
+
+
 def node_faqpage(page, pairs) -> dict:
     return {
         "@type": "FAQPage",
@@ -565,7 +647,7 @@ def build_graph(page, src: str) -> list[dict]:
         description = C.FACILITY_DESCRIPTION[lang]
         image = C.DEFAULT_IMAGE
     else:
-        description = page_description(src)
+        description = page_description(src, page.path)
         image = page_image(src)
 
     graph = [node_website(lang), node_organization(lang), node_meihodo(lang, full=is_home)]
@@ -605,6 +687,15 @@ def build_graph(page, src: str) -> list[dict]:
     elif page.kind in ("restaurant-sub", "legacy"):
         extra.append(node_restaurant(lang, None, None, full=False))
         about_id = C.ID_RESTAURANT
+
+    elif page.kind == "campaign":
+        # The announcement, the promotion it announces, and the estate that
+        # takes part in it - three nodes cross-referenced by @id, so the fact
+        # "鳴鳳堂 is a 対象宿泊施設 of 阿蘇ふっこう割" is readable without parsing
+        # the Japanese prose.
+        extra.append(node_campaign(page))
+        extra.append(node_campaign_article(page, image))
+        main_id = f"{page.canonical}#article"
 
     elif page.kind == "faq":
         pairs = faq_pairs(src)

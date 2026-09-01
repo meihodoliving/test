@@ -8482,6 +8482,24 @@ footer a:hover,
     box-shadow: 0 12px 40px rgba(139, 115, 85, 0.06);
 }
 
+.campaign-page-kicker {
+    text-align: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.16em;
+    color: var(--primary-color, #8b7355);
+    margin-bottom: 0.9rem;
+}
+
+/* The brand half of the H1. Kept inside the heading so the facility name and
+   the campaign name sit in one sentence for a crawler, but set quieter than
+   the campaign name, which is what a visitor is actually scanning for. */
+.campaign-page-title__brand {
+    font-size: 0.72em;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    color: var(--text-secondary, #6b6257);
+}
+
 .campaign-page-title {
     font-family: 'Noto Serif JP', serif;
     font-size: clamp(1.7rem, 3.6vw, 2.4rem);
