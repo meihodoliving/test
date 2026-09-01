@@ -8389,3 +8389,358 @@ footer a:hover,
     }
 }
 
+
+/* ----------------------------------------------------------------
+   阿蘇ふっこう割（熊本応援キャンペーン）
+   - トップページのバナー（.campaign-banner-*）
+   - キャンペーン紹介ページ /ja/campaign/aso-fukkou/（.campaign-page-*）
+   既存のカード（.facility-block）・見出し（.about-page-title /
+   .about-section-heading）・ボタン（.btn / .btn-primary）と同じ
+   トーンに合わせ、新しいデザインシステムは足していない。
+   ---------------------------------------------------------------- */
+
+/* --- トップページ：ヒーロー直下のバナー --------------------------- */
+.campaign-banner-section {
+    /* .philosophy のグラデーション開始色に合わせ、ヒーローとの間に
+       段差が出ないようにしている。 */
+    background: #FEFEFE;
+    padding: 3.5rem 0 0.5rem;
+}
+
+.campaign-banner {
+    display: block;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(139, 115, 85, 0.12);
+    box-shadow: 0 12px 40px rgba(139, 115, 85, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.campaign-banner:hover,
+.campaign-banner:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 48px rgba(139, 115, 85, 0.16);
+}
+
+/* width/height 属性で縦横比を保ったまま、幅に追従して縮小する。 */
+.campaign-banner__image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .campaign-banner-section {
+        padding: 2.25rem 0 0.25rem;
+    }
+
+    .campaign-banner {
+        border-radius: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .campaign-banner {
+        transition: none;
+    }
+
+    .campaign-banner:hover,
+    .campaign-banner:focus-visible {
+        transform: none;
+    }
+}
+
+/* --- キャンペーン紹介ページ ------------------------------------- */
+.campaign-page-main {
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+    background: linear-gradient(180deg, var(--white) 0%, var(--light-color) 45%, var(--white) 100%);
+}
+
+.campaign-page-main .container--narrow {
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.campaign-hero-figure {
+    margin: 0 0 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.campaign-hero-image {
+    width: min(100%, 900px);
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    border: 1px solid rgba(139, 115, 85, 0.12);
+    box-shadow: 0 12px 40px rgba(139, 115, 85, 0.06);
+}
+
+.campaign-page-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+    color: var(--dark-color);
+    margin-bottom: 2.5rem;
+}
+
+.campaign-lead-block {
+    max-width: 720px;
+    margin: 0 auto 3.5rem;
+    text-align: left;
+    line-height: 1.9;
+    letter-spacing: 0.05em;
+}
+
+.campaign-lead-block p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+}
+
+.campaign-lead-block p:last-child {
+    margin-bottom: 0;
+}
+
+.campaign-block {
+    padding: 2.75rem 2.5rem;
+    margin-bottom: 2.5rem;
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid rgba(139, 115, 85, 0.12);
+    box-shadow: 0 12px 40px rgba(139, 115, 85, 0.06);
+}
+
+.campaign-block:last-child {
+    margin-bottom: 0;
+}
+
+.campaign-block__title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--dark-color);
+    margin-bottom: 1.75rem;
+    letter-spacing: 0.06em;
+    position: relative;
+    padding-bottom: 1.1rem;
+}
+
+.campaign-block__title::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 2px;
+    background: var(--accent-color);
+}
+
+.campaign-block__subtitle {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    letter-spacing: 0.04em;
+    margin: 2rem 0 0.75rem;
+}
+
+.campaign-block__subtitle:first-child {
+    margin-top: 0;
+}
+
+.campaign-block p {
+    font-size: 1.02rem;
+    line-height: 2;
+    color: var(--text-primary);
+    margin: 0 0 1.1rem;
+}
+
+.campaign-block p:last-child {
+    margin-bottom: 0;
+}
+
+/* 期間・割引額など「項目 → 値」で読ませる箇所。 */
+.campaign-facts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.campaign-facts > li {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.campaign-facts > li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.campaign-facts > li:first-child {
+    padding-top: 0;
+}
+
+.campaign-facts__label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--primary-color);
+    margin-bottom: 0.4rem;
+}
+
+.campaign-facts__value {
+    display: block;
+    font-size: 1.08rem;
+    line-height: 1.9;
+    color: var(--text-primary);
+}
+
+.campaign-amount {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+/* 注意書き。本文より一段落としたトーンで並べる。 */
+.campaign-notes {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
+}
+
+.campaign-notes li {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: 0.94rem;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.campaign-notes li:last-child {
+    margin-bottom: 0;
+}
+
+.campaign-notes li::before {
+    content: "※";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+/* 対象外条件など、注意書きより強く読ませたい箇条書き。 */
+.campaign-checklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.campaign-checklist li {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: 1rem;
+    line-height: 1.95;
+    color: var(--text-primary);
+    margin-bottom: 0.9rem;
+}
+
+.campaign-checklist li:last-child {
+    margin-bottom: 0;
+}
+
+.campaign-checklist li::before {
+    content: "";
+    position: absolute;
+    left: 0.15rem;
+    top: 0.8em;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.18);
+}
+
+.campaign-cta {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.campaign-cta .btn {
+    text-align: center;
+}
+
+/* The site-wide prose rule near the top of this file constrains every
+   `main .container p` to --prose-measure and left-aligns it. That is right for
+   body copy, but the CTA's supporting lines belong centred under the button,
+   so they are reset here - the same exemption the card/table paragraphs get. */
+main .container .campaign-cta p {
+    max-width: none;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.campaign-cta__note {
+    font-size: 0.92rem;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    margin: 1rem 0 0;
+}
+
+.campaign-cta__tel {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    margin: 0.75rem 0 0;
+}
+
+.campaign-cta__tel a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(47, 79, 79, 0.3);
+}
+
+@media (max-width: 768px) {
+    .campaign-page-main {
+        padding-top: 5.5rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .campaign-hero-figure {
+        margin-bottom: 2rem;
+    }
+
+    .campaign-hero-image {
+        border-radius: 12px;
+    }
+
+    .campaign-block {
+        padding: 2rem 1.4rem;
+        border-radius: 12px;
+    }
+
+    .campaign-block__title {
+        font-size: 1.28rem;
+    }
+
+    .campaign-cta .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 20px;
+        font-size: 1rem;
+    }
+}

@@ -231,6 +231,9 @@ CRUMB = {
     "location": {"ja": "撮影施設", "en": "Photography", "zh-cn": "拍摄场地", "zh-tw": "拍攝場地"},
     "faq": {"ja": "よくある質問", "en": "FAQ", "zh-cn": "常见问题", "zh-tw": "常見問題"},
     "restaurant": {"ja": "料亭 鳴鳳堂", "en": "Ryotei Meihodo", "zh-cn": "料亭 鸣凤堂", "zh-tw": "料亭 鳴鳳堂"},
+    # The 阿蘇ふっこう割 campaign is a domestic (Japanese) promotion and has no
+    # translated edition, so this label only ever needs "ja".
+    "campaign-aso-fukkou": {"ja": "阿蘇ふっこう割（熊本応援キャンペーン）"},
 }
 
 
@@ -349,6 +352,16 @@ def build_registry() -> list[Page]:
             _crumb(lang,
                    (CRUMB["accommodations"][lang], canonical_for(f"{lang}/accommodations/index.html")),
                    (BUILDING_NAMES["geihinkan"][lang], canonical_for(f"{lang}/geihinkan/index.html")))))
+
+    # Japanese-only campaign page. The 阿蘇ふっこう割 promotion is run by Aso
+    # City for the domestic market, so there is no /en, /zh-cn or /zh-tw
+    # sibling; alternates_for() skips the languages whose file does not exist,
+    # which leaves this page advertising ja alone - correct, not a gap.
+    campaign_path = "ja/campaign/aso-fukkou/index.html"
+    pages.append(Page(
+        campaign_path, "ja", "campaign", "aso-fukkou",
+        canonical_for(campaign_path), True,
+        _crumb("ja", (CRUMB["campaign-aso-fukkou"]["ja"], canonical_for(campaign_path)))))
 
     # Pre-migration Chinese stubs. lang-switcher.js normalises zh-hans -> zh-cn
     # and zh-hant -> zh-tw, and CLAUDE.md records these as legacy, so they
