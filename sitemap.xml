@@ -8,7 +8,7 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/"/>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-02</lastmod>
   </url>
   <url>
     <loc>https://www.meihodo.com/en</loc>
@@ -239,7 +239,7 @@
     <loc>https://www.meihodo.com/ja/information</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/information"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/information"/>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-02</lastmod>
   </url>
   <url>
     <loc>https://www.meihodo.com/ja/korokan</loc>
@@ -818,6 +818,7 @@
     <loc>https://www.meihodo.com/ja/information/aso-nakadake-alert-level-2</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/information/aso-nakadake-alert-level-2"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/information/aso-nakadake-alert-level-2"/>
+    <lastmod>2026-09-02</lastmod>
   </url>
   <url>
     <loc>https://www.meihodo.com/ja/location/terms</loc>
