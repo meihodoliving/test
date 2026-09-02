@@ -587,6 +587,57 @@ def node_campaign_article(page, image: str | None) -> dict:
     }
 
 
+def node_nakadake() -> dict:
+    """阿蘇山・中岳 as an entity, so the article has a subject to point at.
+
+    Name and alternate names only. The article states no coordinates, no
+    boundaries and no current activity status, so nothing more is claimed here
+    - 鳴鳳堂 is not the authority on the volcano, the 気象台 is.
+    """
+    return {
+        "@type": "Mountain",
+        "@id": C.ID_NAKADAKE,
+        "name": "阿蘇山 中岳",
+        "alternateName": ["中岳", "阿蘇中岳", "阿蘇山", "Mount Aso Nakadake"],
+    }
+
+
+def node_news_article(page, image: str | None) -> dict:
+    """A dated 鳴鳳堂 announcement under /ja/information/.
+
+    Same reasoning as node_campaign_article: an announcement with a
+    publication date and a subject is an Article, not a bare WebPage. The
+    subject is the volcano and the estate, which is what lets an answer engine
+    connect "阿蘇山の噴火警戒レベルは今どうなっているか" to a page that says so
+    without having to parse the prose.
+    """
+    a = C.NEWS_ALERT_ARTICLE
+    return {
+        "@type": "NewsArticle",
+        "@id": f"{page.canonical}#article",
+        "headline": a["headline"],
+        "alternativeHeadline": a["alternativeHeadline"],
+        "description": C.PAGE_DESCRIPTIONS[page.path],
+        "datePublished": a["datePublished"],
+        "dateModified": a["dateModified"],
+        "inLanguage": C.LANG_TAG[page.lang],
+        "url": page.canonical,
+        "mainEntityOfPage": {"@id": f"{page.canonical}#webpage"},
+        "isPartOf": {"@id": f"{page.canonical}#webpage"},
+        # 鳴鳳堂 publishes the announcement; the alert level itself was issued
+        # by 福岡管区気象台, which the article names in its own prose. That
+        # body is not given an entity node here because the site publishes
+        # nothing else about it.
+        "author": {"@id": C.ID_ORG},
+        "publisher": {"@id": C.ID_ORG},
+        "keywords": a["keywords"],
+        "articleSection": a["section"],
+        "about": [{"@id": C.ID_NAKADAKE}, {"@id": C.ID_MEIHODO}],
+        "mentions": [{"@id": C.ID_NAKADAKE}, {"@id": C.ID_MEIHODO}],
+        **({"image": [image]} if image else {}),
+    }
+
+
 def node_faqpage(page, pairs) -> dict:
     return {
         "@type": "FAQPage",
@@ -695,6 +746,13 @@ def build_graph(page, src: str) -> list[dict]:
         # the Japanese prose.
         extra.append(node_campaign(page))
         extra.append(node_campaign_article(page, image))
+        main_id = f"{page.canonical}#article"
+
+    elif page.kind == "news":
+        # The announcement plus the volcano it is about, cross-referenced by
+        # @id - the same two-node shape the campaign page uses.
+        extra.append(node_nakadake())
+        extra.append(node_news_article(page, image))
         main_id = f"{page.canonical}#article"
 
     elif page.kind == "faq":

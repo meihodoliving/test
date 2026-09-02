@@ -236,6 +236,10 @@ CRUMB = {
     "campaign-aso-fukkou": {"ja": "阿蘇ふっこう割（熊本応援キャンペーン）"},
     # The news index exists only in Japanese for now, so "ja" alone is enough.
     "information": {"ja": "お知らせ"},
+    # Breadcrumb leaf for the 阿蘇山・中岳 alert-level article. Shortened from
+    # the headline so the trail stays readable; the full headline is the
+    # article's own <h1>.
+    "news-aso-nakadake-alert-level-2": {"ja": "阿蘇山・中岳の噴火警戒レベル引き下げについて"},
 }
 
 
@@ -285,6 +289,49 @@ ID_CAMPAIGN = f"{BASE}/#aso-fukkou-campaign"
 
 
 # ---------------------------------------------------------------------------
+# The 阿蘇山・中岳 噴火警戒レベル引き下げ announcement.
+#
+# Same shape as the campaign entry above: a dated announcement gets an Article
+# node on top of the usual WebPage. Every literal is readable on
+# https://www.meihodo.com/ja/information/aso-nakadake-alert-level-2 itself -
+# the announcing body, the date and time, the two alert levels and the road
+# reopening are the facts that page states, and nothing here goes further than
+# the page does. In particular nothing asserts that the volcano is safe or
+# that activity has ended: 鳴鳳堂 is not the authority on that, and the page
+# points at 阿蘇市公式ホームページ for the current situation.
+#
+# datePublished / dateModified are kept by hand, not stamped from the clock.
+# ---------------------------------------------------------------------------
+NEWS_ALERT_PATH = "ja/information/aso-nakadake-alert-level-2/index.html"
+NEWS_ALERT_ARTICLE = {
+    "headline": "阿蘇山・中岳の噴火警戒レベルが「3」から「2」へ引き下げられました｜鳴鳳堂",
+    "alternativeHeadline": "福岡管区気象台が阿蘇山・中岳の噴火警戒レベルを2へ引き下げ、阿蘇山上広場までの通行が再開",
+    "datePublished": "2026-09-01",
+    "dateModified": "2026-09-01",
+    "keywords": [
+        "阿蘇山",
+        "中岳",
+        "噴火警戒レベル",
+        "噴火警戒レベル2",
+        "噴火警戒レベル引き下げ",
+        "火口周辺規制",
+        "阿蘇山上広場",
+        "阿蘇観光",
+        "阿蘇市",
+        "鳴鳳堂",
+    ],
+    # Category shown on the card in /ja/information/ - kept here so the JSON-LD
+    # articleSection and the visible label cannot drift apart.
+    "section": "その他",
+}
+
+# The volcano the article is about, as an entity of its own. Name and
+# alternate names only: the article states no coordinates or boundaries, and a
+# guessed geo box would be a fact the site does not publish.
+ID_NAKADAKE = f"{BASE}/#aso-nakadake"
+
+
+# ---------------------------------------------------------------------------
 # Meta-description overrides.
 #
 # build_head_meta.py normally reads a page's own first substantial paragraph.
@@ -299,6 +346,13 @@ PAGE_DESCRIPTIONS = {
         "対象宿泊施設です。2026年9月7日～9月30日の対象宿泊について、"
         "1名1泊あたり最大5,000円の宿泊割引と2,000円分の地域クーポンを"
         "ご利用いただけます。ご予約はメールまたはお電話での直接予約のみの受付です。"
+    ),
+    NEWS_ALERT_PATH: (
+        "2026年9月1日16時00分、福岡管区気象台は阿蘇山・中岳の噴火警戒レベルを"
+        "「3（入山規制）」から「2（火口周辺規制）」へ引き下げました。"
+        "9月2日午前9時より阿蘇山上広場までの通行が再開されています。"
+        "火口周辺では引き続き規制がありますので、阿蘇観光の際は最新の火山情報・"
+        "交通情報をご確認ください。熊本県阿蘇市の鳴鳳堂からのお知らせです。"
     ),
 }
 
@@ -427,6 +481,16 @@ def build_registry() -> list[Page]:
         info_path, "ja", "information", "information",
         canonical_for(info_path), True,
         _crumb("ja", (CRUMB["information"]["ja"], canonical_for(info_path)))))
+
+    # The news articles themselves live under the index, one directory each,
+    # and are Japanese-only for the same reason the index is.
+    news_path = NEWS_ALERT_PATH
+    pages.append(Page(
+        news_path, "ja", "news", "aso-nakadake-alert-level-2",
+        canonical_for(news_path), True,
+        _crumb("ja",
+               (CRUMB["information"]["ja"], canonical_for(info_path)),
+               (CRUMB["news-aso-nakadake-alert-level-2"]["ja"], canonical_for(news_path)))))
 
     # Japanese-only campaign page. The 阿蘇ふっこう割 promotion is run by Aso
     # City for the domestic market, so there is no /en, /zh-cn or /zh-tw
