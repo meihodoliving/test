@@ -272,7 +272,7 @@ text = text.replace(
             <button class="lang-btn" data-lang="simplified">簡</button>
         </div>""",
     """        <div class="language-buttons">
-            <a href="/ja/index.html" class="lang-btn" data-lang="jp">JP</a>
+            <a href="/" class="lang-btn" data-lang="jp">JP</a>
             <a href="/en/index.html" class="lang-btn" data-lang="en">EN</a>
             <a href="/zh-tw/index.html" class="lang-btn" data-lang="zh-tw">繁</a>
             <a href="/zh-cn/index.html" class="lang-btn" data-lang="zh-cn">簡</a>

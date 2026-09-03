@@ -5,13 +5,13 @@ WHY THIS EXISTS
 ---------------
 The live site is plain static HTML with no build step, so the footer is
 physically duplicated in every page. Editing the footer by hand on one page
-(e.g. /ja/index.html) silently drifts from the rest. This script makes one
+(e.g. the root /index.html) silently drifts from the rest. This script makes one
 page per language the single source of truth and copies its footer to the
 other pages that use the same footer.
 
 CANONICAL SOURCE (per language)
 -------------------------------
-    ja     -> ja/index.html
+    ja     -> index.html  (the repo root IS the Japanese top page)
     en     -> en/index.html
     zh-tw  -> zh-tw/index.html
     zh-cn  -> zh-cn/index.html
@@ -80,7 +80,8 @@ def main() -> None:
     total_changed = 0
     total_skipped = 0
     for lang in LANGS:
-        src = ROOT / lang / "index.html"
+        # ja lives at the repo root: "/" is the only Japanese top page.
+        src = ROOT / "index.html" if lang == "ja" else ROOT / lang / "index.html"
         if not src.exists():
             print(f"!! {lang}: missing source {src}", file=sys.stderr)
             continue

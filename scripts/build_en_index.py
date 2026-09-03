@@ -345,7 +345,7 @@ text = text.replace('<span class="btn-text">体験予約</span>', '<span class="
 # Language switcher — JP links to Japanese top
 text = text.replace(
     '<button class="lang-btn" data-lang="jp">JP</button>',
-    '<a href="/ja/index.html" class="lang-btn" data-lang="jp">JP</a>',
+    '<a href="/" class="lang-btn" data-lang="jp">JP</a>',
     1,
 )
 text = text.replace(

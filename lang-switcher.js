@@ -38,11 +38,22 @@
 
       var targetPath;
       if (match) {
-        // Swap the language segment inside the base-relative path, then put
-        // the base back. BASE ends in "/" and rel starts with one.
-        targetPath = BASE.slice(0, -1) + rel.replace('/' + match[1], '/' + lang.code);
+        // Everything after the language segment: '' , '/', '/index.html' for a
+        // language top page, '/campaign/aso-fukkou' for a sub page.
+        var rest = rel.slice(match[1].length + 1);
+        var isTop = rest === '' || rest === '/' || rest === '/index.html';
+        if (lang.code === 'ja' && isTop) {
+          // The Japanese top page is the site root. /ja/ no longer exists
+          // (vercel.json 301s it to "/"), so link straight at the root.
+          targetPath = BASE;
+        } else {
+          // Swap the language segment inside the base-relative path, then put
+          // the base back. BASE ends in "/" and rel starts with one. Japanese
+          // *sub* pages keep their /ja/... URLs.
+          targetPath = BASE.slice(0, -1) + '/' + lang.code + rest;
+        }
       } else {
-        // Root index.html is treated as ja
+        // No language segment: we are on the root, which is the Japanese top.
         targetPath = BASE + lang.code + '/';
       }
 

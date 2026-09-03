@@ -562,18 +562,15 @@ def _crumb(lang, *steps):
 def build_registry() -> list[Page]:
     pages: list[Page] = []
 
-    # The Japanese document is published at both "/" and "/ja". They are the
-    # same page, so both carry the root canonical and only "/" enters the
-    # sitemap.
+    # The Japanese top page lives at the repo root and is published at "/"
+    # only. The old /ja/ duplicate was removed; vercel.json 301s /ja and /ja/
+    # to "/". Japanese *sub* pages stay under /ja/... unchanged.
     pages.append(Page("index.html", "ja", "home", "home", f"{BASE}/", True, _crumb("ja")))
 
     for lang in LANGS:
         home = f"{BASE}/" if lang == "ja" else f"{BASE}/{lang}"
         if lang != "ja":
             pages.append(Page(f"{lang}/index.html", lang, "home", "home", home, True, _crumb(lang)))
-        else:
-            # /ja duplicates "/" - consolidate, and keep it out of the sitemap.
-            pages.append(Page("ja/index.html", "ja", "home", "home", f"{BASE}/", False, _crumb("ja")))
 
         for sec in SECTION_PAGES:
             path = f"{lang}/{sec}/index.html"

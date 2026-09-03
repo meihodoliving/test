@@ -6,6 +6,10 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    { "source": "/ja", "destination": "/", "statusCode": 301 },
+    { "source": "/ja/", "destination": "/", "statusCode": 301 },
+    { "source": "/ja/index.html", "destination": "/", "statusCode": 301 },
+
     { "source": "/ja/seiseikan", "destination": "/ja/seiseisya", "statusCode": 301 },
     { "source": "/ja/seiseikan/", "destination": "/ja/seiseisya", "statusCode": 301 },
     { "source": "/ja/seiseikan/index.html", "destination": "/ja/seiseisya", "statusCode": 301 },

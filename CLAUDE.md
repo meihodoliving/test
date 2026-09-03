@@ -76,9 +76,16 @@ There are no tests in this repo.
 The site is published at four language roots that share an identical directory tree:
 
 ```
-/index.html        ← Japanese root (also reachable as /ja/index.html)
+/index.html        ← the Japanese TOP page. Its only canonical URL is "/".
 /ja/  /en/  /zh-cn/  /zh-tw/
 ```
+
+**There is no `/ja/index.html`.** The Japanese top page lives at the repo root and is
+published at `/` only; `vercel.json` 301s the exact paths `/ja`, `/ja/` and
+`/ja/index.html` to `/`. Do not recreate `ja/index.html` — it would resurrect the
+duplicate the redirect exists to kill. Japanese **sub** pages keep their `/ja/...`
+URLs (`/ja/information/`, `/ja/campaign/aso-fukkou/`, `/ja/experiences/...`), and the
+language switcher only sends Japanese *top-page* switches to `/`.
 
 **`/ja/` is the source of truth.** `/en/`, `/zh-cn/`, `/zh-tw/` are structural mirrors of `/ja/` — same file paths, same HTML structure, only text/links translated. When adding a page, add it under `/ja/` first and propagate.
 
