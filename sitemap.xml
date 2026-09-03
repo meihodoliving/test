@@ -155,6 +155,14 @@
     <lastmod>2026-09-01</lastmod>
   </url>
   <url>
+    <loc>https://www.meihodo.com/en/things-to-do</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/things-to-do"/>
+  </url>
+  <url>
     <loc>https://www.meihodo.com/ja/about</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/about"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/about"/>
@@ -278,6 +286,14 @@
     <lastmod>2026-09-01</lastmod>
   </url>
   <url>
+    <loc>https://www.meihodo.com/ja/things-to-do</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/things-to-do"/>
+  </url>
+  <url>
     <loc>https://www.meihodo.com/zh-cn/about</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/about"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/about"/>
@@ -395,6 +411,14 @@
     <lastmod>2026-09-01</lastmod>
   </url>
   <url>
+    <loc>https://www.meihodo.com/zh-cn/things-to-do</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/things-to-do"/>
+  </url>
+  <url>
     <loc>https://www.meihodo.com/zh-tw/about</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/about"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/about"/>
@@ -510,6 +534,14 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/seiseisya"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/seiseisya"/>
     <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://www.meihodo.com/zh-tw/things-to-do</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/things-to-do"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/things-to-do"/>
   </url>
   <url>
     <loc>https://www.meihodo.com/en/experiences/bonseki</loc>

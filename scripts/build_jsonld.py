@@ -54,6 +54,7 @@ FAQ_RE = re.compile(
 )
 DURATION_RE = re.compile(r"所要時間[：:]\s*(?:<[^>]+>\s*)*([0-9.]+)\s*(時間|分)")
 OCCUPANCY_RE = re.compile(r"最大[^0-9]{0,12}([0-9]{1,2})\s*名様")
+EXPERIENCE_LINK_RE = re.compile(r'href="/[a-z-]+/experiences/([a-z]+)/"')
 DEEP_LINK_RE = re.compile(
     r"https://www\.hpdsp\.net/[^\"']*hww3201init\.do\?[^\"']*roomTypeCd=[0-9]+[^\"']*"
 )
@@ -775,6 +776,29 @@ def build_graph(page, src: str) -> list[dict]:
             })
         extra.append(node_itemlist(page, ids, C.CRUMB["experiences"][lang]))
         main_id = f"{page.canonical}#list"
+
+    elif page.kind == "things-to-do":
+        # The stay-and-experience guide. It describes no new real-world thing -
+        # it is a route into the experiences that already have their own nodes -
+        # so it contributes an ItemList over them and nothing else. Which
+        # experiences it covers is read off the page's own links rather than
+        # hardcoded, so the markup and the graph cannot drift apart.
+        slugs = [s for s in dict.fromkeys(EXPERIENCE_LINK_RE.findall(src))
+                 if s in C.EXPERIENCES]
+        for slug in slugs:
+            extra.append({
+                "@type": "Service",
+                "@id": C.entity_id(slug),
+                "name": experience_name(lang, slug),
+                "alternateName": C.EXPERIENCE_ALT[slug],
+                "category": C.EXPERIENCE_CATEGORY[slug],
+                "provider": {"@id": C.ID_MEIHODO},
+                "url": C.canonical_for(f"{lang}/experiences/{slug}/index.html"),
+            })
+        if slugs:
+            extra.append(node_itemlist(page, [C.entity_id(s) for s in slugs],
+                                       C.CRUMB["things-to-do"][lang]))
+            main_id = f"{page.canonical}#list"
 
     elif page.kind == "accommodations":
         ids = [C.entity_id(b) for b in C.BUILDINGS]

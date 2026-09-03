@@ -230,6 +230,10 @@ CRUMB = {
     "experiences": {"ja": "体験プログラム", "en": "Experiences", "zh-cn": "体验项目", "zh-tw": "體驗項目"},
     "location": {"ja": "撮影施設", "en": "Photography", "zh-cn": "拍摄场地", "zh-tw": "拍攝場地"},
     "faq": {"ja": "よくある質問", "en": "FAQ", "zh-cn": "常见问题", "zh-tw": "常見問題"},
+    "things-to-do": {
+        "ja": "鳴鳳堂での過ごし方", "en": "Things to Do",
+        "zh-cn": "鸣凤堂的度过方式", "zh-tw": "鳴鳳堂的度過方式",
+    },
     "restaurant": {"ja": "料亭 鳴鳳堂", "en": "Ryotei Meihodo", "zh-cn": "料亭 鸣凤堂", "zh-tw": "料亭 鳴鳳堂"},
     # The 阿蘇ふっこう割 campaign is a domestic (Japanese) promotion and has no
     # translated edition, so this label only ever needs "ja".
@@ -340,6 +344,32 @@ ID_NAKADAKE = f"{BASE}/#aso-nakadake"
 # instead of having to be re-typed into the generated block every run.
 # ---------------------------------------------------------------------------
 PAGE_DESCRIPTIONS = {
+    "ja/things-to-do/index.html": (
+        "熊本県阿蘇市の鳴鳳堂は、泊まりながら弓道・剣道・空手・試し切り・茶道・盆石・"
+        "和太鼓などの日本文化体験を楽しめる文化リゾートです。茶道・盆石・剣道・空手は"
+        "茶室や大講堂、武道場など屋内で行うため、雨の日の阿蘇観光でも旅の予定を"
+        "組み立てやすいのが特徴です。宿泊・食事・文化体験が敷地内で完結する"
+        "1日の過ごし方をご紹介します。"
+    ),
+    "en/things-to-do/index.html": (
+        "Meihodo in Aso, Kumamoto is a cultural resort where you stay and take part: "
+        "kyudo, kendo, karate, tameshigiri, tea ceremony, bonseki and taiko. Tea "
+        "ceremony, bonseki, kendo and karate are held indoors, in the tea house, the "
+        "great hall and the martial arts hall, so a rainy day in Aso stays easy to plan "
+        "around. Lodging, dining and Japanese culture on one estate."
+    ),
+    "zh-cn/things-to-do/index.html": (
+        "位于熊本县阿苏市的鸣凤堂，是可以一边住宿一边体验弓道、剑道、空手道、试斩、"
+        "茶道、盆石、和太鼓等日本文化的文化度假设施。其中茶道、盆石、剑道、空手道在茶室、"
+        "大讲堂、武道场等室内举行，即使阿苏遇上雨天也便于安排行程。"
+        "住宿、餐饮与文化体验都在同一片园区内完成。"
+    ),
+    "zh-tw/things-to-do/index.html": (
+        "位於熊本縣阿蘇市的鳴鳳堂，是可以一邊住宿一邊體驗弓道、劍道、空手道、試斬、"
+        "茶道、盆石、和太鼓等日本文化的文化度假設施。其中茶道、盆石、劍道、空手道於茶室、"
+        "大講堂、武道場等室內舉行，即使阿蘇遇上雨天也便於安排行程。"
+        "住宿、餐飲與文化體驗都在同一片園區內完成。"
+    ),
     CAMPAIGN_PATH: (
         "熊本県阿蘇市の文化リゾート鳴鳳堂は、阿蘇市が実施する"
         "「阿蘇に泊まって支える！熊本応援キャンペーン（阿蘇ふっこう割）」の"
@@ -368,6 +398,9 @@ PAGE_DESCRIPTIONS = {
 # ---------------------------------------------------------------------------
 SECTION_PAGES = (
     "about", "access", "accommodations", "experiences", "location", "faq", "restaurant",
+    # 「鳴鳳堂での過ごし方」 - the stay-and-experience guide. A section page like
+    # the rest: one directory per language, one canonical each, in the sitemap.
+    "things-to-do",
 )
 
 
