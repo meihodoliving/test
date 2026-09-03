@@ -13,6 +13,9 @@
     <meta name="description" content="熊本県阿蘇市の文化リゾート鳴鳳堂は、阿蘇市が実施する「阿蘇に泊まって支える！熊本応援キャンペーン（阿蘇ふっこう割）」の対象宿泊施設です。2026年9月7日～9月30日の対象宿泊について、1名1泊あたり最大5,000円の宿泊割引と2,000円分の地域クーポンをご利用いただけます。ご予約はメールまたはお電話での直接予約のみの受付です。">
     <link rel="canonical" href="https://www.meihodo.com/ja/campaign/aso-fukkou">
     <link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/campaign/aso-fukkou">
+    <link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/campaign/aso-fukkou">
+    <link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/campaign/aso-fukkou">
+    <link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/campaign/aso-fukkou">
     <link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/campaign/aso-fukkou">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="鳴鳳堂">
@@ -527,9 +530,9 @@
         </div>
         <div class="language-buttons">
             <a href="/ja/campaign/aso-fukkou/" class="lang-btn" data-lang="jp">JP</a>
-            <a href="/en/" class="lang-btn" data-lang="en">EN</a>
-            <a href="/zh-tw/" class="lang-btn" data-lang="zh-tw">繁</a>
-            <a href="/zh-cn/" class="lang-btn" data-lang="zh-cn">簡</a>
+            <a href="/en/campaign/aso-fukkou/" class="lang-btn" data-lang="en">EN</a>
+            <a href="/zh-tw/campaign/aso-fukkou/" class="lang-btn" data-lang="zh-tw">繁</a>
+            <a href="/zh-cn/campaign/aso-fukkou/" class="lang-btn" data-lang="zh-cn">簡</a>
         </div>
     </div>
 
@@ -547,21 +550,6 @@
         });
     </script>
     <script src="/lang-switcher.js" defer></script>
-    <script>
-        // This campaign runs for the domestic market, so it exists only in
-        // Japanese. lang-switcher.js swaps the language segment in place, which
-        // would send visitors to /en/campaign/aso-fukkou/ and friends - pages
-        // that do not exist. Point the switcher at each language's home page
-        // instead. Deferred scripts run before DOMContentLoaded, so the
-        // dropdown lang-switcher.js builds is already in the DOM here.
-        document.addEventListener('DOMContentLoaded', function () {
-            var base = ('/' + (window.__BASE_PATH__ || '/').replace(/^\/+|\/+$/g, '') + '/').replace('//', '/');
-            document.querySelectorAll('#lang-dropdown a.lang-option').forEach(function (a) {
-                var code = a.getAttribute('href').replace(base, '').split('/')[0];
-                a.href = base + code + '/';
-            });
-        });
-    </script>
     <script src="https://bot.talkappi.com/assets/talkappi/talkappi.js?fid=meihodo-hp" defer="defer"></script>
 </body>
 </html>

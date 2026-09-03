@@ -533,9 +533,9 @@ def node_campaign(page) -> dict:
     return {
         "@type": "SaleEvent",
         "@id": C.ID_CAMPAIGN,
-        "name": a["campaign_name"],
-        "alternateName": a["campaign_alt"],
-        "description": C.PAGE_DESCRIPTIONS[C.CAMPAIGN_PATH],
+        "name": a["campaign_name"][page.lang],
+        "alternateName": a["campaign_alt"][page.lang],
+        "description": C.PAGE_DESCRIPTIONS[page.path],
         "url": page.canonical,
         "startDate": a["campaign_start"],
         "endDate": a["campaign_end"],
@@ -543,7 +543,7 @@ def node_campaign(page) -> dict:
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "organizer": {
             "@type": "GovernmentOrganization",
-            "name": a["organizer"],
+            "name": a["organizer"][page.lang],
         },
         # 鳴鳳堂 is a 対象宿泊施設 of the campaign: the qualifying stay happens
         # here, and the campaign is about this estate. Those two properties are
@@ -567,9 +567,9 @@ def node_campaign_article(page, image: str | None) -> dict:
     return {
         "@type": "NewsArticle",
         "@id": f"{page.canonical}#article",
-        "headline": a["headline"],
-        "alternativeHeadline": a["alternativeHeadline"],
-        "description": C.PAGE_DESCRIPTIONS[C.CAMPAIGN_PATH],
+        "headline": a["headline"][page.lang],
+        "alternativeHeadline": a["alternativeHeadline"][page.lang],
+        "description": C.PAGE_DESCRIPTIONS[page.path],
         "datePublished": a["datePublished"],
         "dateModified": a["dateModified"],
         "inLanguage": C.LANG_TAG[page.lang],
@@ -581,8 +581,8 @@ def node_campaign_article(page, image: str | None) -> dict:
         "author": {"@id": C.ID_ORG},
         "publisher": {"@id": C.ID_ORG},
         "image": [image or a["image"]],
-        "keywords": a["keywords"],
-        "articleSection": C.CRUMB["information"]["ja"],
+        "keywords": a["keywords"][page.lang],
+        "articleSection": C.CRUMB["information"][page.lang],
         "about": [{"@id": C.ID_CAMPAIGN}, {"@id": C.ID_MEIHODO}],
         "mentions": [{"@id": C.ID_CAMPAIGN}, {"@id": C.ID_MEIHODO}],
     }
@@ -616,8 +616,8 @@ def node_news_article(page, image: str | None) -> dict:
     return {
         "@type": "NewsArticle",
         "@id": f"{page.canonical}#article",
-        "headline": a["headline"],
-        "alternativeHeadline": a["alternativeHeadline"],
+        "headline": a["headline"][page.lang],
+        "alternativeHeadline": a["alternativeHeadline"][page.lang],
         "description": C.PAGE_DESCRIPTIONS[page.path],
         "datePublished": a["datePublished"],
         "dateModified": a["dateModified"],
@@ -631,8 +631,8 @@ def node_news_article(page, image: str | None) -> dict:
         # nothing else about it.
         "author": {"@id": C.ID_ORG},
         "publisher": {"@id": C.ID_ORG},
-        "keywords": a["keywords"],
-        "articleSection": a["section"],
+        "keywords": a["keywords"][page.lang],
+        "articleSection": a["section"][page.lang],
         "about": [{"@id": C.ID_NAKADAKE}, {"@id": C.ID_MEIHODO}],
         "mentions": [{"@id": C.ID_NAKADAKE}, {"@id": C.ID_MEIHODO}],
         **({"image": [image]} if image else {}),

@@ -235,15 +235,27 @@ CRUMB = {
         "zh-cn": "鸣凤堂的度过方式", "zh-tw": "鳴鳳堂的度過方式",
     },
     "restaurant": {"ja": "料亭 鳴鳳堂", "en": "Ryotei Meihodo", "zh-cn": "料亭 鸣凤堂", "zh-tw": "料亭 鳴鳳堂"},
-    # The 阿蘇ふっこう割 campaign is a domestic (Japanese) promotion and has no
-    # translated edition, so this label only ever needs "ja".
-    "campaign-aso-fukkou": {"ja": "阿蘇ふっこう割（熊本応援キャンペーン）"},
-    # The news index exists only in Japanese for now, so "ja" alone is enough.
-    "information": {"ja": "お知らせ"},
+    # The 阿蘇ふっこう割 campaign page now has a translated edition in every
+    # language tree, so the label is carried in all four. The promotion is run
+    # by 阿蘇市 and its own page states no residency condition - the campaign
+    # name is transliterated rather than replaced so a guest can quote it.
+    "campaign-aso-fukkou": {
+        "ja": "阿蘇ふっこう割（熊本応援キャンペーン）",
+        "en": "Aso Fukko-wari (Support Kumamoto Campaign)",
+        "zh-cn": "阿苏复兴折扣（熊本应援活动）",
+        "zh-tw": "阿蘇復興折扣（熊本應援活動）",
+    },
+    "information": {"ja": "お知らせ", "en": "News", "zh-cn": "最新消息", "zh-tw": "最新消息"},
     # Breadcrumb leaf for the 阿蘇山・中岳 alert-level article. Shortened from
     # the headline so the trail stays readable; the full headline is the
-    # article's own <h1>.
-    "news-aso-nakadake-alert-level-2": {"ja": "阿蘇山・中岳の噴火警戒レベル引き下げについて"},
+    # article's own <h1>. Each string is the one its page actually renders in
+    # .breadcrumb-current, so the visible trail and the BreadcrumbList agree.
+    "news-aso-nakadake-alert-level-2": {
+        "ja": "阿蘇山・中岳の噴火警戒レベル引き下げについて",
+        "en": "About the Nakadake eruption alert level being lowered",
+        "zh-cn": "关于阿苏山中岳喷发警戒等级下调",
+        "zh-tw": "關於阿蘇山中岳噴發警戒等級下調",
+    },
 }
 
 
@@ -262,31 +274,62 @@ CRUMB = {
 # regenerate does not silently claim the article is fresher than it is.
 # ---------------------------------------------------------------------------
 CAMPAIGN_PATH = "ja/campaign/aso-fukkou/index.html"
+# The page now exists in four languages. Fields a reader sees - the headline,
+# the campaign's name, the organiser - are keyed by language so each edition
+# describes itself in its own words; the dates and the image are facts and stay
+# shared. The campaign's @id does NOT vary: it is one real-world promotion.
 CAMPAIGN_ARTICLE = {
-    "headline": "【阿蘇ふっこう割】阿蘇に泊まって支える！熊本応援キャンペーン｜鳴鳳堂",
-    "alternativeHeadline": "鳴鳳堂は阿蘇ふっこう割（熊本応援キャンペーン）の対象宿泊施設です",
+    "headline": {
+        "ja": "【阿蘇ふっこう割】阿蘇に泊まって支える！熊本応援キャンペーン｜鳴鳳堂",
+        "en": "[Aso Fukko-wari] Stay in Aso and support Kumamoto | Meihodo",
+        "zh-cn": "【阿苏复兴折扣】住在阿苏，支援熊本！熊本应援活动｜鸣凤堂",
+        "zh-tw": "【阿蘇復興折扣】住在阿蘇，支援熊本！熊本應援活動｜鳴鳳堂",
+    },
+    "alternativeHeadline": {
+        "ja": "鳴鳳堂は阿蘇ふっこう割（熊本応援キャンペーン）の対象宿泊施設です",
+        "en": "Meihodo is a participating property in the Aso Fukko-wari (Support Kumamoto Campaign)",
+        "zh-cn": "鸣凤堂是阿苏复兴折扣（熊本应援活动）的指定住宿设施",
+        "zh-tw": "鳴鳳堂是阿蘇復興折扣（熊本應援活動）的指定住宿設施",
+    },
     "datePublished": "2026-09-01",
     "dateModified": "2026-09-01",
     "image": f"{BASE}/images/top/web_banner.png",
-    "keywords": [
-        "阿蘇ふっこう割",
-        "熊本応援キャンペーン",
-        "阿蘇に泊まって支える",
-        "阿蘇市",
-        "鳴鳳堂",
-        "Meihodo",
-        "対象宿泊施設",
-        "宿泊割引",
-        "地域クーポン",
-        "熊本県阿蘇市",
-    ],
+    "keywords": {
+        "ja": [
+            "阿蘇ふっこう割", "熊本応援キャンペーン", "阿蘇に泊まって支える", "阿蘇市",
+            "鳴鳳堂", "Meihodo", "対象宿泊施設", "宿泊割引", "地域クーポン", "熊本県阿蘇市",
+        ],
+        "en": [
+            "Aso Fukko-wari", "Support Kumamoto Campaign", "Stay in Aso and support Kumamoto",
+            "Aso City", "Meihodo", "participating property", "accommodation discount",
+            "local coupons", "Aso Kumamoto",
+        ],
+        "zh-cn": [
+            "阿苏复兴折扣", "熊本应援活动", "住在阿苏支援熊本", "阿苏市", "鸣凤堂", "Meihodo",
+            "指定住宿设施", "住宿折扣", "地区优惠券", "熊本县阿苏市",
+        ],
+        "zh-tw": [
+            "阿蘇復興折扣", "熊本應援活動", "住在阿蘇支援熊本", "阿蘇市", "鳴鳳堂", "Meihodo",
+            "指定住宿設施", "住宿折扣", "地區優惠券", "熊本縣阿蘇市",
+        ],
+    },
     # The campaign itself, as an entity the article is about. Its @id is
     # language-neutral like the other real-world entities in the graph.
-    "campaign_name": "阿蘇に泊まって支える！熊本応援キャンペーン（阿蘇ふっこう割）",
-    "campaign_alt": ["阿蘇ふっこう割", "熊本応援キャンペーン"],
+    "campaign_name": {
+        "ja": "阿蘇に泊まって支える！熊本応援キャンペーン（阿蘇ふっこう割）",
+        "en": "Stay in Aso and support Kumamoto (Aso Fukko-wari)",
+        "zh-cn": "住在阿苏，支援熊本！熊本应援活动（阿苏复兴折扣）",
+        "zh-tw": "住在阿蘇，支援熊本！熊本應援活動（阿蘇復興折扣）",
+    },
+    "campaign_alt": {
+        "ja": ["阿蘇ふっこう割", "熊本応援キャンペーン"],
+        "en": ["Aso Fukko-wari", "Support Kumamoto Campaign"],
+        "zh-cn": ["阿苏复兴折扣", "熊本应援活动"],
+        "zh-tw": ["阿蘇復興折扣", "熊本應援活動"],
+    },
     "campaign_start": "2026-09-07",
     "campaign_end": "2026-09-30",
-    "organizer": "阿蘇市",
+    "organizer": {"ja": "阿蘇市", "en": "Aso City", "zh-cn": "阿苏市", "zh-tw": "阿蘇市"},
 }
 
 ID_CAMPAIGN = f"{BASE}/#aso-fukkou-campaign"
@@ -308,25 +351,43 @@ ID_CAMPAIGN = f"{BASE}/#aso-fukkou-campaign"
 # ---------------------------------------------------------------------------
 NEWS_ALERT_PATH = "ja/information/aso-nakadake-alert-level-2/index.html"
 NEWS_ALERT_ARTICLE = {
-    "headline": "阿蘇山・中岳の噴火警戒レベルが「3」から「2」へ引き下げられました｜鳴鳳堂",
-    "alternativeHeadline": "福岡管区気象台が阿蘇山・中岳の噴火警戒レベルを2へ引き下げ、阿蘇山上広場までの通行が再開",
+    "headline": {
+        "ja": "阿蘇山・中岳の噴火警戒レベルが「3」から「2」へ引き下げられました｜鳴鳳堂",
+        "en": "Mount Aso Nakadake eruption alert level lowered from 3 to 2 | Meihodo",
+        "zh-cn": "阿苏山中岳的喷发警戒等级由「3」下调至「2」｜鸣凤堂",
+        "zh-tw": "阿蘇山中岳的噴發警戒等級由「3」下調至「2」｜鳴鳳堂",
+    },
+    "alternativeHeadline": {
+        "ja": "福岡管区気象台が阿蘇山・中岳の噴火警戒レベルを2へ引き下げ、阿蘇山上広場までの通行が再開",
+        "en": ("The Fukuoka Regional Headquarters lowered the Nakadake eruption alert level to 2, "
+               "and access as far as Aso Sanjo Plaza has reopened"),
+        "zh-cn": "福冈管区气象台将阿苏山中岳的喷发警戒等级下调至2，通往阿苏山上广场的道路恢复通行",
+        "zh-tw": "福岡管區氣象台將阿蘇山中岳的噴發警戒等級下調至2，通往阿蘇山上廣場的道路恢復通行",
+    },
     "datePublished": "2026-09-01",
     "dateModified": "2026-09-01",
-    "keywords": [
-        "阿蘇山",
-        "中岳",
-        "噴火警戒レベル",
-        "噴火警戒レベル2",
-        "噴火警戒レベル引き下げ",
-        "火口周辺規制",
-        "阿蘇山上広場",
-        "阿蘇観光",
-        "阿蘇市",
-        "鳴鳳堂",
-    ],
-    # Category shown on the card in /ja/information/ - kept here so the JSON-LD
-    # articleSection and the visible label cannot drift apart.
-    "section": "その他",
+    "keywords": {
+        "ja": [
+            "阿蘇山", "中岳", "噴火警戒レベル", "噴火警戒レベル2", "噴火警戒レベル引き下げ",
+            "火口周辺規制", "阿蘇山上広場", "阿蘇観光", "阿蘇市", "鳴鳳堂",
+        ],
+        "en": [
+            "Mount Aso", "Nakadake", "eruption alert level", "eruption alert level 2",
+            "alert level lowered", "do not approach the crater", "Aso Sanjo Plaza",
+            "Aso sightseeing", "Aso City", "Meihodo",
+        ],
+        "zh-cn": [
+            "阿苏山", "中岳", "喷发警戒等级", "喷发警戒等级2", "喷发警戒等级下调",
+            "限制靠近火山口", "阿苏山上广场", "阿苏观光", "阿苏市", "鸣凤堂",
+        ],
+        "zh-tw": [
+            "阿蘇山", "中岳", "噴發警戒等級", "噴發警戒等級2", "噴發警戒等級下調",
+            "限制靠近火山口", "阿蘇山上廣場", "阿蘇觀光", "阿蘇市", "鳴鳳堂",
+        ],
+    },
+    # Category shown on the card in each /information/ index - kept here so the
+    # JSON-LD articleSection and the visible label cannot drift apart.
+    "section": {"ja": "その他", "en": "Other", "zh-cn": "其他", "zh-tw": "其他"},
 }
 
 # The volcano the article is about, as an entity of its own. Name and
@@ -383,6 +444,63 @@ PAGE_DESCRIPTIONS = {
         "9月2日午前9時より阿蘇山上広場までの通行が再開されています。"
         "火口周辺では引き続き規制がありますので、阿蘇観光の際は最新の火山情報・"
         "交通情報をご確認ください。熊本県阿蘇市の鳴鳳堂からのお知らせです。"
+    ),
+
+    # The translated editions of the two announcements and of the news index.
+    # Each is a rendering of the ja summary above it - same facts, same dates,
+    # same figures - so the four language editions cannot drift apart.
+    "en/information/index.html": (
+        "The latest news from Meihodo in Aso, Kumamoto: announcements about stays, "
+        "cultural experiences, the restaurant, events, campaigns and how the estate "
+        "is operating."
+    ),
+    "zh-cn/information/index.html": (
+        "熊本县阿苏市鸣凤堂的最新消息。您可在此确认住宿、文化体验、餐厅、活动、"
+        "优惠企划与设施营运等相关通知。"
+    ),
+    "zh-tw/information/index.html": (
+        "熊本縣阿蘇市鳴鳳堂的最新消息。您可在此確認住宿、文化體驗、餐廳、活動、"
+        "優惠企劃與設施營運等相關通知。"
+    ),
+    "en/information/aso-nakadake-alert-level-2/index.html": (
+        "At 16:00 on 1 September 2026 the Fukuoka Regional Headquarters of the Japan "
+        "Meteorological Agency lowered the eruption alert level for Mount Aso's "
+        "Nakadake from 3 (do not approach the volcano) to 2 (do not approach the "
+        "crater). Access as far as Aso Sanjo Plaza reopened at 9:00 a.m. on "
+        "2 September. Restrictions remain around the crater, so please check the "
+        "latest volcanic and traffic information when travelling in Aso. An "
+        "announcement from Meihodo in Aso, Kumamoto."
+    ),
+    "zh-cn/information/aso-nakadake-alert-level-2/index.html": (
+        "2026年9月1日16时00分，福冈管区气象台将阿苏山中岳的喷发警戒等级由"
+        "「3（限制入山）」下调至「2（限制靠近火山口）」。自9月2日上午9时起，"
+        "通往阿苏山上广场的道路已恢复通行。火山口周边仍持续设有管制，"
+        "前往阿苏观光时请确认最新的火山信息与交通信息。此为熊本县阿苏市鸣凤堂的通知。"
+    ),
+    "zh-tw/information/aso-nakadake-alert-level-2/index.html": (
+        "2026年9月1日16時00分，福岡管區氣象台將阿蘇山中岳的噴發警戒等級由"
+        "「3（限制入山）」下調至「2（限制靠近火山口）」。自9月2日上午9時起，"
+        "通往阿蘇山上廣場的道路已恢復通行。火山口周邊仍持續設有管制，"
+        "前往阿蘇觀光時請確認最新的火山資訊與交通資訊。此為熊本縣阿蘇市鳴鳳堂的通知。"
+    ),
+    "en/campaign/aso-fukkou/index.html": (
+        "Meihodo, a cultural resort in Aso City, Kumamoto, is a participating property "
+        "in the \u201cStay in Aso and support Kumamoto\u201d campaign (Aso Fukko-wari) run by "
+        "Aso City. For qualifying stays from 7 to 30 September 2026, guests receive up "
+        "to \u00a55,000 off per person per night plus \u00a52,000 in local coupons. Bookings are "
+        "accepted only as direct bookings by email or phone."
+    ),
+    "zh-cn/campaign/aso-fukkou/index.html": (
+        "熊本县阿苏市的文化度假设施鸣凤堂，是阿苏市推行的「住在阿苏，支援熊本！"
+        "熊本应援活动（阿苏复兴折扣）」的指定住宿设施。2026年9月7日～9月30日的"
+        "适用住宿，每人每晚最多可享5,000日元的住宿折扣与2,000日元的地区优惠券。"
+        "预订仅受理通过电子邮件或电话的直接预订。"
+    ),
+    "zh-tw/campaign/aso-fukkou/index.html": (
+        "熊本縣阿蘇市的文化度假設施鳴鳳堂，是阿蘇市推行的「住在阿蘇，支援熊本！"
+        "熊本應援活動（阿蘇復興折扣）」的指定住宿設施。2026年9月7日～9月30日的"
+        "適用住宿，每人每晚最多可享5,000日圓的住宿折扣與2,000日圓的地區優惠券。"
+        "預約僅受理透過電子郵件或電話的直接預約。"
     ),
 }
 
@@ -462,6 +580,33 @@ def build_registry() -> list[Page]:
             pages.append(Page(path, lang, sec, sec, canonical_for(path), True,
                               _crumb(lang, (CRUMB[sec][lang], canonical_for(path)))))
 
+        # The news index and the articles under it. Every language tree now
+        # carries all three, so they go through the same loop as the rest and
+        # alternates_for() finds a sibling in each language instead of
+        # advertising ja alone.
+        info_path = f"{lang}/information/index.html"
+        pages.append(Page(
+            info_path, lang, "information", "information",
+            canonical_for(info_path), True,
+            _crumb(lang, (CRUMB["information"][lang], canonical_for(info_path)))))
+
+        news_path = f"{lang}/information/aso-nakadake-alert-level-2/index.html"
+        pages.append(Page(
+            news_path, lang, "news", "aso-nakadake-alert-level-2",
+            canonical_for(news_path), True,
+            _crumb(lang,
+                   (CRUMB["information"][lang], canonical_for(info_path)),
+                   (CRUMB["news-aso-nakadake-alert-level-2"][lang], canonical_for(news_path)))))
+
+        # The 阿蘇ふっこう割 announcement. It sits under /campaign/, not under
+        # the news index, which is why its trail is home -> campaign rather
+        # than home -> news.
+        campaign_path = f"{lang}/campaign/aso-fukkou/index.html"
+        pages.append(Page(
+            campaign_path, lang, "campaign", "aso-fukkou",
+            canonical_for(campaign_path), True,
+            _crumb(lang, (CRUMB["campaign-aso-fukkou"][lang], canonical_for(campaign_path)))))
+
         for slug in EXPERIENCES:
             path = f"{lang}/experiences/{slug}/index.html"
             pages.append(Page(
@@ -505,35 +650,6 @@ def build_registry() -> list[Page]:
             _crumb(lang,
                    (CRUMB["accommodations"][lang], canonical_for(f"{lang}/accommodations/index.html")),
                    (BUILDING_NAMES["geihinkan"][lang], canonical_for(f"{lang}/geihinkan/index.html")))))
-
-    # Japanese-only news index. Same reasoning as the campaign page below:
-    # alternates_for() skips languages whose sibling file does not exist, so
-    # this advertises ja alone until /en/information/ and friends are written.
-    info_path = "ja/information/index.html"
-    pages.append(Page(
-        info_path, "ja", "information", "information",
-        canonical_for(info_path), True,
-        _crumb("ja", (CRUMB["information"]["ja"], canonical_for(info_path)))))
-
-    # The news articles themselves live under the index, one directory each,
-    # and are Japanese-only for the same reason the index is.
-    news_path = NEWS_ALERT_PATH
-    pages.append(Page(
-        news_path, "ja", "news", "aso-nakadake-alert-level-2",
-        canonical_for(news_path), True,
-        _crumb("ja",
-               (CRUMB["information"]["ja"], canonical_for(info_path)),
-               (CRUMB["news-aso-nakadake-alert-level-2"]["ja"], canonical_for(news_path)))))
-
-    # Japanese-only campaign page. The 阿蘇ふっこう割 promotion is run by Aso
-    # City for the domestic market, so there is no /en, /zh-cn or /zh-tw
-    # sibling; alternates_for() skips the languages whose file does not exist,
-    # which leaves this page advertising ja alone - correct, not a gap.
-    campaign_path = CAMPAIGN_PATH
-    pages.append(Page(
-        campaign_path, "ja", "campaign", "aso-fukkou",
-        canonical_for(campaign_path), True,
-        _crumb("ja", (CRUMB["campaign-aso-fukkou"]["ja"], canonical_for(campaign_path)))))
 
     # Pre-migration Chinese stubs. lang-switcher.js normalises zh-hans -> zh-cn
     # and zh-hant -> zh-tw, and CLAUDE.md records these as legacy, so they

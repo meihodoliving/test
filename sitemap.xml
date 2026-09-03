@@ -119,6 +119,14 @@
     <lastmod>2026-09-01</lastmod>
   </url>
   <url>
+    <loc>https://www.meihodo.com/en/information</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/information"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/information"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/information"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/information"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/information"/>
+  </url>
+  <url>
     <loc>https://www.meihodo.com/en/korokan</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/korokan"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/korokan"/>
@@ -247,6 +255,9 @@
   <url>
     <loc>https://www.meihodo.com/ja/information</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/information"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/information"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/information"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/information"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/information"/>
     <lastmod>2026-09-02</lastmod>
   </url>
@@ -377,6 +388,14 @@
     <lastmod>2026-09-01</lastmod>
   </url>
   <url>
+    <loc>https://www.meihodo.com/zh-cn/information</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/information"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/information"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/information"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/information"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/information"/>
+  </url>
+  <url>
     <loc>https://www.meihodo.com/zh-cn/korokan</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/korokan"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/korokan"/>
@@ -503,6 +522,14 @@
     <lastmod>2026-09-01</lastmod>
   </url>
   <url>
+    <loc>https://www.meihodo.com/zh-tw/information</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/information"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/information"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/information"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/information"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/information"/>
+  </url>
+  <url>
     <loc>https://www.meihodo.com/zh-tw/korokan</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/korokan"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/korokan"/>
@@ -546,6 +573,14 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/things-to-do"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/things-to-do"/>
     <lastmod>2026-09-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.meihodo.com/en/campaign/aso-fukkou</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/campaign/aso-fukkou"/>
   </url>
   <url>
     <loc>https://www.meihodo.com/en/experiences/bonseki</loc>
@@ -636,6 +671,14 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/experiences/takigyo"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/experiences/takigyo"/>
     <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://www.meihodo.com/en/information/aso-nakadake-alert-level-2</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/information/aso-nakadake-alert-level-2"/>
   </url>
   <url>
     <loc>https://www.meihodo.com/en/location/terms</loc>
@@ -757,6 +800,9 @@
   <url>
     <loc>https://www.meihodo.com/ja/campaign/aso-fukkou</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/campaign/aso-fukkou"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/campaign/aso-fukkou"/>
     <lastmod>2026-09-01</lastmod>
   </url>
@@ -853,6 +899,9 @@
   <url>
     <loc>https://www.meihodo.com/ja/information/aso-nakadake-alert-level-2</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/information/aso-nakadake-alert-level-2"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/information/aso-nakadake-alert-level-2"/>
     <lastmod>2026-09-02</lastmod>
   </url>
@@ -974,6 +1023,14 @@
     <lastmod>2026-09-01</lastmod>
   </url>
   <url>
+    <loc>https://www.meihodo.com/zh-cn/campaign/aso-fukkou</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/campaign/aso-fukkou"/>
+  </url>
+  <url>
     <loc>https://www.meihodo.com/zh-cn/experiences/bonseki</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/experiences/bonseki"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/experiences/bonseki"/>
@@ -1062,6 +1119,14 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/experiences/takigyo"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/experiences/takigyo"/>
     <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://www.meihodo.com/zh-cn/information/aso-nakadake-alert-level-2</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/information/aso-nakadake-alert-level-2"/>
   </url>
   <url>
     <loc>https://www.meihodo.com/zh-cn/location/terms</loc>
@@ -1181,6 +1246,14 @@
     <lastmod>2026-09-01</lastmod>
   </url>
   <url>
+    <loc>https://www.meihodo.com/zh-tw/campaign/aso-fukkou</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/campaign/aso-fukkou"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/campaign/aso-fukkou"/>
+  </url>
+  <url>
     <loc>https://www.meihodo.com/zh-tw/experiences/bonseki</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/experiences/bonseki"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/experiences/bonseki"/>
@@ -1269,6 +1342,14 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/experiences/takigyo"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/experiences/takigyo"/>
     <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://www.meihodo.com/zh-tw/information/aso-nakadake-alert-level-2</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.meihodo.com/ja/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.meihodo.com/en/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.meihodo.com/zh-cn/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://www.meihodo.com/zh-tw/information/aso-nakadake-alert-level-2"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.meihodo.com/ja/information/aso-nakadake-alert-level-2"/>
   </url>
   <url>
     <loc>https://www.meihodo.com/zh-tw/location/terms</loc>
