@@ -242,19 +242,6 @@ text = text.replace('<p>熊本県阿蘇市永草1943-28</p>', '<p>熊本县阿�
 text = text.replace('<p>市ノ川駅／阿蘇駅</p>', '<p>市之川站／阿苏站</p>')
 text = text.replace('<li>熊本県阿蘇市永草1943-28</li>', '<li>熊本县阿苏市永草1943-28</li>')
 
-text = text.replace('<h2 class="section-title">提携サービス</h2>', '<h2 class="section-title">合作服务</h2>')
-text = text.replace(
-    '<p class="section-subtitle">鳴鳳堂と提携するサービスをご紹介します。滞在をより快適にするための特別なご案内です。</p>',
-    '<p class="section-subtitle">以下为与鸣凤堂合作的配套服务，让您的旅程更加舒适。</p>',
-)
-text = text.replace('alt="マッサージ ここりらく"', 'alt="按摩 心之楽"')
-text = text.replace('<h3>マッサージ ここりらく</h3>', '<h3>按摩 心之楽</h3>')
-text = text.replace(
-    '<p>リラクゼーションマッサージで心と体を癒す、滞在中に利用できる提携サービスです。</p>',
-    '<p>入住期间可预约休闲按摩，舒缓身心。</p>',
-)
-text = text.replace('<a href="#" class="btn btn-primary">詳細を見る</a>', '<a href="#" class="btn btn-primary">了解详情</a>')
-
 text = text.replace(
     '<p>阿蘇の火山地帯で、本格的な日本の心を体験してください。</p>',
     '<p>在阿苏火山地带，感受地道的日本之心。</p>',

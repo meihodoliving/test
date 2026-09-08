@@ -307,28 +307,6 @@ text = text.replace(
     '<li>1943-28 Nagakusa, Aso City, Kumamoto</li>',
 )
 
-# Partnership
-text = text.replace(
-    '<h2 class="section-title">提携サービス</h2>',
-    '<h2 class="section-title">Partner services</h2>',
-)
-text = text.replace(
-    '<p class="section-subtitle">鳴鳳堂と提携するサービスをご紹介します。滞在をより快適にするための特別なご案内です。</p>',
-    '<p class="section-subtitle">Partners who extend your stay—dining, wellness and more.</p>',
-)
-text = text.replace('alt="マッサージ ここりらく"', 'alt="Massage Kokoriraku"')
-text = text.replace(
-    '<h3>マッサージ ここりらく</h3>',
-    '<h3>Massage Kokoriraku</h3>',
-)
-text = text.replace(
-    '<p>リラクゼーションマッサージで心と体を癒す、滞在中に利用できる提携サービスです。</p>',
-    '<p>Relaxation massage available during your stay.</p>',
-)
-text = text.replace(
-    '<a href="#" class="btn btn-primary">詳細を見る</a>',
-    '<a href="#" class="btn btn-primary">Learn more</a>',
-)
 
 # Footer
 text = text.replace(

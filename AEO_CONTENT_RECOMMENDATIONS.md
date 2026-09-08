@@ -278,6 +278,6 @@ For the record, so nobody "fixes" these later by adding them back:
 | `Product` co-type on buildings | Only needed to make `offers` legal, and Google then requires a price we do not have. |
 | `award`, `hasCredential` | Nothing on the site substantiates either. |
 | OTA links in `sameAs` | `sameAs` means "the same entity". Booking listings are `subjectOf` / `Offer.url`. |
-| Partner businesses in `sameAs` | 山水家 and ここりらく are partners (提携), separate entities. |
+| Partner businesses in `sameAs` | Partners (提携) and other third-party providers are separate entities, however they are linked. |
 | `openingHoursSpecification` on `#meihodo` | Only the restaurant publishes hours. The estate's are unstated. |
 | Keyword-stuffed `knowsAbout` | Limited to subjects with a page behind them. |
