@@ -698,3 +698,13 @@
         right: 1.1rem;
     }
 }
+
+/* Inline links inside the detail copy (rainy-day / experience-only note) */
+.detail-text p a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.detail-text p a:hover {
+    color: var(--accent-color);
+}
