@@ -13,7 +13,9 @@ Structured data: every page carries a JSON-LD `@graph`; the facility entity is
 ## Identity
 
 - Name: 鳴鳳堂 (Japanese) / Meihodo (English) / 鸣凤堂 (Simplified Chinese)
-- Type: cultural estate — lodging (Resort) and visitor attraction combined
+- Type: cultural estate — a visitor attraction and a place to stay at once.
+  The `#meihodo` entity is typed LodgingBusiness, Resort, TouristAttraction
+  and LocalBusiness, because it is all four.
 - Address: 〒869-2231 熊本県阿蘇市永草1943-28 / 1943-28 Nagakusa, Aso, Kumamoto 869-2231, Japan
 - Telephone: 0967-24-5090 (+81-967-24-5090)
 - Email: meihodoliving@gmail.com
@@ -33,6 +35,11 @@ three in one place; each is also open on its own.
 Instructor-led sessions, bookable individually. Prices are per the page for each
 experience and include tax. Booking is through asoview:
 https://www.asoview.com/channel/activities/ja/meihodo/offices/4369/courses
+
+An overnight stay is not required: visitors who are not staying at Meihodo can
+book an experience on its own. All experiences are by advance reservation.
+Some have an age limit, and some have a height condition for safety, so ask
+before booking for children.
 
 Martial arts:
 
@@ -101,7 +108,15 @@ not state a fixed venue; the venue can change with group size, content and the
 weather, and should be confirmed at booking. Takigyo (waterfall training) is
 outdoors and may be cancelled in bad weather. The page also sets out a sample
 day: check-in 15:00, an experience, dinner at the on-site restaurant, breakfast
-and check-out at 11:00.
+and check-out at 11:00, and answers the common rainy-day questions in a FAQ
+section of its own.
+
+In the page's JSON-LD the indoor set is an ItemList at
+`<page URL>#indoor-experiences`, each member a Service provided by `#meihodo`.
+The halls are Place nodes of their own (`#seirensha`, `#daikodo`, `#budojo`),
+each contained in `#meihodo`; on the experience pages an offer references the
+hall it is held in through `availableAtOrFrom`. That list, not the full
+catalogue, is the page's `mainEntity`.
 
 Japanese: https://www.meihodo.com/ja/things-to-do
 Simplified Chinese: https://www.meihodo.com/zh-cn/things-to-do

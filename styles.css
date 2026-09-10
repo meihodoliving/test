@@ -9506,3 +9506,26 @@ a.ttd-pillar:focus-visible {
     outline: 2px solid var(--accent-color);
     outline-offset: 3px;
 }
+
+/* --- things-to-do のFAQ --- */
+/* .faq-section / .faq-item は /faq と共通のものを再利用する。ここで足すのは
+   帯の背景と本文カラムの幅だけ。.container--narrow は各ページの
+   *-page-main 配下でしか定義されていないため、この節にも同じ幅を与える。 */
+.ttd-faq {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, var(--white) 0%, var(--light-color) 45%, var(--white) 100%);
+}
+
+.ttd-faq .container--narrow {
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .ttd-faq {
+        padding: 3.5rem 0;
+    }
+}

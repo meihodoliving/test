@@ -205,6 +205,78 @@ EXPERIENCE_CATEGORY = {
     "takigyo": "Japanese traditional culture",
 }
 
+# ---------------------------------------------------------------------------
+# Indoor venues.
+#
+# The experiences each */things-to-do/ page tags 「屋内」/ "Indoor" are held in
+# named buildings on the estate. Giving those buildings an @id of their own is
+# what lets the graph state "茶道 happens *inside* the 茶室" instead of leaving
+# "indoor" as an adjective buried in prose - which is the join an answer engine
+# needs to get from "阿蘇 雨の日 観光" to this site.
+#
+# WHICH experiences are indoor is deliberately NOT listed here. build_jsonld.py
+# reads that off each things-to-do page's own `ttd-tag--indoor` markup, so the
+# tag a visitor reads and the `location` the graph asserts cannot drift apart.
+# This table only names the venues, and every name below is one the site
+# already prints - see AMENITIES above and the ttd-rainy section of
+# */things-to-do/, which lists 茶室 青蓮舎 / 大講堂 / 武道場 by name.
+# ---------------------------------------------------------------------------
+INDOOR_VENUES = {
+    "budojo": {
+        "ja": "武道場", "en": "Martial arts hall",
+        "zh-cn": "武道场", "zh-tw": "武道場",
+    },
+    "seirensha": {
+        "ja": "茶室 青蓮舎", "en": "Tea house (Seirensha)",
+        "zh-cn": "茶室 青莲舍", "zh-tw": "茶室 青蓮舍",
+    },
+    "daikodo": {
+        "ja": "大講堂", "en": "Great hall",
+        "zh-cn": "大讲堂", "zh-tw": "大講堂",
+    },
+}
+
+# Which venue each indoor experience is held in, as the pages state it. An
+# experience absent from this table gets no `location`: 弓道・和太鼓・華道・試し切り
+# are held wherever the group size and the day's weather allow, which the pages
+# say in so many words, so asserting a fixed venue for them would be an
+# invention.
+EXPERIENCE_VENUE = {
+    "kendo": "budojo",
+    "karate": "budojo",
+    "chado": "seirensha",
+    "bonseki": "daikodo",
+}
+
+# The rainy-day list on */things-to-do/. Its members are whatever that page
+# tags indoor, so the name and description stay generic rather than naming four
+# experiences a future edit might change.
+INDOOR_LIST_NAME = {
+    "ja": "雨の日でも楽しめる鳴鳳堂の屋内文化体験",
+    "en": "Indoor Japanese cultural experiences at Meihodo, for a rainy day in Aso",
+    "zh-cn": "雨天也能享受的鸣凤堂室内文化体验",
+    "zh-tw": "雨天也能享受的鳴鳳堂室內文化體驗",
+}
+INDOOR_LIST_DESCRIPTION = {
+    "ja": (
+        "鳴鳳堂の敷地内にある茶室・武道場・大講堂などの屋内施設で行う日本文化体験です。"
+        "屋外の観光が難しい雨の日でも、阿蘇での旅の予定を組み立てていただけます。"
+    ),
+    "en": (
+        "Japanese cultural experiences held indoors on the Meihodo estate - in the tea "
+        "house, the martial arts hall and the great hall - so a rainy day in Aso still "
+        "has a plan."
+    ),
+    "zh-cn": (
+        "在鸣凤堂园区内的茶室、武道场、大讲堂等室内设施举行的日本文化体验。"
+        "即使遇上不适合户外观光的雨天，也能安排阿苏的旅行行程。"
+    ),
+    "zh-tw": (
+        "在鳴鳳堂園區內的茶室、武道場、大講堂等室內設施舉行的日本文化體驗。"
+        "即使遇上不適合戶外觀光的雨天，也能安排阿蘇的旅行行程。"
+    ),
+}
+
 # Labels for the two external booking destinations, copied from each language's
 # own fixed booking buttons on the home page.
 BOOKING_LABEL = {
@@ -405,31 +477,36 @@ ID_NAKADAKE = f"{BASE}/#aso-nakadake"
 # instead of having to be re-typed into the generated block every run.
 # ---------------------------------------------------------------------------
 PAGE_DESCRIPTIONS = {
+    # things-to-do leads with the intent the page answers ("阿蘇 雨の日 観光",
+    # "indoor activities in Aso") rather than with the brand, because that is
+    # the sentence a search or answer engine has to match. Every fact after it
+    # is one the page states: the four indoor experiences and their venues come
+    # from the ttd-rainy section, and experience-only booking is stated on the
+    # chado / kendo / karate / bonseki pages themselves.
     "ja/things-to-do/index.html": (
-        "熊本県阿蘇市の鳴鳳堂は、泊まりながら弓道・剣道・空手・試し切り・茶道・盆石・"
-        "和太鼓などの日本文化体験を楽しめる文化リゾートです。茶道・盆石・剣道・空手は"
-        "茶室や大講堂、武道場など屋内で行うため、雨の日の阿蘇観光でも旅の予定を"
-        "組み立てやすいのが特徴です。宿泊・食事・文化体験が敷地内で完結する"
-        "1日の過ごし方をご紹介します。"
+        "阿蘇で雨の日に楽しめる観光・室内アクティビティをお探しの方へ。熊本県阿蘇市の"
+        "鳴鳳堂では、茶道（茶室 青蓮舎）、盆石（大講堂）、剣道・空手（武道場）など、"
+        "屋内で行う日本文化体験をご用意しています。ご宿泊されない方の体験のみのご予約も"
+        "承っております。晴れの日・雨の日それぞれの過ごし方をご紹介します。"
     ),
     "en/things-to-do/index.html": (
-        "Meihodo in Aso, Kumamoto is a cultural resort where you stay and take part: "
-        "kyudo, kendo, karate, tameshigiri, tea ceremony, bonseki and taiko. Tea "
-        "ceremony, bonseki, kendo and karate are held indoors, in the tea house, the "
-        "great hall and the martial arts hall, so a rainy day in Aso stays easy to plan "
-        "around. Lodging, dining and Japanese culture on one estate."
+        "Looking for things to do in Aso on a rainy day, or for indoor activities in "
+        "Kumamoto? Meihodo, a cultural resort in Aso, holds tea ceremony (in the "
+        "Seirensha tea house), bonseki (great hall) and kendo and karate (martial arts "
+        "hall) indoors, so the weather need not change your plans. Experience-only "
+        "bookings are welcome for visitors who are not staying overnight."
     ),
     "zh-cn/things-to-do/index.html": (
-        "位于熊本县阿苏市的鸣凤堂，是可以一边住宿一边体验弓道、剑道、空手道、试斩、"
-        "茶道、盆石、和太鼓等日本文化的文化度假设施。其中茶道、盆石、剑道、空手道在茶室、"
-        "大讲堂、武道场等室内举行，即使阿苏遇上雨天也便于安排行程。"
-        "住宿、餐饮与文化体验都在同一片园区内完成。"
+        "在阿苏寻找雨天也能享受的观光与室内活动？位于熊本县阿苏市的鸣凤堂，"
+        "将茶道（茶室 青莲舍）、盆石（大讲堂）、剑道与空手道（武道场）安排在室内举行，"
+        "即使遇上雨天也能照常安排行程。不住宿的旅客亦可仅预订文化体验。"
+        "本页介绍晴天与雨天各自的度过方式。"
     ),
     "zh-tw/things-to-do/index.html": (
-        "位於熊本縣阿蘇市的鳴鳳堂，是可以一邊住宿一邊體驗弓道、劍道、空手道、試斬、"
-        "茶道、盆石、和太鼓等日本文化的文化度假設施。其中茶道、盆石、劍道、空手道於茶室、"
-        "大講堂、武道場等室內舉行，即使阿蘇遇上雨天也便於安排行程。"
-        "住宿、餐飲與文化體驗都在同一片園區內完成。"
+        "在阿蘇尋找雨天也能享受的觀光與室內活動？位於熊本縣阿蘇市的鳴鳳堂，"
+        "將茶道（茶室 青蓮舍）、盆石（大講堂）、劍道與空手道（武道場）安排在室內舉行，"
+        "即使遇上雨天也能照常安排行程。不住宿的旅客亦可僅預約文化體驗。"
+        "本頁介紹晴天與雨天各自的度過方式。"
     ),
     CAMPAIGN_PATH: (
         "熊本県阿蘇市の文化リゾート鳴鳳堂は、阿蘇市が実施する"

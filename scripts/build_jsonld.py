@@ -55,6 +55,16 @@ FAQ_RE = re.compile(
 DURATION_RE = re.compile(r"所要時間[：:]\s*(?:<[^>]+>\s*)*([0-9.]+)\s*(時間|分)")
 OCCUPANCY_RE = re.compile(r"最大[^0-9]{0,12}([0-9]{1,2})\s*名様")
 EXPERIENCE_LINK_RE = re.compile(r'href="/[a-z-]+/experiences/([a-z]+)/"')
+# One experience card on a */things-to-do/ page, and the venue tag inside it.
+# The pages already distinguish "held indoors" from "venue depends on the
+# weather" with a class, so that class is the source for the indoor flag
+# rather than a second list kept in seo_config.py.
+TTD_CARD_RE = re.compile(
+    r'<a[^>]+href="/[a-z-]+/experiences/([a-z]+)/"[^>]*'
+    r'class="[^"]*experience-card[^"]*"[^>]*>(.*?)</a>',
+    re.S,
+)
+INDOOR_TAG_RE = re.compile(r'<span class="ttd-tag ttd-tag--indoor">(.*?)</span>', re.S)
 DEEP_LINK_RE = re.compile(
     r"https://www\.hpdsp\.net/[^\"']*hww3201init\.do\?[^\"']*roomTypeCd=[0-9]+[^\"']*"
 )
@@ -172,6 +182,61 @@ def booking_url(src: str) -> str | None:
     return m.group(0) if m else C.BOOKING_URL
 
 
+_INDOOR_CACHE: dict[str, dict[str, str]] = {}
+
+
+def indoor_labels(lang: str) -> dict[str, str]:
+    """slug -> the venue tag that language's things-to-do page prints on it.
+
+    Only experiences the page itself marks `ttd-tag--indoor` are returned, and
+    only those seo_config can name a venue for. Reading it here rather than
+    listing it in the config is what keeps "屋内（武道場）" on screen and
+    `location: 武道場` in the graph from ever disagreeing: an editor who
+    retags a card retags the structured data with it.
+    """
+    if lang not in _INDOOR_CACHE:
+        p = C.REPO / lang / "things-to-do" / "index.html"
+        out: dict[str, str] = {}
+        if p.exists():
+            for slug, inner in TTD_CARD_RE.findall(p.read_text(encoding="utf-8")):
+                m = INDOOR_TAG_RE.search(inner)
+                if m and slug in C.EXPERIENCE_VENUE:
+                    out[slug] = text_of(m.group(1))
+        _INDOOR_CACHE[lang] = out
+    return _INDOOR_CACHE[lang]
+
+
+def node_venue(lang: str, key: str) -> dict:
+    """A room or hall on the estate that an indoor experience is held in.
+
+    Name and containment only. The site publishes no address, capacity or hours
+    for the individual halls, so nothing further is claimed - the point of the
+    node is to give `Service.location` something real to point at, which is what
+    turns "indoor" from prose into a fact about where the session happens.
+    """
+    return {
+        "@type": "Place",
+        "@id": C.entity_id(key),
+        "name": C.INDOOR_VENUES[key][lang],
+        "containedInPlace": {"@id": C.ID_MEIHODO},
+    }
+
+
+VENUE_PROP_LABEL = {"ja": "実施場所", "en": "Venue", "zh-cn": "实施场所", "zh-tw": "實施場所"}
+
+
+def venue_id_for(lang: str, slug: str) -> str | None:
+    """@id of the hall an indoor experience is held in, else None.
+
+    None for every other experience: 弓道・和太鼓・華道・試し切り move with the
+    group size and the day's weather, which the pages say outright, so they get
+    no fixed venue and no indoor claim.
+    """
+    if slug not in indoor_labels(lang):
+        return None
+    return C.entity_id(C.EXPERIENCE_VENUE[slug])
+
+
 # ---------------------------------------------------------------------------
 # Shared graph nodes
 # ---------------------------------------------------------------------------
@@ -228,19 +293,21 @@ def node_organization(lang: str) -> dict:
 def node_meihodo(lang: str, full: bool) -> dict:
     """The estate itself.
 
-    Typed LodgingBusiness + Resort + TouristAttraction: Resort (a
-    LodgingBusiness subtype) is what a 56,000 sqm site that lodges guests and
+    Typed LodgingBusiness + Resort + TouristAttraction + LocalBusiness: Resort
+    (a LodgingBusiness subtype) is what a 56,000 sqm site that lodges guests and
     runs its own restaurant and activity programme actually is, and
-    TouristAttraction carries the half that day visitors come for. Hotel would
-    be wrong - nothing here is let by the room.
+    TouristAttraction carries the half that day visitors come for - the half
+    that answers "阿蘇の観光施設". Hotel would be wrong: nothing here is let by
+    the room.
 
-    LodgingBusiness is listed alongside Resort even though Resort is already a
-    subtype of it. It is redundant to a consumer that resolves the schema.org
-    hierarchy, and load-bearing for one that string-matches the type - which is
-    what "is this an accommodation?" checks tend to do.
+    LodgingBusiness and LocalBusiness are listed alongside Resort even though
+    Resort is already a subtype of both. They are redundant to a consumer that
+    resolves the schema.org hierarchy, and load-bearing for one that
+    string-matches the type - which is what "is this an accommodation?" and
+    "is this a business with an address and a phone number?" checks tend to do.
     """
     base = {
-        "@type": ["LodgingBusiness", "Resort", "TouristAttraction"],
+        "@type": ["LodgingBusiness", "Resort", "TouristAttraction", "LocalBusiness"],
         "@id": C.ID_MEIHODO,
         "name": C.BRAND[lang],
         # Carried on the stub as well as the full node: "Meihodo" and "鳴鳳堂"
@@ -405,12 +472,31 @@ def node_experience(page, src: str, name: str, description, image) -> dict:
     # additionalProperty on Offer rather than Service, so the session length the
     # page advertises rides on each Offer - which is also where it belongs: it
     # describes what the guest is buying.
+    #
+    # The venue rides on the Offer for the same reason. schema.org puts neither
+    # additionalProperty nor location in Service's domain; the property for
+    # "where you can get this offering" is availableAtOrFrom, declared on
+    # Offer/Demand with a Place range. So the hall an indoor session is held in
+    # is stated there, not on the Service.
     duration = iso_duration(slug)
-    duration_prop = [{
-        "@type": "PropertyValue",
-        "name": {"ja": "所要時間", "en": "Duration", "zh-cn": "所需时间", "zh-tw": "所需時間"}[page.lang],
-        "value": duration,
-    }] if duration else None
+    props = []
+    if duration:
+        props.append({
+            "@type": "PropertyValue",
+            "name": {"ja": "所要時間", "en": "Duration", "zh-cn": "所需时间", "zh-tw": "所需時間"}[page.lang],
+            "value": duration,
+        })
+    # The four pages this applies to say so in their own prose ("茶道体験は屋内
+    # の茶室「青蓮舎」で行うため…"), and the tag it is read from is on the
+    # things-to-do page, so the claim is carried by both pages before it is
+    # asserted here.
+    venue = venue_id_for(page.lang, slug)
+    if venue:
+        props.append({
+            "@type": "PropertyValue",
+            "name": VENUE_PROP_LABEL[page.lang],
+            "value": indoor_labels(page.lang)[slug],
+        })
 
     rows = PRICES.get(slug, {}).get("rows", [])
     labels = LABELS.get(page.lang, LABELS["ja"])
@@ -425,8 +511,10 @@ def node_experience(page, src: str, name: str, description, image) -> dict:
             "url": C.ACTIVITY_URL[page.lang],
             "itemOffered": {"@id": C.entity_id(slug)},
         }
-        if duration_prop:
-            offer["additionalProperty"] = duration_prop
+        if props:
+            offer["additionalProperty"] = props
+        if venue:
+            offer["availableAtOrFrom"] = {"@id": venue}
         offers.append(offer)
     if offers:
         n["offers"] = offers
@@ -639,13 +727,23 @@ def node_news_article(page, image: str | None) -> dict:
     }
 
 
-def node_faqpage(page, pairs) -> dict:
+def node_faqpage(page, pairs, within_page: bool = False) -> dict:
+    """The Q&A a visitor can read on the page, and nothing else.
+
+    Pairs come from faq_pairs(), which reads the rendered markup, so a question
+    can only appear here if it appears on screen.
+
+    `within_page` is for a page whose FAQ is one section among many rather than
+    the page's whole purpose: the node then declares itself part of that page's
+    WebPage instead of standing directly under the WebSite, which is what stops
+    it reading as a second, competing document for the same URL.
+    """
     return {
         "@type": "FAQPage",
         "@id": f"{page.canonical}#faq",
         "url": page.canonical,
         "inLanguage": C.LANG_TAG[page.lang],
-        "isPartOf": {"@id": C.ID_WEBSITE},
+        "isPartOf": {"@id": f"{page.canonical}#webpage" if within_page else C.ID_WEBSITE},
         "about": {"@id": C.ID_MEIHODO},
         "mainEntity": [
             {
@@ -658,16 +756,32 @@ def node_faqpage(page, pairs) -> dict:
     }
 
 
-def node_itemlist(page, ids: list[str], name: str) -> dict:
-    return {
+def node_itemlist(page, ids: list[str], name: str, suffix: str = "list",
+                  description: str | None = None,
+                  urls: list[str] | None = None) -> dict:
+    """A list over entities already described in the same @graph.
+
+    Members are referenced by @id, never re-described, so a list can never
+    contradict the node it points at. Each ListItem also carries the target
+    page's URL, so a consumer that does not resolve @id references still gets a
+    link to the experience's own page.
+    """
+    items = []
+    for i, _id in enumerate(ids, start=1):
+        item = {"@type": "ListItem", "position": i, "item": {"@id": _id}}
+        if urls:
+            item["url"] = urls[i - 1]
+        items.append(item)
+    n = {
         "@type": "ItemList",
-        "@id": f"{page.canonical}#list",
+        "@id": f"{page.canonical}#{suffix}",
         "name": name,
-        "itemListElement": [
-            {"@type": "ListItem", "position": i, "item": {"@id": _id}}
-            for i, _id in enumerate(ids, start=1)
-        ],
+        "numberOfItems": len(ids),
+        "itemListElement": items,
     }
+    if description:
+        n["description"] = description
+    return n
 
 
 # ---------------------------------------------------------------------------
@@ -724,6 +838,12 @@ def build_graph(page, src: str) -> list[dict]:
 
     elif page.kind == "experience":
         node = node_experience(page, src, name, description, image)
+        # The hall this session is held in, when it has a fixed one, so the
+        # availableAtOrFrom on each Offer above resolves within this page's own
+        # graph rather than pointing at a node defined only elsewhere.
+        venue = C.EXPERIENCE_VENUE.get(page.slug)
+        if venue and page.slug in indoor_labels(lang):
+            extra.append(node_venue(lang, venue))
         extra.append(node)
         about_id = main_id = C.entity_id(page.slug)
 
@@ -778,27 +898,57 @@ def build_graph(page, src: str) -> list[dict]:
         main_id = f"{page.canonical}#list"
 
     elif page.kind == "things-to-do":
-        # The stay-and-experience guide. It describes no new real-world thing -
-        # it is a route into the experiences that already have their own nodes -
-        # so it contributes an ItemList over them and nothing else. Which
-        # experiences it covers is read off the page's own links rather than
-        # hardcoded, so the markup and the graph cannot drift apart.
+        # The stay-and-experience guide, and the site's answer to "阿蘇 雨の日
+        # 観光" / "indoor activities in Aso". It describes no new real-world
+        # thing - it is a route into the experiences and the halls that already
+        # have their own nodes - so it contributes lists over them, the venues
+        # those lists depend on, and its own FAQ. Which experiences it covers,
+        # and which of them are indoors, are both read off the page's own
+        # markup rather than hardcoded, so the graph cannot drift from the page.
         slugs = [s for s in dict.fromkeys(EXPERIENCE_LINK_RE.findall(src))
                  if s in C.EXPERIENCES]
+        exp_url = {s: C.canonical_for(f"{lang}/experiences/{s}/index.html") for s in slugs}
+        indoor_slugs = [s for s in slugs if s in indoor_labels(lang)]
+
+        # The halls first, so the Services below have something to point at.
+        for key in dict.fromkeys(C.EXPERIENCE_VENUE[s] for s in indoor_slugs):
+            extra.append(node_venue(lang, key))
+
         for slug in slugs:
-            extra.append({
+            node = {
                 "@type": "Service",
                 "@id": C.entity_id(slug),
                 "name": experience_name(lang, slug),
                 "alternateName": C.EXPERIENCE_ALT[slug],
                 "category": C.EXPERIENCE_CATEGORY[slug],
                 "provider": {"@id": C.ID_MEIHODO},
-                "url": C.canonical_for(f"{lang}/experiences/{slug}/index.html"),
-            })
+                "url": exp_url[slug],
+            }
+            # No venue and no venue tag on the stub: this page carries no Offer
+            # to hang availableAtOrFrom on, and Service takes neither property.
+            # That the session is indoors is already carried by the ItemList
+            # below, by the hall's own Place node, and by the page's own
+            # ttd-tag--indoor markup and prose.
+            extra.append(node)
+
+        # The rainy-day list is the page's subject, so it - not the full
+        # catalogue - is what the WebPage points mainEntity at.
+        if indoor_slugs:
+            extra.append(node_itemlist(
+                page, [C.entity_id(s) for s in indoor_slugs],
+                C.INDOOR_LIST_NAME[lang], suffix="indoor-experiences",
+                description=C.INDOOR_LIST_DESCRIPTION[lang],
+                urls=[exp_url[s] for s in indoor_slugs]))
+            main_id = f"{page.canonical}#indoor-experiences"
         if slugs:
             extra.append(node_itemlist(page, [C.entity_id(s) for s in slugs],
-                                       C.CRUMB["things-to-do"][lang]))
-            main_id = f"{page.canonical}#list"
+                                       C.CRUMB["things-to-do"][lang],
+                                       urls=[exp_url[s] for s in slugs]))
+            main_id = main_id or f"{page.canonical}#list"
+
+        pairs = faq_pairs(src)
+        if pairs:
+            extra.append(node_faqpage(page, pairs, within_page=True))
 
     elif page.kind == "accommodations":
         ids = [C.entity_id(b) for b in C.BUILDINGS]
