@@ -1465,8 +1465,11 @@
             function load() {
                 if (loaded) return;
                 loaded = true;
-                // data-src is root-absolute; prefix the GitHub Pages base path when present.
-                video.src = BASE + video.getAttribute('data-src').replace(/^\/+/, '');
+                // data-src is root-absolute. On GitHub Pages build_pages_base.py already
+                // prefixes it (its src= pattern also matches data-src=), so only add BASE
+                // when it is not there yet — otherwise the URL becomes /test/test/...
+                var dataSrc = video.getAttribute('data-src');
+                video.src = dataSrc.indexOf(BASE) === 0 ? dataSrc : BASE + dataSrc.replace(/^\/+/, '');
                 video.preload = 'auto';
             }
             function play() {
