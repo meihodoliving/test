@@ -5,3 +5,12 @@ scripts
 portfolio
 
 backup
+
+# Repo-only files that must not be served from www.meihodo.com.
+# (sitemap.xml, robots.txt and llms.txt are public on purpose — keep them.)
+*.md
+.DS_Store
+package-lock.json
+.vscode
+.github
+.gitignore

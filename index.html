@@ -743,9 +743,11 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <video class="hero-image" id="hero-video" autoplay muted loop playsinline preload="auto"
-               poster="/images/video/hero-poster.webp">
-            <source src="/images/video/hero.mp4" type="video/mp4">
+        <!-- The video is attached by the hero script below only on desktop, when motion and
+             data saving allow it. Phones, reduced-motion and Save-Data visitors (and crawlers
+             without JS) get the poster alone and never download hero.mp4. -->
+        <video class="hero-image" id="hero-video" muted loop playsinline preload="none"
+               poster="/images/video/hero-poster.webp" data-src="/images/video/hero.mp4">
         </video>
         <div class="hero-overlay"></div>
         <button type="button" id="hero-play-btn" class="hero-vc-btn hero-vc-btn--center" aria-label="一時停止">
@@ -1453,6 +1455,45 @@
             var muteBtn = document.getElementById('hero-mute-btn');
             if (!video || !playBtn || !muteBtn) return;
 
+            // hero.mp4 is the heaviest file on the site, so it is attached only when it
+            // will actually be watched: desktop width, motion allowed, no Save-Data / 2G.
+            // Everyone else keeps the poster until they press play or sound themselves.
+            var BASE = ('/' + (window.__BASE_PATH__ || '/').replace(/^\/+|\/+$/g, '') + '/').replace('//', '/');
+            var loaded = false;
+            var userPaused = false;
+
+            function load() {
+                if (loaded) return;
+                loaded = true;
+                // data-src is root-absolute; prefix the GitHub Pages base path when present.
+                video.src = BASE + video.getAttribute('data-src').replace(/^\/+/, '');
+                video.preload = 'auto';
+            }
+            function play() {
+                load();
+                var p = video.play();
+                if (p && p.catch) p.catch(function () { syncPlay(); });
+            }
+            function autoplayAllowed() {
+                var mq = window.matchMedia;
+                if (mq && !mq('(min-width: 769px)').matches) return false;
+                if (mq && mq('(prefers-reduced-motion: reduce)').matches) return false;
+                var c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                if (c && (c.saveData || /(^|-)2g$/.test(c.effectiveType || ''))) return false;
+                return true;
+            }
+            function autoStart() {
+                if (userPaused || loaded || !autoplayAllowed()) return;
+                if (!('IntersectionObserver' in window)) { play(); return; }
+                var io = new IntersectionObserver(function (entries) {
+                    if (entries[0].isIntersecting) {
+                        io.disconnect();
+                        if (!userPaused && autoplayAllowed()) play();
+                    }
+                });
+                io.observe(video);
+            }
+
             function syncPlay() {
                 var paused = video.paused;
                 playBtn.classList.toggle('is-paused', paused);
@@ -1464,17 +1505,20 @@
             }
 
             playBtn.addEventListener('click', function () {
-                if (video.paused) { video.play(); } else { video.pause(); }
+                if (video.paused) { userPaused = false; play(); } else { userPaused = true; video.pause(); }
             });
             muteBtn.addEventListener('click', function () {
                 video.muted = !video.muted;
                 syncMute();
+                // Asking for sound on the poster means the visitor wants the video.
+                if (!video.muted && video.paused) { userPaused = false; play(); }
             });
             // Clicking the video itself unmutes it
             video.addEventListener('click', function () {
                 if (video.muted) {
                     video.muted = false;
                     syncMute();
+                    if (video.paused) { userPaused = false; play(); }
                 }
             });
             video.addEventListener('play', syncPlay);
@@ -1489,11 +1533,22 @@
                           t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' ||
                           t.tagName === 'SELECT' || t.isContentEditable)) return;
                 e.preventDefault();
-                if (video.paused) { video.play(); } else { video.pause(); }
+                if (video.paused) { userPaused = false; play(); } else { userPaused = true; video.pause(); }
             });
 
             syncPlay();
             syncMute();
+
+            // Start only after the page itself has loaded, so the video never competes
+            // with the HTML, CSS and first-view images. Re-check if the window is widened.
+            if (document.readyState === 'complete') { autoStart(); }
+            else { window.addEventListener('load', autoStart); }
+            if (window.matchMedia) {
+                var wide = window.matchMedia('(min-width: 769px)');
+                var onWide = function () { if (wide.matches) autoStart(); };
+                if (wide.addEventListener) wide.addEventListener('change', onWide);
+                else if (wide.addListener) wide.addListener(onWide);
+            }
         })();
     </script>
     <script src="/lang-switcher.js" defer></script>
