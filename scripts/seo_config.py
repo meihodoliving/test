@@ -328,12 +328,14 @@ CRUMB = {
         "zh-cn": "关于阿苏山中岳喷发警戒等级下调",
         "zh-tw": "關於阿蘇山中岳噴發警戒等級下調",
     },
-    # 「熊本ふっこう応援割」販売準備中のお知らせ。日本語版だけが公開されている
-    # 記事なので、ここも "ja" だけを持つ。翻訳版を出すときに en / zh-cn / zh-tw
-    # を足すこと（機械翻訳を先に置かない）。build_registry() も同じ理由で
-    # この記事を ja にだけ登録している。
+    # 「熊本ふっこう応援割」販売準備中のお知らせ。中岳記事と同じく四言語そろって
+    # いるので、各言語のページが .breadcrumb-current に実際に出している文字列を
+    # そのまま持つ（見えるパンくずと BreadcrumbList を一致させるため）。
     "news-kumamoto-fukko-ouenwari-preparing": {
         "ja": "「熊本ふっこう応援割」販売準備中のお知らせ",
+        "en": "Kumamoto Reconstruction Support Discount (preparing for sale)",
+        "zh-cn": "关于“熊本复兴支援优惠”准备销售中的通知",
+        "zh-tw": "關於「熊本復興支援優惠」準備販售中的公告",
     },
 }
 
@@ -490,16 +492,25 @@ ID_NAKADAKE = f"{BASE}/#aso-nakadake"
 # the article links to the other one so a reader cannot conflate them.
 #
 # datePublished / dateModified are kept by hand, not stamped from the clock.
-# The article is published in Japanese only for now, so every field here is a
-# plain string rather than a per-language dict.
+# The reader-facing fields are keyed by language so each edition describes
+# itself in its own words; the dates, the discount figures and the official URL
+# are facts about one promotion and stay shared, which is also why the
+# SaleEvent keeps a single language-neutral @id across all four trees.
 # ---------------------------------------------------------------------------
 NEWS_OUENWARI_PATH = "ja/information/kumamoto-fukko-ouenwari-preparing/index.html"
 NEWS_OUENWARI_ARTICLE = {
     "headline": {
         "ja": "【販売準備中】「熊本ふっこう応援割」についてのお知らせ｜鳴鳳堂",
+        "en": "Preparing for Sale: Kumamoto Reconstruction Support Discount | Meihodo",
+        "zh-cn": "【准备销售中】关于“熊本复兴支援优惠”的通知｜鸣凤堂",
+        "zh-tw": "【準備販售中】關於「熊本復興支援優惠」的公告｜鳴鳳堂",
     },
     "alternativeHeadline": {
         "ja": "鳴鳳堂は「熊本ふっこう応援割」の対象プランを準備中です（2026年9月16日現在、販売未開始）",
+        "en": ("Meihodo is preparing plans eligible for the Kumamoto Reconstruction Support "
+               "Discount; reservations have not opened as of 16 September 2026"),
+        "zh-cn": "鸣凤堂正在准备“熊本复兴支援优惠”的适用住宿套餐（截至2026年9月16日尚未开始销售）",
+        "zh-tw": "鳴鳳堂正在準備「熊本復興支援優惠」的適用住宿方案（截至2026年9月16日尚未開始販售）",
     },
     "datePublished": "2026-09-16",
     "dateModified": "2026-09-16",
@@ -508,17 +519,40 @@ NEWS_OUENWARI_ARTICLE = {
             "熊本ふっこう応援割", "販売準備中", "熊本県", "宿泊割引", "対象宿泊期間",
             "割引率60％", "割引上限20,000円", "阿蘇市", "鳴鳳堂",
         ],
+        "en": [
+            "Kumamoto Reconstruction Support Discount", "preparing for sale",
+            "Kumamoto Prefecture", "accommodation discount", "eligible stay period",
+            "60% discount", "up to JPY 20,000", "Aso City", "Meihodo",
+        ],
+        "zh-cn": [
+            "熊本复兴支援优惠", "准备销售中", "熊本县", "住宿折扣", "适用住宿期间",
+            "优惠比例60%", "优惠上限20,000日元", "阿苏市", "鸣凤堂",
+        ],
+        "zh-tw": [
+            "熊本復興支援優惠", "準備販售中", "熊本縣", "住宿折扣", "適用住宿期間",
+            "優惠比例60%", "優惠上限20,000日圓", "阿蘇市", "鳴鳳堂",
+        ],
     },
-    "section": {"ja": "お知らせ"},
+    # Category shown on the card in each /information/ index, kept here so the
+    # JSON-LD articleSection and the visible label cannot drift apart.
+    "section": {"ja": "お知らせ", "en": "News", "zh-cn": "通知", "zh-tw": "公告"},
     # The promotion itself, as an entity separate from the article - the same
     # split the 阿蘇ふっこう割 page uses.
-    "campaign_name": {"ja": "熊本ふっこう応援割"},
+    "campaign_name": {
+        "ja": "熊本ふっこう応援割",
+        "en": "Kumamoto Reconstruction Support Discount",
+        "zh-cn": "熊本复兴支援优惠",
+        "zh-tw": "熊本復興支援優惠",
+    },
     "campaign_url": "https://kumamoto-ouenwari.com/index.html",
     # 対象宿泊期間 - the dates the page states. Not the sale window: the page
     # says selling has not begun at 鳴鳳堂, so no sale dates are asserted here.
     "campaign_start": "2026-10-01",
     "campaign_end": "2026-12-25",
-    "organizer": {"ja": "熊本県"},
+    "organizer": {
+        "ja": "熊本県", "en": "Kumamoto Prefecture",
+        "zh-cn": "熊本县", "zh-tw": "熊本縣",
+    },
 }
 
 ID_OUENWARI = f"{BASE}/#kumamoto-fukko-ouenwari"
@@ -585,6 +619,26 @@ PAGE_DESCRIPTIONS = {
         "開始しておりません。対象宿泊期間（2026年10月1日～12月25日宿泊分）、"
         "割引率60％、割引上限はお一人様最大20,000円など、最新情報をご案内いたします。"
         "熊本県阿蘇市の鳴鳳堂からのお知らせです。"
+    ),
+    "en/information/kumamoto-fukko-ouenwari-preparing/index.html": (
+        "Meihodo is preparing accommodation plans and reservations eligible for the "
+        "\u201cKumamoto Reconstruction Support Discount.\u201d As of 16 September 2026, "
+        "reservations under the discount have not yet opened at Meihodo. This page "
+        "covers the eligible stay period (1 October to 25 December 2026), the 60% "
+        "discount rate and the cap of JPY 20,000 per person per reservation. An "
+        "announcement from Meihodo in Aso, Kumamoto."
+    ),
+    "zh-cn/information/kumamoto-fukko-ouenwari-preparing/index.html": (
+        "鸣凤堂正在为“熊本复兴支援优惠”的正式销售做准备，包括适用住宿套餐与预约受理。"
+        "截至2026年9月16日，鸣凤堂尚未开始销售。本页介绍适用住宿期间"
+        "（2026年10月1日至12月25日）、优惠比例60%、每次预约每位客人最高20,000日元等信息。"
+        "此为熊本县阿苏市鸣凤堂的通知。"
+    ),
+    "zh-tw/information/kumamoto-fukko-ouenwari-preparing/index.html": (
+        "鳴鳳堂正積極準備「熊本復興支援優惠」的適用住宿方案與預約受理作業。"
+        "截至2026年9月16日，鳴鳳堂尚未開始販售。本頁介紹適用住宿期間"
+        "（2026年10月1日至12月25日）、優惠比例60%、每次預約每位旅客最高20,000日圓等資訊。"
+        "此為熊本縣阿蘇市鳴鳳堂的公告。"
     ),
     NEWS_ALERT_PATH: (
         "2026年9月1日16時00分、福岡管区気象台は阿蘇山・中岳の噴火警戒レベルを"
@@ -743,19 +797,17 @@ def build_registry() -> list[Page]:
                    (CRUMB["information"][lang], canonical_for(info_path)),
                    (CRUMB["news-aso-nakadake-alert-level-2"][lang], canonical_for(news_path)))))
 
-        # 「熊本ふっこう応援割」販売準備中のお知らせ. Japanese only for now -
-        # registering the three mirror paths would make build_jsonld read files
-        # that do not exist. Add the loop-style registration here once the
-        # translated editions are published (and the CRUMB entry with them).
-        if lang == "ja":
-            ouenwari_path = "ja/information/kumamoto-fukko-ouenwari-preparing/index.html"
-            pages.append(Page(
-                ouenwari_path, lang, "news", "kumamoto-fukko-ouenwari-preparing",
-                canonical_for(ouenwari_path), True,
-                _crumb(lang,
-                       (CRUMB["information"][lang], canonical_for(info_path)),
-                       (CRUMB["news-kumamoto-fukko-ouenwari-preparing"][lang],
-                        canonical_for(ouenwari_path)))))
+        # 「熊本ふっこう応援割」販売準備中のお知らせ. Published in all four
+        # languages, so it registers exactly like the article above and
+        # alternates_for() finds a sibling in each tree.
+        ouenwari_path = f"{lang}/information/kumamoto-fukko-ouenwari-preparing/index.html"
+        pages.append(Page(
+            ouenwari_path, lang, "news", "kumamoto-fukko-ouenwari-preparing",
+            canonical_for(ouenwari_path), True,
+            _crumb(lang,
+                   (CRUMB["information"][lang], canonical_for(info_path)),
+                   (CRUMB["news-kumamoto-fukko-ouenwari-preparing"][lang],
+                    canonical_for(ouenwari_path)))))
 
         # The 阿蘇ふっこう割 announcement. It sits under /campaign/, not under
         # the news index, which is why its trail is home -> campaign rather
