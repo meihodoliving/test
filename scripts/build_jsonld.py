@@ -691,6 +691,42 @@ def node_nakadake() -> dict:
     }
 
 
+def node_ouenwari(page) -> dict:
+    """「熊本ふっこう応援割」 itself, as an entity separate from the article.
+
+    Deliberately thin. 鳴鳳堂 has not started selling qualifying plans, so this
+    node carries no location, no provider and no offer - anything of that shape
+    would assert participation the page explicitly says has not begun. What is
+    here is what 熊本県 publishes and the page repeats: the promotion's name,
+    the stay period it covers, who runs it, and where its own site is.
+    """
+    a = C.NEWS_OUENWARI_ARTICLE
+    return {
+        "@type": "SaleEvent",
+        "@id": C.ID_OUENWARI,
+        "name": a["campaign_name"][page.lang],
+        "url": a["campaign_url"],
+        # 対象宿泊期間. The sale window is not modelled: the article's point is
+        # that selling has not started at this property.
+        "startDate": a["campaign_start"],
+        "endDate": a["campaign_end"],
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "organizer": {
+            "@type": "GovernmentOrganization",
+            "name": a["organizer"][page.lang],
+        },
+    }
+
+
+# The extra entity each announcement is about, keyed by the registry slug. A
+# news article without an entry here is simply about 鳴鳳堂 alone.
+NEWS_ENTITY = {
+    "aso-nakadake-alert-level-2": (lambda page: node_nakadake(), lambda: C.ID_NAKADAKE),
+    "kumamoto-fukko-ouenwari-preparing": (node_ouenwari, lambda: C.ID_OUENWARI),
+}
+
+
 def node_news_article(page, image: str | None) -> dict:
     """A dated 鳴鳳堂 announcement under /ja/information/.
 
@@ -700,7 +736,9 @@ def node_news_article(page, image: str | None) -> dict:
     connect "阿蘇山の噴火警戒レベルは今どうなっているか" to a page that says so
     without having to parse the prose.
     """
-    a = C.NEWS_ALERT_ARTICLE
+    a = C.NEWS_ARTICLES[page.slug]
+    entity = NEWS_ENTITY.get(page.slug)
+    about = ([{"@id": entity[1]()}] if entity else []) + [{"@id": C.ID_MEIHODO}]
     return {
         "@type": "NewsArticle",
         "@id": f"{page.canonical}#article",
@@ -721,8 +759,8 @@ def node_news_article(page, image: str | None) -> dict:
         "publisher": {"@id": C.ID_ORG},
         "keywords": a["keywords"][page.lang],
         "articleSection": a["section"][page.lang],
-        "about": [{"@id": C.ID_NAKADAKE}, {"@id": C.ID_MEIHODO}],
-        "mentions": [{"@id": C.ID_NAKADAKE}, {"@id": C.ID_MEIHODO}],
+        "about": about,
+        "mentions": about,
         **({"image": [image]} if image else {}),
     }
 
@@ -870,9 +908,11 @@ def build_graph(page, src: str) -> list[dict]:
         main_id = f"{page.canonical}#article"
 
     elif page.kind == "news":
-        # The announcement plus the volcano it is about, cross-referenced by
-        # @id - the same two-node shape the campaign page uses.
-        extra.append(node_nakadake())
+        # The announcement plus whatever real-world thing it is about, cross-
+        # referenced by @id - the same two-node shape the campaign page uses.
+        entity = NEWS_ENTITY.get(page.slug)
+        if entity:
+            extra.append(entity[0](page))
         extra.append(node_news_article(page, image))
         main_id = f"{page.canonical}#article"
 

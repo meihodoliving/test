@@ -29,6 +29,11 @@
   var labelEl = document.getElementById('lang-current');
   if (labelEl) labelEl.textContent = current.short;
 
+  // Where to send the other languages when this page has no mirror in them.
+  // Base-relative and language-less, e.g. '/information/'. Undefined on every
+  // page that does have a mirror, which is the normal case.
+  var fallback = window.__LANG_FALLBACK_PATH__;
+
   // Build dropdown links
   var dropdown = document.getElementById('lang-dropdown');
   if (dropdown) {
@@ -46,6 +51,15 @@
           // The Japanese top page is the site root. /ja/ no longer exists
           // (vercel.json 301s it to "/"), so link straight at the root.
           targetPath = BASE;
+        } else if (fallback) {
+          // A page that exists in one language only (right now: a news article
+          // published in Japanese before its translations) declares where the
+          // other languages should land, because swapping the language segment
+          // would point at a path that does not exist. The page sets
+          //   window.__LANG_FALLBACK_PATH__ = '/information/';
+          // before this script runs. Pages that declare nothing - i.e. every
+          // other page on the site - are untouched by this branch.
+          targetPath = BASE.slice(0, -1) + '/' + lang.code + fallback;
         } else {
           // Swap the language segment inside the base-relative path, then put
           // the base back. BASE ends in "/" and rel starts with one. Japanese

@@ -328,6 +328,13 @@ CRUMB = {
         "zh-cn": "关于阿苏山中岳喷发警戒等级下调",
         "zh-tw": "關於阿蘇山中岳噴發警戒等級下調",
     },
+    # 「熊本ふっこう応援割」販売準備中のお知らせ。日本語版だけが公開されている
+    # 記事なので、ここも "ja" だけを持つ。翻訳版を出すときに en / zh-cn / zh-tw
+    # を足すこと（機械翻訳を先に置かない）。build_registry() も同じ理由で
+    # この記事を ja にだけ登録している。
+    "news-kumamoto-fukko-ouenwari-preparing": {
+        "ja": "「熊本ふっこう応援割」販売準備中のお知らせ",
+    },
 }
 
 
@@ -469,6 +476,63 @@ ID_NAKADAKE = f"{BASE}/#aso-nakadake"
 
 
 # ---------------------------------------------------------------------------
+# 「熊本ふっこう応援割」販売準備中のお知らせ.
+#
+# Same shape again. The point of this announcement is what 鳴鳳堂 has NOT done
+# yet: as of 2026-09-16 it is preparing qualifying plans and has not started
+# selling them. So nothing here says 鳴鳳堂 is a participating property, and
+# the SaleEvent node below carries no location, no provider and no offer - the
+# only facts asserted are the ones 熊本県 publishes and this page repeats
+# (stay period, sale start, discount rate, cap) plus the article itself.
+#
+# This is a different promotion from 阿蘇ふっこう割 above (阿蘇市, 9/7-9/30
+# stays, max ¥5,000/person/night). They have separate @ids and separate pages;
+# the article links to the other one so a reader cannot conflate them.
+#
+# datePublished / dateModified are kept by hand, not stamped from the clock.
+# The article is published in Japanese only for now, so every field here is a
+# plain string rather than a per-language dict.
+# ---------------------------------------------------------------------------
+NEWS_OUENWARI_PATH = "ja/information/kumamoto-fukko-ouenwari-preparing/index.html"
+NEWS_OUENWARI_ARTICLE = {
+    "headline": {
+        "ja": "【販売準備中】「熊本ふっこう応援割」についてのお知らせ｜鳴鳳堂",
+    },
+    "alternativeHeadline": {
+        "ja": "鳴鳳堂は「熊本ふっこう応援割」の対象プランを準備中です（2026年9月16日現在、販売未開始）",
+    },
+    "datePublished": "2026-09-16",
+    "dateModified": "2026-09-16",
+    "keywords": {
+        "ja": [
+            "熊本ふっこう応援割", "販売準備中", "熊本県", "宿泊割引", "対象宿泊期間",
+            "割引率60％", "割引上限20,000円", "阿蘇市", "鳴鳳堂",
+        ],
+    },
+    "section": {"ja": "お知らせ"},
+    # The promotion itself, as an entity separate from the article - the same
+    # split the 阿蘇ふっこう割 page uses.
+    "campaign_name": {"ja": "熊本ふっこう応援割"},
+    "campaign_url": "https://kumamoto-ouenwari.com/index.html",
+    # 対象宿泊期間 - the dates the page states. Not the sale window: the page
+    # says selling has not begun at 鳴鳳堂, so no sale dates are asserted here.
+    "campaign_start": "2026-10-01",
+    "campaign_end": "2026-12-25",
+    "organizer": {"ja": "熊本県"},
+}
+
+ID_OUENWARI = f"{BASE}/#kumamoto-fukko-ouenwari"
+
+# Every announcement under /information/<slug>/, keyed by the slug in the
+# registry, so build_jsonld can look one up instead of hardcoding a single
+# article.
+NEWS_ARTICLES = {
+    "aso-nakadake-alert-level-2": NEWS_ALERT_ARTICLE,
+    "kumamoto-fukko-ouenwari-preparing": NEWS_OUENWARI_ARTICLE,
+}
+
+
+# ---------------------------------------------------------------------------
 # Meta-description overrides.
 #
 # build_head_meta.py normally reads a page's own first substantial paragraph.
@@ -514,6 +578,13 @@ PAGE_DESCRIPTIONS = {
         "対象宿泊施設です。2026年9月7日～9月30日の対象宿泊について、"
         "1名1泊あたり最大5,000円の宿泊割引と2,000円分の地域クーポンを"
         "ご利用いただけます。ご予約はメールまたはお電話での直接予約のみの受付です。"
+    ),
+    NEWS_OUENWARI_PATH: (
+        "鳴鳳堂では現在、「熊本ふっこう応援割」の販売開始に向けて、対象プランおよび"
+        "予約受付の準備を進めております。2026年9月16日現在、鳴鳳堂での販売は"
+        "開始しておりません。対象宿泊期間（2026年10月1日～12月25日宿泊分）、"
+        "割引率60％、割引上限はお一人様最大20,000円など、最新情報をご案内いたします。"
+        "熊本県阿蘇市の鳴鳳堂からのお知らせです。"
     ),
     NEWS_ALERT_PATH: (
         "2026年9月1日16時00分、福岡管区気象台は阿蘇山・中岳の噴火警戒レベルを"
@@ -671,6 +742,20 @@ def build_registry() -> list[Page]:
             _crumb(lang,
                    (CRUMB["information"][lang], canonical_for(info_path)),
                    (CRUMB["news-aso-nakadake-alert-level-2"][lang], canonical_for(news_path)))))
+
+        # 「熊本ふっこう応援割」販売準備中のお知らせ. Japanese only for now -
+        # registering the three mirror paths would make build_jsonld read files
+        # that do not exist. Add the loop-style registration here once the
+        # translated editions are published (and the CRUMB entry with them).
+        if lang == "ja":
+            ouenwari_path = "ja/information/kumamoto-fukko-ouenwari-preparing/index.html"
+            pages.append(Page(
+                ouenwari_path, lang, "news", "kumamoto-fukko-ouenwari-preparing",
+                canonical_for(ouenwari_path), True,
+                _crumb(lang,
+                       (CRUMB["information"][lang], canonical_for(info_path)),
+                       (CRUMB["news-kumamoto-fukko-ouenwari-preparing"][lang],
+                        canonical_for(ouenwari_path)))))
 
         # The 阿蘇ふっこう割 announcement. It sits under /campaign/, not under
         # the news index, which is why its trail is home -> campaign rather
