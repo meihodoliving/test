@@ -506,11 +506,12 @@ NEWS_OUENWARI_ARTICLE = {
         "zh-tw": "【準備販售中】關於「熊本復興支援優惠」的公告｜鳴鳳堂",
     },
     "alternativeHeadline": {
-        "ja": "鳴鳳堂は「熊本ふっこう応援割」の対象プランを準備中です（2026年9月16日現在、販売未開始）",
-        "en": ("Meihodo is preparing plans eligible for the Kumamoto Reconstruction Support "
-               "Discount; reservations have not opened as of 16 September 2026"),
-        "zh-cn": "鸣凤堂正在准备“熊本复兴支援优惠”的适用住宿套餐（截至2026年9月16日尚未开始销售）",
-        "zh-tw": "鳴鳳堂正在準備「熊本復興支援優惠」的適用住宿方案（截至2026年9月16日尚未開始販售）",
+        "ja": "鳴鳳堂は「熊本ふっこう応援割」の販売開始に向けて準備中です（2026年9月16日現在、販売未開始）",
+        "en": ("Meihodo is preparing for the start of sales and reservations under the "
+               "Kumamoto Reconstruction Support Discount; reservations have not opened "
+               "as of 16 September 2026"),
+        "zh-cn": "鸣凤堂正为“熊本复兴支援优惠”的销售与预约开始做准备（截至2026年9月16日尚未开始销售）",
+        "zh-tw": "鳴鳳堂正為「熊本復興支援優惠」的開始販售與預約進行準備（截至2026年9月16日尚未開始販售）",
     },
     "datePublished": "2026-09-16",
     "dateModified": "2026-09-16",
