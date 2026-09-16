@@ -617,27 +617,29 @@ PAGE_DESCRIPTIONS = {
         "鳴鳳堂では現在、「熊本ふっこう応援割」の販売開始に向けて、対象プランおよび"
         "予約受付の準備を進めております。2026年9月16日現在、鳴鳳堂での販売は"
         "開始しておりません。対象宿泊期間（2026年10月1日～12月25日宿泊分）、"
-        "割引率60％、割引上限はお一人様最大20,000円など、最新情報をご案内いたします。"
+        "割引率60％、割引上限はお一人様最大20,000円などの概要と、専用プランでの"
+        "新規ご予約が必要となる点（既存のご予約への後付け適用は不可）をご案内いたします。"
         "熊本県阿蘇市の鳴鳳堂からのお知らせです。"
     ),
     "en/information/kumamoto-fukko-ouenwari-preparing/index.html": (
-        "Meihodo is preparing accommodation plans and reservations eligible for the "
-        "\u201cKumamoto Reconstruction Support Discount.\u201d As of 16 September 2026, "
-        "reservations under the discount have not yet opened at Meihodo. This page "
-        "covers the eligible stay period (1 October to 25 December 2026), the 60% "
-        "discount rate and the cap of JPY 20,000 per person per reservation. An "
-        "announcement from Meihodo in Aso, Kumamoto."
+        "Meihodo is preparing plans eligible for the \u201cKumamoto Reconstruction "
+        "Support Discount.\u201d Reservations have not opened here as of 16 September "
+        "2026. Eligible stays run 1 October to 25 December 2026, at 60% off, up to "
+        "JPY 20,000 per person per reservation. A new booking on a dedicated plan is "
+        "needed."
     ),
     "zh-cn/information/kumamoto-fukko-ouenwari-preparing/index.html": (
         "鸣凤堂正在为“熊本复兴支援优惠”的正式销售做准备，包括适用住宿套餐与预约受理。"
         "截至2026年9月16日，鸣凤堂尚未开始销售。本页介绍适用住宿期间"
-        "（2026年10月1日至12月25日）、优惠比例60%、每次预约每位客人最高20,000日元等信息。"
+        "（2026年10月1日至12月25日）、优惠比例60%、每次预约每位客人最高20,000日元等信息，"
+        "并说明需通过专用套餐重新预约（现有预约无法事后追加适用）。"
         "此为熊本县阿苏市鸣凤堂的通知。"
     ),
     "zh-tw/information/kumamoto-fukko-ouenwari-preparing/index.html": (
         "鳴鳳堂正積極準備「熊本復興支援優惠」的適用住宿方案與預約受理作業。"
         "截至2026年9月16日，鳴鳳堂尚未開始販售。本頁介紹適用住宿期間"
-        "（2026年10月1日至12月25日）、優惠比例60%、每次預約每位旅客最高20,000日圓等資訊。"
+        "（2026年10月1日至12月25日）、優惠比例60%、每次預約每位旅客最高20,000日圓等資訊，"
+        "並說明需透過專用方案重新預約（現有預約無法事後追加適用）。"
         "此為熊本縣阿蘇市鳴鳳堂的公告。"
     ),
     NEWS_ALERT_PATH: (
