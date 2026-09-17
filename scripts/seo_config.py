@@ -576,6 +576,31 @@ NEWS_ARTICLES = {
 # instead of having to be re-typed into the generated block every run.
 # ---------------------------------------------------------------------------
 PAGE_DESCRIPTIONS = {
+    # Edokan: the first paragraph of the page is now a one-line mood sentence,
+    # so the summary is written here instead. Every feature named is one the
+    # room-description section of that same page states.
+    "ja/edokan/index.html": (
+        "鳴鳳堂の江戸館は、江戸の趣と現代の快適さを兼ね備えた一棟の客室です。"
+        "江戸時代の台所を再現したキッチンや囲炉裏、実際にご利用いただける五右衛門風呂、"
+        "木の浴槽を備え、美しくリフォームされた居住空間には畳のリビングと"
+        "ベッドを配した洋室をご用意しています。"
+    ),
+    "en/edokan/index.html": (
+        "Edokan at Meihodo is a guest villa pairing Edo-period character with modern "
+        "comfort: a recreated Edo-period kitchen, an irori hearth, a working Goemon bath "
+        "and a wooden bathtub, with renovated living quarters that offer a tatami living "
+        "room and a Western-style room with beds."
+    ),
+    "zh-cn/edokan/index.html": (
+        "鸣凤堂的江户馆是一栋兼具江户历史意趣与现代舒适的独栋客房。馆内设有再现江户时代"
+        "灶房风貌的厨房、地炉（围炉里）、可实际使用的五右卫门浴与木质浴缸；经精心翻新的"
+        "起居空间备有榻榻米起居室及配备床铺的西式房间。"
+    ),
+    "zh-tw/edokan/index.html": (
+        "鳴鳳堂的江戶館是兼具江戶歷史雅趣與現代舒適的獨棟客房。館內設有重現江戶時代"
+        "灶房風貌的廚房、地爐（圍爐裏）、可實際使用的五右衛門浴與木製浴缸；經精心翻修的"
+        "起居空間備有榻榻米起居室及設置床鋪的西式房間。"
+    ),
     # things-to-do leads with the intent the page answers ("阿蘇 雨の日 観光",
     # "indoor activities in Aso") rather than with the brand, because that is
     # the sentence a search or answer engine has to match. Every fact after it
