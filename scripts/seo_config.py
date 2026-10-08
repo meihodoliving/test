@@ -374,7 +374,9 @@ CAMPAIGN_ARTICLE = {
     },
     "datePublished": "2026-09-01",
     "dateModified": "2026-09-01",
-    "image": f"{BASE}/images/top/web_banner.png",
+    # The campaign banner was taken off the site (2026-10), so the article
+    # falls back to the site-wide default rather than an image no page shows.
+    "image": DEFAULT_IMAGE,
     "keywords": {
         "ja": [
             "阿蘇ふっこう割", "熊本応援キャンペーン", "阿蘇に泊まって支える", "阿蘇市",

@@ -8252,65 +8252,11 @@ footer a:hover,
 
 /* ----------------------------------------------------------------
    阿蘇ふっこう割（熊本応援キャンペーン）
-   - トップページのバナー（.campaign-banner-*）
    - キャンペーン紹介ページ /ja/campaign/aso-fukkou/（.campaign-page-*）
    既存のカード（.facility-block）・見出し（.about-page-title /
    .about-section-heading）・ボタン（.btn / .btn-primary）と同じ
    トーンに合わせ、新しいデザインシステムは足していない。
    ---------------------------------------------------------------- */
-
-/* --- トップページ：ヒーロー直下のバナー --------------------------- */
-.campaign-banner-section {
-    /* .philosophy のグラデーション開始色に合わせ、ヒーローとの間に
-       段差が出ないようにしている。 */
-    background: #FEFEFE;
-    padding: 3.5rem 0 0.5rem;
-}
-
-.campaign-banner {
-    display: block;
-    max-width: 900px;
-    margin: 0 auto;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(139, 115, 85, 0.12);
-    box-shadow: 0 12px 40px rgba(139, 115, 85, 0.08);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.campaign-banner:hover,
-.campaign-banner:focus-visible {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 48px rgba(139, 115, 85, 0.16);
-}
-
-/* width/height 属性で縦横比を保ったまま、幅に追従して縮小する。 */
-.campaign-banner__image {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-@media (max-width: 768px) {
-    .campaign-banner-section {
-        padding: 2.25rem 0 0.25rem;
-    }
-
-    .campaign-banner {
-        border-radius: 12px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .campaign-banner {
-        transition: none;
-    }
-
-    .campaign-banner:hover,
-    .campaign-banner:focus-visible {
-        transform: none;
-    }
-}
 
 /* --- 記事詳細ページ共通 ------------------------------------------
    .campaign-page-* / .campaign-block-* は 阿蘇ふっこう割 ページのために
@@ -8329,21 +8275,6 @@ footer a:hover,
     margin-right: auto;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-}
-
-.campaign-hero-figure {
-    margin: 0 0 3rem;
-    display: flex;
-    justify-content: center;
-}
-
-.campaign-hero-image {
-    width: min(100%, 900px);
-    height: auto;
-    display: block;
-    border-radius: 16px;
-    border: 1px solid rgba(139, 115, 85, 0.12);
-    box-shadow: 0 12px 40px rgba(139, 115, 85, 0.06);
 }
 
 .campaign-page-kicker {
@@ -8658,14 +8589,6 @@ main .container .campaign-cta p {
     .campaign-page-main {
         padding-top: 5.5rem;
         padding-bottom: 3.5rem;
-    }
-
-    .campaign-hero-figure {
-        margin-bottom: 2rem;
-    }
-
-    .campaign-hero-image {
-        border-radius: 12px;
     }
 
     .campaign-block {
