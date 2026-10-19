@@ -9611,3 +9611,40 @@ a.ttd-pillar:focus-visible {
 .accommodation-card .card-content p {
     word-break: auto-phrase;
 }
+
+/* Concept block: beat the per-language .philosophy overrides
+   (body.home-en / body.home-zh-tw .philosophy) and loosen JP-tuned
+   letter-spacing for Latin text. */
+body .philosophy.philosophy--concept {
+    padding: 128px 0 96px;
+}
+
+html[lang="en"] .concept-title {
+    font-size: 1.9rem;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+}
+
+html[lang="en"] .concept-body p,
+html[lang="en"] .stay-concept-body p,
+html[lang="en"] .stay-concept-title {
+    letter-spacing: 0.01em;
+}
+
+html[lang="en"] .concept-body p {
+    line-height: 2;
+}
+
+html[lang="en"] .stay-concept-body p {
+    line-height: 1.9;
+}
+
+@media (max-width: 768px) {
+    body .philosophy.philosophy--concept {
+        padding: 88px 0 72px;
+    }
+
+    html[lang="en"] .concept-title {
+        font-size: 1.5rem;
+    }
+}
