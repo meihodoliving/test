@@ -126,7 +126,6 @@ KNOWS_ABOUT = [
     "Bonseki",
     "Wadaiko (Japanese drumming)",
     "Takigyo (waterfall meditation)",
-    "Japanese architecture",
     "Cultural tourism in Aso, Kumamoto",
 ]
 
