@@ -691,39 +691,10 @@ def node_nakadake() -> dict:
     }
 
 
-def node_ouenwari(page) -> dict:
-    """「熊本ふっこう応援割」 itself, as an entity separate from the article.
-
-    Deliberately thin. 鳴鳳堂 has not started selling qualifying plans, so this
-    node carries no location, no provider and no offer - anything of that shape
-    would assert participation the page explicitly says has not begun. What is
-    here is what 熊本県 publishes and the page repeats: the promotion's name,
-    the stay period it covers, who runs it, and where its own site is.
-    """
-    a = C.NEWS_OUENWARI_ARTICLE
-    return {
-        "@type": "SaleEvent",
-        "@id": C.ID_OUENWARI,
-        "name": a["campaign_name"][page.lang],
-        "url": a["campaign_url"],
-        # 対象宿泊期間. The sale window is not modelled: the article's point is
-        # that selling has not started at this property.
-        "startDate": a["campaign_start"],
-        "endDate": a["campaign_end"],
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "organizer": {
-            "@type": "GovernmentOrganization",
-            "name": a["organizer"][page.lang],
-        },
-    }
-
-
 # The extra entity each announcement is about, keyed by the registry slug. A
 # news article without an entry here is simply about 鳴鳳堂 alone.
 NEWS_ENTITY = {
     "aso-nakadake-alert-level-2": (lambda page: node_nakadake(), lambda: C.ID_NAKADAKE),
-    "kumamoto-fukko-ouenwari-preparing": (node_ouenwari, lambda: C.ID_OUENWARI),
 }
 
 
