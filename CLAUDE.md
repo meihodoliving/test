@@ -105,6 +105,16 @@ The [scripts/](scripts/) directory holds Python utilities that enforce the mirro
 - `update_experience_prices.py`, `add_accommodation_jsonld.py`, `add_faq_jsonld.py` also re-insert legacy standalone JSON-LD islands; `build_seo.py` removes them again, so always run `build_seo.py` after any of these.
 - [optimize_images.py](scripts/optimize_images.py) — converts JPG/PNG to WebP, rewrites references in `.html`/`.css`/`.js`/etc., deletes originals. Skips `.git` and `node_modules`. Use the `:dry` npm script first.
 
+#### Maintenance backlog (open as of 2026-10-19)
+
+Known script debt, found by running every writer script in a throwaway worktree. None of it is live-site breakage today; each item is a trap for the next person who runs the script. Fix or delete — don't just run.
+
+1. **Retired whole-page generators** — `build_en_index.py`, `build_zh_cn_index.py`, `create_zh_tw_mirror.py` are stubs that `sys.exit` with an explanation (last working code: `git show d66e6cc:scripts/<name>`). Decide whether to delete them outright or replace them with a non-destructive helper (e.g. "scaffold one new page from `ja/`"). Never restore the old behaviour.
+2. **`zh_cn_mechanical.py`** — one-time migration that now corrupts the zh-cn language switcher (JP → `/zh-cn/`) and `ja` hreflang. Candidate for deletion or the same retirement stub.
+3. **Old link formats** — `fix_lang_zh_cn_links.py` / `fix_lang_zh_tw_links.py` rewrite ~30–40 correct switcher links (incl. ja/en/legacy zh-hans/zh-hant pages) back to `…/index.html` forms. Update them to the `/<lang>/<section>/` form the pages use today, or retire them.
+4. **Legacy JSON-LD islands** — `update_experience_prices.py` (MEIHODO-SERVICE-JSONLD), `add_accommodation_jsonld.py` (MEIHODO-ACCOMMODATION-JSONLD) and `add_faq_jsonld.py` (MEIHODO-FAQ-JSONLD) still emit standalone JSON-LD that duplicates the `build_jsonld.py` `@graph`. `build_seo.py` strips it, so today the rule is "always run `build_seo.py` afterwards". The real fix: drop JSON-LD output from the price script (keep its price rewriting) and retire the two `add_*` scripts.
+5. **`build_room_galleries.py` / `replace_iaido_terms.py`** — not destructive, but a run today changes gallery order on 9 room pages and the 居合道/試斬 wording on 3 about pages. Review the diff before committing.
+
 ### SEO / structured data — generated, do not hand-edit
 
 `npm run seo` (`python3 scripts/build_seo.py`) owns every page's `<head>` SEO block and JSON-LD. `npm run seo:check` reports without writing. Both are idempotent.
