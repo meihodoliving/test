@@ -1,48 +1,25 @@
 #!/usr/bin/env python3
+"""RETIRED - this script no longer writes anything.
+
+It used to copy every ja/**/*.html over zh-tw/ with only lang/href
+rewrites, so the switcher would find a page at every path.
+
+Why it was retired (2026-10):
+- Every zh-tw page now exists and is translated. A run replaced all 43
+  translated pages with Japanese copy.
+- To add a new page, copy the single ja/ file to zh-tw/ by hand, change
+  lang="ja" to lang="zh-TW" and /ja/ links to /zh-tw/, then translate it.
+
+zh-tw/ tree is now maintained by hand, like every other translated page. Edit it
+directly, then run `python3 scripts/build_seo.py` for its <head> SEO block and
+JSON-LD.
+
+The last working version is in git history:
+    git show d66e6cc:scripts/create_zh_tw_mirror.py
 """
-Create /zh-tw/ pages by mirroring /ja/ with identical structure.
+import sys
 
-- Copies every ja/**/*.html → zh-tw/**/*.html (same relative path)
-- Keeps layout/HTML structure identical
-- Mechanical adjustments only:
-  - <html lang="ja"> → <html lang="zh-TW">
-  - href="/ja/..." → href="/zh-tw/..." (ONLY this exact pattern)
-
-This script does NOT translate text; it only ensures the parallel zh-tw files exist
-so language switching can navigate to real pages.
-"""
-
-from __future__ import annotations
-
-from pathlib import Path
-
-ROOT = Path(__file__).resolve().parent.parent
-SRC_DIR = ROOT / "ja"
-DST_DIR = ROOT / "zh-tw"
-
-
-def main() -> None:
-    src_files = sorted(SRC_DIR.glob("**/*.html"))
-    if not src_files:
-        raise SystemExit("No ja/**/*.html files found.")
-
-    n_written = 0
-    for src in src_files:
-        rel = src.relative_to(SRC_DIR)
-        dst = DST_DIR / rel
-        dst.parent.mkdir(parents=True, exist_ok=True)
-
-        text = src.read_text(encoding="utf-8")
-        text = text.replace('<html lang="ja">', '<html lang="zh-TW">')
-        text = text.replace('href="/ja/', 'href="/zh-tw/')
-
-        # Write (always overwrite to stay in sync with ja structure)
-        dst.write_text(text, encoding="utf-8")
-        n_written += 1
-
-    print(f"Mirrored {n_written} files to {DST_DIR}")
-
-
-if __name__ == "__main__":
-    main()
-
+sys.exit(
+    "create_zh_tw_mirror.py is retired: it would overwrite the hand-maintained zh-tw/ tree. "
+    "Edit that file directly instead (see the docstring of this script)."
+)

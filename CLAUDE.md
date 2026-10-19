@@ -97,12 +97,12 @@ The bare `/zh-hans/restaurant.html` and `/zh-hant/restaurant.html` are legacy st
 
 The [scripts/](scripts/) directory holds Python utilities that enforce the mirror invariants. They are **not invoked by npm**; run with `python3 scripts/<name>.py` when you need them.
 
-- [create_zh_tw_mirror.py](scripts/create_zh_tw_mirror.py) — copies every `ja/**/*.html` to `zh-tw/`, rewrites `lang="ja"` → `lang="zh-TW"` and `href="/ja/"` → `href="/zh-tw/"`. **Does not translate text.** Run after adding/restructuring pages under `/ja/`.
-- [zh_cn_mechanical.py](scripts/zh_cn_mechanical.py) — same mechanical fixups for `/zh-cn/` (also normalizes `../../index.html` paths).
-- [build_en_index.py](scripts/build_en_index.py), [build_zh_cn_index.py](scripts/build_zh_cn_index.py) — regenerate the language-root `index.html` from the canonical root [index.html](index.html), with translated copy and adjusted asset paths.
+- **Retired (exit without writing):** [create_zh_tw_mirror.py](scripts/create_zh_tw_mirror.py), [build_en_index.py](scripts/build_en_index.py), [build_zh_cn_index.py](scripts/build_zh_cn_index.py). They regenerated whole pages from the Japanese source and would revert hand-maintained translations (the mirror replaced all 43 zh-tw pages with Japanese; the EN generator had drifted ~300 lines from `en/index.html`). Every language's top page and tree is now edited by hand. To add a page, copy the one `ja/` file, fix `lang` and `/ja/` links, translate.
+- [zh_cn_mechanical.py](scripts/zh_cn_mechanical.py) — **one-time migration; do not run.** On the current tree it rewrites the zh-cn language switcher's JP link to `/zh-cn/` and the `ja` hreflang to `zh-CN`.
 - [build_room_galleries.py](scripts/build_room_galleries.py) — scans `/images/<room>/` and injects `<div class="gallery-grid">` into each language's `<room>/index.html`. Note the directory-name remapping (e.g. page `bunshinkan` ↔ image folder `bunsinkan`, `korokan` ↔ `kourokan`, `seiseikan` ↔ `seiseisya`) defined in `ROOM_TO_DIR`.
 - [update_experience_prices.py](scripts/update_experience_prices.py) — single source of truth for experience prices across all four languages. Edit the `PRICES` dict and run; do not hand-edit prices in HTML.
-- [fix_lang_zh_cn_links.py](scripts/fix_lang_zh_cn_links.py), [fix_lang_zh_tw_links.py](scripts/fix_lang_zh_tw_links.py), [fix_access_nav_links.py](scripts/fix_access_nav_links.py), [replace_iaido_terms.py](scripts/replace_iaido_terms.py) — targeted post-hoc rewrites; read the script before running.
+- [fix_lang_zh_cn_links.py](scripts/fix_lang_zh_cn_links.py), [fix_lang_zh_tw_links.py](scripts/fix_lang_zh_tw_links.py), [fix_access_nav_links.py](scripts/fix_access_nav_links.py), [replace_iaido_terms.py](scripts/replace_iaido_terms.py) — targeted post-hoc rewrites; read the script before running. As of 2026-10 the two `fix_lang_*` scripts rewrite ~30–40 already-correct switcher links back to `…/index.html` forms, and `replace_iaido_terms.py` edits the about pages — dry-run in a throwaway worktree first.
+- `update_experience_prices.py`, `add_accommodation_jsonld.py`, `add_faq_jsonld.py` also re-insert legacy standalone JSON-LD islands; `build_seo.py` removes them again, so always run `build_seo.py` after any of these.
 - [optimize_images.py](scripts/optimize_images.py) — converts JPG/PNG to WebP, rewrites references in `.html`/`.css`/`.js`/etc., deletes originals. Skips `.git` and `node_modules`. Use the `:dry` npm script first.
 
 ### SEO / structured data — generated, do not hand-edit
@@ -133,6 +133,7 @@ After running it, re-check the deployed pages per "Before pushing to main" — t
 ### Shared front-end pieces
 
 - [styles.css](styles.css) at the repo root is the single shared stylesheet (~7k lines). Language pages reference it as `../styles.css`.
+- **Serif font is a variable:** write `font-family: var(--font-serif-cjk), serif`, never a literal `'Noto Serif JP'`. `:root` sets it to Noto Serif JP (ja/en); `html[lang="zh-CN"]` / `html[lang="zh-TW"]` switch to Noto Serif SC / TC, which zh-cn / zh-tw pages load from Google Fonts alongside JP. A literal JP font on a Chinese page makes glyphs missing from Noto Serif JP fall back one by one to a system font.
 - [lang-switcher.js](lang-switcher.js) is included as `<script src="/lang-switcher.js" defer>` on every page that has a `#lang-btn` / `#lang-dropdown`. It infers the current language from the URL prefix and rewrites the path to switch.
 - Experience pages under `/ja/experiences/<slug>/` share [ja/experiences/components.css](ja/experiences/components.css) and follow the layout documented in [ja/experiences/README.md](ja/experiences/README.md). Use [ja/experiences/kyudo/](ja/experiences/kyudo/) as the reference implementation; [UPDATE_SUMMARY.md](UPDATE_SUMMARY.md) records the standardization pattern.
 
@@ -168,5 +169,5 @@ If the deployed site looks visually broken but local is fine, your first three c
 - **Internal links: absolute paths rooted at language.** `href="/ja/experiences/"`, not relative `../`. Two reasons: (a) the mirror scripts depend on it — relative paths break the `s/\/ja\//\/zh-tw\//` rewrite; (b) `..` from a sub-page breaks under Vercel `cleanUrls` (see Deployment invariant 3).
 - **Image `src`/`srcset`: absolute from repo root.** `src="/images/top/top.webp"`. See Deployment invariant 2.
 - **The only safe relative path is up-to-root.** `<link href="../styles.css">` from `/ja/index.html`, `<link href="../../../styles.css">` from a depth-3 page — both clamp at `/styles.css`. Everything else must be absolute.
-- **When editing structure under `/ja/`, propagate to the other three language trees** (or run the mirror scripts in `scripts/`) so the language switcher does not 404.
+- **When editing structure under `/ja/`, propagate to the other three language trees** by hand (the whole-tree mirror scripts are retired) so the language switcher does not 404.
 - **Prices, room names, and other cross-page facts that have a generator script in [scripts/](scripts/) should be edited in the script, not in HTML.**
