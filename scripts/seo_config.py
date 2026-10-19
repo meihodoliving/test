@@ -578,6 +578,20 @@ NEWS_ARTICLES = {
 # instead of having to be re-typed into the generated block every run.
 # ---------------------------------------------------------------------------
 PAGE_DESCRIPTIONS = {
+    "ja/geihinkan/index.html": (
+        "一棟貸しの双翼造りの邸宅です。片翼に露天風呂（温泉ではありません）を備え、"
+        "最大8名様までご利用いただけます。"
+    ),
+    "en/geihinkan/index.html": (
+        "This is a two-wing residence rented as a whole building. The left wing has an open-air "
+        "bath (not a hot spring). The residence accommodates up to 8 guests."
+    ),
+    "zh-cn/geihinkan/index.html": (
+        "这是一栋可整栋包租的双翼式宅邸。左翼设有露天浴池（非温泉），最多可入住8位客人。"
+    ),
+    "zh-tw/geihinkan/index.html": (
+        "這是一棟可整棟包棟的雙翼式宅邸。左翼設有露天浴池（非溫泉），最多可入住8位房客。"
+    ),
     # Edokan: the first paragraph of the page is now a one-line mood sentence,
     # so the summary is written here instead. Every feature named is one the
     # room-description section of that same page states.
