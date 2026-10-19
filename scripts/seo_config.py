@@ -582,64 +582,64 @@ PAGE_DESCRIPTIONS = {
     # facility, then the room facts each page states (capacity and bath from
     # the room-details card), keeping 阿蘇 / 宿泊 / 日本文化体験 as plain words.
     "ja/accommodations/index.html": (
-        '熊本県阿蘇市の鳴鳳堂は、日本文化の継承と体験を大切にする文化施設です。伝統建築と阿蘇の自然に囲まれた一棟貸しの宿泊棟で、弓道や茶道などの日本文化体験とともに、一般的なホテルとは異なる文化的な滞在をお過ごしいただけます。'
+        '熊本県阿蘇市の鳴鳳堂は、日本文化の継承と体験を大切にする文化施設です。阿蘇の自然に囲まれた一棟貸しの宿泊棟で、弓道や茶道などの日本文化体験とともに、一般的なホテルとは異なる文化的な滞在をお過ごしいただけます。'
     ),
     "en/accommodations/index.html": (
-        'Stay at Meihodo, a cultural estate in Aso, Kumamoto: whole-building lodging among traditional architecture, alongside Japanese cultural experiences — not a conventional hotel.'
+        'Stay at Meihodo, a cultural estate in Aso, Kumamoto: whole-building lodging amid the nature of Aso, alongside Japanese cultural experiences — not a conventional hotel.'
     ),
     "zh-cn/accommodations/index.html": (
-        '位于熊本县阿苏市的鸣凤堂，是致力于传承与体验日本文化的文化设施。在传统建筑与阿苏自然环抱的整栋包租住宿中，结合弓道、茶道等日本文化体验，度过一段不同于一般酒店的文化之旅。'
+        '位于熊本县阿苏市的鸣凤堂，是致力于传承与体验日本文化的文化设施。在阿苏自然环抱的整栋包租住宿中，结合弓道、茶道等日本文化体验，度过一段不同于一般酒店的文化之旅。'
     ),
     "zh-tw/accommodations/index.html": (
-        '位於熊本縣阿蘇市的鳴鳳堂，是致力於傳承與體驗日本文化的文化設施。在傳統建築與阿蘇自然環抱的一棟包棟住宿中，結合弓道、茶道等日本文化體驗，度過一段不同於一般飯店的文化之旅。'
+        '位於熊本縣阿蘇市的鳴鳳堂，是致力於傳承與體驗日本文化的文化設施。在阿蘇自然環抱的一棟包棟住宿中，結合弓道、茶道等日本文化體驗，度過一段不同於一般飯店的文化之旅。'
     ),
     "ja/seiseisya/index.html": (
-        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「清静舎」。自然素材を用いた静かな空間に檜風呂を備え、最大4名様までご宿泊いただけます。日本文化体験とともに、伝統建築に身を置く滞在をお楽しみください。'
+        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「清静舎」。自然素材を用いた静かな空間に檜風呂を備え、最大4名様までご宿泊いただけます。日本文化体験とともに、阿蘇の自然に囲まれた静かな滞在をお楽しみください。'
     ),
     "en/seiseisya/index.html": (
         'Seiseisya, a whole-building stay at Meihodo, a cultural estate in Aso, Kumamoto: a quiet house of natural materials with a hinoki bath, for up to 4 guests.'
     ),
     "zh-cn/seiseisya/index.html": (
-        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「清静舍」。以天然材料打造的静谧空间，设有桧木浴池，最多可入住4位客人。在体验日本文化之余，置身传统建筑之中。'
+        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「清静舍」。以天然材料打造的静谧空间，设有桧木浴池，最多可入住4位客人。在体验日本文化之余，享受阿苏自然环抱中的宁静时光。'
     ),
     "zh-tw/seiseisya/index.html": (
-        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「清静舎」。以天然素材打造的靜謐空間，設有檜木浴池，最多可入住4位旅客。在體驗日本文化之餘，置身傳統建築之中。'
+        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「清静舎」。以天然素材打造的靜謐空間，設有檜木浴池，最多可入住4位旅客。在體驗日本文化之餘，享受阿蘇自然環抱下的寧靜時光。'
     ),
     "ja/geihinkan/index.html": (
-        '熊本県阿蘇市の文化施設・鳴鳳堂の宿泊棟「迎賓館」。一棟貸しの双翼造りの邸宅で、片翼に露天風呂（温泉ではありません）を備え、最大8名様までご利用いただけます。日本文化体験とともに、伝統建築に身を置く滞在をお楽しみください。'
+        '熊本県阿蘇市の文化施設・鳴鳳堂の宿泊棟「迎賓館」。一棟貸しの双翼造りの邸宅で、片翼に露天風呂（温泉ではありません）を備え、最大8名様までご利用いただけます。日本文化体験とともに、阿蘇の自然に囲まれた静かな滞在をお楽しみください。'
     ),
     "en/geihinkan/index.html": (
         'Geihinkan, a two-wing residence rented whole at Meihodo, a cultural estate in Aso, Kumamoto. Open-air bath in the left wing (not a hot spring); up to 8 guests.'
     ),
     "zh-cn/geihinkan/index.html": (
-        '熊本县阿苏市文化设施鸣凤堂的住宿「迎宾馆」。可整栋包租的双翼式宅邸，左翼设有露天浴池（非温泉），最多可入住8位客人。在体验日本文化之余，置身传统建筑之中。'
+        '熊本县阿苏市文化设施鸣凤堂的住宿「迎宾馆」。可整栋包租的双翼式宅邸，左翼设有露天浴池（非温泉），最多可入住8位客人。在体验日本文化之余，享受阿苏自然环抱中的宁静时光。'
     ),
     "zh-tw/geihinkan/index.html": (
-        '熊本縣阿蘇市文化設施鳴鳳堂的住宿「迎賓館」。可整棟包棟的雙翼式宅邸，左翼設有露天浴池（非溫泉），最多可入住8位旅客。在體驗日本文化之餘，置身傳統建築之中。'
+        '熊本縣阿蘇市文化設施鳴鳳堂的住宿「迎賓館」。可整棟包棟的雙翼式宅邸，左翼設有露天浴池（非溫泉），最多可入住8位旅客。在體驗日本文化之餘，享受阿蘇自然環抱下的寧靜時光。'
     ),
     "ja/korokan/index.html": (
-        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「鴻臚館」。檜の半露天風呂を備えた落ち着いた佇まいの一棟で、最大8名様までご宿泊いただけます。日本文化体験とともに、伝統建築に身を置く滞在をお楽しみください。'
+        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「鴻臚館」。檜の半露天風呂を備えた落ち着いた佇まいの一棟で、最大8名様までご宿泊いただけます。日本文化体験とともに、阿蘇の自然に囲まれた静かな滞在をお楽しみください。'
     ),
     "en/korokan/index.html": (
         'Kōrokan, a whole-building stay at Meihodo, a cultural estate in Aso, Kumamoto: a house of calm character with a semi-open-air hinoki bath, for up to 8 guests.'
     ),
     "zh-cn/korokan/index.html": (
-        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「鸿胪馆」。设有桧木半露天浴池、气质沉稳的独栋，最多可入住8位客人。在体验日本文化之余，置身传统建筑之中。'
+        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「鸿胪馆」。设有桧木半露天浴池、气质沉稳的独栋，最多可入住8位客人。在体验日本文化之余，享受阿苏自然环抱中的宁静时光。'
     ),
     "zh-tw/korokan/index.html": (
-        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「鴻臚館」。設有檜木半露天浴池、氣質沉穩的獨棟，最多可入住8位旅客。在體驗日本文化之餘，置身傳統建築之中。'
+        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「鴻臚館」。設有檜木半露天浴池、氣質沉穩的獨棟，最多可入住8位旅客。在體驗日本文化之餘，享受阿蘇自然環抱下的寧靜時光。'
     ),
     "ja/bunshinkan/index.html": (
-        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「文心館」。和室とリビングを備えた、読書や瞑想に向く静かな一棟で、最大6名様までご宿泊いただけます。日本文化体験とともに、伝統建築に身を置く滞在をお楽しみください。'
+        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「文心館」。和室とリビングを備えた、読書や瞑想に向く静かな一棟で、最大6名様までご宿泊いただけます。日本文化体験とともに、阿蘇の自然に囲まれた静かな滞在をお楽しみください。'
     ),
     "en/bunshinkan/index.html": (
         'Bunshinkan, a whole-building stay at Meihodo, a cultural estate in Aso, Kumamoto: a quiet house with a Japanese-style room, suited to reading and meditation, for up to 6 guests.'
     ),
     "zh-cn/bunshinkan/index.html": (
-        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「文心馆」。设有和室与起居室，适合阅读与冥想的静谧独栋，最多可入住6位客人。在体验日本文化之余，置身传统建筑之中。'
+        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「文心馆」。设有和室与起居室，适合阅读与冥想的静谧独栋，最多可入住6位客人。在体验日本文化之余，享受阿苏自然环抱中的宁静时光。'
     ),
     "zh-tw/bunshinkan/index.html": (
-        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「文心館」。設有和室與起居室，適合閱讀與冥想的靜謐獨棟，最多可入住6位旅客。在體驗日本文化之餘，置身傳統建築之中。'
+        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「文心館」。設有和室與起居室，適合閱讀與冥想的靜謐獨棟，最多可入住6位旅客。在體驗日本文化之餘，享受阿蘇自然環抱下的寧靜時光。'
     ),
     "ja/edokan/index.html": (
         '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「江戸館」。江戸時代の台所を再現したキッチンや囲炉裏、実際にご利用いただける五右衛門風呂を備え、昔ながらの日本の暮らしの趣を残す一棟です。畳のリビングとベッドの洋室で、最大4名様までご宿泊いただけます。'
@@ -654,16 +654,16 @@ PAGE_DESCRIPTIONS = {
         '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「江戶館」。設有重現江戶時代灶房風貌的廚房、地爐與可實際使用的五右衛門浴，保留昔日日本生活的韻味；備有榻榻米起居室與設置床鋪的西式房間，最多可入住4位旅客。'
     ),
     "ja/hinokinoma/index.html": (
-        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「檜の間」。天然檜の香りと木目に包まれ、檜の内風呂と縁側を備えた、最大2名様の静かな一棟です。日本文化体験とともに、伝統建築に身を置く滞在をお楽しみください。'
+        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「檜の間」。天然檜の香りと木目に包まれ、檜の内風呂と縁側を備えた、最大2名様の静かな一棟です。日本文化体験とともに、阿蘇の自然に囲まれた静かな滞在をお楽しみください。'
     ),
     "en/hinokinoma/index.html": (
         'Hinokinoma, a whole-building stay at Meihodo, a cultural estate in Aso, Kumamoto: hinoki fragrance and grain, an indoor hinoki bath and an engawa veranda, for up to 2 guests.'
     ),
     "zh-cn/hinokinoma/index.html": (
-        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「桧木和室」。天然桧木的清香与木纹环绕，设有桧木室内浴与缘侧，最多可入住2位客人。在体验日本文化之余，置身传统建筑之中。'
+        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「桧木和室」。天然桧木的清香与木纹环绕，设有桧木室内浴与缘侧，最多可入住2位客人。在体验日本文化之余，享受阿苏自然环抱中的宁静时光。'
     ),
     "zh-tw/hinokinoma/index.html": (
-        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「檜の間」。天然檜木的清香與木紋環繞，設有檜木室內浴池與緣側，最多可入住2位旅客。在體驗日本文化之餘，置身傳統建築之中。'
+        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「檜の間」。天然檜木的清香與木紋環繞，設有檜木室內浴池與緣側，最多可入住2位旅客。在體驗日本文化之餘，享受阿蘇自然環抱下的寧靜時光。'
     ),
     # things-to-do leads with the intent the page answers ("阿蘇 雨の日 観光",
     # "indoor activities in Aso") rather than with the brand, because that is
