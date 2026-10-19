@@ -9452,3 +9452,162 @@ a.ttd-pillar:focus-visible {
         padding: 3.5rem 0;
     }
 }
+
+/* ----------------------------------------------------------------
+   Brand concept (2026-10): "a cultural facility you can also stay at".
+   - .philosophy--concept : top-page concept block, replaces the
+     catchphrase + boxed main text with one quiet centred column.
+   - .stay-concept        : "about staying at Meihodo" on /<lang>/accommodations/.
+   - .stay-concept-note   : short pointer to it on each room page.
+   ---------------------------------------------------------------- */
+.pc-br {
+    display: inline;
+}
+
+@media (max-width: 768px) {
+    .pc-br {
+        display: none;
+    }
+}
+
+.philosophy.philosophy--concept {
+    background: var(--light-color);
+    padding: 128px 0 96px;
+}
+
+.philosophy--concept::before,
+.philosophy--concept::after {
+    content: none;
+}
+
+.concept {
+    max-width: var(--prose-measure);
+    margin: 0 auto;
+}
+
+.concept-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: 0.2em;
+    line-height: 1.8;
+    text-align: center;
+    margin: 0;
+}
+
+.concept-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    margin: 2.75rem auto;
+    background: var(--primary-color);
+}
+
+.concept-body p {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.05rem;
+    line-height: 2.4;
+    letter-spacing: 0.08em;
+    color: var(--text-primary);
+    margin-bottom: 1.6em;
+    word-break: auto-phrase;
+}
+
+.concept-body p:last-child {
+    margin-bottom: 0;
+}
+
+.stay-concept {
+    background: var(--light-color);
+    padding: 6rem 0;
+}
+
+.stay-concept-inner {
+    max-width: var(--prose-measure);
+    margin: 0 auto;
+}
+
+.stay-concept-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: 0.15em;
+    text-align: center;
+    margin: 0;
+}
+
+.stay-concept-title::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    margin: 2rem auto 2.25rem;
+    background: var(--primary-color);
+}
+
+.stay-concept-body p {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.98rem;
+    line-height: 2.2;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    margin-bottom: 1.2em;
+    word-break: auto-phrase;
+}
+
+.stay-concept-body p:last-child {
+    margin-bottom: 0;
+}
+
+.room-description .stay-concept-note {
+    font-size: 0.9rem;
+    line-height: 2;
+    color: var(--text-secondary);
+    margin: 2.5rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    max-width: 36rem;
+}
+
+.stay-concept-note a {
+    display: inline-block;
+    margin-left: 0.5em;
+    color: var(--primary-color);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+}
+
+@media (max-width: 768px) {
+    .philosophy.philosophy--concept {
+        padding: 88px 0 72px;
+    }
+
+    .concept-title {
+        font-size: 1.55rem;
+    }
+
+    .concept-title::after {
+        margin: 2rem auto;
+    }
+
+    .concept-body p {
+        font-size: 1rem;
+        line-height: 2.2;
+        letter-spacing: 0.05em;
+    }
+
+    .stay-concept {
+        padding: 4rem 0;
+    }
+
+    .stay-concept-title {
+        font-size: 1.25rem;
+    }
+}
+
+.accommodation-card .card-content p {
+    word-break: auto-phrase;
+}
