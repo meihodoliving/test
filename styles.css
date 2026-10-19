@@ -6,6 +6,11 @@
 }
 
 :root {
+    /* Serif face for CJK text. Japanese/English pages keep Noto Serif JP;
+       Chinese pages swap in the matching Noto Serif so simplified/traditional
+       glyphs that Noto Serif JP lacks do not fall back character by character
+       to a different system font. Noto Serif JP stays as the second choice. */
+    --font-serif-cjk: 'Noto Serif JP';
     /* Zen and Bed inspired color palette */
     --primary-color: #8B7355;      /* 生成り - Natural beige */
     --secondary-color: #2F4F4F;    /* 深緑 - Deep green */
@@ -39,7 +44,7 @@ html {
 }
 
 body {
-    font-family: 'Noto Serif JP', 'Inter', serif;
+    font-family: var(--font-serif-cjk), 'Inter', serif;
     line-height: 1.8;
     color: var(--text-primary);
     overflow-x: hidden;
@@ -49,7 +54,7 @@ body {
 }
 
 .japanese {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .container {
@@ -229,7 +234,7 @@ body.location-terms-page main .container p.location-terms-cta,
     font-size: 1.8rem;
     color: var(--dark-color);
     margin-bottom: 1.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-weight: 600;
 }
 
@@ -279,7 +284,7 @@ body.location-terms-page main .container p.location-terms-cta,
     font-size: 1.2rem;
     color: var(--dark-color);
     margin-bottom: 1rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-weight: 600;
 }
 
@@ -321,7 +326,7 @@ body.location-terms-page main .container p.location-terms-cta,
     font-size: 2.2rem;
     color: var(--dark-color);
     margin-bottom: 1.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-weight: 600;
 }
 
@@ -348,7 +353,7 @@ body.location-terms-page main .container p.location-terms-cta,
     font-size: 2.2rem;
     color: var(--dark-color);
     margin-bottom: 1.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-weight: 600;
 }
 
@@ -363,7 +368,7 @@ body.location-terms-page main .container p.location-terms-cta,
     font-size: 1.5rem;
     color: var(--dark-color);
     margin: 2rem 0 1rem 0;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-weight: 600;
 }
 
@@ -431,7 +436,7 @@ body.location-terms-page main .container p.location-terms-cta,
 .cta-content h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-weight: 600;
 }
 
@@ -599,7 +604,7 @@ body.location-terms-page main .container p.location-terms-cta,
 }
 
 .nav-center h1 {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 24px;
     font-weight: 600;
     color: var(--text-dark);
@@ -629,7 +634,7 @@ body.location-terms-page main .container p.location-terms-cta,
 }
 
 .nav-logo h2 {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     color: var(--dark-color);
     font-size: 1.6rem;
     margin-bottom: -5px;
@@ -1158,7 +1163,7 @@ body.location-terms-page main .container p.location-terms-cta,
     align-items: center;
     gap: 12px;
     letter-spacing: 0.05em;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .btn-primary {
@@ -1243,7 +1248,7 @@ section {
     color: var(--dark-color);
     margin-bottom: 1.25rem;
     font-weight: 600;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     letter-spacing: 0.03em;
     line-height: 1.3;
 }
@@ -1408,7 +1413,7 @@ section {
     font-size: 1.2rem;
     color: var(--dark-color);
     margin: 0 0 0.75rem 0;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-weight: 600;
     letter-spacing: 0.05em;
 }
@@ -1791,7 +1796,7 @@ body.home-zh-tw #experiences .experience-card .card-button {
     font-size: 1.2rem;
     color: var(--dark-color);
     margin: 0;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-weight: 600;
     letter-spacing: 0.05em;
 }
@@ -1875,7 +1880,7 @@ body.home-zh-tw #experiences .experience-card .card-button {
     font-size: 2.2rem;
     color: var(--dark-color);
     margin-bottom: 2.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-weight: 600;
     letter-spacing: 0.05em;
 }
@@ -2025,7 +2030,7 @@ body.home-zh-tw #experiences .experience-card .card-button {
 }
 
 .footer-section h3 {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     color: var(--accent-color);
     margin-bottom: 1.5rem;
     font-size: 1.4rem;
@@ -2423,7 +2428,7 @@ body.home-en #experiences .experience-card .card-button {
 }
 
 .catchphrase-line {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 2.4rem;
     font-weight: 700;
     color: #2C2C2C;
@@ -2499,7 +2504,7 @@ body.home-en #experiences .experience-card .card-button {
 }
 
 .main-text-content p {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.15rem;
     line-height: 2.4;
     color: #2C2C2C;
@@ -2724,7 +2729,7 @@ html[lang="en"] .vertical-btn .btn-text {
 
 .btn-text {
     color: #FFFFFF;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 13px;
     font-weight: 500;
     writing-mode: vertical-rl;
@@ -3207,7 +3212,7 @@ html[lang="en"] .vertical-btn .btn-text {
     padding: 0.75rem 1.5rem;
     border-radius: 25px;
     transition: all 0.3s ease;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     position: relative;
 }
 
@@ -3280,7 +3285,7 @@ html[lang="en"] .vertical-btn .btn-text {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 0.75rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .card-content p {
@@ -3406,7 +3411,7 @@ html[lang="en"] .vertical-btn .btn-text {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 0.75rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .benefit-item p {
@@ -3431,7 +3436,7 @@ html[lang="en"] .vertical-btn .btn-text {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 2rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 /* Reservation Layout */
@@ -3474,7 +3479,7 @@ html[lang="en"] .vertical-btn .btn-text {
     font-weight: 600;
     color: var(--accent-color);
     margin-bottom: 0.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .info-item p {
@@ -3509,7 +3514,7 @@ html[lang="en"] .vertical-btn .btn-text {
     font-weight: 600;
     color: #92400e;
     margin-bottom: 1rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .notice-box ul {
@@ -3549,7 +3554,7 @@ html[lang="en"] .vertical-btn .btn-text {
     font-weight: 500;
     color: var(--text-primary);
     margin-bottom: 0.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .form-group input,
@@ -3749,7 +3754,7 @@ html[lang="en"] .vertical-btn .btn-text {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     text-align: center;
 }
 
@@ -3869,7 +3874,7 @@ html[lang="en"] .vertical-btn .btn-text {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .room-description p {
@@ -3950,7 +3955,7 @@ html[lang="en"] .vertical-btn .btn-text {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .detail-card ul {
@@ -4002,7 +4007,7 @@ html[lang="en"] .vertical-btn .btn-text {
     font-weight: 600;
     color: var(--dark-color);
     margin: 1.5rem 0 1rem 0;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     letter-spacing: 0.05em;
 }
 
@@ -4072,7 +4077,7 @@ html[lang="en"] .vertical-btn .btn-text {
 .gallery-overlay h4 {
     font-size: 1.2rem;
     font-weight: 600;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .room-pricing {
@@ -4098,7 +4103,7 @@ html[lang="en"] .vertical-btn .btn-text {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 2rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .price-details {
@@ -4261,7 +4266,7 @@ html[lang="en"] .vertical-btn .btn-text {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .restaurant-description p {
@@ -4454,7 +4459,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .restaurant-overview .restaurant-description p {
@@ -4553,7 +4558,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .menu-content p {
@@ -4607,7 +4612,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .special-description p {
@@ -4712,7 +4717,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .wine-card p {
@@ -4819,7 +4824,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .location-description p {
@@ -4974,7 +4979,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .photography-overview .photography-description p {
@@ -5073,7 +5078,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .type-content p {
@@ -5145,7 +5150,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .facility-content p {
@@ -5195,7 +5200,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 2rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .price-details {
@@ -5313,7 +5318,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 0.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .guideline-text p {
@@ -5404,7 +5409,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 2rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .access-details {
@@ -5448,7 +5453,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 0.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .access-text p {
@@ -5631,7 +5636,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 700;
     margin-bottom: 2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .restaurant-hero .hero-lead {
@@ -5649,7 +5654,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
 
 /* 「メニュー」メイン見出し（.menu-sections 直下の h2 ※従来 .menu-section h2 だけでは当たらない） */
 .menu-sections .container > h2 {
-    font-family: "Noto Serif JP", serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: clamp(2.4rem, 4.2vw, 3.4rem);
     font-weight: 600;
     color: var(--dark-color);
@@ -5685,7 +5690,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     margin-top: 2rem;
     margin-bottom: 2rem;
     text-align: center;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .menu-sections .menu-description {
@@ -5724,7 +5729,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .menu-item h4 {
@@ -5732,7 +5737,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: #2C2C2C;
     margin-bottom: 1rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     display: inline-block;
 }
 
@@ -5782,7 +5787,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     color: #2C2C2C;
     margin-bottom: 2rem;
     text-align: center;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     border-bottom: 2px solid #D4AF37;
     padding-bottom: 0.5rem;
     display: block;
@@ -5797,7 +5802,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .menu-price {
@@ -5961,7 +5966,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     color: #2C2C2C;
     margin-bottom: 2rem;
     text-align: center;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 /* リード文を省略した場合（見出しのみ）：下マージンを畳み、section の余白に任せる */
@@ -5989,7 +5994,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
 }
 
 .allergy-notice .notice-content h3 {
-    font-family: "Noto Serif JP", serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: clamp(1.3rem, 2.2vw, 1.7rem);
     font-weight: 600;
     color: var(--dark-color);
@@ -6022,7 +6027,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     color: var(--primary-color);
     margin-bottom: 3rem;
     text-align: center;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .gallery-grid {
@@ -6071,7 +6076,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     color: var(--primary-color);
     margin-bottom: 2rem;
     text-align: center;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .notes-content {
@@ -6117,7 +6122,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     color: var(--primary-color);
     margin-bottom: 3rem;
     text-align: center;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .contact-info {
@@ -6134,7 +6139,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
     font-weight: 600;
     color: var(--dark-color);
     margin-bottom: 1.5rem;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
 }
 
 .address-info p {
@@ -6259,7 +6264,7 @@ body.home-zh-tw #restaurant .restaurant-description > .btn.btn-primary {
 }
 
 .overlay-text {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 2.5rem;
     font-weight: 300;
     color: #f5f5f5;
@@ -6680,7 +6685,7 @@ section#access-travel-info.access {
 
 #access-travel-info .access-text h4 {
     text-align: center;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.22rem;
     font-weight: 600;
     line-height: 1.5;
@@ -6896,7 +6901,7 @@ section#access-travel-info.access {
 }
 
 .about-page-title {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: clamp(2rem, 4vw, 2.75rem);
     font-weight: 600;
     text-align: center;
@@ -6964,7 +6969,7 @@ section#access-travel-info.access {
 }
 
 .facility-block__title {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.45rem;
     font-weight: 700;
     text-align: center;
@@ -6989,7 +6994,7 @@ section#access-travel-info.access {
 }
 
 .about-section-heading {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: clamp(1.65rem, 3vw, 2.1rem);
     font-weight: 600;
     text-align: center;
@@ -7011,7 +7016,7 @@ section#access-travel-info.access {
 }
 
 .activity-year h3 {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--dark-color);
@@ -7172,7 +7177,7 @@ body.about-meihodo-page .about-lead-block p {
 }
 
 body.about-meihodo-page .about-lead-block p:first-child {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: clamp(1.15rem, 2.2vw, 1.35rem);
     font-weight: 600;
     line-height: 1.95;
@@ -7349,7 +7354,7 @@ body.about-meihodo-page .activity-year__list li::before {
 }
 
 .location-pricing .pricing-subtitle {
-    font-family: "Noto Serif JP", serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.32rem;
     font-weight: 600;
     color: var(--dark-color);
@@ -7380,7 +7385,7 @@ body.about-meihodo-page .activity-year__list li::before {
 }
 
 .location-pricing .pricing-table thead th {
-    font-family: "Noto Serif JP", serif;
+    font-family: var(--font-serif-cjk), serif;
     font-weight: 600;
     font-size: 0.8rem;
     letter-spacing: 0.1em;
@@ -7845,7 +7850,7 @@ body.location-terms-page .location-terms-block {
 }
 
 body.location-terms-page .location-terms-block__title {
-    font-family: "Noto Serif JP", serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: clamp(1.2rem, 2.2vw, 1.35rem);
     font-weight: 700;
     color: var(--dark-color);
@@ -8098,7 +8103,7 @@ footer a:hover,
 }
 
 .faq-page-title {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: clamp(2rem, 4vw, 2.75rem);
     font-weight: 600;
     text-align: center;
@@ -8121,7 +8126,7 @@ footer a:hover,
 }
 
 .faq-section__title {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: clamp(1.45rem, 2.4vw, 1.7rem);
     font-weight: 600;
     text-align: center;
@@ -8148,7 +8153,7 @@ footer a:hover,
 
 .faq-item__question {
     position: relative;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.1rem;
     font-weight: 600;
     line-height: 1.6;
@@ -8296,7 +8301,7 @@ footer a:hover,
 }
 
 .campaign-page-title {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: clamp(1.7rem, 3.6vw, 2.4rem);
     font-weight: 600;
     text-align: center;
@@ -8339,7 +8344,7 @@ footer a:hover,
 }
 
 .campaign-block__title {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.45rem;
     font-weight: 700;
     text-align: center;
@@ -8362,7 +8367,7 @@ footer a:hover,
 }
 
 .campaign-block__subtitle {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.12rem;
     font-weight: 600;
     color: var(--dark-color);
@@ -8767,14 +8772,14 @@ section .container .information-card .information-card__body p {
     border-radius: 999px;
     background: var(--light-color);
     border: 1px solid var(--border-color);
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 0.78rem;
     letter-spacing: 0.08em;
     color: var(--primary-color);
 }
 
 .information-card__title {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.15rem;
     font-weight: 600;
     line-height: 1.7;
@@ -9169,7 +9174,7 @@ section .container .information-card .information-card__body p {
 .ttd-step h3 {
     margin: 0 0 0.4rem;
     color: var(--dark-color);
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.05rem;
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -9228,7 +9233,7 @@ section .container .information-card .information-card__body p {
 .ttd-weather-head h3 {
     margin: 0;
     color: var(--dark-color);
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.1rem;
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -9276,7 +9281,7 @@ section .container .information-card .information-card__body p {
 .ttd-formula {
     margin: 0 auto clamp(2rem, 5vw, 3rem);
     color: var(--primary-color);
-    font-family: 'Inter', 'Noto Serif JP', serif;
+    font-family: 'Inter', var(--font-serif-cjk), serif;
     font-size: clamp(0.95rem, 2.4vw, 1.35rem);
     font-weight: 500;
     letter-spacing: 0.14em;
@@ -9334,7 +9339,7 @@ section .container .information-card .information-card__body p {
 .ttd-pillar h3 {
     margin: 0.4rem 0 0.45rem;
     color: var(--white);
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.08rem;
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -9486,7 +9491,7 @@ a.ttd-pillar:focus-visible {
 }
 
 .concept-title {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 2rem;
     font-weight: 500;
     color: var(--text-primary);
@@ -9506,7 +9511,7 @@ a.ttd-pillar:focus-visible {
 }
 
 .concept-body p {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.05rem;
     line-height: 2.4;
     letter-spacing: 0.08em;
@@ -9530,7 +9535,7 @@ a.ttd-pillar:focus-visible {
 }
 
 .stay-concept-title {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 1.5rem;
     font-weight: 500;
     color: var(--text-primary);
@@ -9549,7 +9554,7 @@ a.ttd-pillar:focus-visible {
 }
 
 .stay-concept-body p {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk), serif;
     font-size: 0.98rem;
     line-height: 2.2;
     letter-spacing: 0.05em;
@@ -9647,4 +9652,13 @@ html[lang="en"] .stay-concept-body p {
     html[lang="en"] .concept-title {
         font-size: 1.5rem;
     }
+}
+
+/* Chinese pages: language-appropriate serif (see --font-serif-cjk in :root). */
+html[lang="zh-CN"] {
+    --font-serif-cjk: 'Noto Serif SC', 'Noto Serif JP';
+}
+
+html[lang="zh-TW"] {
+    --font-serif-cjk: 'Noto Serif TC', 'Noto Serif JP';
 }

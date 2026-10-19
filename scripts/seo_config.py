@@ -578,44 +578,92 @@ NEWS_ARTICLES = {
 # instead of having to be re-typed into the generated block every run.
 # ---------------------------------------------------------------------------
 PAGE_DESCRIPTIONS = {
+    # Stay pages (2026-10 brand concept): lead with Meihodo as a cultural
+    # facility, then the room facts each page states (capacity and bath from
+    # the room-details card), keeping 阿蘇 / 宿泊 / 日本文化体験 as plain words.
+    "ja/accommodations/index.html": (
+        '熊本県阿蘇市の鳴鳳堂は、日本文化の継承と体験を大切にする文化施設です。伝統建築と阿蘇の自然に囲まれた一棟貸しの宿泊棟で、弓道や茶道などの日本文化体験とともに、一般的なホテルとは異なる文化的な滞在をお過ごしいただけます。'
+    ),
+    "en/accommodations/index.html": (
+        'Stay at Meihodo, a cultural estate in Aso, Kumamoto: whole-building lodging among traditional architecture, alongside Japanese cultural experiences — not a conventional hotel.'
+    ),
+    "zh-cn/accommodations/index.html": (
+        '位于熊本县阿苏市的鸣凤堂，是致力于传承与体验日本文化的文化设施。在传统建筑与阿苏自然环抱的整栋包租住宿中，结合弓道、茶道等日本文化体验，度过一段不同于一般酒店的文化之旅。'
+    ),
+    "zh-tw/accommodations/index.html": (
+        '位於熊本縣阿蘇市的鳴鳳堂，是致力於傳承與體驗日本文化的文化設施。在傳統建築與阿蘇自然環抱的一棟包棟住宿中，結合弓道、茶道等日本文化體驗，度過一段不同於一般飯店的文化之旅。'
+    ),
+    "ja/seiseisya/index.html": (
+        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「清静舎」。自然素材を用いた静かな空間に檜風呂を備え、最大4名様までご宿泊いただけます。日本文化体験とともに、伝統建築に身を置く滞在をお楽しみください。'
+    ),
+    "en/seiseisya/index.html": (
+        'Seiseisya, a whole-building stay at Meihodo, a cultural estate in Aso, Kumamoto: a quiet house of natural materials with a hinoki bath, for up to 4 guests.'
+    ),
+    "zh-cn/seiseisya/index.html": (
+        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「清静舍」。以天然材料打造的静谧空间，设有桧木浴池，最多可入住4位客人。在体验日本文化之余，置身传统建筑之中。'
+    ),
+    "zh-tw/seiseisya/index.html": (
+        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「清静舎」。以天然素材打造的靜謐空間，設有檜木浴池，最多可入住4位旅客。在體驗日本文化之餘，置身傳統建築之中。'
+    ),
     "ja/geihinkan/index.html": (
-        "一棟貸しの双翼造りの邸宅です。片翼に露天風呂（温泉ではありません）を備え、"
-        "最大8名様までご利用いただけます。"
+        '熊本県阿蘇市の文化施設・鳴鳳堂の宿泊棟「迎賓館」。一棟貸しの双翼造りの邸宅で、片翼に露天風呂（温泉ではありません）を備え、最大8名様までご利用いただけます。日本文化体験とともに、伝統建築に身を置く滞在をお楽しみください。'
     ),
     "en/geihinkan/index.html": (
-        "This is a two-wing residence rented as a whole building. The left wing has an open-air "
-        "bath (not a hot spring). The residence accommodates up to 8 guests."
+        'Geihinkan, a two-wing residence rented whole at Meihodo, a cultural estate in Aso, Kumamoto. Open-air bath in the left wing (not a hot spring); up to 8 guests.'
     ),
     "zh-cn/geihinkan/index.html": (
-        "这是一栋可整栋包租的双翼式宅邸。左翼设有露天浴池（非温泉），最多可入住8位客人。"
+        '熊本县阿苏市文化设施鸣凤堂的住宿「迎宾馆」。可整栋包租的双翼式宅邸，左翼设有露天浴池（非温泉），最多可入住8位客人。在体验日本文化之余，置身传统建筑之中。'
     ),
     "zh-tw/geihinkan/index.html": (
-        "這是一棟可整棟包棟的雙翼式宅邸。左翼設有露天浴池（非溫泉），最多可入住8位房客。"
+        '熊本縣阿蘇市文化設施鳴鳳堂的住宿「迎賓館」。可整棟包棟的雙翼式宅邸，左翼設有露天浴池（非溫泉），最多可入住8位旅客。在體驗日本文化之餘，置身傳統建築之中。'
     ),
-    # Edokan: the first paragraph of the page is now a one-line mood sentence,
-    # so the summary is written here instead. Every feature named is one the
-    # room-description section of that same page states.
+    "ja/korokan/index.html": (
+        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「鴻臚館」。檜の半露天風呂を備えた落ち着いた佇まいの一棟で、最大8名様までご宿泊いただけます。日本文化体験とともに、伝統建築に身を置く滞在をお楽しみください。'
+    ),
+    "en/korokan/index.html": (
+        'Kōrokan, a whole-building stay at Meihodo, a cultural estate in Aso, Kumamoto: a house of calm character with a semi-open-air hinoki bath, for up to 8 guests.'
+    ),
+    "zh-cn/korokan/index.html": (
+        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「鸿胪馆」。设有桧木半露天浴池、气质沉稳的独栋，最多可入住8位客人。在体验日本文化之余，置身传统建筑之中。'
+    ),
+    "zh-tw/korokan/index.html": (
+        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「鴻臚館」。設有檜木半露天浴池、氣質沉穩的獨棟，最多可入住8位旅客。在體驗日本文化之餘，置身傳統建築之中。'
+    ),
+    "ja/bunshinkan/index.html": (
+        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「文心館」。和室とリビングを備えた、読書や瞑想に向く静かな一棟で、最大6名様までご宿泊いただけます。日本文化体験とともに、伝統建築に身を置く滞在をお楽しみください。'
+    ),
+    "en/bunshinkan/index.html": (
+        'Bunshinkan, a whole-building stay at Meihodo, a cultural estate in Aso, Kumamoto: a quiet house with a Japanese-style room, suited to reading and meditation, for up to 6 guests.'
+    ),
+    "zh-cn/bunshinkan/index.html": (
+        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「文心馆」。设有和室与起居室，适合阅读与冥想的静谧独栋，最多可入住6位客人。在体验日本文化之余，置身传统建筑之中。'
+    ),
+    "zh-tw/bunshinkan/index.html": (
+        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「文心館」。設有和室與起居室，適合閱讀與冥想的靜謐獨棟，最多可入住6位旅客。在體驗日本文化之餘，置身傳統建築之中。'
+    ),
     "ja/edokan/index.html": (
-        "鳴鳳堂の江戸館は、江戸の趣と現代の快適さを兼ね備えた一棟の客室です。"
-        "江戸時代の台所を再現したキッチンや囲炉裏、実際にご利用いただける五右衛門風呂、"
-        "木の浴槽を備え、美しくリフォームされた居住空間には畳のリビングと"
-        "ベッドを配した洋室をご用意しています。"
+        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「江戸館」。江戸時代の台所を再現したキッチンや囲炉裏、実際にご利用いただける五右衛門風呂を備え、昔ながらの日本の暮らしの趣を残す一棟です。畳のリビングとベッドの洋室で、最大4名様までご宿泊いただけます。'
     ),
     "en/edokan/index.html": (
-        "Edokan at Meihodo is a guest villa pairing Edo-period character with modern "
-        "comfort: a recreated Edo-period kitchen, an irori hearth, a working Goemon bath "
-        "and a wooden bathtub, with renovated living quarters that offer a tatami living "
-        "room and a Western-style room with beds."
+        'Edokan, a whole-building stay at Meihodo, a cultural estate in Aso, Kumamoto: an Edo-style kitchen, irori hearth and working Goemon bath keep the feel of traditional Japanese life. Up to 4 guests.'
     ),
     "zh-cn/edokan/index.html": (
-        "鸣凤堂的江户馆是一栋兼具江户历史意趣与现代舒适的独栋客房。馆内设有再现江户时代"
-        "灶房风貌的厨房、地炉（围炉里）、可实际使用的五右卫门浴与木质浴缸；经精心翻新的"
-        "起居空间备有榻榻米起居室及配备床铺的西式房间。"
+        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「江户馆」。设有再现江户时代灶房风貌的厨房、地炉与可实际使用的五右卫门浴，保留昔日日本生活的韵味；备有榻榻米起居室与配备床铺的西式房间，最多可入住4位客人。'
     ),
     "zh-tw/edokan/index.html": (
-        "鳴鳳堂的江戶館是兼具江戶歷史雅趣與現代舒適的獨棟客房。館內設有重現江戶時代"
-        "灶房風貌的廚房、地爐（圍爐裏）、可實際使用的五右衛門浴與木製浴缸；經精心翻修的"
-        "起居空間備有榻榻米起居室及設置床鋪的西式房間。"
+        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「江戶館」。設有重現江戶時代灶房風貌的廚房、地爐與可實際使用的五右衛門浴，保留昔日日本生活的韻味；備有榻榻米起居室與設置床鋪的西式房間，最多可入住4位旅客。'
+    ),
+    "ja/hinokinoma/index.html": (
+        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「檜の間」。天然檜の香りと木目に包まれ、檜の内風呂と縁側を備えた、最大2名様の静かな一棟です。日本文化体験とともに、伝統建築に身を置く滞在をお楽しみください。'
+    ),
+    "en/hinokinoma/index.html": (
+        'Hinokinoma, a whole-building stay at Meihodo, a cultural estate in Aso, Kumamoto: hinoki fragrance and grain, an indoor hinoki bath and an engawa veranda, for up to 2 guests.'
+    ),
+    "zh-cn/hinokinoma/index.html": (
+        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「桧木和室」。天然桧木的清香与木纹环绕，设有桧木室内浴与缘侧，最多可入住2位客人。在体验日本文化之余，置身传统建筑之中。'
+    ),
+    "zh-tw/hinokinoma/index.html": (
+        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「檜の間」。天然檜木的清香與木紋環繞，設有檜木室內浴池與緣側，最多可入住2位旅客。在體驗日本文化之餘，置身傳統建築之中。'
     ),
     # things-to-do leads with the intent the page answers ("阿蘇 雨の日 観光",
     # "indoor activities in Aso") rather than with the brand, because that is
@@ -631,7 +679,7 @@ PAGE_DESCRIPTIONS = {
     ),
     "en/things-to-do/index.html": (
         "Looking for things to do in Aso on a rainy day, or for indoor activities in "
-        "Kumamoto? Meihodo, a cultural resort in Aso, holds tea ceremony (in the "
+        "Kumamoto? Meihodo, a cultural estate in Aso, holds tea ceremony (in the "
         "Seirensha tea house), bonseki (great hall) and kendo and karate (martial arts "
         "hall) indoors, so the weather need not change your plans. Experience-only "
         "bookings are welcome for visitors who are not staying overnight."
@@ -649,7 +697,7 @@ PAGE_DESCRIPTIONS = {
         "本頁介紹晴天與雨天各自的度過方式。"
     ),
     CAMPAIGN_PATH: (
-        "熊本県阿蘇市の文化リゾート鳴鳳堂は、阿蘇市が実施する"
+        "熊本県阿蘇市の文化施設・鳴鳳堂は、阿蘇市が実施する"
         "「阿蘇に泊まって支える！熊本応援キャンペーン（阿蘇ふっこう割）」の"
         "対象宿泊施設です。2026年9月7日～9月30日の対象宿泊について、"
         "1名1泊あたり最大5,000円の宿泊割引と2,000円分の地域クーポンを"
@@ -730,20 +778,20 @@ PAGE_DESCRIPTIONS = {
         "前往阿蘇觀光時請確認最新的火山資訊與交通資訊。此為熊本縣阿蘇市鳴鳳堂的通知。"
     ),
     "en/campaign/aso-fukkou/index.html": (
-        "Meihodo, a cultural resort in Aso City, Kumamoto, is a participating property "
+        "Meihodo, a cultural estate in Aso City, Kumamoto, is a participating property "
         "in the \u201cStay in Aso and support Kumamoto\u201d campaign (Aso Fukko-wari) run by "
         "Aso City. For qualifying stays from 7 to 30 September 2026, guests receive up "
         "to \u00a55,000 off per person per night plus \u00a52,000 in local coupons. Bookings are "
         "accepted only as direct bookings by email or phone."
     ),
     "zh-cn/campaign/aso-fukkou/index.html": (
-        "熊本县阿苏市的文化度假设施鸣凤堂，是阿苏市推行的「住在阿苏，支援熊本！"
+        "熊本县阿苏市的文化设施鸣凤堂，是阿苏市推行的「住在阿苏，支援熊本！"
         "熊本应援活动（阿苏复兴折扣）」的指定住宿设施。2026年9月7日～9月30日的"
         "适用住宿，每人每晚最多可享5,000日元的住宿折扣与2,000日元的地区优惠券。"
         "预订仅受理通过电子邮件或电话的直接预订。"
     ),
     "zh-tw/campaign/aso-fukkou/index.html": (
-        "熊本縣阿蘇市的文化度假設施鳴鳳堂，是阿蘇市推行的「住在阿蘇，支援熊本！"
+        "熊本縣阿蘇市的文化設施鳴鳳堂，是阿蘇市推行的「住在阿蘇，支援熊本！"
         "熊本應援活動（阿蘇復興折扣）」的指定住宿設施。2026年9月7日～9月30日的"
         "適用住宿，每人每晚最多可享5,000日圓的住宿折扣與2,000日圓的地區優惠券。"
         "預約僅受理透過電子郵件或電話的直接預約。"

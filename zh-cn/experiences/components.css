@@ -90,7 +90,7 @@
 
 .experience-title .japanese {
     display: block;
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk, 'Noto Serif JP'), serif;
     font-size: clamp(2.2rem, 6vw, 3.4rem);
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -109,7 +109,7 @@
 }
 
 .experience-subtitle {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk, 'Noto Serif JP'), serif;
     font-size: clamp(0.98rem, 1.4vw, 1.1rem);
     font-weight: 300;
     line-height: 1.85;
@@ -211,7 +211,7 @@
 }
 
 .detail-text h2 {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk, 'Noto Serif JP'), serif;
     font-size: clamp(1.6rem, 3.4vw, 2.1rem);
     color: var(--dark-color);
     margin-bottom: 1.4rem;
@@ -279,7 +279,7 @@
 .features-section .section-title,
 .pricing-section .section-title,
 .info-section .section-title {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk, 'Noto Serif JP'), serif;
     font-size: clamp(1.5rem, 3.4vw, 2rem);
     font-weight: 600;
     color: var(--dark-color);
@@ -291,7 +291,7 @@
 .features-section .section-subtitle,
 .pricing-section .section-subtitle,
 .info-section .section-subtitle {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk, 'Noto Serif JP'), serif;
     font-size: 0.98rem;
     font-weight: 300;
     color: var(--text-secondary);
@@ -396,7 +396,7 @@
 }
 
 .feature-card h3 {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk, 'Noto Serif JP'), serif;
     font-size: 1.15rem;
     color: var(--dark-color);
     margin-bottom: 0.7rem;
@@ -545,7 +545,7 @@
 }
 
 .cta-content h2 {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk, 'Noto Serif JP'), serif;
     font-size: clamp(1.5rem, 3.6vw, 2.1rem);
     margin-bottom: 1.2rem;
     font-weight: 500;
@@ -554,7 +554,7 @@
 }
 
 .cta-content p {
-    font-family: 'Noto Serif JP', serif;
+    font-family: var(--font-serif-cjk, 'Noto Serif JP'), serif;
     font-size: 1rem;
     line-height: 1.9;
     margin-bottom: 2.4rem;
