@@ -4020,6 +4020,26 @@ html[lang="en"] .vertical-btn .btn-text {
     position: relative;
 }
 
+/* 客室ギャラリー直下の「施設紹介」リンク（.btn .ttd-btn-outline を流用） */
+.room-gallery__more {
+    text-align: center;
+    margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.room-gallery__more .btn {
+    padding: 15px 36px;
+    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+}
+
+@media (max-width: 768px) {
+    .room-gallery__more .btn {
+        width: 100%;
+        max-width: 360px;
+        justify-content: center;
+        padding: 14px 20px;
+    }
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
