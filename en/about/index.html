@@ -22,11 +22,11 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:title" content="About Meihodo - Meihodo">
     <meta property="og:url" content="https://www.meihodo.com/en/about">
-    <meta property="og:image" content="https://www.meihodo.com/images/meihodo/map.webp">
+    <meta property="og:image" content="https://www.meihodo.com/images/meihodo/facility-map-1200.webp">
     <meta property="og:description" content="Meihodo Manor is located at the foot of Mount Aso, surrounded by vast nature. The site spans 56,000 square meters and consists of 37 buildings.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="About Meihodo - Meihodo">
-    <meta name="twitter:image" content="https://www.meihodo.com/images/meihodo/map.webp">
+    <meta name="twitter:image" content="https://www.meihodo.com/images/meihodo/facility-map-1200.webp">
     <meta name="twitter:description" content="Meihodo Manor is located at the foot of Mount Aso, surrounded by vast nature. The site spans 56,000 square meters and consists of 37 buildings.">
     <!-- /MEIHODO-SEO-META -->
 <!-- MEIHODO-JSONLD -->
@@ -150,7 +150,7 @@
       "description": "Meihodo Manor is located at the foot of Mount Aso, surrounded by vast nature. The site spans 56,000 square meters and consists of 37 buildings.",
       "primaryImageOfPage": {
         "@type": "ImageObject",
-        "url": "https://www.meihodo.com/images/meihodo/map.webp"
+        "url": "https://www.meihodo.com/images/meihodo/facility-map-1200.webp"
       },
       "about": {
         "@id": "https://www.meihodo.com/#meihodo"
@@ -255,8 +255,14 @@
         <section class="about-map-section" aria-label="Facility map">
             <div class="container container--narrow">
                 <h2 class="about-section-heading">Facility Map</h2>
-                <figure class="about-map-figure">
-                    <img src="/images/meihodo/map.webp" alt="Meihodo facility map" class="about-map-image" loading="lazy">
+                <figure class="about-map-figure about-map-figure--zoomable">
+                    <a href="/images/meihodo/facility-map-2400.webp" class="about-map-zoom" target="_blank" rel="noopener" aria-label="Enlarge the facility map (opens in a new tab)">
+                        <img src="/images/meihodo/facility-map-1200.webp" srcset="/images/meihodo/facility-map-1200.webp 1200w, /images/meihodo/facility-map-2400.webp 2400w" sizes="(max-width: 960px) 100vw, 900px" width="1200" height="791" alt="Meihodo facility map showing the locations of facilities such as the Front Desk, Kyudo Hall and Budo Hall, the Ryotei and Sansuiya restaurants, and lodging buildings such as Geihinkan" class="about-map-image" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption class="about-map-actions">
+                        <span class="about-map-hint">Tap or click the map to enlarge it</span>
+                        <a href="/images/top/map.pdf" class="about-map-pdf" target="_blank" rel="noopener">View / download PDF</a>
+                    </figcaption>
                 </figure>
             </div>
         </section>
