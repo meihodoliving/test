@@ -121,12 +121,6 @@ def robots_txt() -> str:
         "User-agent: *",
         "Allow: /",
         "",
-        "# Pre-migration stubs kept only so old inbound links resolve. They are",
-        "# 301/308 redirects or duplicates of a canonical page, and are left out",
-        "# of the sitemap for the same reason.",
-        "Disallow: /zh-hans/",
-        "Disallow: /zh-hant/",
-        "",
         f"Sitemap: {C.BASE}/sitemap.xml",
         "",
     ]

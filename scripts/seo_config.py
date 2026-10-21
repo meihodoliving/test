@@ -898,17 +898,9 @@ def build_registry() -> list[Page]:
                    (CRUMB["accommodations"][lang], canonical_for(f"{lang}/accommodations/index.html")),
                    (BUILDING_NAMES["geihinkan"][lang], canonical_for(f"{lang}/geihinkan/index.html")))))
 
-    # Pre-migration Chinese stubs. lang-switcher.js normalises zh-hans -> zh-cn
-    # and zh-hant -> zh-tw, and CLAUDE.md records these as legacy, so they
-    # consolidate onto the live restaurant page rather than standing up a
-    # second, unlinked Restaurant entity of their own.
-    for legacy, live in (("zh-hans", "zh-cn"), ("zh-hant", "zh-tw")):
-        path = f"{legacy}/restaurant.html"
-        pages.append(Page(
-            path, live, "legacy", "restaurant",
-            canonical_for(f"{live}/restaurant/index.html"), False,
-            _crumb(live, (CRUMB["restaurant"][live],
-                          canonical_for(f"{live}/restaurant/index.html")))))
+    # zh-hans/restaurant.html and zh-hant/restaurant.html are retired: Vercel
+    # 301s them to the zh-cn / zh-tw restaurant pages (vercel.json) and the files
+    # are bare meta-refresh stubs for GitHub Pages, so they are not registered.
 
     return pages
 
