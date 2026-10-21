@@ -9735,3 +9735,11 @@ body.about-meihodo-page .facility-block__image {
     border-radius: 12px;
     margin-bottom: 1.75rem;
 }
+
+/* Restaurant course intro: sits between the price and the course list. */
+.menu-item .menu-item__lead {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #2C2C2C;
+    margin: 0 0 1.25rem;
+}
