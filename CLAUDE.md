@@ -91,7 +91,7 @@ language switcher only sends Japanese *top-page* switches to `/`.
 
 Each language tree contains the same set of sections: `about/`, `access/`, `accommodations/`, `bunshinkan/`, `edokan/`, `experiences/`, `geihinkan/`, `hinokinoma/`, `korokan/`, `location/`, `restaurant/`, `seiseikan/`, `stay/`. Sibling pages exist for `restaurant.html` at the language root.
 
-The bare `/zh-hans/restaurant.html` and `/zh-hant/restaurant.html` are legacy stubs — [lang-switcher.js](lang-switcher.js) normalizes `zh-hans → zh-cn` and `zh-hant → zh-tw` for display, but new content goes under `/zh-cn/` and `/zh-tw/`.
+The bare `/zh-hans/restaurant.html` and `/zh-hant/restaurant.html` are legacy stubs — [lang-switcher.js](lang-switcher.js) normalizes `zh-hans → zh-cn` and `zh-hant → zh-tw` for display, but new content goes under `/zh-cn/` and `/zh-tw/`. **They are still publicly served** (200 at `/zh-hans/restaurant`, `/zh-hant/restaurant`; only `robots.txt`-disallowed), so any change to restaurant facts (course names, prices, limits, notes) in `{ja,en,zh-cn,zh-tw}/restaurant/` must also be applied to these two files in the same commit. Before finishing a restaurant edit, grep both trees for the old wording: `grep -rn '<old text>' --include='*.html' zh-cn/ zh-tw/ zh-hans/ zh-hant/`.
 
 ### Scripts that maintain the mirror
 
