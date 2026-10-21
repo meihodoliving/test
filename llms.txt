@@ -85,7 +85,6 @@ https://www.meihodo.com/en/restaurant
 - Kaiseki courses: https://www.meihodo.com/en/restaurant/kaiseki
 - Sushi: https://www.meihodo.com/en/restaurant/sushi
 - Breakfast: https://www.meihodo.com/en/restaurant/breakfast
-- BBQ: https://www.meihodo.com/en/restaurant/bbq
 - Private dining: https://www.meihodo.com/en/restaurant/private-dining
 - Reservations: https://www.meihodo.com/en/restaurant/reservation
 

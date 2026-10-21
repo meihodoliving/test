@@ -286,7 +286,7 @@ ACTIVITY_LABEL = {
 }
 
 RESTAURANT_SUBPAGES = (
-    "access", "bbq", "breakfast", "chef", "drinks", "faq",
+    "access", "breakfast", "chef", "drinks", "faq",
     "gallery", "kaiseki", "policy", "private-dining", "reservation", "sushi",
 )
 
