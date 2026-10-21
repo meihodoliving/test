@@ -85,7 +85,7 @@ DEFAULT_IMAGE = f"{BASE}/images/top/top.webp"
 # hpdsp (booking) and asoview (activity booking) are third-party listings, so
 # they are attached as subjectOf / Offer.url instead.
 SAME_AS = [
-    "https://www.instagram.com/meihodo_aso/",
+    "https://www.instagram.com/meihodo_manor/",
     "https://www.facebook.com/p/%E9%B3%B4%E9%B3%B3%E5%A0%82-Meihodo-100081920688959/",
 ]
 

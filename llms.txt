@@ -21,7 +21,7 @@ Structured data: every page carries a JSON-LD `@graph`; the facility entity is
 - Email: meihodoliving@gmail.com
 - Site area: 56,000 m², 37 buildings
 - Languages served: Japanese, English, Simplified Chinese, Traditional Chinese
-- Instagram: https://www.instagram.com/meihodo_aso/
+- Instagram: https://www.instagram.com/meihodo_manor/
 - Facebook: https://www.facebook.com/p/%E9%B3%B4%E9%B3%B3%E5%A0%82-Meihodo-100081920688959/
 
 ## What Meihodo offers
