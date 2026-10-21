@@ -9723,3 +9723,15 @@ html[lang="zh-CN"] {
 html[lang="zh-TW"] {
     --font-serif-cjk: 'Noto Serif TC', 'Noto Serif JP';
 }
+
+/* --- 施設紹介カードの写真 ---
+   縦横比の違う写真（3:2 と 4:3）を 3:2 に揃えて切り抜き、一覧で統一感を出す。 */
+body.about-meihodo-page .facility-block__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1.75rem;
+}
