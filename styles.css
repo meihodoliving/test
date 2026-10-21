@@ -4306,6 +4306,11 @@ html[lang="en"] .vertical-btn .btn-text {
     margin-right: auto;
 }
 
+/* Home: the features grid leads the description, so the flex gap alone spaces it from the image */
+#restaurant .restaurant-description > .restaurant-features:first-child {
+    margin-top: 0;
+}
+
 .restaurant-features .feature-item {
     display: flex;
     align-items: center;
