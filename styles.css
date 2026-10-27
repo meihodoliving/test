@@ -1566,16 +1566,16 @@ body.home-zh-tw #experiences .experience-card .card-button {
 }
 
 /* 体験一覧の武道カード：縦長・正方形の写真は中央トリミングだと顔が切れるため、表示位置を上寄せ
-   （PC 約1.4:1、スマホ 約1.9:1 のどちらでも顔が入る値。4言語共通） */
-#martial-arts .card-image img[src="/images/experience/06.webp"] {
+   （PC 約1.4:1、スマホ 約1.9:1 のどちらでも顔が入る値。4言語共通。GitHub Pages は src に /test/ が付くため末尾一致） */
+#martial-arts .card-image img[src$="/images/experience/06.webp"] {
     object-position: center 14%;
 }
 
-#martial-arts .card-image img[src="/images/experience/karate.webp"] {
+#martial-arts .card-image img[src$="/images/experience/karate.webp"] {
     object-position: center 6%;
 }
 
-#martial-arts .card-image img[src="/images/experience/kendo.webp"] {
+#martial-arts .card-image img[src$="/images/experience/kendo.webp"] {
     object-position: center 4%;
 }
 
