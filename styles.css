@@ -9747,3 +9747,140 @@ body.about-meihodo-page .facility-block__image {
     color: #2C2C2C;
     margin: 0 0 1.25rem;
 }
+
+/* ===== Room gallery lightbox (room-gallery-lightbox.js) ===== */
+.room-gallery .gallery-item.rg-zoomable {
+    cursor: zoom-in;
+}
+
+.room-gallery .gallery-item.rg-zoomable:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+html.rg-lightbox-open,
+html.rg-lightbox-open body {
+    overflow: hidden;
+}
+
+/* The talkappi chat widget sits at the max z-index; hide it while a photo is open. */
+html.rg-lightbox-open #talkappi-app,
+html.rg-lightbox-open #talkappi-chat-icon,
+html.rg-lightbox-open .talkappibot {
+    visibility: hidden !important;
+}
+
+.rg-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    background: rgba(0, 0, 0, 0.92);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.rg-lightbox[hidden] {
+    display: none;
+}
+
+.rg-lightbox__stage {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 56px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Never stretched: scaled down to fit, never up past the file's own size. */
+.rg-lightbox__img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.rg-lightbox__btn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.rg-lightbox__btn:hover,
+.rg-lightbox__btn:focus-visible {
+    background: rgba(255, 255, 255, 0.3);
+    outline: none;
+}
+
+.rg-lightbox__close {
+    top: 8px;
+    right: 8px;
+}
+
+.rg-lightbox__nav {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.6rem;
+    padding-bottom: 4px;
+}
+
+.rg-lightbox__prev {
+    left: 8px;
+}
+
+.rg-lightbox__next {
+    right: 8px;
+}
+
+.rg-lightbox__count {
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+}
+
+.rg-lightbox--single .rg-lightbox__nav,
+.rg-lightbox--single .rg-lightbox__count {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* Phones: photo uses the full width; arrows sit over it, swipe also works. */
+    .rg-lightbox__stage {
+        padding: 56px 0 44px;
+    }
+
+    .rg-lightbox__nav {
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.35);
+    }
+
+    .rg-lightbox__prev {
+        left: 4px;
+    }
+
+    .rg-lightbox__next {
+        right: 4px;
+    }
+}
