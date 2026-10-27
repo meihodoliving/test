@@ -586,16 +586,16 @@ PAGE_DESCRIPTIONS = {
         '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「鴻臚館」。設有檜木半露天浴池、氣質沉穩的獨棟，最多可入住8位旅客。在體驗日本文化之餘，享受阿蘇自然環抱下的寧靜時光。'
     ),
     "ja/bunshinkan/index.html": (
-        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「文心館」。和室とリビングを備えた、読書や瞑想に向く静かな一棟で、最大6名様までご宿泊いただけます。日本文化体験とともに、阿蘇の自然に囲まれた静かな滞在をお楽しみください。'
+        '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「文心館」。和室とリビングを備えた、読書や瞑想に向く静かな一棟で、最大4名様までご宿泊いただけます。日本文化体験とともに、阿蘇の自然に囲まれた静かな滞在をお楽しみください。'
     ),
     "en/bunshinkan/index.html": (
-        'Bunshinkan, a whole-building stay at Meihodo, a cultural estate in Aso, Kumamoto: a quiet house with a Japanese-style room, suited to reading and meditation, for up to 6 guests.'
+        'Bunshinkan, a whole-building stay at Meihodo, a cultural estate in Aso, Kumamoto: a quiet house with a Japanese-style room, suited to reading and meditation, for up to 4 guests.'
     ),
     "zh-cn/bunshinkan/index.html": (
-        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「文心馆」。设有和室与起居室，适合阅读与冥想的静谧独栋，最多可入住6位客人。在体验日本文化之余，享受阿苏自然环抱中的宁静时光。'
+        '熊本县阿苏市文化设施鸣凤堂的整栋包租住宿「文心馆」。设有和室与起居室，适合阅读与冥想的静谧独栋，最多可入住4位客人。在体验日本文化之余，享受阿苏自然环抱中的宁静时光。'
     ),
     "zh-tw/bunshinkan/index.html": (
-        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「文心館」。設有和室與起居室，適合閱讀與冥想的靜謐獨棟，最多可入住6位旅客。在體驗日本文化之餘，享受阿蘇自然環抱下的寧靜時光。'
+        '熊本縣阿蘇市文化設施鳴鳳堂的一棟包棟住宿「文心館」。設有和室與起居室，適合閱讀與冥想的靜謐獨棟，最多可入住4位旅客。在體驗日本文化之餘，享受阿蘇自然環抱下的寧靜時光。'
     ),
     "ja/edokan/index.html": (
         '熊本県阿蘇市の文化施設・鳴鳳堂の一棟貸し宿泊棟「江戸館」。江戸時代の台所を再現したキッチンや囲炉裏、実際にご利用いただける五右衛門風呂を備え、昔ながらの日本の暮らしの趣を残す一棟です。畳のリビングとベッドの洋室で、最大4名様までご宿泊いただけます。'
