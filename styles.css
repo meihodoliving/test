@@ -99,6 +99,7 @@ section:not(.hero) .container .guidelines-content {
 section:not(.hero) .container .experience-card p,
 section:not(.hero) .container .experience-card-link p,
 section:not(.hero) .container .accommodation-card p,
+section:not(.hero) .container .room-row p,
 section:not(.hero) .container .wine-card p,
 section:not(.hero) .container .menu-card p,
 section:not(.hero) .container .pricing-card p,
@@ -1848,6 +1849,202 @@ body.home-zh-tw #experiences .experience-card .card-button {
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+}
+
+/* 宿泊一覧（/<lang>/accommodations）：横長の客室カードを縦一列に並べ、人数・寝具を比較しやすくする
+   トップページの #accommodations .accommodation-card とは別クラス */
+.room-list {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.room-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 42%) minmax(0, 1fr);
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px var(--shadow);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.room-row:hover,
+.room-row:focus-within {
+    border-color: var(--accent-color);
+    box-shadow: 0 12px 32px var(--shadow-dark);
+}
+
+/* PC：写真はカードの高さいっぱいに表示（カードの高さは全棟同じなので比率も同じ） */
+.room-row-image {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+    background: var(--light-color);
+}
+
+.room-row-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.room-row:hover .room-row-image img {
+    transform: scale(1.03);
+}
+
+.room-row-body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 1.75rem 2.25rem;
+}
+
+.room-row-name {
+    font-family: var(--font-serif-cjk), serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--dark-color);
+    margin: 0 0 0.5rem;
+}
+
+.room-list .room-row-lead {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-top: 0;
+    margin-bottom: 1.1rem;
+    /* 紹介文の行数が違っても、下の人数・寝具の位置を全カードでそろえる */
+    min-height: calc(1.75em * 2);
+}
+
+.room-specs {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 1.25rem;
+    row-gap: 0.55rem;
+    margin: 0 0 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    /* 布団の行がない棟も3行分の高さを確保し、カードの高さとボタン位置をそろえる */
+    min-height: calc(1rem + 3 * 1.6em + 2 * 0.55rem);
+    align-content: start;
+}
+
+.room-spec {
+    display: contents;
+}
+
+.room-spec dt {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.room-spec dt i {
+    width: 1.15rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.room-spec dd {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.room-row-link {
+    margin-top: auto;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 1.4rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 999px;
+    color: var(--primary-color);
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* カード全体をクリック可能に（リンクは1つのまま） */
+.room-row-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.room-row:hover .room-row-link,
+.room-row-link:focus-visible {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--white);
+}
+
+.room-row-link:focus-visible {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 3px;
+}
+
+.room-row-link i {
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .room-list {
+        gap: 1.5rem;
+    }
+
+    .room-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .room-row-image {
+        min-height: 0;
+        aspect-ratio: 3 / 2;
+    }
+
+    .room-specs {
+        min-height: 0;
+    }
+
+    .room-row-body {
+        padding: 1.35rem 1.25rem 1.5rem;
+    }
+
+    .room-row-name {
+        font-size: 1.25rem;
+    }
+
+    .room-list .room-row-lead {
+        min-height: 0;
+    }
+
+    .room-row-link {
+        align-self: stretch;
+        justify-content: center;
+        padding: 0.7rem 1.4rem;
+    }
 }
 
 /* Contact Section */
