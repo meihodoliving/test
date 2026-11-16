@@ -10137,7 +10137,7 @@ html.rg-lightbox-open .talkappibot {
 
 .furusato-banner__link {
     display: block;
-    max-width: 960px;
+    max-width: 600px;
     margin: 0 auto;
     border-radius: 4px;
     overflow: hidden;
@@ -10171,7 +10171,8 @@ body .furusato-banner + .philosophy.philosophy--concept {
     }
 
     .furusato-banner__link {
-        max-width: 520px;
+        width: 84%;
+        max-width: 360px;
     }
 
     body .furusato-banner + .philosophy.philosophy--concept {
