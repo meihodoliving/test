@@ -10124,3 +10124,63 @@ html.rg-lightbox-open .talkappibot {
         right: 4px;
     }
 }
+
+/* ----------------------------------------------------------------
+   Top page: ふるさと納税 (現地決済) banner between hero and concept.
+   Sits on the concept block's washi background so the two read as
+   one band; the concept's top padding is trimmed when it follows.
+   ---------------------------------------------------------------- */
+.furusato-banner {
+    background: var(--light-color);
+    padding: 64px 0 0;
+}
+
+.furusato-banner__link {
+    display: block;
+    max-width: 960px;
+    margin: 0 auto;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(28, 28, 28, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.furusato-banner__link img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.furusato-banner__link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(28, 28, 28, 0.18);
+}
+
+.furusato-banner__link:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+}
+
+body .furusato-banner + .philosophy.philosophy--concept {
+    padding-top: 96px;
+}
+
+@media (max-width: 768px) {
+    .furusato-banner {
+        padding-top: 40px;
+    }
+
+    body .furusato-banner + .philosophy.philosophy--concept {
+        padding-top: 64px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .furusato-banner__link {
+        transition: none;
+    }
+
+    .furusato-banner__link:hover {
+        transform: none;
+    }
+}
