@@ -10170,6 +10170,10 @@ body .furusato-banner + .philosophy.philosophy--concept {
         padding-top: 40px;
     }
 
+    .furusato-banner__link {
+        max-width: 520px;
+    }
+
     body .furusato-banner + .philosophy.philosophy--concept {
         padding-top: 64px;
     }

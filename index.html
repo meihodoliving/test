@@ -768,8 +768,12 @@
     <section class="furusato-banner" aria-label="ふるさと納税のご案内">
         <div class="container">
             <a class="furusato-banner__link" href="https://www.machinowa-furusatonouzei.com/pos/K078010001" target="_blank" rel="noopener">
-                <img src="/images/furusato-nouzei-banner.webp" width="1920" height="327" loading="lazy" decoding="async"
-                     alt="現地決済で「ふるさと納税払い」が使えます！公式HPから寄付手続き。即日付与されたポイントは、現地で簡単にQR決済できます。">
+                <!-- Phones get a stacked re-layout of the same artwork so the small print stays readable. -->
+                <picture>
+                    <source media="(max-width: 768px)" srcset="/images/furusato-nouzei-banner-sp.webp" width="1200" height="536">
+                    <img src="/images/furusato-nouzei-banner.webp" width="1920" height="323" loading="lazy" decoding="async"
+                         alt="現地決済で「ふるさと納税払い」が使えます！公式HPから寄付手続き。即日付与されたポイントは、現地で簡単にQR決済できます。">
+                </picture>
             </a>
         </div>
     </section>
